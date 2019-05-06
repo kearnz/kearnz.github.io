@@ -7,18 +7,12 @@ If you feel it necessary to include an appendix, it goes here.
 -->
 
 
-# The First Appendix
+# Autoimpute References
 
-This first appendix includes all of the R chunks of code that were hidden throughout the document (using the `include = FALSE` chunk tag) to help with readibility and/or setup.
+# Notation Cheatsheet
 
-**In section** \@ref(pressure-plot):
+# Concepts Related to Missingness
 
-```{r ref.label='pressureplot', echo=TRUE, eval=FALSE}
-```
+# Univariate Imputation Methods
 
-**In section \@ref(ref-labels):**
-
-```{r ref.label='boxplot', echo=TRUE, eval=FALSE}
-```
-
-# A Second Appendix, for example
+# Multivariate Imputation Methods

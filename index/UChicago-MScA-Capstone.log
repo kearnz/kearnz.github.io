@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.4)  5 MAY 2019 19:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.4)  6 MAY 2019 16:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -783,24 +783,24 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
-)
-\tf@toc=\write5
-\openout5 = `UChicago-MScA-Capstone.toc'.
-
 [3
 
 
-] (./UChicago-MScA-Capstone.lof)
+])
+\tf@toc=\write5
+\openout5 = `UChicago-MScA-Capstone.toc'.
+
+[4] (./UChicago-MScA-Capstone.lof)
 \tf@lof=\write6
 \openout6 = `UChicago-MScA-Capstone.lof'.
 
-[4
+[5
 
 ] (./UChicago-MScA-Capstone.lot)
 \tf@lot=\write7
 \openout7 = `UChicago-MScA-Capstone.lot'.
 
-[5
+[6
 
 ]
 LaTeX Font Info:    Try loading font information for T1+lmtt on input line 249.
@@ -839,268 +839,269 @@ Make it at least 14.49998pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[2]
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 361.
-[3
+[2] [3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 440--444
-
- []
-
-[4] [5] [6]
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 565.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 430.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 438.
 
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 565--567
+) [4] [5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 575--579
+
+ []
+
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 698--700
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 567--569
+Underfull \hbox (badness 10000) in paragraph at lines 700--702
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 569--571
+Underfull \hbox (badness 10000) in paragraph at lines 702--704
 
  []
 
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 613--617
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 746--750
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 617--620
+Underfull \hbox (badness 10000) in paragraph at lines 750--753
 
  []
 
-<figure/multiple-imputation-workflow.jpg, id=259, 633.36626pt x 368.37625pt>
+<figure/multiple-imputation-workflow.jpg, id=296, 633.36626pt x 368.37625pt>
 File: figure/multiple-imputation-workflow.jpg Graphic file (type jpg)
 <use figure/multiple-imputation-workflow.jpg>
 Package pdftex.def Info: figure/multiple-imputation-workflow.jpg  used on input
- line 627.
+ line 760.
 (pdftex.def)             Requested size: 401.50146pt x 233.52284pt.
-[8 <./figure/multiple-imputation-workflow.jpg>] [9]
-<figure/full-side-by-side.jpg, id=273, 736.7525pt x 482.80376pt>
+[10] [11 <./figure/multiple-imputation-workflow.jpg>] [12]
+<figure/full-side-by-side.jpg, id=316, 736.7525pt x 482.80376pt>
 File: figure/full-side-by-side.jpg Graphic file (type jpg)
 <use figure/full-side-by-side.jpg>
-Package pdftex.def Info: figure/full-side-by-side.jpg  used on input line 715.
+Package pdftex.def Info: figure/full-side-by-side.jpg  used on input line 848.
 (pdftex.def)             Requested size: 301.1261pt x 197.33199pt.
-[10
+[13
 
 ]
-<figure/full-joint.jpg, id=279, 487.8225pt x 479.7925pt>
+<figure/full-joint.jpg, id=321, 487.8225pt x 479.7925pt>
 File: figure/full-joint.jpg Graphic file (type jpg)
 <use figure/full-joint.jpg>
-Package pdftex.def Info: figure/full-joint.jpg  used on input line 725.
+Package pdftex.def Info: figure/full-joint.jpg  used on input line 858.
 (pdftex.def)             Requested size: 301.1261pt x 296.17244pt.
-<figure/full-regression.jpg, id=280, 474.77374pt x 76.285pt>
+<figure/full-regression.jpg, id=322, 474.77374pt x 76.285pt>
 File: figure/full-regression.jpg Graphic file (type jpg)
 <use figure/full-regression.jpg>
-Package pdftex.def Info: figure/full-regression.jpg  used on input line 737.
+Package pdftex.def Info: figure/full-regression.jpg  used on input line 870.
 (pdftex.def)             Requested size: 301.1261pt x 48.38571pt.
-[11 <./figure/full-side-by-side.jpg> <./figure/full-joint.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 750--752
+[14 <./figure/full-side-by-side.jpg> <./figure/full-joint.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 883--885
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 752--754
+Underfull \hbox (badness 10000) in paragraph at lines 885--887
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 754--757
+Underfull \hbox (badness 10000) in paragraph at lines 887--890
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 757--759
+Underfull \hbox (badness 10000) in paragraph at lines 890--892
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 759--762
+Underfull \hbox (badness 10000) in paragraph at lines 892--895
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 762--765
+Underfull \hbox (badness 10000) in paragraph at lines 895--898
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 765--767
+Underfull \hbox (badness 10000) in paragraph at lines 898--900
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 767--769
+Underfull \hbox (badness 10000) in paragraph at lines 900--902
 
  []
 
-<figure/y-mis-forty-loc.jpg, id=287, 742.775pt x 478.78876pt>
+<figure/y-mis-forty-loc.jpg, id=329, 742.775pt x 478.78876pt>
 File: figure/y-mis-forty-loc.jpg Graphic file (type jpg)
 <use figure/y-mis-forty-loc.jpg>
-Package pdftex.def Info: figure/y-mis-forty-loc.jpg  used on input line 793.
+Package pdftex.def Info: figure/y-mis-forty-loc.jpg  used on input line 926.
 (pdftex.def)             Requested size: 301.1261pt x 194.10564pt.
-<figure/y-mis-forty-bar.jpg, id=288, 762.85pt x 509.905pt>
+<figure/y-mis-forty-bar.jpg, id=330, 762.85pt x 509.905pt>
 File: figure/y-mis-forty-bar.jpg Graphic file (type jpg)
 <use figure/y-mis-forty-bar.jpg>
-Package pdftex.def Info: figure/y-mis-forty-bar.jpg  used on input line 801.
+Package pdftex.def Info: figure/y-mis-forty-bar.jpg  used on input line 934.
 (pdftex.def)             Requested size: 301.1261pt x 201.27411pt.
-[12 <./figure/full-regression.jpg>]
-<figure/multi-mean.jpg, id=295, 513.92pt x 499.8675pt>
+[15 <./figure/full-regression.jpg>]
+<figure/multi-mean.jpg, id=336, 513.92pt x 499.8675pt>
 File: figure/multi-mean.jpg Graphic file (type jpg)
 <use figure/multi-mean.jpg>
-Package pdftex.def Info: figure/multi-mean.jpg  used on input line 827.
+Package pdftex.def Info: figure/multi-mean.jpg  used on input line 960.
 (pdftex.def)             Requested size: 301.1261pt x 292.89801pt.
-[13 <./figure/y-mis-forty-loc.jpg> <./figure/y-mis-forty-bar.jpg>]
-<figure/swarm-mean.jpg, id=302, 663.47874pt x 422.57875pt>
+[16 <./figure/y-mis-forty-loc.jpg> <./figure/y-mis-forty-bar.jpg>]
+<figure/swarm-mean.jpg, id=343, 663.47874pt x 422.57875pt>
 File: figure/swarm-mean.jpg Graphic file (type jpg)
 <use figure/swarm-mean.jpg>
-Package pdftex.def Info: figure/swarm-mean.jpg  used on input line 835.
+Package pdftex.def Info: figure/swarm-mean.jpg  used on input line 968.
 (pdftex.def)             Requested size: 301.1261pt x 191.79002pt.
-[14 <./figure/multi-mean.jpg> <./figure/swarm-mean.jpg>]
-<figure/multi-lm.jpg, id=310, 501.875pt x 498.86375pt>
+[17 <./figure/multi-mean.jpg> <./figure/swarm-mean.jpg>]
+<figure/multi-lm.jpg, id=351, 501.875pt x 498.86375pt>
 File: figure/multi-lm.jpg Graphic file (type jpg)
 <use figure/multi-lm.jpg>
-Package pdftex.def Info: figure/multi-lm.jpg  used on input line 854.
+Package pdftex.def Info: figure/multi-lm.jpg  used on input line 987.
 (pdftex.def)             Requested size: 301.1261pt x 299.33578pt.
-<figure/swarm-lm.jpg, id=311, 666.49pt x 419.5675pt>
+<figure/swarm-lm.jpg, id=352, 666.49pt x 419.5675pt>
 File: figure/swarm-lm.jpg Graphic file (type jpg)
 <use figure/swarm-lm.jpg>
-Package pdftex.def Info: figure/swarm-lm.jpg  used on input line 862.
+Package pdftex.def Info: figure/swarm-lm.jpg  used on input line 995.
 (pdftex.def)             Requested size: 301.1261pt x 189.56548pt.
-[15 <./figure/multi-lm.jpg> <./figure/swarm-lm.jpg>]
-<figure/multi-pmm.jpg, id=318, 505.89pt x 502.87875pt>
+[18 <./figure/multi-lm.jpg> <./figure/swarm-lm.jpg>]
+<figure/multi-pmm.jpg, id=359, 505.89pt x 502.87875pt>
 File: figure/multi-pmm.jpg Graphic file (type jpg)
 <use figure/multi-pmm.jpg>
-Package pdftex.def Info: figure/multi-pmm.jpg  used on input line 878.
+Package pdftex.def Info: figure/multi-pmm.jpg  used on input line 1011.
 (pdftex.def)             Requested size: 301.1261pt x 299.3355pt.
-<figure/swarm-pmm.jpg, id=319, 664.4825pt x 419.5675pt>
+<figure/swarm-pmm.jpg, id=360, 664.4825pt x 419.5675pt>
 File: figure/swarm-pmm.jpg Graphic file (type jpg)
 <use figure/swarm-pmm.jpg>
-Package pdftex.def Info: figure/swarm-pmm.jpg  used on input line 886.
+Package pdftex.def Info: figure/swarm-pmm.jpg  used on input line 1019.
 (pdftex.def)             Requested size: 301.1261pt x 190.13525pt.
-[16 <./figure/multi-pmm.jpg>] [17 <./figure/swarm-pmm.jpg>]
+[19 <./figure/multi-pmm.jpg>] [20 <./figure/swarm-pmm.jpg>]
 File: figure/full-regression.jpg Graphic file (type jpg)
 <use figure/full-regression.jpg>
-Package pdftex.def Info: figure/full-regression.jpg  used on input line 944.
+Package pdftex.def Info: figure/full-regression.jpg  used on input line 1077.
 (pdftex.def)             Requested size: 301.1261pt x 48.38571pt.
-<figure/mcar-listwise-delete.jpg, id=330, 487.8225pt x 77.28876pt>
+<figure/mcar-listwise-delete.jpg, id=371, 487.8225pt x 77.28876pt>
 File: figure/mcar-listwise-delete.jpg Graphic file (type jpg)
 <use figure/mcar-listwise-delete.jpg>
-Package pdftex.def Info: figure/mcar-listwise-delete.jpg  used on input line 96
-0.
+Package pdftex.def Info: figure/mcar-listwise-delete.jpg  used on input line 10
+93.
 (pdftex.def)             Requested size: 301.1261pt x 47.70978pt.
-<figure/mcar-mean.jpg, id=331, 513.92pt x 75.28125pt>
+<figure/mcar-mean.jpg, id=372, 513.92pt x 75.28125pt>
 File: figure/mcar-mean.jpg Graphic file (type jpg)
 <use figure/mcar-mean.jpg>
-Package pdftex.def Info: figure/mcar-mean.jpg  used on input line 969.
+Package pdftex.def Info: figure/mcar-mean.jpg  used on input line 1102.
 (pdftex.def)             Requested size: 301.1261pt x 44.11113pt.
-[18
+[21
 
  <./figure/mcar-listwise-delete.jpg>]
-<figure/mcar-ls.jpg, id=338, 511.9125pt x 73.27374pt>
+<figure/mcar-ls.jpg, id=378, 511.9125pt x 73.27374pt>
 File: figure/mcar-ls.jpg Graphic file (type jpg)
 <use figure/mcar-ls.jpg>
-Package pdftex.def Info: figure/mcar-ls.jpg  used on input line 978.
+Package pdftex.def Info: figure/mcar-ls.jpg  used on input line 1111.
 (pdftex.def)             Requested size: 301.1261pt x 43.10254pt.
-<figure/mcar-pmm.jpg, id=339, 563.10374pt x 74.2775pt>
+<figure/mcar-pmm.jpg, id=379, 563.10374pt x 74.2775pt>
 File: figure/mcar-pmm.jpg Graphic file (type jpg)
 <use figure/mcar-pmm.jpg>
-Package pdftex.def Info: figure/mcar-pmm.jpg  used on input line 987.
+Package pdftex.def Info: figure/mcar-pmm.jpg  used on input line 1120.
 (pdftex.def)             Requested size: 301.1261pt x 39.72049pt.
-<figure/mar-listwise-delete.jpg, id=340, 516.93124pt x 77.28876pt>
+<figure/mar-listwise-delete.jpg, id=380, 516.93124pt x 77.28876pt>
 File: figure/mar-listwise-delete.jpg Graphic file (type jpg)
 <use figure/mar-listwise-delete.jpg>
-Package pdftex.def Info: figure/mar-listwise-delete.jpg  used on input line 100
-3.
+Package pdftex.def Info: figure/mar-listwise-delete.jpg  used on input line 113
+6.
 (pdftex.def)             Requested size: 301.1261pt x 45.02444pt.
-<figure/mar-mean.jpg, id=341, 542.025pt x 76.285pt>
+<figure/mar-mean.jpg, id=381, 542.025pt x 76.285pt>
 File: figure/mar-mean.jpg Graphic file (type jpg)
 <use figure/mar-mean.jpg>
-Package pdftex.def Info: figure/mar-mean.jpg  used on input line 1012.
+Package pdftex.def Info: figure/mar-mean.jpg  used on input line 1145.
 (pdftex.def)             Requested size: 301.1261pt x 42.38173pt.
-<figure/mar-ls.jpg, id=342, 545.03625pt x 72.27pt>
+<figure/mar-ls.jpg, id=382, 545.03625pt x 72.27pt>
 File: figure/mar-ls.jpg Graphic file (type jpg)
 <use figure/mar-ls.jpg>
-Package pdftex.def Info: figure/mar-ls.jpg  used on input line 1021.
+Package pdftex.def Info: figure/mar-ls.jpg  used on input line 1154.
 (pdftex.def)             Requested size: 301.1261pt x 39.92836pt.
-[19 <./figure/mcar-mean.jpg> <./figure/mcar-ls.jpg> <./figure/mcar-pmm.jpg> <./
+[22 <./figure/mcar-mean.jpg> <./figure/mcar-ls.jpg> <./figure/mcar-pmm.jpg> <./
 figure/mar-listwise-delete.jpg> <./figure/mar-mean.jpg>]
-<figure/mar-pmm.jpg, id=352, 631.35875pt x 75.28125pt>
+<figure/mar-pmm.jpg, id=392, 631.35875pt x 75.28125pt>
 File: figure/mar-pmm.jpg Graphic file (type jpg)
 <use figure/mar-pmm.jpg>
-Package pdftex.def Info: figure/mar-pmm.jpg  used on input line 1030.
+Package pdftex.def Info: figure/mar-pmm.jpg  used on input line 1163.
 (pdftex.def)             Requested size: 301.1261pt x 35.90599pt.
-[20 <./figure/mar-ls.jpg> <./figure/mar-pmm.jpg>] [21
+[23 <./figure/mar-ls.jpg> <./figure/mar-pmm.jpg>] [24
 
-] [22
+] [25
 
 ]
 Appendix A.
-
-LaTeX Warning: Reference `pressure-plot' on page 23 undefined on input line 109
-4.
-
-
-LaTeX Warning: Reference `ref-labels' on page 23 undefined on input line 1096.
-
-[23
+[26
 
 ]
 Appendix B.
-[24
+[27
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1106--1109
+Appendix C.
+[28
+
+]
+Appendix D.
+[29
+
+]
+Appendix E.
+[30
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1239--1242
 []$\T1/lmtt/m/n/12 https : / / statisticalhorizons . com / wp -[] content / upl
 oads / MissingDataByML .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1117--1120
+Underfull \hbox (badness 10000) in paragraph at lines 1250--1253
 \T1/lmtt/m/n/12 / / stats . idre . ucla . edu / sas / modules / sas -[] learnin
 g -[] moduleintroduction -[] to -[]
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1143.
-[25
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1276.
+[31
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1143.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1276.
 (./UChicago-MScA-Capstone.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1143.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1143.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1276.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1276.
 
 Package rerunfilecheck Info: File `UChicago-MScA-Capstone.out' has not changed.
 
-(rerunfilecheck)             Checksum: E87D44C0102E4106FC69878C5D584F92;1766.
+(rerunfilecheck)             Checksum: 9952D14BA71C93B641D2503F12D89AAF;2074.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.40009pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1143.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1276.
  ) 
 Here is how much of TeX's memory you used:
- 9341 strings out of 494555
- 141234 string characters out of 6174256
- 228328 words of memory out of 5000000
- 12694 multiletter control sequences out of 15000+600000
+ 9364 strings out of 494555
+ 141632 string characters out of 6174256
+ 228700 words of memory out of 5000000
+ 12703 multiletter control sequences out of 15000+600000
  57945 words of font info for 104 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,12n,45p,925b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,12n,45p,925b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/josephkearney/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
 {/Users/josephkearney/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<
 /Users/josephkearney/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/
@@ -1109,13 +1110,14 @@ amsfonts/cm/cmr10.pfb></Users/josephkearney/Library/TinyTeX/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmsy10.pfb></Users/josephkearney/Library/TinyTeX/texmf-d
 ist/fonts/type1/public/lm/lmtt12.pfb></Users/josephkearney/Library/TinyTeX/texm
 f-dist/fonts/type1/urw/symbol/usyr.pfb></Users/josephkearney/Library/TinyTeX/te
-xmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/josephkearney/Library/TinyTeX
-/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/josephkearney/Library/Tiny
-TeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on UChicago-MScA-Capstone.pdf (32 pages, 2719036 bytes).
+xmf-dist/fonts/type1/urw/symbol/usyr.pfb></Users/josephkearney/Library/TinyTeX/
+texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/josephkearney/Library/TinyT
+eX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/josephkearney/Library/Ti
+nyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on UChicago-MScA-Capstone.pdf (39 pages, 2730812 bytes).
 PDF statistics:
- 439 PDF objects out of 1000 (max. 8388607)
- 353 compressed objects within 4 object streams
- 95 named destinations out of 1000 (max. 500000)
- 317 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 502 PDF objects out of 1000 (max. 8388607)
+ 407 compressed objects within 5 object streams
+ 109 named destinations out of 1000 (max. 500000)
+ 349 words of extra memory for PDF output out of 10000 (max. 10000000)
 

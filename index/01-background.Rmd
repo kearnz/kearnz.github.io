@@ -8,47 +8,100 @@ The {#background} text after the chapter declaration will allow us to link throu
 
 # Background {#background .unnumbered}
 
-To understand imputation methods, one must first explore the reason they exist - missingness in data. Missingness covers values in a dataset that are either unobserved or unknown. For example, a weigh scale may generate missing values for three separate reasons. First, it might run out of batteries, in which case all weight reportings cease for a given period of time. Next, it may fail to report measurements with greater frequency for objects over a certain weight. And finally, it may stop reporting when placed on a soft surface instead of a hard one (Van Buuren, 2018, ch. 1.2).
+One must understand what missingness means and why it exists before deciding how to deal with it. The authors explore concepts related to missingness using a motivating example. For an experiment, assume that a random sample of measurements is collected from thousands of weigh scales. Each weigh scale in the experiment may fail to produce weight measurements for three separate reasons. First, a scale might run out of batteries, in which case all measurements from that scale cease for a given period of time. Next, a scale may fail more frequently for heavier objects or items over a certain weight threshhold. And finally, a scale may stop reporting measurements when placed on a soft surface instead of a hard one (Van Buuren, 2018, ch. 1.2). 
 
-## Missing Data Mechanism {.unnumbered} 
+As a result of these scenarios, the random sample collected likely has many instances in which weight measurements are unobserved. How missingness in this sample is handled moving forward will depend on characteristics of the missing data itself and the process that generated missingess. The authors devote the rest of this section to exploring missingness and how to deal with it.
 
-Each of the weigh scale examples results in missing data, but the underlying reason for the missingness is quite different. Donald Rubin describes the ways in which data can be missing. According to Rubin (as cited in Van Buuren, 2018, ch. 1.2), every observation in a dataset has some probability of being missing. The process that governs these probabilities is called the missing data mechanism (Rubin, as cited in Van Buuren, 2018, ch 1.2). As a process, the missing data mechanism generates a statistical relationship between observations and the probability of missing data (Nakagawa, 2015, Pg. 83). The missing data model is the function that explains that statistical relationship (Van Buuren, 2018). Statistical relationships falls into one of three categories, each of which represents a different missing data mechanism (Rubin, as cited in Van Buuren, 2018, ch. 1.2). 
+## Basic Terminology and Notation {#background-basic-terms .unnumbered}
 
-### MCAR, MAR, and MNAR {.unnumbered} 
+Before diving into concepts related to missingness, the authors establish notation used throughout this text. In doing so, the authors also introduce some basic terminology.
 
-Missing completely at random (MCAR) is the first of the three missing data mechanisms. MCAR assumes missing values in the underlying dataset have the same probability of missingness for all cases (Gelman & Hill, 2017, Pg. 530). Thus, MCAR implies that the probability of missingness within a dataset is completely unrelated to the data in question or any other observed or unobserved data. From the example above, MCAR governs the probability of values being missing from a weigh scale that runs out of batteries at some point in time (Van Buuren, 2018, ch. 1.2). Although MCAR is convenient, datasets with missing values are often not MCAR in the real-world.
+In the introductory example, weigh scales produce a set of $n$ measurements, some of which may be missing weight. $Y$ denotes the $n$ x $p$ matrix that contains the $n$ measurements and the $p$ variables recorded along with the measurements. The surface of the scale (hard or soft) is an example of a discrete variable in $p$, while the weight measurement itself is a continuous variable in $p$. We can retrieve an observation within $Y$ by specifying the row and column index corresponding to the observation's cell. To do so, we use the notation $y_{ij}$, where $i$ represents the row and $j$ represents the column associated with a scalar $y$ in matrix $Y$. 
 
-Missing at random (MAR) is the second missing data mechanism. MAR occurs when the probability a given variable is missing depends on available and observed information only (Gelman & Hill, 2017, p. 530). Therefore, MAR is a weaker and more general classification of missingness than MCAR (Allison, 2012). In the case of the weigh scale, MAR describes missing data that arises from the scale’s placement on hard or soft surfaces. If information about the surface (hard or soft) is fully observed for each attempted weight measurement, the probability of missing measurements then depends on available data - surface type - and thus falls under MAR  (Van Buuren, 2018, ch. 1.2). Since MAR is a more general assumption than MCAR, it is more realistic to encounter in real-world datasets. 
+$Y$ itself represents the hypothetically complete data (Van Buuren, 2018, ch. 2.2.3), which is comprised of $Y_{obs}$ and $Y_{mis}$. $Y_{obs}$ represents each row $Y_i$ out of $n$ records that have known values for each column $Y_j$ in $p$. $Y_{mis}$, on the other hand, contains records with missing observations across any of column $Y_j$ in $p$. Note that $Y = (Y_{obs}, Y_{mis})$ - the hypothetically complete data equals the conjoined observed and missing data matrices.
 
-Missing not at random (MNAR) is the final missing data mechanism. MNAR suggests data’s “probability of being missing varies for reasons that are unknown to us” (Van Buuren, 2018, ch. 1.2). When the weight of an object itself is to blame for a scale’s failure to report measurements, the underlying process is MNAR because the probability of weight being missing is related to weight itself (Van Buuren, 2018, ch. 1.2). 
+It is convenient to store whether or not a cell in $Y$ is missing in a separate matrix $R$. Therefore, $R$ is an $n$ by $p$ matrix where all entries $r_{ij} \in {0, 1}$. Any observation $r_{ij}=1$ corresponds to a known value for $y_{ij}$. On the contrary, any observation $r_{ij}=0$ corresponds to a missing value for $y_{ij}$. $R$ is commonly referred to as the **missing indicator matrix**, while $Y$ is the **complete data matrix** (Van Buuren, 2018, ch. 2.2.3).
 
-### Ignorability {.unnumbered}
+This research follows the notation Van Buuren uses in the second edition of his book, Flexible Imputation of Missing Data. For more information, refer to Appendix B, which collects and summarizes the notation seen throughout this research.
+
+## Missing Data Mechanism {#background-missing-data-mech  .unnumbered} 
+
+Each of the three scenarios discussed above causes a given weigh scale to produce missing data, but the underlying reason for missingness is quite different in each case. Donald Rubin describes the ways in which data can be missing (Rubin, 1976). According to Rubin (as cited in Van Buuren, 2018, ch. 1.2), every observation in a dataset has some probability of being missing. The process that governs these probabilities is called the **missing data mechanism** (Rubin, as cited in Van Buuren, 2018, ch. 1.2). As a process, the missing data mechanism generates a statistical relationship between observations and the probability of missing data (Nakagawa, 2015, pg. 83). The **missing data model** is the function that formalizes that statistical relationship (Van Buuren, 2018, ch. 2.2.4). These statistical relationships fall into one of three categories, each of which represents a different missing data mechanism (Rubin, as cited in Van Buuren, 2018, ch. 1.2).
+
+The general expression for the missing data model is defined as: 
+
+$$P(R|Y_{obs}, Y_{mis},\psi)$$
+
+$\psi$ cointains the parameters of the missing data model. Therefore, this equation notes that the probability of missingness $P(R=0)$ within a dataset depends on the observed data, the missing data, and the missing data model's parameters. (Van Buuren, 2018, ch. 2.2.4). From another lense, this equation states that the distribution of missingness is conditional on the observed data, the missing data, and the parameters of the missing data model. 
+
+The missing data model is the function that formalizes the statistical relationship governed by a missing data mechanism. The next section examines the manifestation of the missing data model under each mechanism.
+
+### MCAR, MAR, and MNAR {#background-mcar-mar-mnar .unnumbered} 
+
+Rubin popularized names for the three categories that represent the main missing data mechanisms:
+
+* **Missing Completely at Random (MCAR)**
+* **Missing at Random (MAR)**
+* **Missing Not at Random (MNAR)**
+
+In this research, the authors refer to each category by its abbreviated label. The sections below examine each category in more detail.
+
+#### Missing Completely at Random (MCAR)
+
+MCAR is the first of the three missing data mechanisms. MCAR assumes missing values in the underlying dataset have the same probability of missingness for all cases (Gelman & Hill, 2017, pg. 530). Thus, MCAR implies that the probability of missingness within a dataset is completely unrelated to the data in question or any other observed or unobserved data. The missing data model 
+associated with MCAR is defined as:
+
+$$P(R=0|Y_{obs},Y_{mis},\psi) = P(R=0|\psi)$$
+
+Note that the general expression of the missing data model reduces to a much simpler form. Under MCAR, the probability of data being missing depends on the parameters of the missing data only and not on the values of missing data itself or the value of any of the observed data (Van Buuren, 2018, ch. 2.2.4).
+
+From the weigh scale example, MCAR governs the probability of values being missing from a scale that runs out of batteries at some point in time (Van Buuren, 2018, ch. 1.2). For simplicity, assume time is not a latent variable nor of interest in the data collection process. In this case then, the missing values produced from the scale do not depend on the weight of the object in question nor the surface used for the scale, so the probability a value is missing does not depend on any of the missing or observed data. Although MCAR is convenient, it is very restrictive and generally unrealistic, so datasets with missing values are often not MCAR in the real world (Van Buuren, 2018, ch. 2.2.4).
+
+#### Missing at Random (MAR)
+
+MAR is the second missing data mechanism. MAR occurs when the probability a given variable is missing depends on available and observed information only (Gelman & Hill, 2017, pg. 530). Therefore, MAR is a weaker and more general classification of missingness than MCAR (Allison, 2012). The missing data model associated with MAR is defined as:
+
+$$P(R=0|Y_{obs},Y_{mis},\psi) = P(R=0|Y_{obs},\psi)$$
+
+For MAR, the missing data model reduces because the probability of data being missing depends on the missing data model and the observed data only. Therefore, $Y_{mis}$ does not affect the probability of missingness under MAR.
+
+In the case of the weigh scale, MAR describes missing data that arises from the scale’s placement on hard or soft surfaces. If information about the surface (hard or soft) is fully observed for each attempted weight measurement, the probability of missing measurements then depends on available data - surface type - and thus falls under MAR  (Van Buuren, 2018, ch. 1.2). Since MAR is a more general assumption than MCAR, it is more realistic to encounter in real-world datasets. 
+
+#### Missing Not at Random (MNAR)
+
+Missing not at random (MNAR) is the final missing data mechanism. MNAR suggests data’s “probability of being missing varies for reasons that are unknown to us” (Van Buuren, 2018, ch. 1.2). As a result, the missing data model for MNAR does not reduce:
+
+$$P(R=0|Y_{obs},Y_{mis},\psi)$$
+
+Missing data under MNAR may depend on observed and unobserved data, so the missing data model does not simplify at all. There are two major sub-categories that capture "unobserved" within MNAR. First, missingness may depend on the actual missing values themselves (Gelman & Hill, 2017, pg. 530). When the weight of an object itself is to blame for a scale’s failure to report measurements, the underlying process falls under this sub-category of MNAR because the probability of weight being missing is related to weight itself (Van Buuren, 2018, ch. 1.2). The second type of MNAR covers missingness that depends on unobserved measurements or latent variables (Gelman & Hill, 2017, pg. 530). The weigh scale example proposes three reasons a scale may generate missing measurements. These reasons do not cover countless other possibilities for why missing data may occur, such as the brand or age of a given scale. If the brand or age of a scale contributes to the probability of missing measurements but data is not available regarding a scale's brand or age, then the missing data mechanism falls under the second sub-category of MNAR. 
+
+### Ignorability {#background-ignorability .unnumbered}
 
 The missing data mechanism determines the assumptions one can make when handling missing data. The most important assumption is that of ignorability. Missingness is ignorable “if it is missing at random and the probability of a missingness does not depend on the missing information itself” (Introduction to SAS, 2017). Therefore, MCAR and MAR fit this definition and have ignorable missingness. On the other hand, MNAR is considered non-ignorable because one must account for not only the missingness in data but also why the data is missing. In the context of imputation, ignorability determines whether one can ignore the way in which data are missing prior to imputing missing data through an imputation model (Nakagawa, 2015, Pg. 85). As stated in Introduction to SAS, “the assumption of ignorability is needed for optimal estimation of missing information and is a required assumption” (2017). Thus, in practice, professionals generally begin with the MAR assumption when dealing with missing data because it is the most general missing data mechanism that satisfies ignorability.
 
-## Missing Data Methods for Single Imputation {.unnumbered} 
+## Missing Data Methods for Single Imputation {#background-missing-data-methods .unnumbered} 
 
 Missing data mechanisms that satisfy ignorability provide the foundation for the missing data methods explored throughout this research. With an understanding of these concepts, one can now examine the methods built upon these assumptions. Methods for missing data fall into two broad categories - deletion and imputation. 
 
-### Deletion {.unnumbered}
+### Deletion {#background-deletion .unnumbered}
 
 One of the most popular approaches data practitioners use when dealing with missing data is listwise deletion or complete-case analysis, which is the deletion of any observation that has at least one missing value in any feature (Van Buuren, 2018, ch. 1.3.1). Complete-case analysis (CCA) is relatively easy to implement and enables analysis models to run without generating errors that result from missing data. However, CCA also has its flaws. As Gelman & Hill (2017) describe, two problems arise with CCA:
 
 1. If the units with missing values differ systematically from the completely observed cases, this could bias the complete-case analysis.  
 2. If many variables are included in a model, there may be very few complete cases, so that most of the data would be discarded for the sake of a simple analysis. (p. 531)  
 
-### Imputation {.unnumbered}
+### Imputation {#background-imputation .unnumbered}
 
 Because of these problems, researchers are cautious with listwise deletion and employ CCA as a benchmark or in specific cases where the effect from deletion is negligible. Instead, researchers turn to imputation in favor of deletion to solve for these challenges.
 “Imputation is a procedure for entering a value for a specific data item where the response is missing or unusable” (UNECE, 2000). Instead of discarding data, imputation retains potentially important information in the data by substituting missing values with plausible ones produced from an imputation model. While this process seems straightforward, numerous imputation options exist and range from quite simple methods to very complex models. Furthermore, no universal evaluation metric exists to judge the accuracy or success of an imputation technique. Because of these reasons, practitioners must fully understand the different imputation options available to them and perform imputation analysis to discern which method serves their use case to best meet their objectives. The next section explores the fundamentals behind different imputation methods and examines their respective strengths and weaknesses. 
 
 In general, there are two major categories of imputation methods - univariate and multivariate. Univariate imputation techniques focus on a single incomplete variable known as the target variable (Van Buuren, 2018, ch. 3). Univariate methods utilize observed values in the target variable to determine how to fill in missing values in the same target. Mean imputation is a popular example of a univariate method. When applied, mean imputation takes the mean of the observed features within a target variable and imputes missing values with the mean. This imputation method extends to any descriptive statistic that one can calculate from the target variable’s observed data. Additional examples include median and mode imputation, which follow a similar process but use a different statistic for imputation.
 
-#### Univariate {.unnumbered}
+#### Univariate
 
 Univariate measures do not have to impute a single value. For example, linear interpolation employs linear curve fitting to construct new values as imputations between two observed data points. Therefore, imputations from linear interpolation depend upon the closest observed values, so the value of an imputation will differ from one portion of the data to another. The only requirement for univariate methods is that they use information contained within the observed values of the same variable they are designed to impute. Appendix B.1 goes into greater detail of all the univariate methods that the researchers support in `Autoimpute`. 
 
-#### Multivariate {.unnumbered}
+#### Multivariate
 
 The second major category of imputation methods is multivariate imputation. Multivariate imputation methods rely on one or more available features to predict plausible imputations for the target variable. When an imputation model has access to multiple features within a dataset, the method can preserve the relationships between the features and the target variable (Van Buuren, 2018, ch. 4.1). While this preservation is beneficial, it is not always clear which features one should use in a multivariate imputation model. In this case, the missing data pattern becomes useful to know. Van Buuren (2018) states:
 
@@ -74,7 +127,7 @@ Practitioners use the above statistics to understand the importance of and relat
 
 Appendix B.2 provides more information regarding multivariate imputation methods available in `Autoimpute` and detail behind each method. Autoimpute implements regressions as seen in Van Buuren and implements PMM & LRD as seen in Morris et. al.
 
-## Multiple Imputation {.unnumbered} 
+## Multiple Imputation {#background-multiple-imputation .unnumbered} 
 
 With univariate and multivariate imputation methods, practitioners now have the ability to impute missing values in a dataset. These methods impute missing values once, however, and provide a single point estimate - the imputation - for each missing value. Gelman & Hill (2017) argue “whenever a single imputation strategy is used, the standard errors of estimates tend to be too low. The intuition here is that we have substantial uncertainty about the missing values, but by choosing a single imputation we in essence pretend that we know the true value with certainty” (p. 532). To account for this issue, researchers developed a procedure called multiple imputation.
 
@@ -96,7 +149,7 @@ include_graphics(path = "figure/multiple-imputation-workflow.jpg")
 
 Based on the data, use-case, and desired outcome, practitioners should choose an imputation method that adds some random variation. Then multiple imputation results in multiple copies of imputed datasets with different imputed values. Each imputed dataset is analyzed separately and then parameters from those analyses are pooled together to get combined diagnostics on the performance of the multiple imputation process and the specified imputation model. This method “solves the standard error problem by calculating the variance of each parameter estimate across the several data sets” (Allison, 2012). The pooled parameters replace those from the supervised machine learning model of interest. The pooled parameters not only produce the coefficient estimate but also the properly account for the increase in standard error due to uncertainty introduced from imputing missing data.
 
-## Missing Data and Autoimpute {.unnumbered}
+## Missing Data and Autoimpute {#background-missing-data-autoimpute .unnumbered}
 
 Ultimately, this background details the concepts and theory that are the foundation for the Autoimpute package. Understanding the process that generates missingness in a dataset - the missing data mechanism - is imperative prior to applying any deletion or imputation method. The missing data mechanism and missing data pattern should inform which strategy to use to handle missing data. At that point, the researcher performs either univariate or multivariate imputation using the method that fits best a given dataset, use case, or goal. If the researcher is interested in analysis, then he or she should deploy the selected imputation method in multiple imputations. Each imputed dataset within the multiple imputation framework can then be analyzed separately with the supervised learning model of interest. Finally, the researcher can pool parameters together to produce parameters of the multiply imputed analysis model and use this model to make predictions when new data arrives.
 
