@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Background | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</title>
+  <meta name="description" content="Background | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta name="generator" content="bookdown  and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Background | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Background | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  
+  
+  
+
+<meta name="author" content="Shahid Barkat, Joseph Kearney" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="methodology.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#problem-statement"><i class="fa fa-check"></i>Problem Statement</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#research-purpose"><i class="fa fa-check"></i>Research Purpose</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i>Background</a><ul>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#missing-data-mechanism"><i class="fa fa-check"></i>Missing Data Mechanism</a><ul>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#mcar-mar-and-mnar"><i class="fa fa-check"></i>MCAR, MAR, and MNAR</a></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#ignorability"><i class="fa fa-check"></i>Ignorability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#missing-data-methods-for-single-imputation"><i class="fa fa-check"></i>Missing Data Methods for Single Imputation</a><ul>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#deletion"><i class="fa fa-check"></i>Deletion</a></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#imputation"><i class="fa fa-check"></i>Imputation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#multiple-imputation"><i class="fa fa-check"></i>Multiple Imputation</a></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#missing-data-and-autoimpute"><i class="fa fa-check"></i>Missing Data and Autoimpute</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html"><i class="fa fa-check"></i>Methodology</a><ul>
+<li class="chapter" data-level="" data-path="methodology.html"><a href="methodology.html#methodology-data"><i class="fa fa-check"></i>Autoimpute: an End-to-End Example</a><ul>
+<li class="chapter" data-level="0.0.1" data-path="methodology.html"><a href="methodology.html#overview-and-description"><i class="fa fa-check"></i><b>0.0.1</b> Overview and Description</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="findings.html"><a href="findings.html"><i class="fa fa-check"></i>Findings</a><ul>
+<li class="chapter" data-level="" data-path="findings.html"><a href="findings.html#findings-descriptive"><i class="fa fa-check"></i>Results of descriptive analyses</a></li>
+<li class="chapter" data-level="" data-path="findings.html"><a href="findings.html#modeling-results"><i class="fa fa-check"></i>Modeling results</a></li>
+<li class="chapter" data-level="" data-path="findings.html"><a href="findings.html#results-of-model-performance-and-validation"><i class="fa fa-check"></i>Results of model performance and validation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i>Recommendations</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="A-the-first-appendix.html"><a href="A-the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a></li>
+<li class="chapter" data-level="B" data-path="B-a-second-appendix-for-example.html"><a href="B-a-second-appendix-for-example.html"><i class="fa fa-check"></i><b>B</b> A Second Appendix, for example</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="background" class="section level1 unnumbered">
+<h1>Background</h1>
+<p>To understand imputation methods, one must first explore the reason they exist - missingness in data. Missingness covers values in a dataset that are either unobserved or unknown. For example, a weigh scale may generate missing values for three separate reasons. First, it might run out of batteries, in which case all weight reportings cease for a given period of time. Next, it may fail to report measurements with greater frequency for objects over a certain weight. And finally, it may stop reporting when placed on a soft surface instead of a hard one (Van Buuren, 2018, ch. 1.2).</p>
+<div id="missing-data-mechanism" class="section level2 unnumbered">
+<h2>Missing Data Mechanism</h2>
+<p>Each of the weigh scale examples results in missing data, but the underlying reason for the missingness is quite different. Donald Rubin describes the ways in which data can be missing. According to Rubin (as cited in Van Buuren, 2018, ch. 1.2), every observation in a dataset has some probability of being missing. The process that governs these probabilities is called the missing data mechanism (Rubin, as cited in Van Buuren, 2018, ch 1.2). As a process, the missing data mechanism generates a statistical relationship between observations and the probability of missing data (Nakagawa, 2015, Pg. 83). The missing data model is the function that explains that statistical relationship (Van Buuren, 2018). Statistical relationships falls into one of three categories, each of which represents a different missing data mechanism (Rubin, as cited in Van Buuren, 2018, ch. 1.2).</p>
+<div id="mcar-mar-and-mnar" class="section level3 unnumbered">
+<h3>MCAR, MAR, and MNAR</h3>
+<p>Missing completely at random (MCAR) is the first of the three missing data mechanisms. MCAR assumes missing values in the underlying dataset have the same probability of missingness for all cases (Gelman &amp; Hill, 2017, Pg. 530). Thus, MCAR implies that the probability of missingness within a dataset is completely unrelated to the data in question or any other observed or unobserved data. From the example above, MCAR governs the probability of values being missing from a weigh scale that runs out of batteries at some point in time (Van Buuren, 2018, ch. 1.2). Although MCAR is convenient, datasets with missing values are often not MCAR in the real-world.</p>
+<p>Missing at random (MAR) is the second missing data mechanism. MAR occurs when the probability a given variable is missing depends on available and observed information only (Gelman &amp; Hill, 2017, p. 530). Therefore, MAR is a weaker and more general classification of missingness than MCAR (Allison, 2012). In the case of the weigh scale, MAR describes missing data that arises from the scale’s placement on hard or soft surfaces. If information about the surface (hard or soft) is fully observed for each attempted weight measurement, the probability of missing measurements then depends on available data - surface type - and thus falls under MAR (Van Buuren, 2018, ch. 1.2). Since MAR is a more general assumption than MCAR, it is more realistic to encounter in real-world datasets.</p>
+<p>Missing not at random (MNAR) is the final missing data mechanism. MNAR suggests data’s “probability of being missing varies for reasons that are unknown to us” (Van Buuren, 2018, ch. 1.2). When the weight of an object itself is to blame for a scale’s failure to report measurements, the underlying process is MNAR because the probability of weight being missing is related to weight itself (Van Buuren, 2018, ch. 1.2).</p>
+</div>
+<div id="ignorability" class="section level3 unnumbered">
+<h3>Ignorability</h3>
+<p>The missing data mechanism determines the assumptions one can make when handling missing data. The most important assumption is that of ignorability. Missingness is ignorable “if it is missing at random and the probability of a missingness does not depend on the missing information itself” (Introduction to SAS, 2017). Therefore, MCAR and MAR fit this definition and have ignorable missingness. On the other hand, MNAR is considered non-ignorable because one must account for not only the missingness in data but also why the data is missing. In the context of imputation, ignorability determines whether one can ignore the way in which data are missing prior to imputing missing data through an imputation model (Nakagawa, 2015, Pg. 85). As stated in Introduction to SAS, “the assumption of ignorability is needed for optimal estimation of missing information and is a required assumption” (2017). Thus, in practice, professionals generally begin with the MAR assumption when dealing with missing data because it is the most general missing data mechanism that satisfies ignorability.</p>
+</div>
+</div>
+<div id="missing-data-methods-for-single-imputation" class="section level2 unnumbered">
+<h2>Missing Data Methods for Single Imputation</h2>
+<p>Missing data mechanisms that satisfy ignorability provide the foundation for the missing data methods explored throughout this research. With an understanding of these concepts, one can now examine the methods built upon these assumptions. Methods for missing data fall into two broad categories - deletion and imputation.</p>
+<div id="deletion" class="section level3 unnumbered">
+<h3>Deletion</h3>
+<p>One of the most popular approaches data practitioners use when dealing with missing data is listwise deletion or complete-case analysis, which is the deletion of any observation that has at least one missing value in any feature (Van Buuren, 2018, ch. 1.3.1). Complete-case analysis (CCA) is relatively easy to implement and enables analysis models to run without generating errors that result from missing data. However, CCA also has its flaws. As Gelman &amp; Hill (2017) describe, two problems arise with CCA:</p>
+<ol style="list-style-type: decimal">
+<li>If the units with missing values differ systematically from the completely observed cases, this could bias the complete-case analysis.<br />
+</li>
+<li>If many variables are included in a model, there may be very few complete cases, so that most of the data would be discarded for the sake of a simple analysis. (p. 531)</li>
+</ol>
+</div>
+<div id="imputation" class="section level3 unnumbered">
+<h3>Imputation</h3>
+<p>Because of these problems, researchers are cautious with listwise deletion and employ CCA as a benchmark or in specific cases where the effect from deletion is negligible. Instead, researchers turn to imputation in favor of deletion to solve for these challenges. “Imputation is a procedure for entering a value for a specific data item where the response is missing or unusable” (UNECE, 2000). Instead of discarding data, imputation retains potentially important information in the data by substituting missing values with plausible ones produced from an imputation model. While this process seems straightforward, numerous imputation options exist and range from quite simple methods to very complex models. Furthermore, no universal evaluation metric exists to judge the accuracy or success of an imputation technique. Because of these reasons, practitioners must fully understand the different imputation options available to them and perform imputation analysis to discern which method serves their use case to best meet their objectives. The next section explores the fundamentals behind different imputation methods and examines their respective strengths and weaknesses.</p>
+<p>In general, there are two major categories of imputation methods - univariate and multivariate. Univariate imputation techniques focus on a single incomplete variable known as the target variable (Van Buuren, 2018, ch. 3). Univariate methods utilize observed values in the target variable to determine how to fill in missing values in the same target. Mean imputation is a popular example of a univariate method. When applied, mean imputation takes the mean of the observed features within a target variable and imputes missing values with the mean. This imputation method extends to any descriptive statistic that one can calculate from the target variable’s observed data. Additional examples include median and mode imputation, which follow a similar process but use a different statistic for imputation.</p>
+<div id="univariate" class="section level4 unnumbered">
+<h4>Univariate</h4>
+<p>Univariate measures do not have to impute a single value. For example, linear interpolation employs linear curve fitting to construct new values as imputations between two observed data points. Therefore, imputations from linear interpolation depend upon the closest observed values, so the value of an imputation will differ from one portion of the data to another. The only requirement for univariate methods is that they use information contained within the observed values of the same variable they are designed to impute. Appendix B.1 goes into greater detail of all the univariate methods that the researchers support in <code>Autoimpute</code>.</p>
+</div>
+<div id="multivariate" class="section level4 unnumbered">
+<h4>Multivariate</h4>
+<p>The second major category of imputation methods is multivariate imputation. Multivariate imputation methods rely on one or more available features to predict plausible imputations for the target variable. When an imputation model has access to multiple features within a dataset, the method can preserve the relationships between the features and the target variable (Van Buuren, 2018, ch. 4.1). While this preservation is beneficial, it is not always clear which features one should use in a multivariate imputation model. In this case, the missing data pattern becomes useful to know. Van Buuren (2018) states:</p>
+<blockquote>
+<p>The missing data pattern influences the amount of information that can be transferred between variables. Imputation can be more precise if other variables are non-missing for those cases that are to be imputed. The reverse is also true. Predictors are potentially more powerful if they have are non-missing in rows that are vastly incomplete. (ch. 4.1.2)</p>
+</blockquote>
+<p>Since the missing data pattern shows how information can be transferred between variables, we can now calculate quantitative statistics to determine further how each variable connects to one another. Van Buuren (2018) names the first of these statistics Influx. The influx coefficient <span class="math inline">\(I_j\)</span> is defined as:</p>
+<p><span class="math display">\[I_j = \frac{\sum_j^p\sum_k^p\sum_i^n (1-r_{ij})r_{ik}}{\sum_k^p\sum_i^n r_{ik}}\]</span></p>
+<p>Influx represents the number of variable pairs (<span class="math inline">\(Y_j\)</span>,<span class="math inline">\(Y_k\)</span>) with <span class="math inline">\(Y_j\)</span> missing and <span class="math inline">\(Y_k\)</span> observed, divided by the total number of observed data points. Its value depends on the proportion of missing data of the variable, where <span class="math inline">\(I_j=0\)</span> when a variable is completely observed and <span class="math inline">\(I_j=1\)</span> when a variable is completely missing (Van Buuren, 2018, ch. 4.1.3). As Van Buuren notes, “for two variables with the same proportion of missing data, the variable with higher influx is better connected to the observed data, and might thus be easier to impute” (2018, ch. 4.1.3). Thus, influx is an important statistic to find as it can tell the practitioner which variables in the dataset are good candidates to be imputed using the other variables as predictors.</p>
+<p>Van Buuren (2018) names the next coefficient of interest Outflux. Outflux coefficient <span class="math inline">\(O_j\)</span> is defined as:</p>
+<p><span class="math display">\[O_j = \frac{\sum_j^p\sum_k^p\sum_i^n r_{ij}(1-r_{ik})}{\sum_k^p\sum_i^n 1-r_{ij}}\]</span> The outflux coefficient <span class="math inline">\(O_j\)</span> is the number of variable pairs with (<span class="math inline">\(Y_j\)</span>,<span class="math inline">\(Y_k\)</span>) with <span class="math inline">\(Y_j\)</span> observed and <span class="math inline">\(Y_k\)</span> missing, divided by the total number of incomplete data points. Its value indicates the potential usefulness of <span class="math inline">\(Y_j\)</span> for imputing other variables. As with influx, outflux depends on the proportion of missing data of the variable. Unlike influx, <span class="math inline">\(O_j=1\)</span> when a variable is completely observed, and <span class="math inline">\(O_j=0\)</span> when a variable is completely missing (Van Buuren, 2018, ch. 4.1.3). Van Buuren describes outflux in a similar manner to influx: “For two variables having the same proportion of missing data, the variable with higher outflux is better connected to the missing data, and thus potentially more useful for imputing other variables” (ch. 4.1.3). Accordingly, outflux assists the practitioner in determining the variables that are potentially more useful as predictors when imputing missing value variables in a multivariate missing dataset.</p>
+<p>Practitioners use the above statistics to understand the importance of and relationships between variables in a dataset. Once the set of variables is identified, a multivariate imputation model can be specified, and predictions from that model fill in missing values. A few examples of multivariate imputation methods are:</p>
+<ul>
+<li>Linear and Logistic Regression Imputation<br />
+</li>
+<li>Bayesian Regression Imputation<br />
+</li>
+<li>Predictive Mean Matching (PMM)<br />
+</li>
+<li>Local Residual Draws (LRD)</li>
+</ul>
+<p>Appendix B.2 provides more information regarding multivariate imputation methods available in <code>Autoimpute</code> and detail behind each method. Autoimpute implements regressions as seen in Van Buuren and implements PMM &amp; LRD as seen in Morris et. al.</p>
+</div>
+</div>
+</div>
+<div id="multiple-imputation" class="section level2 unnumbered">
+<h2>Multiple Imputation</h2>
+<p>With univariate and multivariate imputation methods, practitioners now have the ability to impute missing values in a dataset. These methods impute missing values once, however, and provide a single point estimate - the imputation - for each missing value. Gelman &amp; Hill (2017) argue “whenever a single imputation strategy is used, the standard errors of estimates tend to be too low. The intuition here is that we have substantial uncertainty about the missing values, but by choosing a single imputation we in essence pretend that we know the true value with certainty” (p. 532). To account for this issue, researchers developed a procedure called multiple imputation.</p>
+<p>As noted in the Introduction to SAS:</p>
+<blockquote>
+<p>Multiple imputation is essentially an iterative form of stochastic imputation. However, instead of filling in a single value, the distribution of the observed data is used to estimate multiple values that reflect the uncertainty around the true value. These values are then used in the analysis of interest, such as in a OLS model, and the results combined. Each imputed value includes a random component whose magnitude reflects the extent to which other variables in the imputation model cannot predict it’s true values (Johnson and Young, 2011; White et al, 2010). Thus, building into the imputed values a level of uncertainty around the “truthfulness” of the imputed values. (2017)</p>
+</blockquote>
+<p>Therefore, multiple imputation provides a solution to the definite nature of single imputation point estimates. Specifically, multiple imputation includes three major steps in developing a multiply imputed datasets (Allison, 2012):</p>
+<ol style="list-style-type: decimal">
+<li>Introduce random variation into the process of imputing missing values, and generate several data sets, each with slightly different imputed values.<br />
+</li>
+<li>Perform an analysis on each of the data sets using the analysis model one would have used had the dataset been complete.<br />
+</li>
+<li>Combine the results into a single set of parameter estimates, standard errors, and test statistics using parameter pooling techniques.</li>
+</ol>
+<p>Figure 1 below visualizes the workflow described in the three steps above (Van Buuren, 2018, ch. 1.4.1).</p>
+<div class="figure" style="text-align: center"><span id="fig:mutlipleimputationworkflow"></span>
+<img src="figure/multiple-imputation-workflow.jpg" alt="Multiple Imputation Workflow" width="400px" />
+<p class="caption">
+Figure .: Multiple Imputation Workflow
+</p>
+</div>
+<p>Based on the data, use-case, and desired outcome, practitioners should choose an imputation method that adds some random variation. Then multiple imputation results in multiple copies of imputed datasets with different imputed values. Each imputed dataset is analyzed separately and then parameters from those analyses are pooled together to get combined diagnostics on the performance of the multiple imputation process and the specified imputation model. This method “solves the standard error problem by calculating the variance of each parameter estimate across the several data sets” (Allison, 2012). The pooled parameters replace those from the supervised machine learning model of interest. The pooled parameters not only produce the coefficient estimate but also the properly account for the increase in standard error due to uncertainty introduced from imputing missing data.</p>
+</div>
+<div id="missing-data-and-autoimpute" class="section level2 unnumbered">
+<h2>Missing Data and Autoimpute</h2>
+<p>Ultimately, this background details the concepts and theory that are the foundation for the Autoimpute package. Understanding the process that generates missingness in a dataset - the missing data mechanism - is imperative prior to applying any deletion or imputation method. The missing data mechanism and missing data pattern should inform which strategy to use to handle missing data. At that point, the researcher performs either univariate or multivariate imputation using the method that fits best a given dataset, use case, or goal. If the researcher is interested in analysis, then he or she should deploy the selected imputation method in multiple imputations. Each imputed dataset within the multiple imputation framework can then be analyzed separately with the supervised learning model of interest. Finally, the researcher can pool parameters together to produce parameters of the multiply imputed analysis model and use this model to make predictions when new data arrives.</p>
+<p>Anyone interested can utilize <code>Autoimpute</code>, the Python package created by the authors, to perform all of the steps described above. The next section discusses how to use <code>Autoimpute</code> from end-to-end to explore and analyze missing data. It also demonstrates the impact different missing data mechanisms have on the results produced from multiple imputation and subsequent analysis. All results are generated using the <code>Autoimpute</code> package.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methodology.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": [["capstone.pdf", "PDF"], ["capstone.epub", "EPUB"], ["capstone.docx", "Word"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

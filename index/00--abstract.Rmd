@@ -1,0 +1,8 @@
+
+The researchers develop and maintain an open-source, Python-based package named Autoimpute to address one of the most common nuisances in machine learning – datasets with missing values. The package implements numerous imputation algorithms and extends common supervised machine learning methods to handle multiply imputed datasets. Autoimpute treats missing data as a first-class citizen in the Python world, making imputation familiar to Python developers and easy to use for those new to the language. Ultimately, the package provides users an end-to-end framework that covers missing data exploration to imputation analysis.
+
+\bigskip 
+\bigskip
+\bigskip
+
+**Keywords**: Missing Data; Imputation; Python; Autoimpute Package; Machine Learning; Bias/Variance Analysis; Fractional Factorial Design, SciKit Learn; Pandas

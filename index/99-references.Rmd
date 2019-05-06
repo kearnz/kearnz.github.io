@@ -1,0 +1,32 @@
+
+<!--
+The bib chunk below must go last in this document according to how R Markdown renders.  More info is at http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html
+-->
+
+\backmatter
+
+<!-- 
+If you'd like to change the name of the bibliography to something else,
+delete "References" and replace it.
+-->
+
+# References {-}
+
+Allison, P. D. (2012). Handling Missing Data by Maximum Likelihood. SAS Global Forum 2012. Retrieved April 23, 2019, from       
+https://statisticalhorizons.com/wp-content/uploads/MissingDataByML.pdf.
+
+Economic Commission for Europe of the United Nations (UNECE) (2000), "Glossary of Terms on Statistical Data Editing", Conference of European Statisticians Methodological material, Geneva. 
+
+Gelman, A., & Hill, J. (2017). Data analysis using regression and multilevel/hierarchical models. Cambridge: Cambridge University Press.
+
+Introduction to SAS (2017). UCLA: Statistical Consulting Group. From https://stats.idre.ucla.edu/sas/modules/sas-learning-moduleintroduction-to-the-features-of-sas/ (accessed April, 21, 2019).
+
+Morris, T. P., White, I. R., & Royston, P. (2014). Tuning multiple imputation by predictive mean matching and local residual draws. BMC Medical Research Methodology, 14(1). https://doi.org/10.1186/1471-2288-14-75
+
+Nakagawa, S. (2015). CHAPTER 4 Missing data : mechanisms , methods , and messages.
+
+Rubin, D. B. (1976)., Inference and missing data, Biometrika, Volume 63, Issue 3, Pages 581–592, https://doi.org/10.1093/biomet/63.3.581
+
+Van Buuren, S. (2018). Flexible imputation of missing data. Boca Raton: Chapman & Hall/CRC. 
+
+Yu, A., Wagner, J. T., & Murugesan, M. (2017). Comparative Evaluation of Recent ML Based Missing Data Imputation Methods with NORC’s Survey of Consumer Finances. University of Chicago Graham School. Retrieved November 1, 2018.

@@ -1,0 +1,8 @@
+
+This research develops an end-to-end methodology to address one of the most common nuisances in machine learning – datasets with missing values. It approaches incomplete datasets with four objectives: describe and visualize the extent of the missing value problem; examine factors related to missingness; develop methods to impute missing data; and measure the impact of imputation on inference derived from supervised learning, specifically linear and logistic regression.
+
+To meet these objectives, the researchers develop and maintain an open-source, Python-based package named Autoimpute. The package works with pandas DataFrames and implements numerous imputation algorithms, which the authors cover later in this report. Autoimpute also extends common supervised machine learning methods to handle imputed datasets. The package includes linear and logistic regression specifically designed for multiply imputed data as well as methods to assess the impact of imputation on parameter inference from these analysis models. Further, Autoimpute follows the API design of popular Python machine learning package, scikit-learn. Its “Imputers” integrate nicely with scikit-learn machine learning pipelines.
+
+Autoimpute treats missing data as a first-class citizen in the Python world, making imputation familiar to Python developers and easy to use for those new to the language. The package incorporates the four objectives outlined above and provides users an end-to-end framework that covers missing data exploration to imputation analysis. In doing so, Autoimpute remains flexible, yielding users as much control and complexity as they would like while they grapple with missing data.
+
+

@@ -1,0 +1,110 @@
+---
+author: 'Shahid Barkat, Joseph Kearney'
+date: 'June, 2019'
+institution: 'University of Chicago'
+division: 'Graham School'
+advisor: 'Dr. Arnab Bose'
+altadvisor: 'Dr. Sema Barlas'
+department: 'Continuing Liberal and Professional Studies'
+degree: 'Master of Science in Analytics'
+title: 'Data Analytics as a Service (DAaaS): Automated & Intelligent Imputation Methods for Supervised Machine Learning'
+knit: "bookdown::render_book"
+site: bookdown::bookdown_site
+output: 
+  phoenixdown::capstone_pdf: default
+#  phoenixdown::capstone_gitbook: default
+#  phoenixdown::capstone_word: default
+#  phoenixdown::capstone_epub: default
+#
+# If you are creating a PDF you'll need to write your preliminary content as well as define some other parameters below.
+abstract: | 
+  `r if(knitr:::is_latex_output()) paste(readLines("00--abstract.Rmd"), collapse = '\n  ')` 
+executive: |  
+  `r if(knitr:::is_latex_output()) paste(readLines("00--executive-summary.Rmd"), collapse = '\n  ')` 
+#
+# Longer preliminary content, like the Abstract and Executive Summary above, is best organized in seperate files.
+# The inline r function is used above to paste the contents of those files, instead of requiring you one to type 
+# lengthy text directly into the yaml header. For shorter messages, typing directly into the YAML is easier. See below.
+# VERY IMPORTANT: A tab indent is needed on the line following the | .
+#
+#preface: |
+#  A preface is OPTIONAL. Use a preface if you want to explain your interest in the report topic and include anything about your #experience that readers should keep in mind. If you would rather not include a preface, comment it out or delete it from the YAML #header of the index.Rmd file.
+#
+#acknowledgements: |
+#  I want to thank a few people.
+#dedication: |
+#  You can have a dedication here if you wish.
+#
+# Download your specific bibliography database file, place it in the "bib" folder, and refer to it in the line below
+bibliography: bib/citations.bib
+#
+# To change your Citation Style Language file, you can do so below. Though the default is apa style.
+csl: csl/apa.csl
+lot: true
+lof: true
+#
+# Add a "#" at the beginning of the following line if you'd like remove space between parapgraphs.
+space_between_paragraphs: true
+#
+# Dimensions below correspond to University of Chicago Masters of Science in Analytics requirements.
+geometry: "left=3.8cm, right=2.5cm, top=2.5cm, bottom=2.5cm"
+#
+  #header-includes:
+#- \usepackage{tikz}
+---
+
+
+
+<!--
+Above is the YAML (YAML Ain't Markup Language) header that includes a lot of metadata used to produce the document.  Be careful with spacing in this header!
+
+If you'd prefer to not include a Preface for example, simply delete lines 32-33 above or add a "#"" before them to comment out.  If you have other LaTeX packages you would like to include, delete the # before header-includes and list the packages after hyphens on new lines.
+
+If you'd like to include a comment that won't be produced in your resulting file enclose it in a block like this:
+-->
+
+<!--
+
+If you receive a duplicate label error after knitting, delete the extra .Rmd file and then knit again.
+-->
+
+<!-- You'll need to include the order that you'd like Rmd files to appear in the _bookdown.yml file for PDF files and also delete the # before rmd_files: there. Do not include 00(two-hyphens)prelim.Rmd,  00(two-hyphens)abstract.Rmd and 00(two-hyphens)executive summary.Rmdsince they are handled in the YAML above differently for the PDF version.
+-->
+
+<!-- The {.unnumbered} option here means that the introduction will be "Chapter 0." You can also use {-} for no numbers on chapters, which is the standard for each section.
+-->
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(knitr)
+```
+
+# Introduction {.unnumbered}
+
+The researchers develop and maintain an open-source, Python-based package named `Autoimpute` to address one of the most common nuisances in machine learning – datasets with missing values. The package implements numerous imputation algorithms and extends common supervised machine learning methods to handle multiply imputed datasets. `Autoimpute` treats missing data as a first-class citizen in the Python world, making imputation familiar to Python developers and easy to use for those new to the language. Ultimately, the package provides users an end-to-end framework that covers missing data exploration to imputation analysis.
+
+## Problem Statement {.unnumbered}
+
+Machine learning models rely entirely on the data they are provided, and most require that the underlying dataset be complete. In reality, however, many real-world datasets are incomplete, containing missing values for the response variable and one or more of the features collected. As a result, the machine learning practitioner must decide what to do about missing data. The way in which the practitioner handles missing data greatly affects the interpretability of and results from the machine learning models the practitioner builds and deploys.
+
+The challenge of handling missing data has inspired numerous imputation methods, each of which has its advantages and disadvantages depending on the nature of the missing data and the machine learning task at hand. Unfortunately, the existence of multiple imputation methods does not get the machine learning practitioner any closer to handling missing data. First, imputation methods can be challenging to understand and computationally expensive to implement. Next, no global criteria or metric exists to select the optimal imputation method given a dataset with missing values. Even if a practitioner successfully implements imputation methods, he or she has no structured way to evaluate how well imputation performs or how imputation affects supervised models downstream built upon imputed data.
+
+Because handling missing data is quite complex, most statistical packages simply remove records with missing data so that machine learning models can execute. While this option is simple to implement and enables models to run, it generally comes with numerous undesirable side effects if data is not missing completely at random (MCAR). This subject is explored further in the background section of this paper. However, in practice, real-world data is rarely MCAR, so models should generally avoid discarding missing records. Extensions in software packages do exist to implement imputation methods automatically. That being said, the practitioner still must decide which method to implement, explain why an imputation method is optimal, and evaluate how the optimal imputation method affects models trained on imputed data.
+
+## Research Purpose {.unnumbered}
+
+This research aids the machine learning practitioner by bringing more clarity to the imputation process, making imputation methods more accessible and comparable, and measuring the impact imputation methods have in supervised regression and classification models. This research strives to not just automate imputation but also develop an open-source framework to structure and evaluate imputation methods within a supervised machine learning process.
+
+To address this purpose, this research specifies four objectives:
+
+1. Assess the extent of the missing data problem with descriptive and visual measures  
+2. Examine the factors related to the missingness of data  
+3. Deploy imputation methods and select the most appropriate methodology  
+4. Measure the impact of imputation to the fit, stability, bias, and variance of parameters derived from supervised models built on imputed data  
+
+The researchers meet these objectives by developing an open-source Python package that can generalize across cross-sectional and time-series datasets. Any data science professional can deploy or reuse components of the package itself. Eventually, the researchers will accept contributions from the open source community as well.
+
+
+
+
+
+
