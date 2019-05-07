@@ -168,7 +168,19 @@ Appendix E provides more information regarding multivariate imputation methods a
 
 ## Single Imputation {#background-single-imputation .unnumbered}
 
-NOTES HERE ON SINGLE IMPUTATION USING THE METHODS ABOVE
+Each of the imputation methods presented above replaces missing values in dataset with imputed ones. As a result, the imputed dataset is complete, containing no missing values for any observation $Y_{ij}$ within $Y$. As Gelman & Hill note, "these methods keep the full sample size, which can be advantageous for bias and precision" (2017, pg. 532). In comparison to list-wise deletion, imputation methods do not discard any data; rather, they impute missing records so that no information is lost within the original dataset. As a result, statistical power is not reduced and standard errors are not inflated because the dataset retains the full sample size. That being said, these imputation methods can yield a different set of biases on their own when used via **single imputation**. 
+
+Single imputation is a process by which the researcher deploys imputation methods columnwise for each column with missing data and imputes respective missing values one time for each column. While the dataset is now complete, its use within analysis models can yield standard error estimates for parameter coefficients that tend to be too low (Gelman & Hill, 2017, pg. 532). Gelman expands upon the issues with single imputation:
+
+> The intuition here is that we have substantial uncertainty about the missing values, but by choosing a single imputation we in essence pretend that we know the true value with certainty.
+
+Each imputed value is actually a random variable that comes from a distribution of possible imputed values produced by the imputation model. When a researcher imputes a dataset using one draw from each imputed value's distribution, then the researcher replaces missing values in a dataset with point estimates. Those point estimates become, in essence, true values - indistinguishable from the originally observed variables. As a result, the imputations stemming from single imputation ignore the variability and uncertainty regarding what the true value of the missing value actually is (Gelman & Hill, 2017, pg. 532). An analysis model will treat observed and imputed values the same - as true values with no inherent variability.
+
+Donald Rubin (as cited in Van Buuren, 2018, ch. 1.2) notes: 
+
+> Imputing one value for a missing datum cannot be correct in general, because we don’t know what value to impute with certainty (if we did, it wouldn’t be missing).
+
+Therefore, producing a single imputation for each missing value places too much trust in the imputed values themselves and disregards the variability stemming from the imputation process. As a result, practioners turn to another framework with which they impute missing data - **multiple imputation**
 
 ## Multiple Imputation {#background-multiple-imputation .unnumbered} 
 
