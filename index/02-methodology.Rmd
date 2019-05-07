@@ -1,4 +1,4 @@
-# Methodology {.unnumbered}
+# Methodology {#methodology .unnumbered}
 
 In this section, the researchers use `Autoimpute` to demonstrate its capabilities as an end-to-end framework for analyzing datasets with missing values. The researchers showcase the package's features on two datasets with different types of missingness. 
 

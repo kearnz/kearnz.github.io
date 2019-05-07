@@ -251,19 +251,53 @@ In this research, an analysis model is nothing more than a supervised machine le
 
 ### Analysis after Listwise Deletion {#background-analysis-listwise .unnumbered}
 
-In the [Deletion section](#background-deletion), the authors explain the potential pitfalls associated with listwise deletion. Depending on the proportion of missing data, listwise deletion may significantly deplete the sample size on which an analysis model is trained. In doing so, an analysis model generates larger standard errors for its parameters than it would had the dataset retained every record in othe original sample. As a result, the significance of coefficients may be called into question. Additionally, if the missing data mechanism is not MCAR, listwise deletion may discard records which contain important information. Doing so may lead to biased coefficient estimates in addition to increased standard errors of those estimates.
+In the [Deletion section](#background-deletion), the authors explain the potential pitfalls associated with listwise deletion. Depending on the proportion of missing data, listwise deletion may significantly deplete the sample size on which an analysis model is trained. In doing so, an analysis model generates larger standard errors for parameters estimates than it would had the dataset retained every record in othe original sample. As a result, the significance of coefficients may be called into question. Additionally, if the missing data mechanism is not MCAR, listwise deletion may discard records which contain important information. Doing so may lead to biased coefficient estimates in addition to increased standard errors of those estimates.
 
 ### Analysis after Single Imputation {#background-analysis-single .unnumbered}
 
 In the [Single Imputation section](#background-single-imputation), the authors note that single imputation retains the full dataset but ignores any uncertainty or variation introduced when imputing missing values. Therefore, an analysis model such as linear regression treats the single-imputed dataset as if each observation is a true value. The analysis model fits the dataset as it would any other dataset. 
 
-In the best case, if the imputation model used to impute data is not misspecified, then the the coefficients produced from the analysis model should at least be unbiased estimates of the true parameters had the dataset been fully observed. In the worst case, the imputation model used to impute data is misspecified, and the imputed values do not accurately reflect the distribution of the missing data. In this case, the analysis model produces coefficients that may be biased depending on the severity of the imputation model's impact. In either case, the standard error of the estimates produced from the analysis model will be too low (Gelman & Hill, 2017, pg. 532). When the standard error of a parameter estimate is too low, the test-statistic for that parameter will be too high, and the statistical significance of the parameter may be inflated. 
+In the best case, if the imputation model used to impute data is not misspecified, then the the coefficients produced from the analysis model should at least be unbiased estimates of the true parameters had the dataset been fully observed. In the worst case, the imputation model used to impute data is misspecified, and the imputed values do not accurately reflect the distribution of the missing data. In this case, the analysis model produces coefficients that may be biased depending on the severity of the imputation model's impact. In either situation, the standard error of the estimates produced from the analysis model will be too low (Gelman & Hill, 2017, pg. 532). When the standard error of a parameter estimate is too low, the test-statistic for that parameter will be too high, and the statistical significance of the parameter may be inflated. 
 
 Underestimated standard errors may lead a researcher to erroneously conclude that statistical relationships exist. Such inference is dangerous and undermines the reason why missing data must be handled in the first place. Even if the researcher understands the missing data mechanism and applies a proper imputation model to handle missing data, he or she may not have done enough to properly account for the uncertainty introduced from imputation. That lack of consideration appears downstream, affecting the ability for the researcher to trust the significance of analysis model parameters.
 
 ### Analysis after Multiple Imputation {#background-analysis-multiple .unnumbered}
 
+To handle the problems incurred from single imputation, this research suggests researchers employ imputation methods using multiple imputation. Multiple imputation creates multiple instances of the same dataset, depending on the number of imputations specified. Each imputed dataset has the same values for the observed but different values for the imputations. These differences highlight the variability introduced by imputation methods since the true value of a missing observation is unknown.
 
+While multiple imputation retains sample size and imputation variability, it complicates the process of analysis. Because multiple imputed datasets exist, the researcher cannot simply apply one model to the complete dataset. Insetad, the practicioner must apply the same supervised model independently to each imputed dataset and then pool the results of each analysis model to produce proper coefficient estimates and standard errors.
+
+The authors introduce new notation to explain the pooling process used in multiple imputation. Again, the authors follow the notation outlined in Van Buuren. The notation in this section also appears in Appendix B.
+
+Assume $Q$ is the population parameter of interest. In this context, $Q$ is a scalar for the $\beta$ coefficient from simple linear regression or a vector $\vec{Q}$ containing the $\beta_1,...,\beta_p$ coefficients from multiple linear regression. (Note the same notation applies to coefficients from other regression models, such as logistic regression). In either case, $\hat{Q}$ is the estimate of $Q$. $U$ represents the variance of scalar $Q$ or the covariance matrix of $\vec{Q}$ (Van Buuren, 2018, ch. 2.3.).
+
+In the case of complete data or single imputation, the researcher fits an analysis model and produces the estimate $\hat{Q}$. But when the researcher uses multiple imputation, the researcher must apply the analysis model to each imputed datset independently. Therefore, the researcher ends up with $m$ x $\hat{Q}$ estimates and $m$ x $U$ covariance matrices, one set from each analysis model applied to $m$ imputed datasets (Van Buuren, 2018, ch. 2.3). The researcher must pool these parameters together to build one analysis model that properly accounts for the estimates from each $m$ imputed dataset.
+
+Pooling the coefficient estimate is the most straightforward. The equation is as follows:
+
+$$\bar Q = \frac{1}{m}\sum_{\ell=1}^m \hat Q_\ell$$
+In this equation, $\bar Q$ is the average of the $\hat Q$ estimates from each of the $m$ imputed datasets. This equation reduces the coefficients from each imputed dataset down to one estimate (or vector of coefficients) by taking the average across the $m$ imputed datasets. The resulting value is the pooled parameter estimate for the analysis model on multiply imputed data.
+
+Pooling variance is more involved. The researcher must account for the variance from the analysis model of each imputed dataset. Additionally, the researcher must account for the variance that occurs between $U$ from each analysis model. Lastly, the researcher must add extra variance to account for the fact that only $m$ imputations were performed.
+
+The first formula is the variance within:
+
+$$ \bar U = \frac{1}{m}\sum_{\ell=1}^m \bar U_\ell$$
+This formula is called **variance within**. As with the coefficient estimate, variance within is the average of the variance within each of the analysis models fit on the $m$ imputed datasets. It is the traditional variance metric one would expect from a linear regression, expect in the case of multiple imputation, it is the average across the $m$ imputed datasets (Van Buuren, 2018, ch 2.3).
+
+The next formula is the variance between:
+
+$$B = \frac{1}{m-1}\sum_{\ell=1}^m (\hat Q_\ell-\bar Q)(\hat Q_\ell-\bar Q)'$$
+This equation is called **variance between**. Because each of the $m$ imputed datasets produces a separate set of estimates for $\hat Q$, variance exists between the estimates of each imputed dataset. Therefore, the analysis must account for the variance that occurs between the different estimates each imputation procedure produces (Van Buuren, 2018, ch 2.3).
+
+The final formula represents the total variance:
+
+$$T = \bar U + B + B/m$$
+This equation is the **total variance** for the pooled parameter estimate of $\bar Q$. It adds the variance within to the variance beween to the additional variance from a finite number of imputations, $m$. Note that as $m \rightarrow \infty$, the last part of this equation goes to $0$. But because one cannot perform an infinite number of imputations, additional variance must be added to account for the number of imputations the researcher conducts (Van Buuren, 2018, ch. 2.3).
+
+Therefore, the analysis model for multiply imputed data is parameterized by $\bar Q$ and $T$. These parameters pool each individual analysis model applied to $m$ imputed datasets and produce one analysis model that accurately measures the coefficient estimate and accounts for the variance that results from imputing data.
+
+While the process is more involved, analysis of multiply imputed data fully captures the impact of missingness and the effect of imputation. The pooled parameters also provide insights into the efficiency and performance of the imputation process. For example, a large variance between metric indicates that the imputation model produces wildly different imputations for each dataset. Additional metrics and diagnostics to assess the efficiency of the imputation process appear in Appendix F. The authors also cover these diagnostics in the [Methodology](#methodology) and [Findings](#findings) sections.
 
 ## Missing Data and Autoimpute {#background-missing-data-autoimpute .unnumbered}
 
