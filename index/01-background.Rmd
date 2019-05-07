@@ -160,6 +160,7 @@ The outflux coefficient $O_j$ is the number of variable pairs with ($Y_j$,$Y_k$)
 Practitioners use the above statistics to understand the importance of and relationships between variables that contain missing values. Once the set of variables is identified, a multivariate imputation model can be specified, and predictions from that model impute missing values in a target variable. A few examples of multivariate imputation methods are:
 
 * Linear and Logistic Regression Imputation
+* Stochastic Regression Imputation
 * Bayesian Regression Imputation
 * Predictive Mean Matching (PMM)
 * Local Residual Draws (LRD)
@@ -170,13 +171,13 @@ Appendix E provides more information regarding multivariate imputation methods a
 
 Each of the imputation methods presented above replaces missing values in dataset with imputed ones. As a result, the imputed dataset is complete, containing no missing values for any observation $Y_{ij}$ within $Y$. As Gelman & Hill note, "these methods keep the full sample size, which can be advantageous for bias and precision" (2017, pg. 532). In comparison to list-wise deletion, imputation methods do not discard any data; rather, they impute missing records so that no information is lost within the original dataset. As a result, statistical power is not reduced and standard errors are not inflated because the dataset retains the full sample size. That being said, these imputation methods can yield a different set of biases on their own when used via **single imputation**. 
 
-Single imputation is a process by which the researcher deploys imputation methods columnwise for each column with missing data and imputes respective missing values one time for each column. While the dataset is now complete, its use within analysis models can yield standard error estimates for parameter coefficients that tend to be too low (Gelman & Hill, 2017, pg. 532). Gelman expands upon the issues with single imputation:
+Single imputation is a process by which the researcher deploys imputation methods columnwise for each column with missing data and imputes respective missing values one time for each column. While the dataset is now complete, its use within analysis models can yield standard errors for parameter coefficients that tend to be too low (Gelman & Hill, 2017, pg. 532). Gelman expands upon the issues with single imputation:
 
 > The intuition here is that we have substantial uncertainty about the missing values, but by choosing a single imputation we in essence pretend that we know the true value with certainty.
 
 Each imputed value is actually a random variable that comes from a distribution of possible imputed values produced by the imputation model. When a researcher imputes a dataset using one draw from each imputed value's distribution, then the researcher replaces missing values in a dataset with point estimates. Those point estimates become, in essence, true values - indistinguishable from the originally observed variables. As a result, the imputations stemming from single imputation ignore the variability and uncertainty regarding what the true value of the missing value actually is (Gelman & Hill, 2017, pg. 532). An analysis model will treat observed and imputed values the same - as true values with no inherent variability.
 
-Donald Rubin (as cited in Van Buuren, 2018, ch. 1.2) notes: 
+Donald Rubin (as cited in Van Buuren, 2018, ch. 2) notes: 
 
 > Imputing one value for a missing datum cannot be correct in general, because we don’t know what value to impute with certainty (if we did, it wouldn’t be missing).
 
@@ -184,17 +185,15 @@ Therefore, producing a single imputation for each missing value places too much 
 
 ## Multiple Imputation {#background-multiple-imputation .unnumbered} 
 
-With univariate and multivariate imputation methods, practitioners now have the ability to impute missing values in a dataset. These methods impute missing values once, however, and provide a single point estimate - the imputation - for each missing value. Gelman & Hill (2017) argue “whenever a single imputation strategy is used, the standard errors of estimates tend to be too low. The intuition here is that we have substantial uncertainty about the missing values, but by choosing a single imputation we in essence pretend that we know the true value with certainty” (p. 532). To account for this issue, researchers developed a procedure called multiple imputation.
+As noted in the Introduction to SAS (2017):
 
-As noted in the Introduction to SAS:
+> Multiple imputation is essentially an iterative form of stochastic imputation. However, instead of filling in a single value, the distribution of the observed data is used to estimate multiple values that reflect the uncertainty around the true value. These values are then used in the analysis of interest, such as in a OLS model, and the results combined. Each imputed value includes a random component whose magnitude reflects the extent to which other variables in the imputation model cannot predict it’s true values (Johnson and Young, 2011; White et al, 2010). Thus, building into the imputed values a level of uncertainty around the “truthfulness” of the imputed values.
 
-> Multiple imputation is essentially an iterative form of stochastic imputation. However, instead of filling in a single value, the distribution of the observed data is used to estimate multiple values that reflect the uncertainty around the true value. These values are then used in the analysis of interest, such as in a OLS model, and the results combined. Each imputed value includes a random component whose magnitude reflects the extent to which other variables in the imputation model cannot predict it’s true values (Johnson and Young, 2011; White et al, 2010). Thus, building into the imputed values a level of uncertainty around the “truthfulness” of the imputed values. (2017)
+Specifically, multiple imputation includes three major steps in developing a multiply imputed datasets (Allison, 2012):
 
-Therefore, multiple imputation provides a solution to the definite nature of single imputation point estimates. Specifically, multiple imputation includes three major steps in developing a multiply imputed datasets (Allison, 2012):
-
-1. Introduce random variation into the process of imputing missing values, and generate several data sets, each with slightly different imputed values.   
-2. Perform an analysis on each of the data sets using the analysis model one would have used had the dataset been complete.  
-3. Combine the results into a single set of parameter estimates, standard errors, and test statistics using parameter pooling techniques.  
+1. Introduce random variation into the process of imputing missing values, and generate several data sets, each with slightly different imputed values.
+2. Perform an analysis on each of the data sets using the analysis model one would have used had the dataset been complete.
+3. Combine the results into a single set of parameter estimates, standard errors, and test statistics using parameter pooling techniques.
 
 Figure 1 below visualizes the workflow described in the three steps above (Van Buuren, 2018, ch. 1.4.1).
 
@@ -202,7 +201,45 @@ Figure 1 below visualizes the workflow described in the three steps above (Van B
 include_graphics(path = "figure/multiple-imputation-workflow.jpg")
 ```
 
-Based on the data, use-case, and desired outcome, practitioners should choose an imputation method that adds some random variation. Then multiple imputation results in multiple copies of imputed datasets with different imputed values. Each imputed dataset is analyzed separately and then parameters from those analyses are pooled together to get combined diagnostics on the performance of the multiple imputation process and the specified imputation model. This method “solves the standard error problem by calculating the variance of each parameter estimate across the several data sets” (Allison, 2012). The pooled parameters replace those from the supervised machine learning model of interest. The pooled parameters not only produce the coefficient estimate but also the properly account for the increase in standard error due to uncertainty introduced from imputing missing data.
+In multiple imputation, practitioners should choose an imputation method that can produce sufficient variation for the imputed value. Then multiple imputation results in multiple copies of imputed datasets with different imputed values. When performing analysis on multiply imputed data, each imputed dataset is analyzed separately and then parameters from those analyses are pooled together to get combined diagnostics on the performance of the multiple imputation process and the specified imputation model. This method “solves the standard error problem by calculating the variance of each parameter estimate across the several data sets” (Allison, 2012). The pooled parameters replace those from the supervised machine learning model of interest. The pooled parameters not only produce the coefficient estimate but also the properly account for the increase in standard error due to uncertainty introduced from imputing missing data. 
+
+The authors cover the analysis on multiply imputed data at the end of this section. Before then, the authors focus on the differences between single and multiple imputation in the context of imputation alone.
+
+## Single Imputation vs. Multiple Imputation Revisited {#background-example .unnumbered}
+
+The example below helps visualize the inherent differences between the single and multiple imputation procedure. Imagine a subset of the complete data matrix $Y$ from the weigh scale experiment:
+
+$$Y_{subset}=\begin{bmatrix}soft & 60 \\ soft & NaN \\ soft & 65 \\ hard & 85 \\ hard & 90 \\ hard & NaN \end{bmatrix}$$
+
+Further, assume the underlying missing data mechanism is ignorable, so imputation focuses on the observed dataset only. From the matrix above, one can discern that the distibution of weight depends on the surface of the scale. In this example, $P(Y_{weight}|Y_{surface}=soft)$ ~ $N(60, 5)$, and $P(Y_{weight}|Y_{surface}=soft)$ ~ $N(90, 5)$. The figure below visualizes the differences in the distribution of weight, conditional on the surface of the scale.
+
+```{r plotsforsingle, include=TRUE, echo=FALSE}
+library(ggplot2)
+ggplot(data.frame(weight = c(40,110)), aes(x = weight)) +
+        stat_function(fun = dnorm, args = list(60, 5), aes(colour = "Soft")) +
+        stat_function(fun = dnorm, args = list(90, 5), aes(colour = "Hard")) + 
+        scale_x_continuous(name = "Weight") +
+        scale_y_continuous(name = "Density") + 
+        ggtitle("Probability Density for Weights on a Soft vs. Hard scale") + 
+        scale_colour_manual("Scale Surface", values = c("dodgerblue3", "deeppink"))
+```
+
+Now proceed with imputation analysis using single imputation. Assume that the imputation models takes a random draw from each respective surface's weight distribution to impute missing data. Then the complete matrix becomes:
+
+$$Y_{mis}=\begin{bmatrix}soft & 60 \\ soft & NaN \\ soft & 65 \\ hard & 85 \\ hard & 90 \\ hard & NaN \end{bmatrix} \rightarrow Y_{complete}=\begin{bmatrix}soft & 60 \\ soft & 63 \\ soft & 65 \\ hard & 85 \\ hard & 90 \\ hard & 91 \end{bmatrix}$$
+
+The imputation model imputed 63 for $Y_{2,2}$ and 91 for $Y_{6,2}$. Under single imputation, the matrix is now complete, as values for weight have been imputed. But an analysis model has access to the complete data matrix only, so it would not be able to distinguish which values were imputed and which were originally observed. Therefore, an analysis model treats the imputed values (63, 91) the same as observed values. The imputed values carry no uncertainty with them into the analysis phase. 
+
+Under multiple imputation, where $m=3$ representing 3 imputations, the matrices may look like the below:
+
+$$Y_{mis}=\begin{bmatrix}soft & 60 \\ soft & NaN \\ soft & 65 \\ hard & 85 \\ hard & 90 \\ hard & NaN \end{bmatrix} \rightarrow Y_{complete}=\begin{bmatrix}soft & 60 \\ soft & 63 \\ soft & 65 \\ hard & 85 \\ hard & 90 \\ hard & 91 \end{bmatrix}, \begin{bmatrix}soft & 60 \\ soft & 66 \\ soft & 65 \\ hard & 85 \\ hard & 90 \\ hard & 89 \end{bmatrix},
+\begin{bmatrix}soft & 60 \\ soft & 59 \\ soft & 65 \\ hard & 85 \\ hard & 90 \\ hard & 94 \end{bmatrix}$$
+
+Multiple imputation produced 3 datasets. Across each imputation, the observed have the same values, which makes sense given that the true value of these weights is known. The imputed values, however, are different. The differences reflect the uncertainty about the nature of the true value imputed, given that the true value is actually missing. Single imputation disregards this inherent variability, which tricks analysis models into believing that the imputed values are true observations. Multiple imputation retains the variability introduced by the imputation process. This research covers analysis of multiply imputed data in the next section, as there is some additional work supervised learning methods must perform under multiple imputation. That being said, it's important to take away the purpose of multiple imputation. It not only retains the full sample size but also retains the variability produced from the process of imputing missing data.
+
+## Analysis Models {#background-analysis .unnumbered}
+
+
 
 ## Missing Data and Autoimpute {#background-missing-data-autoimpute .unnumbered}
 
