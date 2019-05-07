@@ -328,34 +328,39 @@ time-series datasets. Any data science professional can deploy or reuse
 components of the package itself. Eventually, the researchers will
 accept contributions from the open source community as well.
 
-\chapter*{Background}\label{background}
+\hypertarget{background}{\chapter*{Background}\label{background}}
 \addcontentsline{toc}{chapter}{Background}
 
-One must understand what missingness means and why it exists before
-deciding how to deal with it. The authors explore concepts related to
+One must understand what missingness means and why it exists before one
+decides how to handle it. The authors explore concepts related to
 missingness using a motivating example. For an experiment, assume that a
 random sample of measurements is collected from thousands of weigh
-scales. Each weigh scale in the experiment may fail to produce weight
-measurements for three separate reasons. First, a scale might run out of
-batteries, in which case all measurements from that scale cease for a
-given period of time. Next, a scale may fail more frequently for heavier
-objects or items over a certain weight threshhold. And finally, a scale
-may stop reporting measurements when placed on a soft surface instead of
-a hard one (Van Buuren, 2018, ch.~1.2).
+scales. Also assume each weigh scale in the experiment may fail to
+produce measurements for three separate reasons. First, a scale might
+run out of batteries, in which case all measurements from that scale
+cease for a given period of time. Next, a scale may fail more frequently
+for heavier objects or items over a certain weight threshhold. And
+finally, a scale may stop reporting measurements when placed on a soft
+surface instead of a hard one (Van Buuren, 2018, ch.~1.2).
 
 As a result of these scenarios, the random sample collected likely has
 many instances in which weight measurements are unobserved. How
 missingness in this sample is handled moving forward will depend on
 characteristics of the missing data itself and the process that
 generated missingess. The authors devote the rest of this section to
-exploring missingness and how to deal with it.
+concepts related to the nature of missingness and how it is handled. The
+authors refer back to this example to make concepts more concrete.
 
 \section*{Basic Terminology and Notation}\label{background-basic-terms}
 \addcontentsline{toc}{section}{Basic Terminology and Notation}
 
 Before diving into concepts related to missingness, the authors
 establish notation used throughout this text. In doing so, the authors
-also introduce some basic terminology.
+also introduce some basic terminology. This research follows the
+notation Van Buuren uses in the second edition of his book, Flexible
+Imputation of Missing Data. For more information, refer to Appendix B,
+which collects and summarizes the notation seen throughout this
+research.
 
 In the introductory example, weigh scales produce a set of \(n\)
 measurements, some of which may be missing weight. \(Y\) denotes the
@@ -372,8 +377,8 @@ the column associated with a scalar \(y\) in matrix \(Y\).
 2018, ch.~2.2.3), which is comprised of \(Y_{obs}\) and \(Y_{mis}\).
 \(Y_{obs}\) represents each row \(Y_i\) out of \(n\) records that have
 known values for each column \(Y_j\) in \(p\). \(Y_{mis}\), on the other
-hand, contains records with missing observations across any of column
-\(Y_j\) in \(p\). Note that \(Y = (Y_{obs}, Y_{mis})\) - the
+hand, contains records with missing observations across any of the
+columns in \(p\). Note that \(Y = (Y_{obs}, Y_{mis})\). The
 hypothetically complete data equals the conjoined observed and missing
 data matrices.
 
@@ -386,11 +391,6 @@ observation \(r_{ij}=0\) corresponds to a missing value for \(y_{ij}\).
 while \(Y\) is the \textbf{complete data matrix} (Van Buuren, 2018,
 ch.~2.2.3).
 
-This research follows the notation Van Buuren uses in the second edition
-of his book, Flexible Imputation of Missing Data. For more information,
-refer to Appendix B, which collects and summarizes the notation seen
-throughout this research.
-
 \section*{Missing Data Mechanism}\label{background-missing-data-mech}
 \addcontentsline{toc}{section}{Missing Data Mechanism}
 
@@ -401,9 +401,9 @@ data can be missing (Rubin, 1976). According to Rubin (as cited in Van
 Buuren, 2018, ch.~1.2), every observation in a dataset has some
 probability of being missing. The process that governs these
 probabilities is called the \textbf{missing data mechanism} (Rubin, as
-cited in Van Buuren, 2018, ch.~1.2). As a process, the missing data
-mechanism generates a statistical relationship between observations and
-the probability of missing data (Nakagawa, 2015, pg. 83). The
+cited in Van Buuren, 2018, ch.~1.2). The missing data mechanism
+generates a statistical relationship between observations and the
+probability of missing data (Nakagawa, 2015, pg. 83). The
 \textbf{missing data model} is the function that formalizes that
 statistical relationship (Van Buuren, 2018, ch.~2.2.4). These
 statistical relationships fall into one of three categories, each of
@@ -414,13 +414,13 @@ The general expression for the missing data model is defined as:
 
 \[P(R|Y_{obs}, Y_{mis},\psi)\]
 
-\(\psi\) cointains the parameters of the missing data model. Therefore,
-this equation notes that the probability of missingness \(P(R=0)\)
-within a dataset depends on the observed data, the missing data, and the
-missing data model's parameters. (Van Buuren, 2018, ch.~2.2.4). From
-another lense, this equation states that the distribution of missingness
-is conditional on the observed data, the missing data, and the
-parameters of the missing data model.
+\(\psi\) cointains the parameters of the missing data model. This
+expression notes that the probability of missingness \(P(R=0)\) within a
+dataset depends on the observed data, the missing data, and the missing
+data model's parameters. (Van Buuren, 2018, ch.~2.2.4). From another
+lense, this expession states that the missing data model is the
+distribution of the missingness indicator conditional on the observed
+data, the missing data, and the parameters of the missing data model.
 
 The missing data model is the function that formalizes the statistical
 relationship governed by a missing data mechanism. The next section
@@ -442,7 +442,7 @@ missing data mechanisms:
   \textbf{Missing Not at Random (MNAR)}
 \end{itemize}
 In this research, the authors refer to each category by its abbreviated
-label. The sections below examine each category in more detail.
+label. The subsections below examine each category in more detail.
 
 \subsubsection{Missing Completely at Random
 (MCAR)}\label{missing-completely-at-random-mcar}
@@ -478,8 +478,8 @@ are often not MCAR in the real world (Van Buuren, 2018, ch.~2.2.4).
 
 MAR is the second missing data mechanism. MAR occurs when the
 probability a given variable is missing depends on available and
-observed information only (Gelman \& Hill, 2017, pg. 530). Therefore,
-MAR is a weaker and more general classification of missingness than MCAR
+observed information only (Gelman \& Hill, 2017, pg. 530). MAR is a
+weaker and more general classification of missingness than MCAR
 (Allison, 2012). The missing data model associated with MAR is defined
 as:
 
@@ -529,22 +529,101 @@ sub-category of MNAR.
 \subsection*{Ignorability}\label{background-ignorability}
 \addcontentsline{toc}{subsection}{Ignorability}
 
-The missing data mechanism determines the assumptions one can make when
+The missing data mechanism underpins the assumptions one can make when
 handling missing data. The most important assumption is that of
-ignorability. Missingness is ignorable ``if it is missing at random and
-the probability of a missingness does not depend on the missing
-information itself'' (Introduction to SAS, 2017). Therefore, MCAR and
-MAR fit this definition and have ignorable missingness. On the other
-hand, MNAR is considered non-ignorable because one must account for not
-only the missingness in data but also why the data is missing. In the
-context of imputation, ignorability determines whether one can ignore
-the way in which data are missing prior to imputing missing data through
-an imputation model (Nakagawa, 2015, Pg. 85). As stated in Introduction
-to SAS, ``the assumption of ignorability is needed for optimal
-estimation of missing information and is a required assumption'' (2017).
-Thus, in practice, professionals generally begin with the MAR assumption
-when dealing with missing data because it is the most general missing
-data mechanism that satisfies ignorability.
+\textbf{ignorability}. Missingness is ignorable ``if it is missing at
+random and the probability of a missingness does not depend on the
+missing information itself'' (Introduction to SAS, 2017). Therefore, the
+missingness within a dataset is said to be ignorable if the underlying
+missing data mechanism is MCAR or MAR. MNAR, on the other hand,
+constitutes missingness that is non-ignorable.
+
+As Van Buuren Notes, ``the concept of ignorability plays an important
+role in the construction of imputation models'' (2018, ch.~2.2.6).
+Specifically, ignorability determines whether one can ignore the way in
+which data are missing prior to imputing missing data through an
+imputation model (Nakagawa, 2015, Pg. 85). As stated in Introduction to
+SAS, ``the assumption of ignorability is needed for optimal estimation
+of missing information and is a required assumption'' (2017).
+
+To formalize the statements above, consider the general expression for
+an imputation model:
+
+\[P(Y_{mis}|Y_{obs}, R)\]
+
+This expression means that the distribution of the missing data depends
+on the distribution of the observed data \(Y_{obs}\) and the process
+that generated the missing data, \(R\) (Van Buuren, 2018, ch 2.2.6). In
+the context of imputation, this expression suggests that the imputed
+values are generated conditional on the observed data and missing data
+mechanism.
+
+If the missingness is ingorable, then:
+
+\[P(Y|Y_{obs}, R=1) = P(Y|Y_{obs}, R=0)\]
+
+This equality states that the distribution of the data \(Y\) is the same
+for both the response (observed) and non-response (missing) groups (Van
+Buuren, 2018, ch 2.2.6). Essentially, this equation suggests that
+imputation models need not consider the missing data model when creating
+imputations for \(Y_{mis}\). As a result, the parameters of the missing
+data model, \(\psi\), are not important if the underlying missing data
+mechanism is ignorable.
+
+The importance of this equality becomes clear through an example. Take
+the weigh scale experiment introduced in the beginning of the
+\protect\hyperlink{background}{Background section}. Assume
+\(Y_{weight}\) contains weight measurements in \(Y\), and
+\(Y_{surface}\) specifies the surface (hard or soft) of the scale
+generating weight measurements. The researcher can model weight using
+the observed data only within each surface:
+\(P(Y_{weight}|Y_{surface}=hard, R=1)\) and
+\(P(Y_{weight}|Y_{surface}=soft, R=1)\). If the missing data mechanism
+is ignorable, then \(P(Y_{weight}|Y_{surface}=hard, R=1)\) =
+\(P(Y_{weight}|Y_{surface}=hard, R=0)\) for hard surfaces and
+\(P(Y_{weight}|Y_{surface}=soft, R=1)\) =
+\(P(Y_{weight}|Y_{surface}=soft, R=0)\) for soft surfaces. Therefore,
+the researcher can draw imputations for weight conditional on observed
+data only; he or she does not need to consider the missing data model
+within each subgroup, because the distribution for the observed and the
+missing data is the same (Van Buuren, 2018, ch.~2.2.6).
+
+If within each surface group the distribution for missing weights
+depends further on the actual mass of the object weighed, then the
+researcher cannot ignore the missing data model, because imputed values
+drawn from the observed data would be systematically different than the
+distribution of imputed values drawn when taking the missing data model
+into consideration. In this example, if weight were missing for objects
+that had a higher weight, imputations drawn from the observed data would
+systematically understate the weight of the missing objects regardless
+of the surface of the scale if the missing data model is ignored. The
+resulting imputations would be (potentially severly) biased depending on
+how influential the missing data model actually is.
+
+Therefore, the implications of ignorability are of utmost importance
+when building an imputation model. Most imputation models in literature
+assume that the missing data mechanism is ignorable. Imputation models
+relying on this assumption produced unbiased imputations if the
+assumption of ignorability holds. In the event that it does not hold,
+imputations may be systematically biased.
+
+The imputation models introduced in subsequent sections operate under
+the assumption that the missing data mechanism is ignorable (MCAR or
+MAR). The important takeaway, however, is that the researcher considers
+the missing data mechanism responsible for generating missing data and
+understands the effect of the missing data model on imputation model's
+ability to generate unbiased imputations. If the practicioner is aware
+of the potential consequences that stem from the missing data mechansim
+at hand, he or she is prepared to assess the benefits and drawbacks of
+each imputation model applied to a given dataset.
+
+This section establishes a firm understanding of the concepts related to
+missing data and their implications. Next, the authors review popular
+imputation models in literature and those supported in the
+\texttt{Autoimpute} package. All the models assume ignorability, so
+methods for non-ignorable data are out of scope. For interested readers,
+many studies cover the impact of non-ignorable missingness on the models
+presented in this research. \textbf{(ADD SOURCES HERE TO REFER TO)}
 
 \section*{Missing Data Methods for Single
 Imputation}\label{background-missing-data-methods}
@@ -553,9 +632,9 @@ Imputation}
 
 Missing data mechanisms that satisfy ignorability provide the foundation
 for the missing data methods explored throughout this research. With an
-understanding of these concepts, one can now examine the methods built
-upon these assumptions. Methods for missing data fall into two broad
-categories - deletion and imputation.
+understanding of these concepts, one can now examine the imputation
+methods built upon these assumptions. Methods for missing data fall into
+two broad categories - \textbf{deletion} and \textbf{imputation}.
 
 \subsection*{Deletion}\label{background-deletion}
 \addcontentsline{toc}{subsection}{Deletion}
