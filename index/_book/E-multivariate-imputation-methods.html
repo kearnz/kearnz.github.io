@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Findings | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</title>
-  <meta name="description" content="Findings | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <title>E Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</title>
+  <meta name="description" content="E Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   <meta name="generator" content="bookdown  and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Findings | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta property="og:title" content="E Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Findings | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta name="twitter:title" content="E Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="methodology.html">
-<link rel="next" href="conclusion.html">
+<link rel="prev" href="D-univariate-imputation-methods.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -127,96 +127,25 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="findings" class="section level1 unnumbered">
-<h1>Findings</h1>
-<div id="full-model-recap" class="section level2 unnumbered">
-<h2>Full Model Recap</h2>
-<p>We begin this section with a recap of linear regression on the full dataset. The results below serve as the benchmark for comparison. They are considered the golden standard. Therefore, we seek to examine how our imputation methods perform and if they produce a dataset that significantly affects the results from linear regression. If the results are skewed, we know that the imputation model used is significantly affected by the nature of missingness within the data, and we may have to do more to account for the missingness.</p>
-<p>The results for the full model are displayed below:</p>
-<div class="figure" style="text-align: center"><span id="fig:full-regression-again"></span>
-<img src="figure/full-regression.jpg" alt="Linear Regression Results: Full" width="300px" />
-<p class="caption">
-Figure .: Linear Regression Results: Full
-</p>
-</div>
-</div>
-<div id="results-from-example-1" class="section level2 unnumbered">
-<h2>Results from Example 1</h2>
-<p>Next, we examine the results from a linear regression on the imputed dataset from Example 1. Recall that Example 1 contains 40% missingness in the response <span class="math inline">\(y\)</span>, and the missingness mechanism is MCAR.</p>
-<p>First, listwise delete:</p>
-<div class="figure" style="text-align: center"><span id="fig:mcar-listwise-delete"></span>
-<img src="figure/mcar-listwise-delete.jpg" alt="Linear Regression Results: Listwise Delete" width="300px" />
-<p class="caption">
-Figure .: Linear Regression Results: Listwise Delete
-</p>
-</div>
-<p>Next, mean imputation:</p>
-<div class="figure" style="text-align: center"><span id="fig:mcar-mean"></span>
-<img src="figure/mcar-mean.jpg" alt="Linear Regression Results: Mean Imputation" width="300px" />
-<p class="caption">
-Figure .: Linear Regression Results: Mean Imputation
-</p>
-</div>
-<p>Next, least squares imputation:</p>
-<div class="figure" style="text-align: center"><span id="fig:mcar-ls"></span>
-<img src="figure/mcar-ls.jpg" alt="Linear Regression Results: Least Squares Imputation" width="300px" />
-<p class="caption">
-Figure .: Linear Regression Results: Least Squares Imputation
-</p>
-</div>
-<p>Finally, pmm imputation:</p>
-<div class="figure" style="text-align: center"><span id="fig:mcar-pmm"></span>
-<img src="figure/mcar-pmm.jpg" alt="Linear Regression Results: PMM Imputation" width="300px" />
-<p class="caption">
-Figure .: Linear Regression Results: PMM Imputation
-</p>
-</div>
-</div>
-<div id="results-from-example-2" class="section level2 unnumbered">
-<h2>Results from Example 2</h2>
-<p>Next, we examine the results from a linear regression on the imputed dataset from Example 2. Recall that Example 2 contains 40% missingness in the predictor <span class="math inline">\(x\)</span>, and the missingness mechanism is MAR.</p>
-<p>First, listwise delete:</p>
-<div class="figure" style="text-align: center"><span id="fig:mar-listwise-delete"></span>
-<img src="figure/mar-listwise-delete.jpg" alt="Linear Regression Results: Listwise Delete" width="300px" />
-<p class="caption">
-Figure .: Linear Regression Results: Listwise Delete
-</p>
-</div>
-<p>Next, mean imputation:</p>
-<div class="figure" style="text-align: center"><span id="fig:mar-mean"></span>
-<img src="figure/mar-mean.jpg" alt="Linear Regression Results: Mean Imputation" width="300px" />
-<p class="caption">
-Figure .: Linear Regression Results: Mean Imputation
-</p>
-</div>
-<p>Next, least squares imputation:</p>
-<div class="figure" style="text-align: center"><span id="fig:mar-ls"></span>
-<img src="figure/mar-ls.jpg" alt="Linear Regression Results: Least Squares Imputation" width="300px" />
-<p class="caption">
-Figure .: Linear Regression Results: Least Squares Imputation
-</p>
-</div>
-<p>Finally, pmm imputation:</p>
-<div class="figure" style="text-align: center"><span id="fig:mar-pmm"></span>
-<img src="figure/mar-pmm.jpg" alt="Linear Regression Results: PMM Imputation" width="300px" />
-<p class="caption">
-Figure .: Linear Regression Results: PMM Imputation
-</p>
-</div>
-</div>
-<div id="analysis-of-results" class="section level2 unnumbered">
-<h2>Analysis of Results</h2>
-<p>We see that regardless of the missing data mechanism, mean and least squares imputation significantly reduce the variance in the coefficient estimates. Therefore, these methods should be avoided regardless because they significantly overstate the confidence we have in an estimate’s coefficient. When missingness is in the predictor, least squares is quite biased. When missingness is in the response, mean is biased downward as well. When data is MCAR, listwise deletion is the most efficient and therefore preferred. When data is MAR, listwise deletion becomes slightly biased, and PMM is the most robust.</p>
+<div id="multivariate-imputation-methods" class="section level1">
+<h1><span class="header-section-number">E</span> Multivariate Imputation Methods</h1>
 
-</div>
+<!--
+The bib chunk below must go last in this document according to how R Markdown renders.  More info is at http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html
+-->
+
+<!-- 
+If you'd like to change the name of the bibliography to something else,
+delete "References" and replace it.
+-->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="methodology.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="conclusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="D-univariate-imputation-methods.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

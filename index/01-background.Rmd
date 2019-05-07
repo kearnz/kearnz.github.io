@@ -46,7 +46,7 @@ Rubin popularized names for the three categories that represent the main missing
 
 In this research, the authors refer to each category by its abbreviated label. The subsections below examine each category in more detail.
 
-#### Missing Completely at Random (MCAR)
+#### Missing Completely at Random (MCAR) {#mcar .unnumbered}
 
 MCAR is the first of the three missing data mechanisms. MCAR assumes missing values in the underlying dataset have the same probability of missingness for all cases (Gelman & Hill, 2017, pg. 530). Thus, MCAR implies that the probability of missingness within a dataset is completely unrelated to the data in question or any other observed or unobserved data. The missing data model 
 associated with MCAR is defined as:
@@ -57,7 +57,7 @@ Note that the general expression of the missing data model reduces to a much sim
 
 From the weigh scale example, MCAR governs the probability of values being missing from a scale that runs out of batteries at some point in time (Van Buuren, 2018, ch. 1.2). For simplicity, assume time is not a latent variable nor of interest in the data collection process. In this case then, the missing values produced from the scale do not depend on the weight of the object in question nor the surface used for the scale, so the probability a value is missing does not depend on any of the missing or observed data. Although MCAR is convenient, it is very restrictive and generally unrealistic, so datasets with missing values are often not MCAR in the real world (Van Buuren, 2018, ch. 2.2.4).
 
-#### Missing at Random (MAR)
+#### Missing at Random (MAR) {#mar .unnumbered}
 
 MAR is the second missing data mechanism. MAR occurs when the probability a given variable is missing depends on available and observed information only (Gelman & Hill, 2017, pg. 530). MAR is a weaker and more general classification of missingness than MCAR (Allison, 2012). The missing data model associated with MAR is defined as:
 
@@ -67,7 +67,7 @@ For MAR, the missing data model reduces because the probability of data being mi
 
 In the case of the weigh scale, MAR describes missing data that arises from the scale’s placement on hard or soft surfaces. If information about the surface (hard or soft) is fully observed for each attempted weight measurement, the probability of missing measurements then depends on available data - surface type - and thus falls under MAR  (Van Buuren, 2018, ch. 1.2). Since MAR is a more general assumption than MCAR, it is more realistic to encounter in real-world datasets. 
 
-#### Missing Not at Random (MNAR)
+#### Missing Not at Random (MNAR) {#mnar .unnumbered}
 
 Missing not at random (MNAR) is the final missing data mechanism. MNAR suggests data’s “probability of being missing varies for reasons that are unknown to us” (Van Buuren, 2018, ch. 1.2). As a result, the missing data model for MNAR does not reduce:
 
@@ -93,7 +93,18 @@ $$P(Y|Y_{obs}, R=1) = P(Y|Y_{obs}, R=0)$$
 
 This equality states that the distribution of the data $Y$ is the same for both the response (observed) and non-response (missing) groups (Van Buuren, 2018, ch 2.2.6). Essentially, this equation suggests that imputation models need not consider the missing data model when creating imputations for $Y_{mis}$. As a result, the parameters of the missing data model, $\psi$, are not important if the underlying missing data mechanism is ignorable.
 
-The importance of this equality becomes clear through an example. Take the weigh scale experiment introduced in the beginning of the [Background section](#background). Assume $Y_{weight}$ contains weight measurements in $Y$, and $Y_{surface}$ specifies the surface (hard or soft) of the scale generating weight measurements. The researcher can model weight using the observed data only within each surface: $P(Y_{weight}|Y_{surface}=hard, R=1)$ and $P(Y_{weight}|Y_{surface}=soft, R=1)$. If the missing data mechanism is ignorable, then $P(Y_{weight}|Y_{surface}=hard, R=1)$ = $P(Y_{weight}|Y_{surface}=hard, R=0)$ for hard surfaces and $P(Y_{weight}|Y_{surface}=soft, R=1)$ = $P(Y_{weight}|Y_{surface}=soft, R=0)$ for soft surfaces. Therefore, the researcher can draw imputations for weight conditional on observed data only; he or she does not need to consider the missing data model within each subgroup, because the distribution for the observed and the missing data is the same (Van Buuren, 2018, ch. 2.2.6). Thus, the researcher can focus on the impact of the scale surface alone, as missing values for weight come from the same distribution as the observed.
+The importance of this equality becomes clear through an example. Take the weigh scale experiment introduced in the beginning of the [Background section](#background). Assume $Y_{weight}$ contains weight measurements in $Y$, and $Y_{surface}$ specifies the surface (hard or soft) of the scale generating weight measurements. 
+
+The researcher can model weight using the observed data only within each surface: 
+
+$$P(Y_{weight}|Y_{surface}=hard, R=1) ; P(Y_{weight}|Y_{surface}=soft, R=1)$$ 
+
+If the missing data mechanism is ignorable, then:
+
+$$P(Y_{weight}|Y_{surface}=hard, R=1) = P(Y_{weight}|Y_{surface}=hard, R=0)$$ 
+$$P(Y_{weight}|Y_{surface}=soft, R=1) = P(Y_{weight}|Y_{surface}=soft, R=0)$$
+
+Therefore, the researcher can draw imputations for weight conditional on observed data only; he or she does not need to consider the missing data model within each subgroup, because the distribution for the observed and the missing data is the same (Van Buuren, 2018, ch. 2.2.6). Thus, the researcher can focus on the impact of the scale surface alone, as missing values for weight come from the same distribution as the observed.
 
 If within each surface group the distribution for missing weights depends further on the actual mass of the object weighed, then the researcher cannot ignore the missing data model, because imputed values drawn from the observed data would be systematically different than the distribution of imputed values drawn when taking the missing data model into consideration. In this example, if weight were missing for objects that had a higher weight, imputations drawn from the observed data would systematically understate the weight of the missing objects regardless of the surface of the scale if the missing data model is ignored. The resulting imputations would be (potentially severly) biased depending on how influential the missing data model actually is.
 
@@ -134,7 +145,7 @@ While this process seems straightforward, numerous imputation models exist and r
 
 In general, there are two major categories of imputation methods - **univariate** and **multivariate**.
 
-#### Univariate
+#### Univariate {#univariate .unnumbered}
 
 Univariate imputation techniques focus on a single incomplete variable known as the target variable (Van Buuren, 2018, ch. 3). Univariate methods utilize observed values in the target variable to determine how to fill in missing values in the same target. Mean imputation is a popular example of a univariate method. When applied, mean imputation takes the mean of the observed features within a target variable and imputes missing values with the mean. This imputation method extends to any descriptive statistic that one can calculate from a single target variable’s observed data. Additional examples include median and mode imputation, which follow a similar process but use a different statistic for imputation.
 
@@ -142,7 +153,7 @@ Univariate measures do not have to impute a single static value. For example, li
 
 The only requirement for univariate methods is that they use information contained within the observed values of the same variable they are designed to impute. Appendix D goes into greater detail of all the univariate methods that the researchers support in `Autoimpute`. 
 
-#### Multivariate
+#### Multivariate {#multivariate .unnumbered}
 
 The second major category of imputation methods is multivariate imputation. Multivariate imputation methods rely on one or more available features to predict plausible imputations for the target variable. When an imputation model has access to multiple features within a dataset, the method can preserve the relationships between the features and the target variable (Van Buuren, 2018, ch. 4.1). While this preservation is beneficial, it is not always clear which features one should use in a multivariate imputation model. In this case, the **missing data pattern** becomes useful to know. Van Buuren (2018) states:
 

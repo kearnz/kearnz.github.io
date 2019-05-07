@@ -445,8 +445,9 @@ missing data mechanisms:
 In this research, the authors refer to each category by its abbreviated
 label. The subsections below examine each category in more detail.
 
-\subsubsection{Missing Completely at Random
-(MCAR)}\label{missing-completely-at-random-mcar}
+\subsubsection*{Missing Completely at Random (MCAR)}\label{mcar}
+\addcontentsline{toc}{subsubsection}{Missing Completely at Random
+(MCAR)}
 
 MCAR is the first of the three missing data mechanisms. MCAR assumes
 missing values in the underlying dataset have the same probability of
@@ -475,7 +476,8 @@ missing or observed data. Although MCAR is convenient, it is very
 restrictive and generally unrealistic, so datasets with missing values
 are often not MCAR in the real world (Van Buuren, 2018, ch.~2.2.4).
 
-\subsubsection{Missing at Random (MAR)}\label{missing-at-random-mar}
+\subsubsection*{Missing at Random (MAR)}\label{mar}
+\addcontentsline{toc}{subsubsection}{Missing at Random (MAR)}
 
 MAR is the second missing data mechanism. MAR occurs when the
 probability a given variable is missing depends on available and
@@ -499,8 +501,8 @@ on available data - surface type - and thus falls under MAR (Van Buuren,
 2018, ch.~1.2). Since MAR is a more general assumption than MCAR, it is
 more realistic to encounter in real-world datasets.
 
-\subsubsection{Missing Not at Random
-(MNAR)}\label{missing-not-at-random-mnar}
+\subsubsection*{Missing Not at Random (MNAR)}\label{mnar}
+\addcontentsline{toc}{subsubsection}{Missing Not at Random (MNAR)}
 
 Missing not at random (MNAR) is the final missing data mechanism. MNAR
 suggests data's ``probability of being missing varies for reasons that
@@ -576,19 +578,23 @@ the weigh scale experiment introduced in the beginning of the
 \protect\hyperlink{background}{Background section}. Assume
 \(Y_{weight}\) contains weight measurements in \(Y\), and
 \(Y_{surface}\) specifies the surface (hard or soft) of the scale
-generating weight measurements. The researcher can model weight using
-the observed data only within each surface:
-\(P(Y_{weight}|Y_{surface}=hard, R=1)\) and
-\(P(Y_{weight}|Y_{surface}=soft, R=1)\). If the missing data mechanism
-is ignorable, then \(P(Y_{weight}|Y_{surface}=hard, R=1)\) =
-\(P(Y_{weight}|Y_{surface}=hard, R=0)\) for hard surfaces and
-\(P(Y_{weight}|Y_{surface}=soft, R=1)\) =
-\(P(Y_{weight}|Y_{surface}=soft, R=0)\) for soft surfaces. Therefore,
-the researcher can draw imputations for weight conditional on observed
-data only; he or she does not need to consider the missing data model
-within each subgroup, because the distribution for the observed and the
-missing data is the same (Van Buuren, 2018, ch.~2.2.6). Thus, the
-researcher can focus on the impact of the scale surface alone, as
+generating weight measurements.
+
+The researcher can model weight using the observed data only within each
+surface:
+
+\[P(Y_{weight}|Y_{surface}=hard, R=1) ; P(Y_{weight}|Y_{surface}=soft, R=1)\]
+
+If the missing data mechanism is ignorable, then:
+
+\[P(Y_{weight}|Y_{surface}=hard, R=1) = P(Y_{weight}|Y_{surface}=hard, R=0)\]
+\[P(Y_{weight}|Y_{surface}=soft, R=1) = P(Y_{weight}|Y_{surface}=soft, R=0)\]
+
+Therefore, the researcher can draw imputations for weight conditional on
+observed data only; he or she does not need to consider the missing data
+model within each subgroup, because the distribution for the observed
+and the missing data is the same (Van Buuren, 2018, ch.~2.2.6). Thus,
+the researcher can focus on the impact of the scale surface alone, as
 missing values for weight come from the same distribution as the
 observed.
 
@@ -729,7 +735,8 @@ methods and examines their respective strengths and weaknesses.
 In general, there are two major categories of imputation methods -
 \textbf{univariate} and \textbf{multivariate}.
 
-\subsubsection{Univariate}\label{univariate}
+\subsubsection*{Univariate}\label{univariate}
+\addcontentsline{toc}{subsubsection}{Univariate}
 
 Univariate imputation techniques focus on a single incomplete variable
 known as the target variable (Van Buuren, 2018, ch.~3). Univariate
@@ -755,7 +762,8 @@ contained within the observed values of the same variable they are
 designed to impute. Appendix D goes into greater detail of all the
 univariate methods that the researchers support in \texttt{Autoimpute}.
 
-\subsubsection{Multivariate}\label{multivariate}
+\subsubsection*{Multivariate}\label{multivariate}
+\addcontentsline{toc}{subsubsection}{Multivariate}
 
 The second major category of imputation methods is multivariate
 imputation. Multivariate imputation methods rely on one or more

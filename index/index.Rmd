@@ -11,8 +11,8 @@ title: 'Data Analytics as a Service (DAaaS): Automated & Intelligent Imputation 
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 output: 
-  phoenixdown::capstone_pdf: default
-#  phoenixdown::capstone_gitbook: default
+#  phoenixdown::capstone_pdf: default
+  phoenixdown::capstone_gitbook: default
 #  phoenixdown::capstone_word: default
 #  phoenixdown::capstone_epub: default
 #
