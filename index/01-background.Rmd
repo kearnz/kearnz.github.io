@@ -8,7 +8,9 @@ The {#background} text after the chapter declaration will allow us to link throu
 
 # Background {#background .unnumbered}
 
-One must understand what missingness means and why it exists before one decides how to handle it. The authors explore concepts related to missingness using a motivating example. For an experiment, assume that a random sample of measurements is collected from thousands of weigh scales. Also assume each weigh scale in the experiment may fail to produce measurements for three separate reasons. First, a scale might run out of batteries, in which case all measurements from that scale cease for a given period of time. Next, a scale may fail more frequently for heavier objects or items over a certain weight threshhold. And finally, a scale may stop reporting measurements when placed on a soft surface instead of a hard one (Van Buuren, 2018, ch. 1.2). 
+One must understand what missingness is and why it exists before deciding how to handle it. The authors explore the nature of missingness using a motivating example. 
+
+For an experiment, assume that a random sample of measurements is collected from thousands of weigh scales. Also assume each weigh scale in the experiment may fail to produce measurements for three separate reasons. First, a scale might run out of batteries, in which case all measurements from that scale cease for a given period of time. Next, a scale may fail more frequently for heavier objects or items over a certain weight threshhold. And finally, a scale may stop reporting measurements when placed on a soft surface instead of a hard one (Van Buuren, 2018, ch. 1.2). 
 
 As a result of these scenarios, the random sample collected likely has many instances in which weight measurements are unobserved. How missingness in this sample is handled moving forward will depend on characteristics of the missing data itself and the process that generated missingess. The authors devote the rest of this section to concepts related to the nature of missingness and how it is handled. The authors refer back to this example to make concepts more concrete.
 
@@ -111,13 +113,13 @@ Before the authors examine missing data methods, they clarify some terminology u
 * An **imputation model** is a strategy used to impute missing data. Imputation models are missing data methods within the imputation category.
 * An **analysis model** is a machine learning model that a researcher wants to apply to an underlying dataset. Because analysis models require complete data, the practicioner must perform either deletion or imputation to enable an analyis model to run.
 
-The sections below define and explore imputation models. In doing so, the authors reference the effect a given imputation model may have when subsequent analysis is performed. That being said, the researchers devote an entire section to analysis models after a full review of missing data methods.
+The sections below define and explore deletion and imputation models. In doing so, the authors reference the effect a given missing data method may have when subsequent analysis is performed. That being said, the researchers devote an entire section to analysis models after a full review of missing data methods.
 
 ### Deletion {#background-deletion .unnumbered}
 
 One of the most popular missing data methods that data practitioners use when dealing with missing data is listwise deletion or complete-case analysis (CCA). Listwise deletion discards all rows in which at least one value in the columnspace of $Y$ is missing for a given record (Van Buuren, 2018, ch. 1.3.1). Complete-case analysis (CCA) is relatively easy to implement and enables analysis models to run without the need for imputation because missing data has been removed. However, CCA also has its flaws. As Gelman & Hill (2017) describe, two problems arise with CCA:
 
-1. If the units with missing values differ systematically from the completely observed cases, this could bias the complete-case analysis.  
+1. If the units with missing values differ systematically from the completely observed cases, this could bias the complete-case analysis.
 2. If many variables are included in a model, there may be very few complete cases, so that most of the data would be discarded for the sake of a simple analysis. (p. 531)
 
 The first hypothetical results from the strong assumptions listwise deletion makes regarding the missing data mechansim. CCA requies missing data to not only be ignorable but also MCAR in most cases. Therefore, listwise deletion can result in biased estimates even if ignorability holds but MAR is not met (Introduction to SAS, 2017).
@@ -213,15 +215,8 @@ $$Y_{subset}=\begin{bmatrix}soft & 60 \\ soft & NaN \\ soft & 65 \\ hard & 85 \\
 
 Further, assume the underlying missing data mechanism is ignorable, so imputation focuses on the observed dataset only. From the matrix above, one can discern that the distibution of weight depends on the surface of the scale. In this example, $P(Y_{weight}|Y_{surface}=soft)$ ~ $N(60, 5)$, and $P(Y_{weight}|Y_{surface}=soft)$ ~ $N(90, 5)$. The figure below visualizes the differences in the distribution of weight, conditional on the surface of the scale.
 
-```{r plotsforsingle, include=TRUE, echo=FALSE}
-library(ggplot2)
-ggplot(data.frame(weight = c(40,110)), aes(x = weight)) +
-        stat_function(fun = dnorm, args = list(60, 5), aes(colour = "Soft")) +
-        stat_function(fun = dnorm, args = list(90, 5), aes(colour = "Hard")) + 
-        scale_x_continuous(name = "Weight") +
-        scale_y_continuous(name = "Density") + 
-        ggtitle("Probability Density for Weights on a Soft vs. Hard scale") + 
-        scale_colour_manual("Scale Surface", values = c("dodgerblue3", "deeppink"))
+```{r scale-distribution, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Distribution of Weight by Scale Surface"}
+include_graphics(path = "figure/scale-distribution.jpg")
 ```
 
 Now proceed with imputation analysis using single imputation. Assume that the imputation models takes a random draw from each respective surface's weight distribution to impute missing data. Then the complete matrix becomes:
@@ -239,11 +234,30 @@ Multiple imputation produced 3 datasets. Across each imputation, the observed ha
 
 ## Analysis Models {#background-analysis .unnumbered}
 
+The primary purpose of handling missing data is to enable analysis models to run. As previously noted, most supervised maching learning models require datasets to be complete in order to fit an analysis model capable of making predictions or classifications. The previous sections in the background address the main points a researcher must consider when dealing with missing data. All of these considerations factor into the effect that the handling of missing data has on the results produced from an analysis model. One must remember that listwise deletion and imputation methods fundamentally alter a dataset. If the structure of the data is distorted in the process, the consequences affect inference derived from analysis models fit on imputed data. This section addresses the impact of imputation and listwise deletion from the perspective of analysis. It also covers the additional work necessary to fit analysis models on multiply imputed data. 
+
+In this research, an analysis model is nothing more than a supervised machine learning methods. This text restricts focus to linear and logistic regression. Both techniques operate under the assumption that the underlying dataset is complete, containing no missing records. As a result, analysis models do not have any information regarding what happened to the dataset before the model is fit. They cannot separate imputed values from true observations, and they do not know if records were removed through list-wise deletion prior to analysis. Therefore, the inference from the analysis model depends on the way in which missing data is handled.
+
+### Analysis after Listwise Deletion {#background-analysis-listwise .unnumbered}
+
+In the [Deletion section](#background-deletion), the authors explain the potential pitfalls associated with listwise deletion. Depending on the proportion of missing data, listwise deletion may significantly deplete the sample size on which an analysis model is trained. In doing so, an analysis model generates larger standard errors for its parameters than it would had the dataset retained every record in othe original sample. As a result, the significance of coefficients may be called into question. Additionally, if the missing data mechanism is not MCAR, listwise deletion may discard records which contain important information. Doing so may lead to biased coefficient estimates in addition to increased standard errors of those estimates.
+
+### Analysis after Single Imputation {#background-analysis-single .unnumbered}
+
+In the [Single Imputation section](#background-single-imputation), the authors note that single imputation retains the full dataset but ignores any uncertainty or variation introduced when imputing missing values. Therefore, an analysis model such as linear regression treats the single-imputed dataset as if each observation is a true value. The analysis model fits the dataset as it would any other dataset. 
+
+In the best case, if the imputation model used to impute data is not misspecified, then the the coefficients produced from the analysis model should at least be unbiased estimates of the true parameters had the dataset been fully observed. In the worst case, the imputation model used to impute data is misspecified, and the imputed values do not accurately reflect the distribution of the missing data. In this case, the analysis model produces coefficients that may be biased depending on the severity of the imputation model's impact. In either case, the standard error of the estimates produced from the analysis model will be too low (Gelman & Hill, 2017, pg. 532). When the standard error of a parameter estimate is too low, the test-statistic for that parameter will be too high, and the statistical significance of the parameter may be inflated. 
+
+Underestimated standard errors may lead a researcher to erroneously conclude that statistical relationships exist. Such inference is dangerous and undermines the reason why missing data must be handled in the first place. Even if the researcher understands the missing data mechanism and applies a proper imputation model to handle missing data, he or she may not have done enough to properly account for the uncertainty introduced from imputation. That lack of consideration appears downstream, affecting the ability for the researcher to trust the significance of analysis model parameters.
+
+### Analysis after Multiple Imputation {#background-analysis-multiple .unnumbered}
+
 
 
 ## Missing Data and Autoimpute {#background-missing-data-autoimpute .unnumbered}
 
-Ultimately, this background details the concepts and theory that are the foundation for the Autoimpute package. Understanding the process that generates missingness in a dataset - the missing data mechanism - is imperative prior to applying any deletion or imputation method. The missing data mechanism and missing data pattern should inform which strategy to use to handle missing data. At that point, the researcher performs either univariate or multivariate imputation using the method that fits best a given dataset, use case, or goal. If the researcher is interested in analysis, then he or she should deploy the selected imputation method in multiple imputations. Each imputed dataset within the multiple imputation framework can then be analyzed separately with the supervised learning model of interest. Finally, the researcher can pool parameters together to produce parameters of the multiply imputed analysis model and use this model to make predictions when new data arrives.
+This background explores the main concepts related to missing data and discusses what a researcher must consider before selecting which missing data method to use. The section then introduces numerous imputation methods, each of which operates with its own set of assumptions but all of which assume that the missing data mechanism is at least ignorable. This text then briefly examines the impact of imputation on supervised analysis and demonstrates how concepts from missing data can leak into the inference of an analysis model if missingness is not handled with care.
 
-Anyone interested can utilize `Autoimpute`, the Python package created by the authors, to perform all of the steps described above. The next section discusses how to use `Autoimpute` from end-to-end to explore and analyze missing data. It also demonstrates the impact different missing data mechanisms have on the results produced from multiple imputation and subsequent analysis. All results are generated using the `Autoimpute` package.
+The `Autoimpute` package gives the end user the tools to step through the entire process of handling missing data to performing supervised analysis. The package includes methods to explore and visualize missing data to discern what missing data mechanisms may be present. The package also includes numerous imputation methods, which the practicioner can use within the package's implementation of the Single Imputation and Multiple Imputation frameworks. Finally, `Autoimpute` extends linear and logistic regression to mulitply imputed datasets. In doing so, `Autoimpute` handles parameter pooling for the user and includes additional metrics and diagnostics to assess the impact of imputation on downstream analysis. 
 
+In the Methodology section, the authors return to the `Autoimpute` package itself and demonstrate how it is used to step through everything covered in the background section. In addition, the authors design experiments to dig deeper into the effect of specific imputation models and how they affect analysis depending on the nature of the missing data.

@@ -96,10 +96,10 @@ This research aids the machine learning practitioner by bringing more clarity to
 
 To address this purpose, this research specifies four objectives:
 
-1. Assess the extent of the missing data problem with descriptive and visual measures  
-2. Examine the factors related to the missingness of data  
-3. Deploy imputation methods and select the most appropriate methodology  
-4. Measure the impact of imputation to the fit, stability, bias, and variance of parameters derived from supervised models built on imputed data  
+1. Assess the extent of the missing data problem with descriptive and visual measures
+2. Examine the factors related to the missingness of data
+3. Deploy imputation methods and select the most appropriate methodology
+4. Measure the impact of imputation to the fit, stability, bias, and variance of parameters derived from supervised models built on imputed data
 
 The researchers meet these objectives by developing an open-source Python package that can generalize across cross-sectional and time-series datasets. Any data science professional can deploy or reuse components of the package itself. Eventually, the researchers will accept contributions from the open source community as well.
 
