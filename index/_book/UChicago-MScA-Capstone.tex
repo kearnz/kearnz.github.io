@@ -1663,10 +1663,81 @@ Autoimpute package or any interesting results you find in your analyses.
 \chapter{Autoimpute References}\label{autoimpute-references}
 
 \chapter{Notation Cheatsheet}\label{notation-cheatsheet}
-
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Notation & Definition\tabularnewline
+\midrule
+\endhead
+\(n\) & The number of records or observations in a matrix\tabularnewline
+\(p\) & The number of columns or features in a matrix\tabularnewline
+\(Y\) & The complete data matrix of observed and missing
+records\tabularnewline
+\(Y_{obs}\) & Records within \(Y\) that are completely observed for all
+columns \(p\)\tabularnewline
+\(Y_{mis}\) & Records within \(Y\) with a missing value in any column in
+\(p\)\tabularnewline
+\(y_{ij}\) & A scalar value \(y\) in row \(i\) and column \(j\) of
+matrix \(Y\)\tabularnewline
+\(R\) & The missing indicator matrix, where each value
+\(r_{ij} \in 0,1\)\tabularnewline
+\(r_{ij}\) & A scalar value \(r\) in row \(i\) and column \(j\) of
+matrix \(R\)\tabularnewline
+\bottomrule
+\end{longtable}
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
+Expression\strut
+\end{minipage} & \begin{minipage}[b]{0.72\columnwidth}\raggedright\strut
+Definition\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\(Y = (Y_{mis}, Y_{obs})\)\strut
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+The complete data matrix equals the conjoined observed and missing data
+matrices\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\(r_{ij} = 0\)\strut
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+When a value \(r_{ij}=0\), the corresponding value \(y_{ij}\) is
+missing\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
+\(r_{ij}=1\)\strut
+\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
+When a value \(r_{ij}=1\), the corresponding value \(y_{ij}\) is
+observed\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 \chapter{Concepts Related to
 Missingness}\label{concepts-related-to-missingness}
-
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.25\columnwidth}\raggedright\strut
+Concept\strut
+\end{minipage} & \begin{minipage}[b]{0.69\columnwidth}\raggedright\strut
+Definition\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+complete data matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.69\columnwidth}\raggedright\strut
+The complete matrix \(Y\), which is comprised of both observed and
+unobserved records\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+missing indicator matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.69\columnwidth}\raggedright\strut
+The missing indicator \(R\), which indicates which values in \(Y\) are
+missing or not\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 \chapter{Univariate Imputation
 Methods}\label{univariate-imputation-methods}
 

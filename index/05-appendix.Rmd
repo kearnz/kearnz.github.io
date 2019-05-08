@@ -11,7 +11,33 @@ If you feel it necessary to include an appendix, it goes here.
 
 # Notation Cheatsheet
 
+#### Notations {.unnumbered}
+
+| Notation    | Definition                                                           
+| :---------- | :--------------------------------------------------------------------------------------------
+| $n$         | The number of records or observations in a matrix                        
+| $p$         | The number of columns or features in a matrix
+| $Y$         | The complete data matrix of observed and missing records
+| $Y_{obs}$   | Records within $Y$ that are completely observed for all columns $p$
+| $Y_{mis}$   | Records within $Y$ with a missing value in any column in $p$
+| $y_{ij}$    | A scalar value $y$ in row $i$ and column $j$ of matrix $Y$
+| $R$         | The missing indicator matrix, where each value $r_{ij} \in 0,1$
+| $r_{ij}$    | A scalar value $r$ in row $i$ and column $j$ of matrix $R$
+
+#### Expressions {.unnumbered}
+
+| Expression               | Definition                                                           
+| :----------------------- | :-------------------------------------------------------------------------------
+| $Y = (Y_{mis}, Y_{obs})$ | The complete data matrix equals the conjoined observed and missing data matrices
+| $r_{ij} = 0$             | When a value $r_{ij}=0$, the corresponding value $y_{ij}$ is missing
+| $r_{ij} = 1$             | When a value $r_{ij}=1$, the corresponding value $y_{ij}$ is observed
+
 # Concepts Related to Missingness
+
+| Concept                       | Definition                                                           
+| :---------------------------- | :----------------------------------------------------------------------------------
+| complete data matrix          | The complete matrix $Y$, which is comprised of both observed and unobserved records
+| missing indicator matrix      | The missing indicator $R$, which indicates which values in $Y$ are missing or not
 
 # Univariate Imputation Methods
 
