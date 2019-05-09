@@ -161,7 +161,9 @@ complexity as they would like while they grapple with missing data.
 }
 
 
-	\usepackage{array} \usepackage{multirow}
+	\usepackage{array} \usepackage{multirow} \usepackage{booktabs}
+\usepackage{colortbl} \usepackage{makecell} \usepackage{xcolor}
+\usepackage{tabu}
 % End of CII addition
 %%
 %% End Preamble
@@ -654,6 +656,9 @@ terminology upfront to avoid confusion later on:
   A \textbf{missing data method} is a strategy to handle missing data.
   The two types of methods are deletion and imputation.
 \item
+  \textbf{Deletion} is a strategy to handle missing data. Deletion
+  methods are missing data methods within the deletion category.
+\item
   An \textbf{imputation model} is a strategy used to impute missing
   data. Imputation models are missing data methods within the imputation
   category.
@@ -760,7 +765,7 @@ section of the data to another.
 
 The only requirement for univariate methods is that they use information
 contained within the observed values of the same variable they are
-designed to impute. Appendix D goes into greater detail of all the
+designed to impute. Appendix E goes into greater detail of all the
 univariate methods that the researchers support in \texttt{Autoimpute}.
 
 \subsubsection*{Multivariate}\label{multivariate}
@@ -841,7 +846,7 @@ target variable. A few examples of multivariate imputation methods are:
 \item
   Local Residual Draws (LRD)
 \end{itemize}
-Appendix E provides more information regarding multivariate imputation
+Appendix F provides more information regarding multivariate imputation
 methods available in \texttt{Autoimpute} and detail behind how each
 method works under the hood. \texttt{Autoimpute} implements regressions
 as seen in Van Buuren and implements PMM and LRD as seen in Morris et.
@@ -1211,7 +1216,7 @@ performance of the imputation process. For example, a large variance
 between metric indicates that the imputation model produces wildly
 different imputations for each dataset. Additional metrics and
 diagnostics to assess the efficiency of the imputation process appear in
-Appendix F. The authors also cover these diagnostics in the
+Appendix G. The authors also cover these diagnostics in the
 \protect\hyperlink{methodology}{Methodology} and
 \protect\hyperlink{findings}{Findings} sections.
 
@@ -1672,147 +1677,82 @@ provides links to the package and the author's website.
 \begin{table}[!h]
 
 \caption{\label{tab:appendixa}Autoimpute Sources}
-\centering
-\begin{tabular}{l|l}
-\hline
-Source & Link\\
-\hline
+\begin{tabu} to \linewidth {>{\raggedright\arraybackslash}p{5em}>{\raggedright}X}
+\toprule
+\begingroup\fontsize{13}{15}\selectfont \textbf{Source}\endgroup & \begingroup\fontsize{13}{15}\selectfont \textbf{Link}\endgroup\\
+\midrule
 Github & https://github.com/kearnz/autoimpute\\
-\hline
 PyPI & https://pypi.org/project/autoimpute/\\
-\hline
 Website & https://kearnz.github.io/autoimpute-tutorials/\\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabu}
 \end{table}
 \chapter{Notation Cheatsheet}\label{notation-cheatsheet}
-
-\subsubsection*{Notations}\label{notations}
-\addcontentsline{toc}{subsubsection}{Notations}
 \begin{table}[!h]
 
 \caption{\label{tab:appendixbnotation}Notation}
-\centering
-\begin{tabular}{l|l}
-\hline
-Source & Link\\
-\hline
+\begin{tabu} to \linewidth {>{\raggedright\arraybackslash}p{5em}>{\raggedright}X}
+\toprule
+\begingroup\fontsize{13}{15}\selectfont \textbf{Notation}\endgroup & \begingroup\fontsize{13}{15}\selectfont \textbf{Description}\endgroup\\
+\midrule
 $n$ & The number of records or observations in a matrix\\
-\hline
 $p$ & The number of columns or features in a matrix\\
-\hline
 $Y$ & The complete data matrix of observed and missing records\\
-\hline
 $Y_{obs}$ & Records within $Y$ that are completely observed for all columns $p$\\
-\hline
 $Y_{mis}$ & Records within $Y$ with a missing value in any column in $p$\\
-\hline
+\addlinespace
 $y_{ij}$ & A scalar value $y$ in row $i$ and column $j$ of matrix $Y$\\
-\hline
 $R$ & The missing indicator matrix, where each value $r_{ij} \in 0,1$\\
-\hline
 $r_{ij}$ & A scalar value $r$ in row $i$ and column $j$ of matrix $R$\\
-\hline
 $\psi$ & The parameters of the missing data model\\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabu}
 \end{table}
-\subsubsection*{Expressions}\label{expressions}
-\addcontentsline{toc}{subsubsection}{Expressions}
+\chapter{Expression Cheatsheet}\label{expression-cheatsheet}
 \begin{table}[!h]
 
-\caption{\label{tab:appendixbexpressions}Expressions}
-\centering
-\begin{tabular}{l|l}
-\hline
-Source & Link\\
-\hline
+\caption{\label{tab:appendixcexpressions}Expressions}
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X}
+\toprule
+\begingroup\fontsize{13}{15}\selectfont \textbf{Expression}\endgroup & \begingroup\fontsize{13}{15}\selectfont \textbf{Description}\endgroup\\
+\midrule
 $Y = (Y_{mis}, Y_{obs})$ & The complete data matrix equals the conjoined observed and missing data matrices\\
-\hline
 $r_{ij} = 0$ & When a value $r_{ij}=0$, the corresponding value $y_{ij}$ is missing\\
-\hline
 $r_{ij} = 1$ & When a value $r_{ij}=1$, the corresponding value $y_{ij}$ is observed\\
-\hline
 $P(R\mid Y_{obs}, Y_{mis},\psi)$ & General expression for a missing data model. Also the form for MNAR, which does not reduce\\
-\hline
 $P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid \psi)$ & The reducible form of the missing data model under MCAR\\
-\hline
+\addlinespace
 $P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid Y_{obs}, \psi)$ & The reducible form of the missing data model under MAR\\
-\hline
 $P(Y_{mis}\mid Y_{obs}, R)$ & General expression for an imputation model\\
-\hline
 $P(Y\mid Y_{obs}, R=1) = P(Y\mid Y_{obs}, R=0)$ & If ignorability holds, missing and observed data come from the same underlying distribution. Under this condition, imputation models can safely ignore $\psi$\\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabu}
 \end{table}
 \chapter{Concepts Related to
 Missingness}\label{concepts-related-to-missingness}
-\begin{longtable}[]{@{}ll@{}}
+\begin{table}[!h]
+
+\caption{\label{tab:appendixdconcepts}Concepts}
+\begin{tabu} to \linewidth {>{\raggedright\arraybackslash}p{20em}>{\raggedright}X}
 \toprule
-\begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
-Concept\strut
-\end{minipage} & \begin{minipage}[b]{0.71\columnwidth}\raggedright\strut
-Definition\strut
-\end{minipage}\tabularnewline
+\begingroup\fontsize{13}{15}\selectfont \textbf{Concept}\endgroup & \begingroup\fontsize{13}{15}\selectfont \textbf{Definition}\endgroup\\
 \midrule
-\endhead
-\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
-complete data matrix\strut
-\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
-The complete matrix \(Y\), which is comprised of both observed and
-unobserved records\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
-missing indicator matrix\strut
-\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
-The missing indicator \(R\), which indicates which values in \(Y\) are
-missing or not\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
-missing data mechanism\strut
-\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
-Process that governs the relationship between observe data and
-probability of missingness\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
-missing data model\strut
-\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
-General expression that formalizes the relationship specified by the
-missing data mechanism\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
-missing completely at random (MCAR)\strut
-\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
-A missing data mechanism in which missingness depends on \(\psi\)
-only\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
-missing at random (MAR)\strut
-\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
-A missing data mechanism in which missingness depends on \(Y_{obs}\) and
-\(\psi\) only\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
-missing not at random (MNAR)\strut
-\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
-A missing data mechanism in which missingness depends on \(Y_{obs}\),
-\(Y_{mis}\), and \(\psi\)\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
-ignorability\strut
-\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
-A set of criteria required for imputation models to safely ignore the
-parameters of the missing data model \(\psi\). MAR and MCAR are
-considered ignorable\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
-imputation model\strut
-\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
-An algorithm used to replace missing values in a dataset with plausible
-imputations\strut
-\end{minipage}\tabularnewline
+complete data matrix & The complete matrix $Y$, which is comprised of both observed and unobserved records\\
+missing indicator matrix & The missing indicator $R$, which indicates which values in $Y$ are missing or not\\
+missing data mechanism & Process that governs the relationship between observe data and probability of missingness\\
+missing data model & General expression that formalizes the relationship specified by the missing data mechanism\\
+missing completely at random (MCAR) & A missing data mechanism in which missingness depends on $\psi$ only\\
+\addlinespace
+missing at random (MAR) & A missing data mechanism in which missingness depends on $Y_{obs}$ and $\psi$ only\\
+missing not at random (MNAR) & A missing data mechanism in which missingness depends on $Y_{obs}$, $Y_{mis}$, and $\psi$\\
+ignorability & A set of criteria required for imputation models to safely ignore the parameters of the missing data model $\psi$. MAR and MCAR are considered ignorable\\
+missing data method & A method used to handle missing data. The two types of missing data methods are deletion and imputation\\
+deletion & A missing data method by which records with any missing observations are discarded from the dataset. Deletion is generally synonymous with listwise deletion or complete case analysis. The terms are used interchangeably to refer to deletion methods\\
+\addlinespace
+imputation model & An missing data method by which missing values in a dataset are replaced with plausible imputations from an imputation model\\
 \bottomrule
-\end{longtable}
+\end{tabu}
+\end{table}
 \chapter{Univariate Imputation
 Methods}\label{univariate-imputation-methods}
 

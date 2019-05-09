@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.4)  8 MAY 2019 23:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.4)  9 MAY 2019 01:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -652,31 +652,95 @@ Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
 \multirow@cntb=\count128
 \multirow@dima=\skip69
 \bigstrutjot=\dimen145
+)
+(/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.st
+y
+Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
+\everycr=\toks33
+\minrowclearance=\skip70
+)
+(/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/makecell/makecell.st
+y
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen146
+\c@nlinenum=\count129
+\TeXr@lab=\toks34
+) (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.c
+fg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/tabu/tabu.sty
+Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
+
+(/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.st
+y
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box39
+\sift@deathcycles=\count130
+\@vwid@loff=\dimen147
+\@vwid@roff=\dimen148
+)
+\c@taburow=\count131
+\tabu@nbcols=\count132
+\tabu@cnt=\count133
+\tabu@Xcol=\count134
+\tabu@alloc=\count135
+\tabu@nested=\count136
+\tabu@target=\dimen149
+\tabu@spreadtarget=\dimen150
+\tabu@naturalX=\dimen151
+\tabucolX=\dimen152
+\tabu@Xsum=\dimen153
+\extrarowdepth=\dimen154
+\abovetabulinesep=\dimen155
+\belowtabulinesep=\dimen156
+\tabustrutrule=\dimen157
+\tabu@thebody=\toks35
+\tabu@footnotes=\toks36
+\tabu@box=\box40
+\tabu@arstrutbox=\box41
+\tabu@hleads=\box42
+\tabu@vleads=\box43
+\tabu@cellskip=\skip71
 ) (./UChicago-MScA-Capstone.aux)
 \openout1 = `UChicago-MScA-Capstone.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 170.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 170.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 172.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 172.
 
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 170.
-LaTeX Font Info:    ... okay on input line 170.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 170.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 172.
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
@@ -700,14 +764,14 @@ e
 ))
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 170.
+less on input line 172.
 
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 170.
+less on input line 172.
 
-\AtBeginShipoutBox=\box39
-Package hyperref Info: Link coloring OFF on input line 170.
+\AtBeginShipoutBox=\box44
+Package hyperref Info: Link coloring OFF on input line 172.
 
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -716,11 +780,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 tring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count129
+\c@section@level=\count137
 )
-LaTeX Info: Redefining \ref on input line 170.
-LaTeX Info: Redefining \pageref on input line 170.
-LaTeX Info: Redefining \nameref on input line 170.
+LaTeX Info: Redefining \ref on input line 172.
+LaTeX Info: Redefining \pageref on input line 172.
+LaTeX Info: Redefining \nameref on input line 172.
 (./UChicago-MScA-Capstone.out) (./UChicago-MScA-Capstone.out)
 \@outlinefile=\write4
 \openout4 = `UChicago-MScA-Capstone.out'.
@@ -728,47 +792,47 @@ LaTeX Info: Redefining \nameref on input line 170.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <18> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 174.
-LaTeX Font Info:    Calculating math sizes for size <14> on input line 174.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 176.
+LaTeX Font Info:    Calculating math sizes for size <14> on input line 176.
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 17
-4.
+6.
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OML+ztmcm on input line 17
-4.
+6.
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OMS+ztmcm on input line 17
-4.
+6.
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Try loading font information for OMX+ztmcm on input line 17
-4.
+6.
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 174.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 176.
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <8.40009> not available
-(Font)              size <8> substituted on input line 174.
+(Font)              size <8> substituted on input line 176.
 
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 174.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 176.
 
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 174.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 176.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.36008> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 174.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 176.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8.40009> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 174.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 176.
 [1
 Non-PDF special ignored!
 <special> !% University of Chicago Graham MScA 2018/10/18
@@ -781,12 +845,12 @@ map}]pdfTeX warning (ext4): destination with the same identifier (name{page.1})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.175 \frontmatter
+l.177 \frontmatter
                    % this stuff will be roman-numbered [1]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 180.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 182.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 194.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 196.
 [1
 
 
@@ -820,18 +884,18 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 [6
 
 ]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 250.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 252.
 
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 260.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 262.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.297 
+l.299 
        [1
 
 
@@ -846,63 +910,53 @@ This may cause the page layout to be inconsistent, however.
 
 ]
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 432.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 440.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 434.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 442.
 
 (/Users/josephkearney/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [4] [5] [6] [7] [8] [9] [10]
-Underfull \hbox (badness 1648) in paragraph at lines 844--849
-\T1/ptm/m/n/12 Appendix E pro-vides more in-for-ma-tion re-gard-ing mul-ti-vari
+Underfull \hbox (badness 1742) in paragraph at lines 849--854
+\T1/ptm/m/n/12 Appendix F pro-vides more in-for-ma-tion re-gard-ing mul-ti-vari
 -ate im-pu-ta-tion meth-ods
  []
 
 [11] [12]
-<figure/multiple-imputation-workflow.jpg, id=357, 633.36626pt x 368.37625pt>
+<figure/multiple-imputation-workflow.jpg, id=364, 633.36626pt x 368.37625pt>
 File: figure/multiple-imputation-workflow.jpg Graphic file (type jpg)
 <use figure/multiple-imputation-workflow.jpg>
 Package pdftex.def Info: figure/multiple-imputation-workflow.jpg  used on input
- line 939.
+ line 944.
 (pdftex.def)             Requested size: 401.50146pt x 233.52284pt.
 [13 <./figure/multiple-imputation-workflow.jpg>]
-<figure/scale-distribution.jpg, id=367, 699.61375pt x 431.6125pt>
+<figure/scale-distribution.jpg, id=374, 699.61375pt x 431.6125pt>
 File: figure/scale-distribution.jpg Graphic file (type jpg)
 <use figure/scale-distribution.jpg>
-Package pdftex.def Info: figure/scale-distribution.jpg  used on input line 985.
+Package pdftex.def Info: figure/scale-distribution.jpg  used on input line 990.
 
 (pdftex.def)             Requested size: 401.50146pt x 247.70107pt.
 [14] [15 <./figure/scale-distribution.jpg>] [16] [17] [18] [19] [20]
-<figure/full-side-by-side.jpg, id=405, 736.7525pt x 482.80376pt>
+<figure/full-side-by-side.jpg, id=412, 736.7525pt x 482.80376pt>
 File: figure/full-side-by-side.jpg Graphic file (type jpg)
 <use figure/full-side-by-side.jpg>
-Package pdftex.def Info: figure/full-side-by-side.jpg  used on input line 1291.
+Package pdftex.def Info: figure/full-side-by-side.jpg  used on input line 1296.
 
 (pdftex.def)             Requested size: 301.1261pt x 197.33199pt.
 [21
 
 ]
-<figure/full-joint.jpg, id=410, 487.8225pt x 479.7925pt>
+<figure/full-joint.jpg, id=417, 487.8225pt x 479.7925pt>
 File: figure/full-joint.jpg Graphic file (type jpg)
 <use figure/full-joint.jpg>
-Package pdftex.def Info: figure/full-joint.jpg  used on input line 1301.
+Package pdftex.def Info: figure/full-joint.jpg  used on input line 1306.
 (pdftex.def)             Requested size: 301.1261pt x 296.17244pt.
-<figure/full-regression.jpg, id=411, 474.77374pt x 76.285pt>
+<figure/full-regression.jpg, id=418, 474.77374pt x 76.285pt>
 File: figure/full-regression.jpg Graphic file (type jpg)
 <use figure/full-regression.jpg>
-Package pdftex.def Info: figure/full-regression.jpg  used on input line 1313.
+Package pdftex.def Info: figure/full-regression.jpg  used on input line 1318.
 (pdftex.def)             Requested size: 301.1261pt x 48.38571pt.
 [22 <./figure/full-side-by-side.jpg> <./figure/full-joint.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 1326--1328
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1328--1330
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1330--1333
+Underfull \hbox (badness 10000) in paragraph at lines 1331--1333
 
  []
 
@@ -917,115 +971,125 @@ Underfull \hbox (badness 10000) in paragraph at lines 1335--1338
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1338--1341
+Underfull \hbox (badness 10000) in paragraph at lines 1338--1340
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1341--1343
+Underfull \hbox (badness 10000) in paragraph at lines 1340--1343
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1343--1345
+Underfull \hbox (badness 10000) in paragraph at lines 1343--1346
 
  []
 
-<figure/y-mis-forty-loc.jpg, id=418, 742.775pt x 478.78876pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1346--1348
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1348--1350
+
+ []
+
+<figure/y-mis-forty-loc.jpg, id=425, 742.775pt x 478.78876pt>
 File: figure/y-mis-forty-loc.jpg Graphic file (type jpg)
 <use figure/y-mis-forty-loc.jpg>
-Package pdftex.def Info: figure/y-mis-forty-loc.jpg  used on input line 1369.
+Package pdftex.def Info: figure/y-mis-forty-loc.jpg  used on input line 1374.
 (pdftex.def)             Requested size: 301.1261pt x 194.10564pt.
-<figure/y-mis-forty-bar.jpg, id=419, 762.85pt x 509.905pt>
+<figure/y-mis-forty-bar.jpg, id=426, 762.85pt x 509.905pt>
 File: figure/y-mis-forty-bar.jpg Graphic file (type jpg)
 <use figure/y-mis-forty-bar.jpg>
-Package pdftex.def Info: figure/y-mis-forty-bar.jpg  used on input line 1377.
+Package pdftex.def Info: figure/y-mis-forty-bar.jpg  used on input line 1382.
 (pdftex.def)             Requested size: 301.1261pt x 201.27411pt.
 [23 <./figure/full-regression.jpg>]
-<figure/multi-mean.jpg, id=426, 513.92pt x 499.8675pt>
+<figure/multi-mean.jpg, id=433, 513.92pt x 499.8675pt>
 File: figure/multi-mean.jpg Graphic file (type jpg)
 <use figure/multi-mean.jpg>
-Package pdftex.def Info: figure/multi-mean.jpg  used on input line 1403.
+Package pdftex.def Info: figure/multi-mean.jpg  used on input line 1408.
 (pdftex.def)             Requested size: 301.1261pt x 292.89801pt.
 [24 <./figure/y-mis-forty-loc.jpg> <./figure/y-mis-forty-bar.jpg>]
-<figure/swarm-mean.jpg, id=433, 663.47874pt x 422.57875pt>
+<figure/swarm-mean.jpg, id=440, 663.47874pt x 422.57875pt>
 File: figure/swarm-mean.jpg Graphic file (type jpg)
 <use figure/swarm-mean.jpg>
-Package pdftex.def Info: figure/swarm-mean.jpg  used on input line 1411.
+Package pdftex.def Info: figure/swarm-mean.jpg  used on input line 1416.
 (pdftex.def)             Requested size: 301.1261pt x 191.79002pt.
 [25 <./figure/multi-mean.jpg> <./figure/swarm-mean.jpg>]
-<figure/multi-lm.jpg, id=440, 501.875pt x 498.86375pt>
+<figure/multi-lm.jpg, id=448, 501.875pt x 498.86375pt>
 File: figure/multi-lm.jpg Graphic file (type jpg)
 <use figure/multi-lm.jpg>
-Package pdftex.def Info: figure/multi-lm.jpg  used on input line 1430.
+Package pdftex.def Info: figure/multi-lm.jpg  used on input line 1435.
 (pdftex.def)             Requested size: 301.1261pt x 299.33578pt.
-<figure/swarm-lm.jpg, id=441, 666.49pt x 419.5675pt>
+<figure/swarm-lm.jpg, id=449, 666.49pt x 419.5675pt>
 File: figure/swarm-lm.jpg Graphic file (type jpg)
 <use figure/swarm-lm.jpg>
-Package pdftex.def Info: figure/swarm-lm.jpg  used on input line 1438.
+Package pdftex.def Info: figure/swarm-lm.jpg  used on input line 1443.
 (pdftex.def)             Requested size: 301.1261pt x 189.56548pt.
 [26 <./figure/multi-lm.jpg> <./figure/swarm-lm.jpg>]
-<figure/multi-pmm.jpg, id=449, 505.89pt x 502.87875pt>
+<figure/multi-pmm.jpg, id=456, 505.89pt x 502.87875pt>
 File: figure/multi-pmm.jpg Graphic file (type jpg)
 <use figure/multi-pmm.jpg>
-Package pdftex.def Info: figure/multi-pmm.jpg  used on input line 1454.
+Package pdftex.def Info: figure/multi-pmm.jpg  used on input line 1459.
 (pdftex.def)             Requested size: 301.1261pt x 299.3355pt.
-<figure/swarm-pmm.jpg, id=450, 664.4825pt x 419.5675pt>
+<figure/swarm-pmm.jpg, id=457, 664.4825pt x 419.5675pt>
 File: figure/swarm-pmm.jpg Graphic file (type jpg)
 <use figure/swarm-pmm.jpg>
-Package pdftex.def Info: figure/swarm-pmm.jpg  used on input line 1462.
+Package pdftex.def Info: figure/swarm-pmm.jpg  used on input line 1467.
 (pdftex.def)             Requested size: 301.1261pt x 190.13525pt.
 [27 <./figure/multi-pmm.jpg>] [28 <./figure/swarm-pmm.jpg>]
 File: figure/full-regression.jpg Graphic file (type jpg)
 <use figure/full-regression.jpg>
-Package pdftex.def Info: figure/full-regression.jpg  used on input line 1520.
+Package pdftex.def Info: figure/full-regression.jpg  used on input line 1525.
 (pdftex.def)             Requested size: 301.1261pt x 48.38571pt.
-<figure/mcar-listwise-delete.jpg, id=461, 487.8225pt x 77.28876pt>
+<figure/mcar-listwise-delete.jpg, id=468, 487.8225pt x 77.28876pt>
 File: figure/mcar-listwise-delete.jpg Graphic file (type jpg)
 <use figure/mcar-listwise-delete.jpg>
 Package pdftex.def Info: figure/mcar-listwise-delete.jpg  used on input line 15
-36.
+41.
 (pdftex.def)             Requested size: 301.1261pt x 47.70978pt.
-<figure/mcar-mean.jpg, id=462, 513.92pt x 75.28125pt>
+<figure/mcar-mean.jpg, id=469, 513.92pt x 75.28125pt>
 File: figure/mcar-mean.jpg Graphic file (type jpg)
 <use figure/mcar-mean.jpg>
-Package pdftex.def Info: figure/mcar-mean.jpg  used on input line 1545.
+Package pdftex.def Info: figure/mcar-mean.jpg  used on input line 1550.
 (pdftex.def)             Requested size: 301.1261pt x 44.11113pt.
 [29
 
  <./figure/mcar-listwise-delete.jpg>]
-<figure/mcar-ls.jpg, id=469, 511.9125pt x 73.27374pt>
+<figure/mcar-ls.jpg, id=476, 511.9125pt x 73.27374pt>
 File: figure/mcar-ls.jpg Graphic file (type jpg)
 <use figure/mcar-ls.jpg>
-Package pdftex.def Info: figure/mcar-ls.jpg  used on input line 1554.
+Package pdftex.def Info: figure/mcar-ls.jpg  used on input line 1559.
 (pdftex.def)             Requested size: 301.1261pt x 43.10254pt.
-<figure/mcar-pmm.jpg, id=470, 563.10374pt x 74.2775pt>
+<figure/mcar-pmm.jpg, id=477, 563.10374pt x 74.2775pt>
 File: figure/mcar-pmm.jpg Graphic file (type jpg)
 <use figure/mcar-pmm.jpg>
-Package pdftex.def Info: figure/mcar-pmm.jpg  used on input line 1563.
+Package pdftex.def Info: figure/mcar-pmm.jpg  used on input line 1568.
 (pdftex.def)             Requested size: 301.1261pt x 39.72049pt.
-<figure/mar-listwise-delete.jpg, id=471, 516.93124pt x 77.28876pt>
+<figure/mar-listwise-delete.jpg, id=478, 516.93124pt x 77.28876pt>
 File: figure/mar-listwise-delete.jpg Graphic file (type jpg)
 <use figure/mar-listwise-delete.jpg>
-Package pdftex.def Info: figure/mar-listwise-delete.jpg  used on input line 157
-9.
+Package pdftex.def Info: figure/mar-listwise-delete.jpg  used on input line 158
+4.
 (pdftex.def)             Requested size: 301.1261pt x 45.02444pt.
-<figure/mar-mean.jpg, id=472, 542.025pt x 76.285pt>
+<figure/mar-mean.jpg, id=479, 542.025pt x 76.285pt>
 File: figure/mar-mean.jpg Graphic file (type jpg)
 <use figure/mar-mean.jpg>
-Package pdftex.def Info: figure/mar-mean.jpg  used on input line 1588.
+Package pdftex.def Info: figure/mar-mean.jpg  used on input line 1593.
 (pdftex.def)             Requested size: 301.1261pt x 42.38173pt.
-<figure/mar-ls.jpg, id=473, 545.03625pt x 72.27pt>
+<figure/mar-ls.jpg, id=480, 545.03625pt x 72.27pt>
 File: figure/mar-ls.jpg Graphic file (type jpg)
 <use figure/mar-ls.jpg>
-Package pdftex.def Info: figure/mar-ls.jpg  used on input line 1597.
+Package pdftex.def Info: figure/mar-ls.jpg  used on input line 1602.
 (pdftex.def)             Requested size: 301.1261pt x 39.92836pt.
 [30 <./figure/mcar-mean.jpg> <./figure/mcar-ls.jpg> <./figure/mcar-pmm.jpg> <./
 figure/mar-listwise-delete.jpg> <./figure/mar-mean.jpg>]
-<figure/mar-pmm.jpg, id=483, 631.35875pt x 75.28125pt>
+<figure/mar-pmm.jpg, id=490, 631.35875pt x 75.28125pt>
 File: figure/mar-pmm.jpg Graphic file (type jpg)
 <use figure/mar-pmm.jpg>
-Package pdftex.def Info: figure/mar-pmm.jpg  used on input line 1606.
+Package pdftex.def Info: figure/mar-pmm.jpg  used on input line 1611.
 (pdftex.def)             Requested size: 301.1261pt x 35.90599pt.
 [31 <./figure/mar-ls.jpg> <./figure/mar-pmm.jpg>] [32
 
@@ -1037,11 +1101,6 @@ Appendix A.
 
 ]
 Appendix B.
-
-Overfull \hbox (540.66333pt too wide) in paragraph at lines 1726--1747
- [][] 
- []
-
 [35
 
 ]
@@ -1050,55 +1109,65 @@ Appendix C.
 
 ]
 Appendix D.
+
+LaTeX Warning: Float too large for page by 10.6396pt on input line 1755.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 [37
 
-]
+] [38]
 Appendix E.
-[38
-
-]
-Appendix F.
 [39
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1830--1833
+Appendix F.
+[40
+
+]
+Appendix G.
+[41
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1770--1773
 []$\T1/lmtt/m/n/12 https : / / statisticalhorizons . com / wp -[] content / upl
 oads / MissingDataByML .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1841--1844
+Underfull \hbox (badness 10000) in paragraph at lines 1781--1784
 \T1/lmtt/m/n/12 / / stats . idre . ucla . edu / sas / modules / sas -[] learnin
 g -[] moduleintroduction -[] to -[]
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1867.
-[40
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1807.
+[42
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1867.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1807.
 (./UChicago-MScA-Capstone.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1867.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1867.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1807.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1807.
 
 Package rerunfilecheck Info: File `UChicago-MScA-Capstone.out' has not changed.
 
-(rerunfilecheck)             Checksum: 4B95F11170548F886AD7EAADE67237D9;2604.
+(rerunfilecheck)             Checksum: AD9E51BDFEB2D7033140E4EC4102DAC8;2674.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.40009pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1867.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1807.
  ) 
 Here is how much of TeX's memory you used:
- 9523 strings out of 494555
- 143920 string characters out of 6174256
- 234788 words of memory out of 5000000
- 12822 multiletter control sequences out of 15000+600000
- 60075 words of font info for 109 fonts, out of 8000000 for 9000
+ 10833 strings out of 494555
+ 161166 string characters out of 6174256
+ 263124 words of memory out of 5000000
+ 14108 multiletter control sequences out of 15000+600000
+ 64522 words of font info for 112 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,12n,45p,925b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,17n,45p,925b,547s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/josephkearney/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
 {/Users/josephkearney/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<
 /Users/josephkearney/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/
@@ -1112,10 +1181,10 @@ y/TinyTeX/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></Users/josephkearney/Libr
 ary/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/josephkearney/L
 ibrary/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/josephkearne
 y/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on UChicago-MScA-Capstone.pdf (48 pages, 2843626 bytes).
+Output written on UChicago-MScA-Capstone.pdf (50 pages, 2844820 bytes).
 PDF statistics:
- 605 PDF objects out of 1000 (max. 8388607)
- 498 compressed objects within 5 object streams
- 137 named destinations out of 1000 (max. 500000)
- 410 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 619 PDF objects out of 1000 (max. 8388607)
+ 509 compressed objects within 6 object streams
+ 138 named destinations out of 1000 (max. 500000)
+ 418 words of extra memory for PDF output out of 10000 (max. 10000000)
 

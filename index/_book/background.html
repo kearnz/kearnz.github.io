@@ -105,10 +105,11 @@
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-autoimpute-references.html"><a href="A-autoimpute-references.html"><i class="fa fa-check"></i><b>A</b> Autoimpute References</a></li>
 <li class="chapter" data-level="B" data-path="B-notation-cheatsheet.html"><a href="B-notation-cheatsheet.html"><i class="fa fa-check"></i><b>B</b> Notation Cheatsheet</a></li>
-<li class="chapter" data-level="C" data-path="C-concepts-related-to-missingness.html"><a href="C-concepts-related-to-missingness.html"><i class="fa fa-check"></i><b>C</b> Concepts Related to Missingness</a></li>
-<li class="chapter" data-level="D" data-path="D-univariate-imputation-methods.html"><a href="D-univariate-imputation-methods.html"><i class="fa fa-check"></i><b>D</b> Univariate Imputation Methods</a></li>
-<li class="chapter" data-level="E" data-path="E-multivariate-imputation-methods.html"><a href="E-multivariate-imputation-methods.html"><i class="fa fa-check"></i><b>E</b> Multivariate Imputation Methods</a></li>
-<li class="chapter" data-level="F" data-path="F-analysis-models-and-diagnostics.html"><a href="F-analysis-models-and-diagnostics.html"><i class="fa fa-check"></i><b>F</b> Analysis Models and Diagnostics</a></li>
+<li class="chapter" data-level="C" data-path="C-expression-cheatsheet.html"><a href="C-expression-cheatsheet.html"><i class="fa fa-check"></i><b>C</b> Expression Cheatsheet</a></li>
+<li class="chapter" data-level="D" data-path="D-concepts-related-to-missingness.html"><a href="D-concepts-related-to-missingness.html"><i class="fa fa-check"></i><b>D</b> Concepts Related to Missingness</a></li>
+<li class="chapter" data-level="E" data-path="E-univariate-imputation-methods.html"><a href="E-univariate-imputation-methods.html"><i class="fa fa-check"></i><b>E</b> Univariate Imputation Methods</a></li>
+<li class="chapter" data-level="F" data-path="F-multivariate-imputation-methods.html"><a href="F-multivariate-imputation-methods.html"><i class="fa fa-check"></i><b>F</b> Multivariate Imputation Methods</a></li>
+<li class="chapter" data-level="G" data-path="G-analysis-models-and-diagnostics.html"><a href="G-analysis-models-and-diagnostics.html"><i class="fa fa-check"></i><b>G</b> Analysis Models and Diagnostics</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -206,6 +207,7 @@
 <p>Before the authors examine missing data methods, they clarify some terminology upfront to avoid confusion later on:</p>
 <ul>
 <li>A <strong>missing data method</strong> is a strategy to handle missing data. The two types of methods are deletion and imputation.</li>
+<li><strong>Deletion</strong> is a strategy to handle missing data. Deletion methods are missing data methods within the deletion category.</li>
 <li>An <strong>imputation model</strong> is a strategy used to impute missing data. Imputation models are missing data methods within the imputation category.</li>
 <li>An <strong>analysis model</strong> is a machine learning model that a researcher wants to apply to an underlying dataset. Because analysis models require complete data, the practicioner must perform either deletion or imputation to enable an analyis model to run.</li>
 </ul>
@@ -229,7 +231,7 @@
 <h4>Univariate</h4>
 <p>Univariate imputation techniques focus on a single incomplete variable known as the target variable (Van Buuren, 2018, ch. 3). Univariate methods utilize observed values in the target variable to determine how to fill in missing values in the same target. Mean imputation is a popular example of a univariate method. When applied, mean imputation takes the mean of the observed features within a target variable and imputes missing values with the mean. This imputation method extends to any descriptive statistic that one can calculate from a single target variable’s observed data. Additional examples include median and mode imputation, which follow a similar process but use a different statistic for imputation.</p>
 <p>Univariate measures do not have to impute a single static value. For example, linear interpolation employs linear curve fitting to construct imputations for missing values between two observed data points. Therefore, imputations from linear interpolation depend upon the closest observed values, so the value of an imputation will differ from one section of the data to another.</p>
-<p>The only requirement for univariate methods is that they use information contained within the observed values of the same variable they are designed to impute. Appendix D goes into greater detail of all the univariate methods that the researchers support in <code>Autoimpute</code>.</p>
+<p>The only requirement for univariate methods is that they use information contained within the observed values of the same variable they are designed to impute. Appendix E goes into greater detail of all the univariate methods that the researchers support in <code>Autoimpute</code>.</p>
 </div>
 <div id="multivariate" class="section level4 unnumbered">
 <h4>Multivariate</h4>
@@ -250,7 +252,7 @@
 <li>Predictive Mean Matching (PMM)</li>
 <li>Local Residual Draws (LRD)</li>
 </ul>
-<p>Appendix E provides more information regarding multivariate imputation methods available in <code>Autoimpute</code> and detail behind how each method works under the hood. <code>Autoimpute</code> implements regressions as seen in Van Buuren and implements PMM and LRD as seen in Morris et. al.</p>
+<p>Appendix F provides more information regarding multivariate imputation methods available in <code>Autoimpute</code> and detail behind how each method works under the hood. <code>Autoimpute</code> implements regressions as seen in Van Buuren and implements PMM and LRD as seen in Morris et. al.</p>
 </div>
 </div>
 </div>
@@ -340,7 +342,7 @@ Figure .: Distribution of Weight by Scale Surface
 <p>The final formula represents the total variance:</p>
 <p><span class="math display">\[T = \bar U + B + B/m\]</span> This equation is the <strong>total variance</strong> for the pooled parameter estimate of <span class="math inline">\(\bar Q\)</span>. It adds the variance within to the variance beween to the additional variance from a finite number of imputations, <span class="math inline">\(m\)</span>. Note that as <span class="math inline">\(m \rightarrow \infty\)</span>, the last part of this equation goes to <span class="math inline">\(0\)</span>. But because one cannot perform an infinite number of imputations, additional variance must be added to account for the number of imputations the researcher conducts (Van Buuren, 2018, ch. 2.3).</p>
 <p>Therefore, the analysis model for multiply imputed data is parameterized by <span class="math inline">\(\bar Q\)</span> and <span class="math inline">\(T\)</span>. These parameters pool each individual analysis model applied to <span class="math inline">\(m\)</span> imputed datasets and produce one analysis model that accurately measures the coefficient estimate and accounts for the variance that results from imputing data.</p>
-<p>While the process is more involved, analysis of multiply imputed data fully captures the impact of missingness and the effect of imputation. The pooled parameters also provide insights into the efficiency and performance of the imputation process. For example, a large variance between metric indicates that the imputation model produces wildly different imputations for each dataset. Additional metrics and diagnostics to assess the efficiency of the imputation process appear in Appendix F. The authors also cover these diagnostics in the <a href="methodology.html#methodology">Methodology</a> and <a href="findings.html#findings">Findings</a> sections.</p>
+<p>While the process is more involved, analysis of multiply imputed data fully captures the impact of missingness and the effect of imputation. The pooled parameters also provide insights into the efficiency and performance of the imputation process. For example, a large variance between metric indicates that the imputation model produces wildly different imputations for each dataset. Additional metrics and diagnostics to assess the efficiency of the imputation process appear in Appendix G. The authors also cover these diagnostics in the <a href="methodology.html#methodology">Methodology</a> and <a href="findings.html#findings">Findings</a> sections.</p>
 </div>
 </div>
 <div id="background-missing-data-autoimpute" class="section level2 unnumbered">

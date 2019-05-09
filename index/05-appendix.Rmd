@@ -21,17 +21,17 @@ text_tbl <- data.frame(
   )
 )
 
-kable(text_tbl, caption = "Autoimpute Sources", escape = FALSE) %>%
-  kable_styling(latex_options = "hold_position")
+kable(text_tbl, caption="Autoimpute Sources", booktabs=TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, latex_options="hold_position") %>%
+  row_spec(0, bold=TRUE, font_size=13) %>%
+  column_spec(1, width="5em")
 ```
 
 # Notation Cheatsheet
 
-#### Notations {.unnumbered}
-
 ```{r appendixbnotation, echo=FALSE, warning=FALSE}
 text_tbl <- data.frame(
-  Source = c(
+  Notation = c(
     "$n$",
     "$p$",
     "$Y$",
@@ -41,7 +41,7 @@ text_tbl <- data.frame(
     "$R$",
     "$r_{ij}$",
     "$\\psi$"),
-  Link = c(
+  Description = c(
     "The number of records or observations in a matrix",
     "The number of columns or features in a matrix",
     "The complete data matrix of observed and missing records",
@@ -54,16 +54,18 @@ text_tbl <- data.frame(
   )
 )
 
-kable(text_tbl, caption = "Notation", escape=FALSE) %>%
-  kable_styling(latex_options = "hold_position")
+kable(text_tbl, caption ="Notation", booktabs=TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, latex_options="hold_position") %>%
+  row_spec(0, bold=TRUE, font_size=13) %>%
+  column_spec(1, width="5em")
 ```
 
-#### Expressions {.unnumbered}
+# Expression Cheatsheet
 
-```{r appendixbexpressions, echo=FALSE, warning=FALSE}
+```{r appendixcexpressions, echo=FALSE, warning=FALSE}
 
 text_tbl <- data.frame(
-  Source = c(
+  Expression = c(
     "$Y = (Y_{mis}, Y_{obs})$",
     "$r_{ij} = 0$",
     "$r_{ij} = 1$",
@@ -73,7 +75,7 @@ text_tbl <- data.frame(
     "$P(Y_{mis}\\mid Y_{obs}, R)$",
     "$P(Y\\mid Y_{obs}, R=1) = P(Y\\mid Y_{obs}, R=0)$"
     ),
-  Link = c(
+  Description = c(
     "The complete data matrix equals the conjoined observed and missing data matrices",
     "When a value $r_{ij}=0$, the corresponding value $y_{ij}$ is missing",
     "When a value $r_{ij}=1$, the corresponding value $y_{ij}$ is observed",
@@ -85,24 +87,50 @@ text_tbl <- data.frame(
   )
 )
 
-kable(text_tbl, caption = "Expressions", escape = FALSE) %>%
-  kable_styling(latex_options = "hold_position")
+kable(text_tbl, caption="Expressions", booktabs=TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, latex_options="hold_position") %>%
+  row_spec(0, bold=TRUE, font_size=13)
 ```
 
 
 # Concepts Related to Missingness
 
-| Concept                             | Definition                                                           
-| :---------------------------------- | :---------------------------------------------------------------------------------------------------------------
-| complete data matrix                | The complete matrix $Y$, which is comprised of both observed and unobserved records
-| missing indicator matrix            | The missing indicator $R$, which indicates which values in $Y$ are missing or not
-| missing data mechanism              | Process that governs the relationship between observe data and probability of missingness
-| missing data model                  | General expression that formalizes the relationship specified by the missing data mechanism
-| missing completely at random (MCAR) | A missing data mechanism in which missingness depends on $\psi$ only
-| missing at random (MAR)             | A missing data mechanism in which missingness depends on $Y_{obs}$ and $\psi$ only
-| missing not at random (MNAR)        | A missing data mechanism in which missingness depends on $Y_{obs}$, $Y_{mis}$, and $\psi$
-| ignorability                        | A set of criteria required for imputation models to safely ignore the parameters of the missing data model $\psi$. MAR and MCAR are considered ignorable
-| imputation model                    | An algorithm used to replace missing values in a dataset with plausible imputations
+```{r appendixdconcepts, echo=FALSE, warning=FALSE}
+
+text_tbl <- data.frame(
+  Concept = c(
+    "complete data matrix",
+    "missing indicator matrix",
+    "missing data mechanism",
+    "missing data model",
+    "missing completely at random (MCAR)",
+    "missing at random (MAR)",
+    "missing not at random (MNAR)",
+    "ignorability",
+    "missing data method",
+    "deletion",
+    "imputation model"
+    ),
+  Definition = c(
+    "The complete matrix $Y$, which is comprised of both observed and unobserved records",
+    "The missing indicator $R$, which indicates which values in $Y$ are missing or not",
+    "Process that governs the relationship between observe data and probability of missingness",
+    "General expression that formalizes the relationship specified by the missing data mechanism",
+    "A missing data mechanism in which missingness depends on $\\psi$ only",
+    "A missing data mechanism in which missingness depends on $Y_{obs}$ and $\\psi$ only",
+    "A missing data mechanism in which missingness depends on $Y_{obs}$, $Y_{mis}$, and $\\psi$",
+    "A set of criteria required for imputation models to safely ignore the parameters of the missing data model $\\psi$. MAR and MCAR are considered ignorable",
+    "A method used to handle missing data. The two types of missing data methods are deletion and imputation",
+    "A missing data method by which records with any missing observations are discarded from the dataset. Deletion is generally synonymous with listwise deletion or complete case analysis. The terms are used interchangeably to refer to deletion methods",
+    "An missing data method by which missing values in a dataset are replaced with plausible imputations from an imputation model"
+  )
+)
+
+kable(text_tbl, caption="Concepts", booktabs=TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, latex_options="hold_position") %>%
+  row_spec(0, bold=TRUE, font_size=13) %>%
+  column_spec(1, width="20em")
+```
 
 # Univariate Imputation Methods
 

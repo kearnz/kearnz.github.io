@@ -13,6 +13,11 @@ site: bookdown::bookdown_site
 header-includes:
   \usepackage{array}
   \usepackage{multirow}
+  \usepackage{booktabs}
+  \usepackage{colortbl}
+  \usepackage{makecell}
+  \usepackage{xcolor}
+  \usepackage{tabu}
 output: 
   phoenixdown::capstone_pdf: default
 #  phoenixdown::capstone_gitbook: default

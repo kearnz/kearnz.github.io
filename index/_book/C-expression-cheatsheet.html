@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Conclusion | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</title>
-  <meta name="description" content="Conclusion | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <title>C Expression Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</title>
+  <meta name="description" content="C Expression Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   <meta name="generator" content="bookdown  and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Conclusion | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta property="og:title" content="C Expression Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Conclusion | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta name="twitter:title" content="C Expression Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="findings.html">
-<link rel="next" href="recommendations.html">
+<link rel="prev" href="B-notation-cheatsheet.html">
+<link rel="next" href="D-concepts-related-to-missingness.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -130,17 +130,97 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conclusion" class="section level1 unnumbered">
-<h1>Conclusion</h1>
-<p>In summary, this project examines the nature of missingness and provides an end-to-end methodology for missing data &amp; imputation analysis. It focuses on four key objectives: describe and visualize the extent of the missing value problem; examine factors related to missingness; develop methods to impute missing data; and measure the impact of imputation on inference derived from supervised learning, specifically linear regression. The researchers create a open-source, Python-based package called Autoimpute to accomplish these objectives. The Autoimpute package provides methods to explore missingness, implement imputation methods, and analyze their impact on analytical models in a flexible way. This report specifically focuses on establishing a solid foundation around the concepts missing data &amp; imputation and demonstrates examples of missing data analysis with different types of missing data. Ultimately, this research provides python-focused data practitioners a tool to use to explore missingness in their datasets, perform imputation methods, and assess the impact of imputation on analytical models downstream.</p>
+<div id="expression-cheatsheet" class="section level1">
+<h1><span class="header-section-number">C</span> Expression Cheatsheet</h1>
+<table class="table" style>
+<caption>
+<span id="tab:appendixcexpressions">Table C.1: </span>Expressions
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Expression
+</th>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(Y = (Y_{mis}, Y_{obs})\)</span>
+</td>
+<td style="text-align:left;">
+The complete data matrix equals the conjoined observed and missing data matrices
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(r_{ij} = 0\)</span>
+</td>
+<td style="text-align:left;">
+When a value <span class="math inline">\(r_{ij}=0\)</span>, the corresponding value <span class="math inline">\(y_{ij}\)</span> is missing
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(r_{ij} = 1\)</span>
+</td>
+<td style="text-align:left;">
+When a value <span class="math inline">\(r_{ij}=1\)</span>, the corresponding value <span class="math inline">\(y_{ij}\)</span> is observed
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P(R\mid Y_{obs}, Y_{mis},\psi)\)</span>
+</td>
+<td style="text-align:left;">
+General expression for a missing data model. Also the form for MNAR, which does not reduce
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid \psi)\)</span>
+</td>
+<td style="text-align:left;">
+The reducible form of the missing data model under MCAR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid Y_{obs}, \psi)\)</span>
+</td>
+<td style="text-align:left;">
+The reducible form of the missing data model under MAR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P(Y_{mis}\mid Y_{obs}, R)\)</span>
+</td>
+<td style="text-align:left;">
+General expression for an imputation model
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P(Y\mid Y_{obs}, R=1) = P(Y\mid Y_{obs}, R=0)\)</span>
+</td>
+<td style="text-align:left;">
+If ignorability holds, missing and observed data come from the same underlying distribution. Under this condition, imputation models can safely ignore <span class="math inline">\(\psi\)</span>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="findings.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="recommendations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="B-notation-cheatsheet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="D-concepts-related-to-missingness.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

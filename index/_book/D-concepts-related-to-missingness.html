@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Conclusion | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</title>
-  <meta name="description" content="Conclusion | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <title>D Concepts Related to Missingness | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</title>
+  <meta name="description" content="D Concepts Related to Missingness | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   <meta name="generator" content="bookdown  and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Conclusion | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta property="og:title" content="D Concepts Related to Missingness | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Conclusion | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta name="twitter:title" content="D Concepts Related to Missingness | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="findings.html">
-<link rel="next" href="recommendations.html">
+<link rel="prev" href="C-expression-cheatsheet.html">
+<link rel="next" href="E-univariate-imputation-methods.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -130,17 +130,121 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conclusion" class="section level1 unnumbered">
-<h1>Conclusion</h1>
-<p>In summary, this project examines the nature of missingness and provides an end-to-end methodology for missing data &amp; imputation analysis. It focuses on four key objectives: describe and visualize the extent of the missing value problem; examine factors related to missingness; develop methods to impute missing data; and measure the impact of imputation on inference derived from supervised learning, specifically linear regression. The researchers create a open-source, Python-based package called Autoimpute to accomplish these objectives. The Autoimpute package provides methods to explore missingness, implement imputation methods, and analyze their impact on analytical models in a flexible way. This report specifically focuses on establishing a solid foundation around the concepts missing data &amp; imputation and demonstrates examples of missing data analysis with different types of missing data. Ultimately, this research provides python-focused data practitioners a tool to use to explore missingness in their datasets, perform imputation methods, and assess the impact of imputation on analytical models downstream.</p>
+<div id="concepts-related-to-missingness" class="section level1">
+<h1><span class="header-section-number">D</span> Concepts Related to Missingness</h1>
+<table class="table" style>
+<caption>
+<span id="tab:appendixdconcepts">Table D.1: </span>Concepts
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Concept
+</th>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Definition
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 20em; ">
+complete data matrix
+</td>
+<td style="text-align:left;">
+The complete matrix <span class="math inline">\(Y\)</span>, which is comprised of both observed and unobserved records
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20em; ">
+missing indicator matrix
+</td>
+<td style="text-align:left;">
+The missing indicator <span class="math inline">\(R\)</span>, which indicates which values in <span class="math inline">\(Y\)</span> are missing or not
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20em; ">
+missing data mechanism
+</td>
+<td style="text-align:left;">
+Process that governs the relationship between observe data and probability of missingness
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20em; ">
+missing data model
+</td>
+<td style="text-align:left;">
+General expression that formalizes the relationship specified by the missing data mechanism
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20em; ">
+missing completely at random (MCAR)
+</td>
+<td style="text-align:left;">
+A missing data mechanism in which missingness depends on <span class="math inline">\(\psi\)</span> only
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20em; ">
+missing at random (MAR)
+</td>
+<td style="text-align:left;">
+A missing data mechanism in which missingness depends on <span class="math inline">\(Y_{obs}\)</span> and <span class="math inline">\(\psi\)</span> only
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20em; ">
+missing not at random (MNAR)
+</td>
+<td style="text-align:left;">
+A missing data mechanism in which missingness depends on <span class="math inline">\(Y_{obs}\)</span>, <span class="math inline">\(Y_{mis}\)</span>, and <span class="math inline">\(\psi\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20em; ">
+ignorability
+</td>
+<td style="text-align:left;">
+A set of criteria required for imputation models to safely ignore the parameters of the missing data model <span class="math inline">\(\psi\)</span>. MAR and MCAR are considered ignorable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20em; ">
+missing data method
+</td>
+<td style="text-align:left;">
+A method used to handle missing data. The two types of missing data methods are deletion and imputation
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20em; ">
+deletion
+</td>
+<td style="text-align:left;">
+A missing data method by which records with any missing observations are discarded from the dataset. Deletion is generally synonymous with listwise deletion or complete case analysis. The terms are used interchangeably to refer to deletion methods
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 20em; ">
+imputation model
+</td>
+<td style="text-align:left;">
+An missing data method by which missing values in a dataset are replaced with plausible imputations from an imputation model
+</td>
+</tr>
+</tbody>
+</table>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="findings.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="recommendations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="C-expression-cheatsheet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="E-univariate-imputation-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

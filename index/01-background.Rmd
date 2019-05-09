@@ -121,6 +121,7 @@ Missing data mechanisms that satisfy ignorability provide the foundation for the
 Before the authors examine missing data methods, they clarify some terminology upfront to avoid confusion later on:
 
 * A **missing data method** is a strategy to handle missing data. The two types of methods are deletion and imputation.
+* **Deletion** is a strategy to handle missing data. Deletion methods are missing data methods within the deletion category.
 * An **imputation model** is a strategy used to impute missing data. Imputation models are missing data methods within the imputation category.
 * An **analysis model** is a machine learning model that a researcher wants to apply to an underlying dataset. Because analysis models require complete data, the practicioner must perform either deletion or imputation to enable an analyis model to run.
 
@@ -151,7 +152,7 @@ Univariate imputation techniques focus on a single incomplete variable known as 
 
 Univariate measures do not have to impute a single static value. For example, linear interpolation employs linear curve fitting to construct imputations for missing values between two observed data points. Therefore, imputations from linear interpolation depend upon the closest observed values, so the value of an imputation will differ from one section of the data to another. 
 
-The only requirement for univariate methods is that they use information contained within the observed values of the same variable they are designed to impute. Appendix D goes into greater detail of all the univariate methods that the researchers support in `Autoimpute`. 
+The only requirement for univariate methods is that they use information contained within the observed values of the same variable they are designed to impute. Appendix E goes into greater detail of all the univariate methods that the researchers support in `Autoimpute`. 
 
 #### Multivariate {#multivariate .unnumbered}
 
@@ -178,7 +179,7 @@ Practitioners use the above statistics to understand the importance of and relat
 * Predictive Mean Matching (PMM)
 * Local Residual Draws (LRD)
 
-Appendix E provides more information regarding multivariate imputation methods available in `Autoimpute` and detail behind how each method works under the hood. `Autoimpute` implements regressions as seen in Van Buuren and implements PMM and LRD as seen in Morris et. al.
+Appendix F provides more information regarding multivariate imputation methods available in `Autoimpute` and detail behind how each method works under the hood. `Autoimpute` implements regressions as seen in Van Buuren and implements PMM and LRD as seen in Morris et. al.
 
 ## Single Imputation {#background-single-imputation .unnumbered}
 
@@ -297,7 +298,7 @@ This equation is the **total variance** for the pooled parameter estimate of $\b
 
 Therefore, the analysis model for multiply imputed data is parameterized by $\bar Q$ and $T$. These parameters pool each individual analysis model applied to $m$ imputed datasets and produce one analysis model that accurately measures the coefficient estimate and accounts for the variance that results from imputing data.
 
-While the process is more involved, analysis of multiply imputed data fully captures the impact of missingness and the effect of imputation. The pooled parameters also provide insights into the efficiency and performance of the imputation process. For example, a large variance between metric indicates that the imputation model produces wildly different imputations for each dataset. Additional metrics and diagnostics to assess the efficiency of the imputation process appear in Appendix F. The authors also cover these diagnostics in the [Methodology](#methodology) and [Findings](#findings) sections.
+While the process is more involved, analysis of multiply imputed data fully captures the impact of missingness and the effect of imputation. The pooled parameters also provide insights into the efficiency and performance of the imputation process. For example, a large variance between metric indicates that the imputation model produces wildly different imputations for each dataset. Additional metrics and diagnostics to assess the efficiency of the imputation process appear in Appendix G. The authors also cover these diagnostics in the [Methodology](#methodology) and [Findings](#findings) sections.
 
 ## Missing Data and Autoimpute {#background-missing-data-autoimpute .unnumbered}
 

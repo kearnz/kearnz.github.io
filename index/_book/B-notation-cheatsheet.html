@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="A-autoimpute-references.html">
-<link rel="next" href="C-concepts-related-to-missingness.html">
+<link rel="next" href="C-expression-cheatsheet.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -105,10 +105,11 @@
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-autoimpute-references.html"><a href="A-autoimpute-references.html"><i class="fa fa-check"></i><b>A</b> Autoimpute References</a></li>
 <li class="chapter" data-level="B" data-path="B-notation-cheatsheet.html"><a href="B-notation-cheatsheet.html"><i class="fa fa-check"></i><b>B</b> Notation Cheatsheet</a></li>
-<li class="chapter" data-level="C" data-path="C-concepts-related-to-missingness.html"><a href="C-concepts-related-to-missingness.html"><i class="fa fa-check"></i><b>C</b> Concepts Related to Missingness</a></li>
-<li class="chapter" data-level="D" data-path="D-univariate-imputation-methods.html"><a href="D-univariate-imputation-methods.html"><i class="fa fa-check"></i><b>D</b> Univariate Imputation Methods</a></li>
-<li class="chapter" data-level="E" data-path="E-multivariate-imputation-methods.html"><a href="E-multivariate-imputation-methods.html"><i class="fa fa-check"></i><b>E</b> Multivariate Imputation Methods</a></li>
-<li class="chapter" data-level="F" data-path="F-analysis-models-and-diagnostics.html"><a href="F-analysis-models-and-diagnostics.html"><i class="fa fa-check"></i><b>F</b> Analysis Models and Diagnostics</a></li>
+<li class="chapter" data-level="C" data-path="C-expression-cheatsheet.html"><a href="C-expression-cheatsheet.html"><i class="fa fa-check"></i><b>C</b> Expression Cheatsheet</a></li>
+<li class="chapter" data-level="D" data-path="D-concepts-related-to-missingness.html"><a href="D-concepts-related-to-missingness.html"><i class="fa fa-check"></i><b>D</b> Concepts Related to Missingness</a></li>
+<li class="chapter" data-level="E" data-path="E-univariate-imputation-methods.html"><a href="E-univariate-imputation-methods.html"><i class="fa fa-check"></i><b>E</b> Univariate Imputation Methods</a></li>
+<li class="chapter" data-level="F" data-path="F-multivariate-imputation-methods.html"><a href="F-multivariate-imputation-methods.html"><i class="fa fa-check"></i><b>F</b> Multivariate Imputation Methods</a></li>
+<li class="chapter" data-level="G" data-path="G-analysis-models-and-diagnostics.html"><a href="G-analysis-models-and-diagnostics.html"><i class="fa fa-check"></i><b>G</b> Analysis Models and Diagnostics</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -131,104 +132,95 @@
             <section class="normal" id="section-">
 <div id="notation-cheatsheet" class="section level1">
 <h1><span class="header-section-number">B</span> Notation Cheatsheet</h1>
-<div id="notations" class="section level4 unnumbered">
-<h4>Notations</h4>
-<table>
+<table class="table" style>
+<caption>
+<span id="tab:appendixbnotation">Table B.1: </span>Notation
+</caption>
 <thead>
-<tr class="header">
-<th align="left">Notation</th>
-<th align="left">Definition</th>
+<tr>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Notation
+</th>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Description
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(n\)</span></td>
-<td align="left">The number of records or observations in a matrix</td>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(n\)</span>
+</td>
+<td style="text-align:left;">
+The number of records or observations in a matrix
+</td>
 </tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(p\)</span></td>
-<td align="left">The number of columns or features in a matrix</td>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(p\)</span>
+</td>
+<td style="text-align:left;">
+The number of columns or features in a matrix
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><span class="math inline">\(Y\)</span></td>
-<td align="left">The complete data matrix of observed and missing records</td>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(Y\)</span>
+</td>
+<td style="text-align:left;">
+The complete data matrix of observed and missing records
+</td>
 </tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(Y_{obs}\)</span></td>
-<td align="left">Records within <span class="math inline">\(Y\)</span> that are completely observed for all columns <span class="math inline">\(p\)</span></td>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(Y_{obs}\)</span>
+</td>
+<td style="text-align:left;">
+Records within <span class="math inline">\(Y\)</span> that are completely observed for all columns <span class="math inline">\(p\)</span>
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><span class="math inline">\(Y_{mis}\)</span></td>
-<td align="left">Records within <span class="math inline">\(Y\)</span> with a missing value in any column in <span class="math inline">\(p\)</span></td>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(Y_{mis}\)</span>
+</td>
+<td style="text-align:left;">
+Records within <span class="math inline">\(Y\)</span> with a missing value in any column in <span class="math inline">\(p\)</span>
+</td>
 </tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(y_{ij}\)</span></td>
-<td align="left">A scalar value <span class="math inline">\(y\)</span> in row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span> of matrix <span class="math inline">\(Y\)</span></td>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(y_{ij}\)</span>
+</td>
+<td style="text-align:left;">
+A scalar value <span class="math inline">\(y\)</span> in row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span> of matrix <span class="math inline">\(Y\)</span>
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><span class="math inline">\(R\)</span></td>
-<td align="left">The missing indicator matrix, where each value <span class="math inline">\(r_{ij} \in 0,1\)</span></td>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(R\)</span>
+</td>
+<td style="text-align:left;">
+The missing indicator matrix, where each value <span class="math inline">\(r_{ij} \in 0,1\)</span>
+</td>
 </tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(r_{ij}\)</span></td>
-<td align="left">A scalar value <span class="math inline">\(r\)</span> in row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span> of matrix <span class="math inline">\(R\)</span></td>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(r_{ij}\)</span>
+</td>
+<td style="text-align:left;">
+A scalar value <span class="math inline">\(r\)</span> in row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span> of matrix <span class="math inline">\(R\)</span>
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><span class="math inline">\(\psi\)</span></td>
-<td align="left">The parameters of the missing data model</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="expressions" class="section level4 unnumbered">
-<h4>Expressions</h4>
-<table>
-<colgroup>
-<col width="23%" />
-<col width="76%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Expression</th>
-<th align="left">Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><span class="math inline">\(Y = (Y_{mis}, Y_{obs})\)</span></td>
-<td align="left">The complete data matrix equals the conjoined observed and missing data matrices</td>
-</tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(r_{ij} = 0\)</span></td>
-<td align="left">When a value <span class="math inline">\(r_{ij}=0\)</span>, the corresponding value <span class="math inline">\(y_{ij}\)</span> is missing</td>
-</tr>
-<tr class="odd">
-<td align="left"><span class="math inline">\(r_{ij} = 1\)</span></td>
-<td align="left">When a value <span class="math inline">\(r_{ij}=1\)</span>, the corresponding value <span class="math inline">\(y_{ij}\)</span> is observed</td>
-</tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(P(R\mid Y_{obs}, Y_{mis},\psi)\)</span></td>
-<td align="left">General expression for a missing data model. Also the form for MNAR, which does not reduce</td>
-</tr>
-<tr class="odd">
-<td align="left"><span class="math inline">\(P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid \psi)\)</span></td>
-<td align="left">The reducible form of the missing data model under MCAR</td>
-</tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid Y_{obs}, \psi)\)</span></td>
-<td align="left">The reducible form of the missing data model under MAR</td>
-</tr>
-<tr class="odd">
-<td align="left"><span class="math inline">\(P(Y_{mis}\mid Y_{obs}, R)\)</span></td>
-<td align="left">General expression for an imputation model</td>
-</tr>
-<tr class="even">
-<td align="left"><span class="math inline">\(P(Y\mid Y_{obs}, R=1) = P(Y\mid Y_{obs}, R=0)\)</span></td>
-<td align="left">If ignorability holds, missing and observed data come from the same underlying distribution. Under this condition, imputation models can safely ignore <span class="math inline">\(\psi\)</span></td>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+The parameters of the missing data model
+</td>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
             </section>
 
@@ -236,7 +228,7 @@
         </div>
       </div>
 <a href="A-autoimpute-references.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="C-concepts-related-to-missingness.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="C-expression-cheatsheet.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
