@@ -46,6 +46,7 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 
@@ -130,10 +131,10 @@
             <section class="normal" id="section-">
 <div id="concepts-related-to-missingness" class="section level1">
 <h1><span class="header-section-number">C</span> Concepts Related to Missingness</h1>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="26%" />
-<col width="73%" />
+<col width="24%" />
+<col width="75%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -149,6 +150,34 @@
 <tr class="even">
 <td align="left">missing indicator matrix</td>
 <td align="left">The missing indicator <span class="math inline">\(R\)</span>, which indicates which values in <span class="math inline">\(Y\)</span> are missing or not</td>
+</tr>
+<tr class="odd">
+<td align="left">missing data mechanism</td>
+<td align="left">Process that governs the relationship between observe data and probability of missingness</td>
+</tr>
+<tr class="even">
+<td align="left">missing data model</td>
+<td align="left">General expression that formalizes the relationship specified by the missing data mechanism</td>
+</tr>
+<tr class="odd">
+<td align="left">missing completely at random (MCAR)</td>
+<td align="left">A missing data mechanism in which missingness depends on <span class="math inline">\(\psi\)</span> only</td>
+</tr>
+<tr class="even">
+<td align="left">missing at random (MAR)</td>
+<td align="left">A missing data mechanism in which missingness depends on <span class="math inline">\(Y_{obs}\)</span> and <span class="math inline">\(\psi\)</span> only</td>
+</tr>
+<tr class="odd">
+<td align="left">missing not at random (MNAR)</td>
+<td align="left">A missing data mechanism in which missingness depends on <span class="math inline">\(Y_{obs}\)</span>, <span class="math inline">\(Y_{mis}\)</span>, and <span class="math inline">\(\psi\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">ignorability</td>
+<td align="left">A set of criteria required for imputation models to safely ignore the parameters of the missing data model <span class="math inline">\(\psi\)</span>. MAR and MCAR are considered ignorable</td>
+</tr>
+<tr class="odd">
+<td align="left">imputation model</td>
+<td align="left">An algorithm used to replace missing values in a dataset with plausible imputations</td>
 </tr>
 </tbody>
 </table>

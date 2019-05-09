@@ -9,35 +9,100 @@ If you feel it necessary to include an appendix, it goes here.
 
 # Autoimpute References
 
+`Autoimpute` is an open-source Python package distributed under the MIT license. The package is hosted on github and registered with the official Python Package Index. The authors also host a website that explores Autoimpute in more detail and provides in-depth tutorials on how end-users can get the most out of the package. The table below provides links to the package and the author's website.
+
+```{r appendixa, echo=FALSE, warning=FALSE}
+text_tbl <- data.frame(
+  Source = c("Github", "PyPI", "Website"),
+  Link = c(
+    "https://github.com/kearnz/autoimpute",
+    "https://pypi.org/project/autoimpute/",
+    "https://kearnz.github.io/autoimpute-tutorials/"
+  )
+)
+
+kable(text_tbl, caption = "Autoimpute Sources", escape = FALSE) %>%
+  kable_styling(latex_options = "hold_position")
+```
+
 # Notation Cheatsheet
 
 #### Notations {.unnumbered}
 
-| Notation    | Definition                                                           
-| :---------- | :--------------------------------------------------------------------------------------------
-| $n$         | The number of records or observations in a matrix                        
-| $p$         | The number of columns or features in a matrix
-| $Y$         | The complete data matrix of observed and missing records
-| $Y_{obs}$   | Records within $Y$ that are completely observed for all columns $p$
-| $Y_{mis}$   | Records within $Y$ with a missing value in any column in $p$
-| $y_{ij}$    | A scalar value $y$ in row $i$ and column $j$ of matrix $Y$
-| $R$         | The missing indicator matrix, where each value $r_{ij} \in 0,1$
-| $r_{ij}$    | A scalar value $r$ in row $i$ and column $j$ of matrix $R$
+```{r appendixbnotation, echo=FALSE, warning=FALSE}
+text_tbl <- data.frame(
+  Source = c(
+    "$n$",
+    "$p$",
+    "$Y$",
+    "$Y_{obs}$",
+    "$Y_{mis}$",
+    "$y_{ij}$",
+    "$R$",
+    "$r_{ij}$",
+    "$\\psi$"),
+  Link = c(
+    "The number of records or observations in a matrix",
+    "The number of columns or features in a matrix",
+    "The complete data matrix of observed and missing records",
+    "Records within $Y$ that are completely observed for all columns $p$",
+    "Records within $Y$ with a missing value in any column in $p$",
+    "A scalar value $y$ in row $i$ and column $j$ of matrix $Y$",
+    "The missing indicator matrix, where each value $r_{ij} \\in 0,1$",
+    "A scalar value $r$ in row $i$ and column $j$ of matrix $R$",
+    "The parameters of the missing data model"
+  )
+)
+
+kable(text_tbl, caption = "Notation", escape=FALSE) %>%
+  kable_styling(latex_options = "hold_position")
+```
 
 #### Expressions {.unnumbered}
 
-| Expression               | Definition                                                           
-| :----------------------- | :-------------------------------------------------------------------------------
-| $Y = (Y_{mis}, Y_{obs})$ | The complete data matrix equals the conjoined observed and missing data matrices
-| $r_{ij} = 0$             | When a value $r_{ij}=0$, the corresponding value $y_{ij}$ is missing
-| $r_{ij} = 1$             | When a value $r_{ij}=1$, the corresponding value $y_{ij}$ is observed
+```{r appendixbexpressions, echo=FALSE, warning=FALSE}
+
+text_tbl <- data.frame(
+  Source = c(
+    "$Y = (Y_{mis}, Y_{obs})$",
+    "$r_{ij} = 0$",
+    "$r_{ij} = 1$",
+    "$P(R\\mid Y_{obs}, Y_{mis},\\psi)$",
+    "$P(R=0\\mid Y_{obs},Y_{mis},\\psi) = P(R=0\\mid \\psi)$",
+    "$P(R=0\\mid Y_{obs},Y_{mis},\\psi) = P(R=0\\mid Y_{obs}, \\psi)$",
+    "$P(Y_{mis}\\mid Y_{obs}, R)$",
+    "$P(Y\\mid Y_{obs}, R=1) = P(Y\\mid Y_{obs}, R=0)$"
+    ),
+  Link = c(
+    "The complete data matrix equals the conjoined observed and missing data matrices",
+    "When a value $r_{ij}=0$, the corresponding value $y_{ij}$ is missing",
+    "When a value $r_{ij}=1$, the corresponding value $y_{ij}$ is observed",
+    "General expression for a missing data model. Also the form for MNAR, which does not reduce",
+    "The reducible form of the missing data model under MCAR",
+    "The reducible form of the missing data model under MAR",
+    "General expression for an imputation model",
+    "If ignorability holds, missing and observed data come from the same underlying distribution. Under this condition, imputation models can safely ignore $\\psi$"
+  )
+)
+
+kable(text_tbl, caption = "Expressions", escape = FALSE) %>%
+  kable_styling(latex_options = "hold_position")
+```
+
 
 # Concepts Related to Missingness
 
-| Concept                       | Definition                                                           
-| :---------------------------- | :----------------------------------------------------------------------------------
-| complete data matrix          | The complete matrix $Y$, which is comprised of both observed and unobserved records
-| missing indicator matrix      | The missing indicator $R$, which indicates which values in $Y$ are missing or not
+| Concept                             | Definition                                                           
+| :---------------------------------- | :---------------------------------------------------------------------------------------------------------------
+| complete data matrix                | The complete matrix $Y$, which is comprised of both observed and unobserved records
+| missing indicator matrix            | The missing indicator $R$, which indicates which values in $Y$ are missing or not
+| missing data mechanism              | Process that governs the relationship between observe data and probability of missingness
+| missing data model                  | General expression that formalizes the relationship specified by the missing data mechanism
+| missing completely at random (MCAR) | A missing data mechanism in which missingness depends on $\psi$ only
+| missing at random (MAR)             | A missing data mechanism in which missingness depends on $Y_{obs}$ and $\psi$ only
+| missing not at random (MNAR)        | A missing data mechanism in which missingness depends on $Y_{obs}$, $Y_{mis}$, and $\psi$
+| ignorability                        | A set of criteria required for imputation models to safely ignore the parameters of the missing data model $\psi$. MAR and MCAR are considered ignorable
+| imputation model                    | An algorithm used to replace missing values in a dataset with plausible imputations
 
 # Univariate Imputation Methods
 

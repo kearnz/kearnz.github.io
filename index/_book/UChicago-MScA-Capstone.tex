@@ -161,6 +161,7 @@ complexity as they would like while they grapple with missing data.
 }
 
 
+	\usepackage{array} \usepackage{multirow}
 % End of CII addition
 %%
 %% End Preamble
@@ -1662,79 +1663,153 @@ Autoimpute package or any interesting results you find in your analyses.
 
 \chapter{Autoimpute References}\label{autoimpute-references}
 
+\texttt{Autoimpute} is an open-source Python package distributed under
+the MIT license. The package is hosted on github and registered with the
+official Python Package Index. The authors also host a website that
+explores Autoimpute in more detail and provides in-depth tutorials on
+how end-users can get the most out of the package. The table below
+provides links to the package and the author's website.
+\begin{table}[!h]
+
+\caption{\label{tab:appendixa}Autoimpute Sources}
+\centering
+\begin{tabular}{l|l}
+\hline
+Source & Link\\
+\hline
+Github & https://github.com/kearnz/autoimpute\\
+\hline
+PyPI & https://pypi.org/project/autoimpute/\\
+\hline
+Website & https://kearnz.github.io/autoimpute-tutorials/\\
+\hline
+\end{tabular}
+\end{table}
 \chapter{Notation Cheatsheet}\label{notation-cheatsheet}
-\begin{longtable}[]{@{}ll@{}}
-\toprule
-Notation & Definition\tabularnewline
-\midrule
-\endhead
-\(n\) & The number of records or observations in a matrix\tabularnewline
-\(p\) & The number of columns or features in a matrix\tabularnewline
-\(Y\) & The complete data matrix of observed and missing
-records\tabularnewline
-\(Y_{obs}\) & Records within \(Y\) that are completely observed for all
-columns \(p\)\tabularnewline
-\(Y_{mis}\) & Records within \(Y\) with a missing value in any column in
-\(p\)\tabularnewline
-\(y_{ij}\) & A scalar value \(y\) in row \(i\) and column \(j\) of
-matrix \(Y\)\tabularnewline
-\(R\) & The missing indicator matrix, where each value
-\(r_{ij} \in 0,1\)\tabularnewline
-\(r_{ij}\) & A scalar value \(r\) in row \(i\) and column \(j\) of
-matrix \(R\)\tabularnewline
-\bottomrule
-\end{longtable}
-\begin{longtable}[]{@{}ll@{}}
-\toprule
-\begin{minipage}[b]{0.22\columnwidth}\raggedright\strut
-Expression\strut
-\end{minipage} & \begin{minipage}[b]{0.72\columnwidth}\raggedright\strut
-Definition\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\(Y = (Y_{mis}, Y_{obs})\)\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
-The complete data matrix equals the conjoined observed and missing data
-matrices\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\(r_{ij} = 0\)\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
-When a value \(r_{ij}=0\), the corresponding value \(y_{ij}\) is
-missing\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.22\columnwidth}\raggedright\strut
-\(r_{ij}=1\)\strut
-\end{minipage} & \begin{minipage}[t]{0.72\columnwidth}\raggedright\strut
-When a value \(r_{ij}=1\), the corresponding value \(y_{ij}\) is
-observed\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+
+\subsubsection*{Notations}\label{notations}
+\addcontentsline{toc}{subsubsection}{Notations}
+\begin{table}[!h]
+
+\caption{\label{tab:appendixbnotation}Notation}
+\centering
+\begin{tabular}{l|l}
+\hline
+Source & Link\\
+\hline
+$n$ & The number of records or observations in a matrix\\
+\hline
+$p$ & The number of columns or features in a matrix\\
+\hline
+$Y$ & The complete data matrix of observed and missing records\\
+\hline
+$Y_{obs}$ & Records within $Y$ that are completely observed for all columns $p$\\
+\hline
+$Y_{mis}$ & Records within $Y$ with a missing value in any column in $p$\\
+\hline
+$y_{ij}$ & A scalar value $y$ in row $i$ and column $j$ of matrix $Y$\\
+\hline
+$R$ & The missing indicator matrix, where each value $r_{ij} \in 0,1$\\
+\hline
+$r_{ij}$ & A scalar value $r$ in row $i$ and column $j$ of matrix $R$\\
+\hline
+$\psi$ & The parameters of the missing data model\\
+\hline
+\end{tabular}
+\end{table}
+\subsubsection*{Expressions}\label{expressions}
+\addcontentsline{toc}{subsubsection}{Expressions}
+\begin{table}[!h]
+
+\caption{\label{tab:appendixbexpressions}Expressions}
+\centering
+\begin{tabular}{l|l}
+\hline
+Source & Link\\
+\hline
+$Y = (Y_{mis}, Y_{obs})$ & The complete data matrix equals the conjoined observed and missing data matrices\\
+\hline
+$r_{ij} = 0$ & When a value $r_{ij}=0$, the corresponding value $y_{ij}$ is missing\\
+\hline
+$r_{ij} = 1$ & When a value $r_{ij}=1$, the corresponding value $y_{ij}$ is observed\\
+\hline
+$P(R\mid Y_{obs}, Y_{mis},\psi)$ & General expression for a missing data model. Also the form for MNAR, which does not reduce\\
+\hline
+$P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid \psi)$ & The reducible form of the missing data model under MCAR\\
+\hline
+$P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid Y_{obs}, \psi)$ & The reducible form of the missing data model under MAR\\
+\hline
+$P(Y_{mis}\mid Y_{obs}, R)$ & General expression for an imputation model\\
+\hline
+$P(Y\mid Y_{obs}, R=1) = P(Y\mid Y_{obs}, R=0)$ & If ignorability holds, missing and observed data come from the same underlying distribution. Under this condition, imputation models can safely ignore $\psi$\\
+\hline
+\end{tabular}
+\end{table}
 \chapter{Concepts Related to
 Missingness}\label{concepts-related-to-missingness}
 \begin{longtable}[]{@{}ll@{}}
 \toprule
-\begin{minipage}[b]{0.25\columnwidth}\raggedright\strut
+\begin{minipage}[b]{0.23\columnwidth}\raggedright\strut
 Concept\strut
-\end{minipage} & \begin{minipage}[b]{0.69\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[b]{0.71\columnwidth}\raggedright\strut
 Definition\strut
 \end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
 complete data matrix\strut
-\end{minipage} & \begin{minipage}[t]{0.69\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
 The complete matrix \(Y\), which is comprised of both observed and
 unobserved records\strut
 \end{minipage}\tabularnewline
-\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
 missing indicator matrix\strut
-\end{minipage} & \begin{minipage}[t]{0.69\columnwidth}\raggedright\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
 The missing indicator \(R\), which indicates which values in \(Y\) are
 missing or not\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+missing data mechanism\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
+Process that governs the relationship between observe data and
+probability of missingness\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+missing data model\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
+General expression that formalizes the relationship specified by the
+missing data mechanism\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+missing completely at random (MCAR)\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
+A missing data mechanism in which missingness depends on \(\psi\)
+only\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+missing at random (MAR)\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
+A missing data mechanism in which missingness depends on \(Y_{obs}\) and
+\(\psi\) only\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+missing not at random (MNAR)\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
+A missing data mechanism in which missingness depends on \(Y_{obs}\),
+\(Y_{mis}\), and \(\psi\)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+ignorability\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
+A set of criteria required for imputation models to safely ignore the
+parameters of the missing data model \(\psi\). MAR and MCAR are
+considered ignorable\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.23\columnwidth}\raggedright\strut
+imputation model\strut
+\end{minipage} & \begin{minipage}[t]{0.71\columnwidth}\raggedright\strut
+An algorithm used to replace missing values in a dataset with plausible
+imputations\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}

@@ -10,9 +10,12 @@ degree: 'Master of Science in Analytics'
 title: 'Data Analytics as a Service (DAaaS): Automated & Intelligent Imputation Methods for Supervised Machine Learning'
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
+header-includes:
+  \usepackage{array}
+  \usepackage{multirow}
 output: 
-#  phoenixdown::capstone_pdf: default
-  phoenixdown::capstone_gitbook: default
+  phoenixdown::capstone_pdf: default
+#  phoenixdown::capstone_gitbook: default
 #  phoenixdown::capstone_word: default
 #  phoenixdown::capstone_epub: default
 #
@@ -76,6 +79,7 @@ If you receive a duplicate label error after knitting, delete the extra .Rmd fil
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(knitr)
+library(kableExtra)
 ```
 
 # Introduction {.unnumbered}
