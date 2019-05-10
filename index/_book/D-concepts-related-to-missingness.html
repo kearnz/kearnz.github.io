@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="C-expression-cheatsheet.html">
+<link rel="prev" href="C-missingess-expression-cheatsheet.html">
 <link rel="next" href="E-univariate-imputation-methods.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -104,8 +104,8 @@
 <li class="chapter" data-level="" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i>Recommendations</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-autoimpute-references.html"><a href="A-autoimpute-references.html"><i class="fa fa-check"></i><b>A</b> Autoimpute References</a></li>
-<li class="chapter" data-level="B" data-path="B-notation-cheatsheet.html"><a href="B-notation-cheatsheet.html"><i class="fa fa-check"></i><b>B</b> Notation Cheatsheet</a></li>
-<li class="chapter" data-level="C" data-path="C-expression-cheatsheet.html"><a href="C-expression-cheatsheet.html"><i class="fa fa-check"></i><b>C</b> Expression Cheatsheet</a></li>
+<li class="chapter" data-level="B" data-path="B-missingness-notation-cheatsheet.html"><a href="B-missingness-notation-cheatsheet.html"><i class="fa fa-check"></i><b>B</b> Missingness Notation Cheatsheet</a></li>
+<li class="chapter" data-level="C" data-path="C-missingess-expression-cheatsheet.html"><a href="C-missingess-expression-cheatsheet.html"><i class="fa fa-check"></i><b>C</b> Missingess Expression Cheatsheet</a></li>
 <li class="chapter" data-level="D" data-path="D-concepts-related-to-missingness.html"><a href="D-concepts-related-to-missingness.html"><i class="fa fa-check"></i><b>D</b> Concepts Related to Missingness</a></li>
 <li class="chapter" data-level="E" data-path="E-univariate-imputation-methods.html"><a href="E-univariate-imputation-methods.html"><i class="fa fa-check"></i><b>E</b> Univariate Imputation Methods</a></li>
 <li class="chapter" data-level="F" data-path="F-multivariate-imputation-methods.html"><a href="F-multivariate-imputation-methods.html"><i class="fa fa-check"></i><b>F</b> Multivariate Imputation Methods</a></li>
@@ -148,91 +148,155 @@ Definition
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 20em; ">
+<td style="text-align:left;width: 10em; ">
 complete data matrix
 </td>
 <td style="text-align:left;">
-The complete matrix <span class="math inline">\(Y\)</span>, which is comprised of both observed and unobserved records
+The complete matrix <span class="math inline">\(Y\)</span>, which is comprised of <span class="math inline">\(Y_{obs}\)</span> and <span class="math inline">\(Y_{mis}\)</span>
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 20em; ">
+<td style="text-align:left;width: 10em; ">
 missing indicator matrix
 </td>
 <td style="text-align:left;">
-The missing indicator <span class="math inline">\(R\)</span>, which indicates which values in <span class="math inline">\(Y\)</span> are missing or not
+Missing indicator <span class="math inline">\(R\)</span> suggests which values in <span class="math inline">\(Y\)</span> are missing
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 20em; ">
+<td style="text-align:left;width: 10em; ">
 missing data mechanism
 </td>
 <td style="text-align:left;">
-Process that governs the relationship between observe data and probability of missingness
+Process that governs relationship b/w observed and <span class="math inline">\(P(missing)\)</span>
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 20em; ">
+<td style="text-align:left;width: 10em; ">
 missing data model
 </td>
 <td style="text-align:left;">
-General expression that formalizes the relationship specified by the missing data mechanism
+Formalizes relationship specified by missing data mechanism
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 20em; ">
-missing completely at random (MCAR)
+<td style="text-align:left;width: 10em; ">
+MCAR
 </td>
 <td style="text-align:left;">
-A missing data mechanism in which missingness depends on <span class="math inline">\(\psi\)</span> only
+Missing data mechanism depends on <span class="math inline">\(\psi\)</span> only
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 20em; ">
-missing at random (MAR)
+<td style="text-align:left;width: 10em; ">
+MAR
 </td>
 <td style="text-align:left;">
-A missing data mechanism in which missingness depends on <span class="math inline">\(Y_{obs}\)</span> and <span class="math inline">\(\psi\)</span> only
+Missing data mechanism depends on <span class="math inline">\(Y_{obs}\)</span> and <span class="math inline">\(\psi\)</span> only
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 20em; ">
-missing not at random (MNAR)
+<td style="text-align:left;width: 10em; ">
+MNAR
 </td>
 <td style="text-align:left;">
-A missing data mechanism in which missingness depends on <span class="math inline">\(Y_{obs}\)</span>, <span class="math inline">\(Y_{mis}\)</span>, and <span class="math inline">\(\psi\)</span>
+Missing data mechanism depends on <span class="math inline">\(Y_{obs}\)</span>, <span class="math inline">\(Y_{mis}\)</span>, and <span class="math inline">\(\psi\)</span>
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 20em; ">
+<td style="text-align:left;width: 10em; ">
 ignorability
 </td>
 <td style="text-align:left;">
-A set of criteria required for imputation models to safely ignore the parameters of the missing data model <span class="math inline">\(\psi\)</span>. MAR and MCAR are considered ignorable
+Criteria required for imputation models to ignore <span class="math inline">\(\psi\)</span>
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 20em; ">
+<td style="text-align:left;width: 10em; ">
 missing data method
 </td>
 <td style="text-align:left;">
-A method used to handle missing data. The two types of missing data methods are deletion and imputation
+Method used to handle missing data. Use deletion or imputation
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 20em; ">
+<td style="text-align:left;width: 10em; ">
 deletion
 </td>
 <td style="text-align:left;">
-A missing data method by which records with any missing observations are discarded from the dataset. Deletion is generally synonymous with listwise deletion or complete case analysis. The terms are used interchangeably to refer to deletion methods
+Discard missing values from the dataset
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 20em; ">
+<td style="text-align:left;width: 10em; ">
 imputation model
 </td>
 <td style="text-align:left;">
-An missing data method by which missing values in a dataset are replaced with plausible imputations from an imputation model
+Replace missing values with imputations from imputation model
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+target
+</td>
+<td style="text-align:left;">
+Column with missing values to be imputed
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+univariate
+</td>
+<td style="text-align:left;">
+Models using target to determine imputation for target
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+multivariate
+</td>
+<td style="text-align:left;">
+Models using features to predict imputed values for target
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+missing data pattern
+</td>
+<td style="text-align:left;">
+Pattern suggesting information transferrable b/w variables
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+single imputation
+</td>
+<td style="text-align:left;">
+Impute missing values once prior to analysis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+multiple imputation
+</td>
+<td style="text-align:left;">
+Impute missing values <span class="math inline">\(m\)</span> times prior to analysis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+influx
+</td>
+<td style="text-align:left;">
+Candidates to be imputed using the other predictors
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+outflux
+</td>
+<td style="text-align:left;">
+Variables useful as predictors to impute a target variable
 </td>
 </tr>
 </tbody>
@@ -243,7 +307,7 @@ An missing data method by which missing values in a dataset are replaced with pl
           </div>
         </div>
       </div>
-<a href="C-expression-cheatsheet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="C-missingess-expression-cheatsheet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="E-univariate-imputation-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

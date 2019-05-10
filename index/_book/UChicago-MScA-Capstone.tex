@@ -407,21 +407,21 @@ probability of being missing. The process that governs these
 probabilities is called the \textbf{missing data mechanism} (Rubin, as
 cited in Van Buuren, 2018, ch.~1.2). The missing data mechanism
 generates a statistical relationship between observations and the
-probability of missing data (Nakagawa, 2015, pg. 83). The
-\textbf{missing data model} is the function that formalizes that
-statistical relationship (Van Buuren, 2018, ch.~2.2.4). These
-statistical relationships fall into one of three categories, each of
-which represents a different missing data mechanism (Rubin, as cited in
-Van Buuren, 2018, ch.~1.2).
+probability of missing data (Nakagawa, 2015, p.~83). The \textbf{missing
+data model} is the function that formalizes that statistical
+relationship (Van Buuren, 2018, ch.~2.2.4). These statistical
+relationships fall into one of three categories, each of which
+represents a different missing data mechanism (Rubin, as cited in Van
+Buuren, 2018, ch.~1.2).
 
 The general expression for the missing data model is defined as:
 
 \[P(R|Y_{obs}, Y_{mis},\psi)\]
 
-\(\psi\) cointains the parameters of the missing data model. This
+\(\psi\) contains the parameters of the missing data model. This
 expression notes that the probability of missingness \(P(R=0)\) within a
 dataset depends on the observed data, the missing data, and the missing
-data model's parameters. (Van Buuren, 2018, ch.~2.2.4). From another
+data model's parameters (Van Buuren, 2018, ch.~2.2.4). From another
 lense, this expession states that the missing data model is the
 distribution of the missingness indicator conditional on the observed
 data, the missing data, and the parameters of the missing data model.
@@ -454,7 +454,7 @@ label. The subsections below examine each category in more detail.
 
 MCAR is the first of the three missing data mechanisms. MCAR assumes
 missing values in the underlying dataset have the same probability of
-missingness for all cases (Gelman \& Hill, 2017, pg. 530). Thus, MCAR
+missingness for all cases (Gelman \& Hill, 2017, p.~530). Thus, MCAR
 implies that the probability of missingness within a dataset is
 completely unrelated to the data in question or any other observed or
 unobserved data. The missing data model associated with MCAR is defined
@@ -484,7 +484,7 @@ are often not MCAR in the real world (Van Buuren, 2018, ch.~2.2.4).
 
 MAR is the second missing data mechanism. MAR occurs when the
 probability a given variable is missing depends on available and
-observed information only (Gelman \& Hill, 2017, pg. 530). MAR is a
+observed information only (Gelman \& Hill, 2017, p.~530). MAR is a
 weaker and more general classification of missingness than MCAR
 (Allison, 2012). The missing data model associated with MAR is defined
 as:
@@ -518,12 +518,12 @@ Missing data under MNAR may depend on observed and unobserved data, so
 the missing data model does not simplify at all. There are two major
 sub-categories that capture ``unobserved'' within MNAR. First,
 missingness may depend on the actual missing values themselves (Gelman
-\& Hill, 2017, pg. 530). When the weight of an object itself is to blame
+\& Hill, 2017, p.~530). When the weight of an object itself is to blame
 for a scale's failure to report measurements, the underlying process
 falls under this sub-category of MNAR because the probability of weight
 being missing is related to weight itself (Van Buuren, 2018, ch.~1.2).
 The second type of MNAR covers missingness that depends on unobserved
-measurements or latent variables (Gelman \& Hill, 2017, pg. 530). The
+measurements or latent variables (Gelman \& Hill, 2017, p.~530). The
 weigh scale example proposes three reasons a scale may generate missing
 measurements. These reasons do not cover countless other possibilities
 for why missing data may occur, such as the brand or age of a given
@@ -548,7 +548,7 @@ As Van Buuren notes, ``the concept of ignorability plays an important
 role in the construction of imputation models'' (2018, ch.~2.2.6).
 Specifically, ignorability determines whether one can ignore the way in
 which data are missing prior to imputing missing data through an
-imputation model (Nakagawa, 2015, Pg. 85). As stated in Introduction to
+imputation model (Nakagawa, 2015, p.~85). As stated in Introduction to
 SAS, ``the assumption of ignorability is needed for optimal estimation
 of missing information and is a required assumption'' (2017).
 
@@ -598,8 +598,8 @@ observed data only; he or she does not need to consider the missing data
 model within each subgroup, because the distribution for the observed
 and the missing data is the same (Van Buuren, 2018, ch.~2.2.6). Thus,
 the researcher can focus on the impact of the scale surface alone, as
-missing values for weight come from the same distribution as the
-observed.
+missing values for weight within a surface come from the same
+distribution as the observed.
 
 If within each surface group the distribution for missing weights
 depends further on the actual mass of the object weighed, then the
@@ -618,21 +618,22 @@ when building an imputation model. Most imputation models in literature
 assume that the missing data mechanism is ignorable. Imputation models
 relying on this assumption produced unbiased imputations if the
 assumption of ignorability holds. In the event that it does not hold,
-imputations may be systematically biased.
+imputations may be systematically biased in most cases.
 
 The imputation models introduced in subsequent sections operate under
-the assumption that the missing data mechanism is ignorable (MCAR or
-MAR). The important takeaway, however, is that the researcher considers
-the missing data mechanism responsible for generating missing data and
-understands the effect of the missing data model on an imputation
-model's ability to generate unbiased imputations. If the practicioner is
-aware of the potential consequences that stem from the missing data
-mechansim at hand, he or she is prepared to assess the benefits and
-drawbacks of each imputation model applied to a given dataset.
+the assumption that the missing data mechanism is ignorable (at least
+MAR and sometimes even MCAR). The important takeaway, however, is that
+the researcher considers the missing data mechanism responsible for
+generating missing data and understands the effect of the missing data
+model on an imputation model's ability to generate plausible
+imputations. If the practicioner is aware of the potential consequences
+that stem from the missing data mechansim at hand, he or she is prepared
+to assess the benefits and drawbacks of each imputation model applied to
+a given dataset.
 
 This section establishes a firm understanding of the concepts related to
 missing data and their implications. For an extended examination,
-consult Appendix C. Next, the authors review popular imputation models
+consult Appendix D. Next, the authors review popular imputation models
 in literature and those supported in the \texttt{Autoimpute} package.
 All the models assume ignorability, so methods for non-ignorable
 missingness are out of scope. For interested readers, many studies cover
@@ -657,11 +658,16 @@ terminology upfront to avoid confusion later on:
   The two types of methods are deletion and imputation.
 \item
   \textbf{Deletion} is a strategy to handle missing data. Deletion
-  methods are missing data methods within the deletion category.
+  represents the first class of missing data methods that handle missing
+  values.
 \item
   An \textbf{imputation model} is a strategy used to impute missing
-  data. Imputation models are missing data methods within the imputation
-  category.
+  data. Imputation represents the second class of missing data methods
+  that handle missing values.
+\item
+  Imputation models can be either \textbf{univariate} or
+  \textbf{multivariate} depending on how they go about imputing missing
+  data.
 \item
   An \textbf{analysis model} is a machine learning model that a
   researcher wants to apply to an underlying dataset. Because analysis
@@ -738,7 +744,7 @@ which method serves their use case to best meet their objectives. The
 next section explores the fundamentals behind different imputation
 methods and examines their respective strengths and weaknesses.
 
-In general, there are two major categories of imputation methods -
+In general, there are two branches of imputation methods -
 \textbf{univariate} and \textbf{multivariate}.
 
 \subsubsection*{Univariate}\label{univariate}
@@ -861,7 +867,7 @@ in dataset with imputed ones. As a result, the imputed dataset is
 complete, containing no missing values for any observation \(Y_{ij}\)
 within \(Y\). As Gelman \& Hill note, ``these methods keep the full
 sample size, which can be advantageous for bias and precision'' (2017,
-pg. 532). In comparison to list-wise deletion, imputation methods do not
+p.~532). In comparison to list-wise deletion, imputation methods do not
 discard any data; rather, they impute missing records so that no
 information is lost within the original dataset. As a result,
 statistical power is not reduced and standard errors are not inflated
@@ -874,7 +880,7 @@ imputation methods columnwise for each column with missing data and
 imputes respective missing values one time for each column. While the
 dataset is now complete, its use within analysis models can yield
 standard errors for parameter coefficients that tend to be too low
-(Gelman \& Hill, 2017, pg. 532). Gelman expands upon the issues with
+(Gelman \& Hill, 2017, p.~532). Gelman expands upon the issues with
 single imputation:
 \begin{quote}
 The intuition here is that we have substantial uncertainty about the
@@ -889,7 +895,7 @@ values in a dataset with point estimates. Those point estimates become,
 in essence, true values - indistinguishable from the originally observed
 variables. As a result, the imputations stemming from single imputation
 ignore the variability and uncertainty regarding what the true value of
-the missing value actually is (Gelman \& Hill, 2017, pg. 532). An
+the missing value actually is (Gelman \& Hill, 2017, p.~532). An
 analysis model will treat observed and imputed values the same - as true
 values with no inherent variability.
 
@@ -1049,7 +1055,7 @@ analysis. It also covers the additional work necessary to fit analysis
 models on multiply imputed data.
 
 In this research, an analysis model is nothing more than a supervised
-machine learning methods. This text restricts focus to linear and
+machine learning method. This text restricts focus to linear and
 logistic regression. Both techniques operate under the assumption that
 the underlying dataset is complete, containing no missing records. As a
 result, analysis models do not have any information regarding what
@@ -1068,7 +1074,7 @@ authors explain the potential pitfalls associated with listwise
 deletion. Depending on the proportion of missing data, listwise deletion
 may significantly deplete the sample size on which an analysis model is
 trained. In doing so, an analysis model generates larger standard errors
-for parameters estimates than it would had the dataset retained every
+for parameters' estimates than it would had the dataset retained every
 record in othe original sample. As a result, the significance of
 coefficients may be called into question. Additionally, if the missing
 data mechanism is not MCAR, listwise deletion may discard records which
@@ -1096,7 +1102,7 @@ accurately reflect the distribution of the missing data. In this case,
 the analysis model produces coefficients that may be biased depending on
 the severity of the imputation model's impact. In either situation, the
 standard error of the estimates produced from the analysis model will be
-too low (Gelman \& Hill, 2017, pg. 532). When the standard error of a
+too low (Gelman \& Hill, 2017, p.~532). When the standard error of a
 parameter estimate is too low, the test-statistic for that parameter
 will be too high, and the statistical significance of the parameter may
 be inflated.
@@ -1687,7 +1693,8 @@ Website & https://kearnz.github.io/autoimpute-tutorials/\\
 \bottomrule
 \end{tabu}
 \end{table}
-\chapter{Notation Cheatsheet}\label{notation-cheatsheet}
+\chapter{Missingness Notation
+Cheatsheet}\label{missingness-notation-cheatsheet}
 \begin{table}[!h]
 
 \caption{\label{tab:appendixbnotation}Notation}
@@ -1705,10 +1712,15 @@ $y_{ij}$ & A scalar value $y$ in row $i$ and column $j$ of matrix $Y$\\
 $R$ & The missing indicator matrix, where each value $r_{ij} \in 0,1$\\
 $r_{ij}$ & A scalar value $r$ in row $i$ and column $j$ of matrix $R$\\
 $\psi$ & The parameters of the missing data model\\
+$m$ & The number of complete datasets $Y$ to impute independently\\
+\addlinespace
+$I_j$ & The influx coefficient\\
+$O_j$ & The outflux coefficient\\
 \bottomrule
 \end{tabu}
 \end{table}
-\chapter{Expression Cheatsheet}\label{expression-cheatsheet}
+\chapter{Missingess Expression
+Cheatsheet}\label{missingess-expression-cheatsheet}
 \begin{table}[!h]
 
 \caption{\label{tab:appendixcexpressions}Expressions}
@@ -1716,15 +1728,17 @@ $\psi$ & The parameters of the missing data model\\
 \toprule
 \begingroup\fontsize{13}{15}\selectfont \textbf{Expression}\endgroup & \begingroup\fontsize{13}{15}\selectfont \textbf{Description}\endgroup\\
 \midrule
-$Y = (Y_{mis}, Y_{obs})$ & The complete data matrix equals the conjoined observed and missing data matrices\\
+$Y = (Y_{mis}, Y_{obs})$ & The complete data matrix equals the conjoined $Y_{obs}$ and $Y_{mis}$\\
 $r_{ij} = 0$ & When a value $r_{ij}=0$, the corresponding value $y_{ij}$ is missing\\
 $r_{ij} = 1$ & When a value $r_{ij}=1$, the corresponding value $y_{ij}$ is observed\\
-$P(R\mid Y_{obs}, Y_{mis},\psi)$ & General expression for a missing data model. Also the form for MNAR, which does not reduce\\
-$P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid \psi)$ & The reducible form of the missing data model under MCAR\\
+$P(R\mid Y_{obs}, Y_{mis},\psi)$ & General expression for a missing data model. Also form for MNAR\\
+$P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid \psi)$ & Reducible form of the missing data model under MCAR\\
 \addlinespace
-$P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid Y_{obs}, \psi)$ & The reducible form of the missing data model under MAR\\
+$P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid Y_{obs}, \psi)$ & Reducible form of the missing data model under MAR\\
 $P(Y_{mis}\mid Y_{obs}, R)$ & General expression for an imputation model\\
-$P(Y\mid Y_{obs}, R=1) = P(Y\mid Y_{obs}, R=0)$ & If ignorability holds, missing and observed data come from the same underlying distribution. Under this condition, imputation models can safely ignore $\psi$\\
+$P(Y\mid Y_{obs}, R=1) = P(Y\mid Y_{obs}, R=0)$ & Implication of ignorability in which imputation models can safely ignore $\psi$\\
+$I_j = \frac{\sum_j^p\sum_k^p\sum_i^n (1-r_{ij})r_{ik}}{\sum_k^p\sum_i^n r_{ik}}$ & The forumla for influx coefficient\\
+$O_j = \frac{\sum_j^p\sum_k^p\sum_i^n r_{ij}(1-r_{ik})}{\sum_k^p\sum_i^n 1-r_{ij}}$ & The formula for outflux coefficient\\
 \bottomrule
 \end{tabu}
 \end{table}
@@ -1733,23 +1747,32 @@ Missingness}\label{concepts-related-to-missingness}
 \begin{table}[!h]
 
 \caption{\label{tab:appendixdconcepts}Concepts}
-\begin{tabu} to \linewidth {>{\raggedright\arraybackslash}p{20em}>{\raggedright}X}
+\begin{tabu} to \linewidth {>{\raggedright\arraybackslash}p{10em}>{\raggedright}X}
 \toprule
 \begingroup\fontsize{13}{15}\selectfont \textbf{Concept}\endgroup & \begingroup\fontsize{13}{15}\selectfont \textbf{Definition}\endgroup\\
 \midrule
-complete data matrix & The complete matrix $Y$, which is comprised of both observed and unobserved records\\
-missing indicator matrix & The missing indicator $R$, which indicates which values in $Y$ are missing or not\\
-missing data mechanism & Process that governs the relationship between observe data and probability of missingness\\
-missing data model & General expression that formalizes the relationship specified by the missing data mechanism\\
-missing completely at random (MCAR) & A missing data mechanism in which missingness depends on $\psi$ only\\
+complete data matrix & The complete matrix $Y$, which is comprised of $Y_{obs}$ and $Y_{mis}$\\
+missing indicator matrix & Missing indicator $R$ suggests which values in $Y$ are missing\\
+missing data mechanism & Process that governs relationship b/w observed and $P(missing)$\\
+missing data model & Formalizes relationship specified by missing data mechanism\\
+MCAR & Missing data mechanism depends on $\psi$ only\\
 \addlinespace
-missing at random (MAR) & A missing data mechanism in which missingness depends on $Y_{obs}$ and $\psi$ only\\
-missing not at random (MNAR) & A missing data mechanism in which missingness depends on $Y_{obs}$, $Y_{mis}$, and $\psi$\\
-ignorability & A set of criteria required for imputation models to safely ignore the parameters of the missing data model $\psi$. MAR and MCAR are considered ignorable\\
-missing data method & A method used to handle missing data. The two types of missing data methods are deletion and imputation\\
-deletion & A missing data method by which records with any missing observations are discarded from the dataset. Deletion is generally synonymous with listwise deletion or complete case analysis. The terms are used interchangeably to refer to deletion methods\\
+MAR & Missing data mechanism depends on $Y_{obs}$ and $\psi$ only\\
+MNAR & Missing data mechanism depends on $Y_{obs}$, $Y_{mis}$, and $\psi$\\
+ignorability & Criteria required for imputation models to ignore $\psi$\\
+missing data method & Method used to handle missing data. Use deletion or imputation\\
+deletion & Discard missing values from the dataset\\
 \addlinespace
-imputation model & An missing data method by which missing values in a dataset are replaced with plausible imputations from an imputation model\\
+imputation model & Replace missing values with imputations from imputation model\\
+target & Column with missing values to be imputed\\
+univariate & Models using target to determine imputation for target\\
+multivariate & Models using features to predict imputed values for target\\
+missing data pattern & Pattern suggesting information transferrable b/w variables\\
+\addlinespace
+single imputation & Impute missing values once prior to analysis\\
+multiple imputation & Impute missing values $m$ times prior to analysis\\
+influx & Candidates to be imputed using the other predictors\\
+outflux & Variables useful as predictors to impute a target variable\\
 \bottomrule
 \end{tabu}
 \end{table}

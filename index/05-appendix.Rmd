@@ -27,7 +27,7 @@ kable(text_tbl, caption="Autoimpute Sources", booktabs=TRUE, escape=FALSE) %>%
   column_spec(1, width="5em")
 ```
 
-# Notation Cheatsheet
+# Missingness Notation Cheatsheet
 
 ```{r appendixbnotation, echo=FALSE, warning=FALSE}
 text_tbl <- data.frame(
@@ -40,7 +40,11 @@ text_tbl <- data.frame(
     "$y_{ij}$",
     "$R$",
     "$r_{ij}$",
-    "$\\psi$"),
+    "$\\psi$",
+    "$m$",
+    "$I_j$",
+    "$O_j$"
+    ),
   Description = c(
     "The number of records or observations in a matrix",
     "The number of columns or features in a matrix",
@@ -50,7 +54,10 @@ text_tbl <- data.frame(
     "A scalar value $y$ in row $i$ and column $j$ of matrix $Y$",
     "The missing indicator matrix, where each value $r_{ij} \\in 0,1$",
     "A scalar value $r$ in row $i$ and column $j$ of matrix $R$",
-    "The parameters of the missing data model"
+    "The parameters of the missing data model",
+    "The number of complete datasets $Y$ to impute independently",
+    "The influx coefficient",
+    "The outflux coefficient"
   )
 )
 
@@ -60,7 +67,7 @@ kable(text_tbl, caption ="Notation", booktabs=TRUE, escape=FALSE) %>%
   column_spec(1, width="5em")
 ```
 
-# Expression Cheatsheet
+# Missingess Expression Cheatsheet
 
 ```{r appendixcexpressions, echo=FALSE, warning=FALSE}
 
@@ -73,17 +80,21 @@ text_tbl <- data.frame(
     "$P(R=0\\mid Y_{obs},Y_{mis},\\psi) = P(R=0\\mid \\psi)$",
     "$P(R=0\\mid Y_{obs},Y_{mis},\\psi) = P(R=0\\mid Y_{obs}, \\psi)$",
     "$P(Y_{mis}\\mid Y_{obs}, R)$",
-    "$P(Y\\mid Y_{obs}, R=1) = P(Y\\mid Y_{obs}, R=0)$"
+    "$P(Y\\mid Y_{obs}, R=1) = P(Y\\mid Y_{obs}, R=0)$",
+    "$I_j = \\frac{\\sum_j^p\\sum_k^p\\sum_i^n (1-r_{ij})r_{ik}}{\\sum_k^p\\sum_i^n r_{ik}}$",
+    "$O_j = \\frac{\\sum_j^p\\sum_k^p\\sum_i^n r_{ij}(1-r_{ik})}{\\sum_k^p\\sum_i^n 1-r_{ij}}$"
     ),
   Description = c(
-    "The complete data matrix equals the conjoined observed and missing data matrices",
+    "The complete data matrix equals the conjoined $Y_{obs}$ and $Y_{mis}$",
     "When a value $r_{ij}=0$, the corresponding value $y_{ij}$ is missing",
     "When a value $r_{ij}=1$, the corresponding value $y_{ij}$ is observed",
-    "General expression for a missing data model. Also the form for MNAR, which does not reduce",
-    "The reducible form of the missing data model under MCAR",
-    "The reducible form of the missing data model under MAR",
+    "General expression for a missing data model. Also form for MNAR",
+    "Reducible form of the missing data model under MCAR",
+    "Reducible form of the missing data model under MAR",
     "General expression for an imputation model",
-    "If ignorability holds, missing and observed data come from the same underlying distribution. Under this condition, imputation models can safely ignore $\\psi$"
+    "Implication of ignorability in which imputation models can safely ignore $\\psi$",
+    "The forumla for influx coefficient",
+    "The formula for outflux coefficient"
   )
 )
 
@@ -103,33 +114,49 @@ text_tbl <- data.frame(
     "missing indicator matrix",
     "missing data mechanism",
     "missing data model",
-    "missing completely at random (MCAR)",
-    "missing at random (MAR)",
-    "missing not at random (MNAR)",
+    "MCAR",
+    "MAR",
+    "MNAR",
     "ignorability",
     "missing data method",
     "deletion",
-    "imputation model"
+    "imputation model",
+    "target",
+    "univariate",
+    "multivariate",
+    "missing data pattern",
+    "single imputation",
+    "multiple imputation",
+    "influx",
+    "outflux"
     ),
   Definition = c(
-    "The complete matrix $Y$, which is comprised of both observed and unobserved records",
-    "The missing indicator $R$, which indicates which values in $Y$ are missing or not",
-    "Process that governs the relationship between observe data and probability of missingness",
-    "General expression that formalizes the relationship specified by the missing data mechanism",
-    "A missing data mechanism in which missingness depends on $\\psi$ only",
-    "A missing data mechanism in which missingness depends on $Y_{obs}$ and $\\psi$ only",
-    "A missing data mechanism in which missingness depends on $Y_{obs}$, $Y_{mis}$, and $\\psi$",
-    "A set of criteria required for imputation models to safely ignore the parameters of the missing data model $\\psi$. MAR and MCAR are considered ignorable",
-    "A method used to handle missing data. The two types of missing data methods are deletion and imputation",
-    "A missing data method by which records with any missing observations are discarded from the dataset. Deletion is generally synonymous with listwise deletion or complete case analysis. The terms are used interchangeably to refer to deletion methods",
-    "An missing data method by which missing values in a dataset are replaced with plausible imputations from an imputation model"
+    "The complete matrix $Y$, which is comprised of $Y_{obs}$ and $Y_{mis}$",
+    "Missing indicator $R$ suggests which values in $Y$ are missing",
+    "Process that governs relationship b/w observed and $P(missing)$",
+    "Formalizes relationship specified by missing data mechanism",
+    "Missing data mechanism depends on $\\psi$ only",
+    "Missing data mechanism depends on $Y_{obs}$ and $\\psi$ only",
+    "Missing data mechanism depends on $Y_{obs}$, $Y_{mis}$, and $\\psi$",
+    "Criteria required for imputation models to ignore $\\psi$",
+    "Method used to handle missing data. Use deletion or imputation",
+    "Discard missing values from the dataset",
+    "Replace missing values with imputations from imputation model",
+    "Column with missing values to be imputed",
+    "Models using target to determine imputation for target",
+    "Models using features to predict imputed values for target",
+    "Pattern suggesting information transferrable b/w variables",
+    "Impute missing values once prior to analysis",
+    "Impute missing values $m$ times prior to analysis",
+    "Candidates to be imputed using the other predictors",
+    "Variables useful as predictors to impute a target variable"
   )
 )
 
 kable(text_tbl, caption="Concepts", booktabs=TRUE, escape=FALSE) %>%
   kable_styling(position="left", full_width=TRUE, latex_options="hold_position") %>%
-  row_spec(0, bold=TRUE, font_size=13) %>%
-  column_spec(1, width="20em")
+  row_spec(0, bold=TRUE, font_size=13)  %>%
+  column_spec(1, width="10em")
 ```
 
 # Univariate Imputation Methods

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>F Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</title>
-  <meta name="description" content="F Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <title>B Missingness Notation Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</title>
+  <meta name="description" content="B Missingness Notation Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   <meta name="generator" content="bookdown  and GitBook 2.6.7" />
 
-  <meta property="og:title" content="F Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta property="og:title" content="B Missingness Notation Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="F Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta name="twitter:title" content="B Missingness Notation Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="E-univariate-imputation-methods.html">
-<link rel="next" href="G-analysis-models-and-diagnostics.html">
+<link rel="prev" href="A-autoimpute-references.html">
+<link rel="next" href="C-missingess-expression-cheatsheet.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -130,16 +130,129 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="multivariate-imputation-methods" class="section level1">
-<h1><span class="header-section-number">F</span> Multivariate Imputation Methods</h1>
+<div id="missingness-notation-cheatsheet" class="section level1">
+<h1><span class="header-section-number">B</span> Missingness Notation Cheatsheet</h1>
+<table class="table" style>
+<caption>
+<span id="tab:appendixbnotation">Table B.1: </span>Notation
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Notation
+</th>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(n\)</span>
+</td>
+<td style="text-align:left;">
+The number of records or observations in a matrix
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(p\)</span>
+</td>
+<td style="text-align:left;">
+The number of columns or features in a matrix
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(Y\)</span>
+</td>
+<td style="text-align:left;">
+The complete data matrix of observed and missing records
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(Y_{obs}\)</span>
+</td>
+<td style="text-align:left;">
+Records within <span class="math inline">\(Y\)</span> that are completely observed for all columns <span class="math inline">\(p\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(Y_{mis}\)</span>
+</td>
+<td style="text-align:left;">
+Records within <span class="math inline">\(Y\)</span> with a missing value in any column in <span class="math inline">\(p\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(y_{ij}\)</span>
+</td>
+<td style="text-align:left;">
+A scalar value <span class="math inline">\(y\)</span> in row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span> of matrix <span class="math inline">\(Y\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(R\)</span>
+</td>
+<td style="text-align:left;">
+The missing indicator matrix, where each value <span class="math inline">\(r_{ij} \in 0,1\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(r_{ij}\)</span>
+</td>
+<td style="text-align:left;">
+A scalar value <span class="math inline">\(r\)</span> in row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span> of matrix <span class="math inline">\(R\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(\psi\)</span>
+</td>
+<td style="text-align:left;">
+The parameters of the missing data model
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(m\)</span>
+</td>
+<td style="text-align:left;">
+The number of complete datasets <span class="math inline">\(Y\)</span> to impute independently
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(I_j\)</span>
+</td>
+<td style="text-align:left;">
+The influx coefficient
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+<span class="math inline">\(O_j\)</span>
+</td>
+<td style="text-align:left;">
+The outflux coefficient
+</td>
+</tr>
+</tbody>
+</table>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="E-univariate-imputation-methods.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="G-analysis-models-and-diagnostics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="A-autoimpute-references.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="C-missingess-expression-cheatsheet.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

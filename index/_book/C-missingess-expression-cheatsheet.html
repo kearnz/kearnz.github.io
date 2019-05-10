@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>F Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</title>
-  <meta name="description" content="F Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <title>C Missingess Expression Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning</title>
+  <meta name="description" content="C Missingess Expression Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   <meta name="generator" content="bookdown  and GitBook 2.6.7" />
 
-  <meta property="og:title" content="F Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta property="og:title" content="C Missingess Expression Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="F Multivariate Imputation Methods | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
+  <meta name="twitter:title" content="C Missingess Expression Cheatsheet | Data Analytics as a Service (DAaaS): Automated &amp; Intelligent Imputation Methods for Supervised Machine Learning" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="E-univariate-imputation-methods.html">
-<link rel="next" href="G-analysis-models-and-diagnostics.html">
+<link rel="prev" href="B-missingness-notation-cheatsheet.html">
+<link rel="next" href="D-concepts-related-to-missingness.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -130,16 +130,113 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="multivariate-imputation-methods" class="section level1">
-<h1><span class="header-section-number">F</span> Multivariate Imputation Methods</h1>
+<div id="missingess-expression-cheatsheet" class="section level1">
+<h1><span class="header-section-number">C</span> Missingess Expression Cheatsheet</h1>
+<table class="table" style>
+<caption>
+<span id="tab:appendixcexpressions">Table C.1: </span>Expressions
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Expression
+</th>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(Y = (Y_{mis}, Y_{obs})\)</span>
+</td>
+<td style="text-align:left;">
+The complete data matrix equals the conjoined <span class="math inline">\(Y_{obs}\)</span> and <span class="math inline">\(Y_{mis}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(r_{ij} = 0\)</span>
+</td>
+<td style="text-align:left;">
+When a value <span class="math inline">\(r_{ij}=0\)</span>, the corresponding value <span class="math inline">\(y_{ij}\)</span> is missing
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(r_{ij} = 1\)</span>
+</td>
+<td style="text-align:left;">
+When a value <span class="math inline">\(r_{ij}=1\)</span>, the corresponding value <span class="math inline">\(y_{ij}\)</span> is observed
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P(R\mid Y_{obs}, Y_{mis},\psi)\)</span>
+</td>
+<td style="text-align:left;">
+General expression for a missing data model. Also form for MNAR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid \psi)\)</span>
+</td>
+<td style="text-align:left;">
+Reducible form of the missing data model under MCAR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P(R=0\mid Y_{obs},Y_{mis},\psi) = P(R=0\mid Y_{obs}, \psi)\)</span>
+</td>
+<td style="text-align:left;">
+Reducible form of the missing data model under MAR
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P(Y_{mis}\mid Y_{obs}, R)\)</span>
+</td>
+<td style="text-align:left;">
+General expression for an imputation model
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(P(Y\mid Y_{obs}, R=1) = P(Y\mid Y_{obs}, R=0)\)</span>
+</td>
+<td style="text-align:left;">
+Implication of ignorability in which imputation models can safely ignore <span class="math inline">\(\psi\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(I_j = \frac{\sum_j^p\sum_k^p\sum_i^n (1-r_{ij})r_{ik}}{\sum_k^p\sum_i^n r_{ik}}\)</span>
+</td>
+<td style="text-align:left;">
+The forumla for influx coefficient
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(O_j = \frac{\sum_j^p\sum_k^p\sum_i^n r_{ij}(1-r_{ik})}{\sum_k^p\sum_i^n 1-r_{ij}}\)</span>
+</td>
+<td style="text-align:left;">
+The formula for outflux coefficient
+</td>
+</tr>
+</tbody>
+</table>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="E-univariate-imputation-methods.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="G-analysis-models-and-diagnostics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="B-missingness-notation-cheatsheet.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="D-concepts-related-to-missingness.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
