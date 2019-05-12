@@ -36,5 +36,5 @@ This is just for testing with more citations for the bibliography at the end.  A
 
 ---
 nocite: | 
-  @allison_handling_2012, @allison_handling_2014, @econ_commission, @gelman_data_2017, @introduction_to_sas_notitle_2017, @rubin_inference_1976, @van_buuren_flexible_2018, @morris_tuning_2014, @nakagawa_chapter_2015, @yu_comparative_2017, @vink_towards_nodate, @peng_dong, @xie_measuring_2018, @yin_simulation_based_2015, @lu_robust_2014, @bilogur_missingno_2018
+  @allison_handling_2012, @allison_handling_2014, @econ_commission, @gelman_data_2017, @introduction_to_sas_notitle_2017, @rubin_inference_1976, @van_buuren_flexible_2018, @morris_tuning_2014, @nakagawa_chapter_2015, @yu_comparative_2017, @vink_towards_nodate, @peng_dong, @xie_measuring_2018, @yin_simulation_based_2015, @lu_robust_2014, @bilogur_missingno_2018, @schouten_generating_2018
 ...
