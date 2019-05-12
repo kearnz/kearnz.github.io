@@ -45,7 +45,7 @@ executive: |
 #  You can have a dedication here if you wish.
 #
 # Download your specific bibliography database file, place it in the "bib" folder, and refer to it in the line below
-bibliography: bib/citations.bib
+bibliography: bib/thesis.bib
 #
 # To change your Citation Style Language file, you can do so below. Though the default is apa style.
 csl: csl/apa.csl

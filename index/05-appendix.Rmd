@@ -197,6 +197,39 @@ kable(text_tbl, caption="Concepts", booktabs=TRUE, escape=FALSE) %>%
 
 # Univariate Imputation Methods
 
+```{r appendixeunivar, echo=FALSE, warning=FALSE}
+
+text_tbl <- data.frame(
+  Method = c(
+    "mean",
+    "median",
+    "mode",
+    "random",
+    "norm",
+    "categorical",
+    "interpolation",
+    "last observation carried forward (LOCF)",
+    "next observation carried backward (NOCB)"
+    ),
+  Description = c(
+    "Mean imputation finds the mean of observed values in target variable $y$. It then imputes any missing values in $y$ with the observed mean.",
+    "Median imputation finds the median of observed values in target variable $y$. It then imputes any missing values in $y$ with the observed median.",
+    "Mode imputation finds the mode of observed values in target variable $y$. It then imputes any missing values in $y$ with the observed mode. If multiple modes exist, Autoimpute gives users the option to take the first mode, the last mode, or randomly sample the modes when imputing missing values.",
+    "Random imputation imputes each missing value in target $y$ by randomly sampling from the observed values in $y$.",
+    "Norm imputation constructs a normal distribution parameterized by the mean and variance of the observed values in target $y$. Missing values are then imputed with random draws from the constructed normal distribution.",
+    "Categorical imputation constructs a discrete categorical distribution parameterized by the proportions of each distinct label in target $y$. Missing values are then imputed with draws from the constructed categorical distribution, where the probability of a given label being drawn depends on its proportion within the categorical distribution.",
+    "Interpolation imputation constructs new data points within the range of a discrete set of known data points. Autoimpute supports linear, quadratic, cubic, polynomial, and spline interpolation.",
+    "LOCF imputes missing values by carrying forward the last observed value. Therefore, the method respects the order of the records in target $y$.",
+    "NOCB imputes missing values by carrying backward the next observed value. Therefore, the method respects the order of the records in target $y$."
+  )
+)
+
+kable(text_tbl, caption="Univariate Methods", booktabs=TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, latex_options="hold_position") %>%
+  row_spec(0, bold=TRUE, font_size=13)  %>%
+  column_spec(1, width="10em")
+```
+
 # Multivariate Imputation Methods
 
 # Analysis Models and Diagnostics

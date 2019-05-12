@@ -1,55 +1,55 @@
 # Methodology {#methodology .unnumbered}
 
-The missing data methods introduced in the background section are a subset of those available in `Autoimpute`. Beyond `Autoimpute` numerous additioanl missing data methods exist to handle missing data, and they are continuously being developed and improved (Schouten, et al, 2018). Therefore, it is vital to understand under which circumstances each imputation technique can be used, and it is important to evaluate each technique in relation to other methods (Schouten, et al, 2018). To do so, researchers can simulate complete datasets and introduce different types of missing data mechanisms and missing data patterns. Such a procedure affords the researcher an opportunity to evaluate imputation methods and their affect on analaysis models under different circumstances (Schouten, et al, 2018).
+The missing data methods introduced in the background section are a subset of those available in `Autoimpute`. Beyond `Autoimpute` numerous additional missing data methods exist to handle missing data, and they are continuously being developed and improved (Schouten, et al, 2018). Therefore, it is vital to understand under which circumstances each imputation technique can be used, and it is important to evaluate each technique in relation to other methods (Schouten, et al, 2018). To do so, researchers can simulate complete datasets and introduce different types of missing data mechanisms and missing data patterns. Such a procedure affords the researcher an opportunity to evaluate imputation methods and their affect on analysis models under different circumstances (Schouten, et al, 2018).
 
-In this research, the authors explore the performance of imputation methods and their effect on analysis models under two separate circumstances. The authors begin by simulating a dataset with no missingness. A simple linear regression is performed on this simulated dataset and its coefficients are stored as benchmarks. Next, the researchers impose two different types of missingness mechanisms and missing data patterns on the complete dataset. This procedure produces two disctinct, incomplete datasets, where the remaining observed values are the same as the original but now some observations are now missing. The authors then impose the same deletion and impution methods on each of the incomplete datasets using the multiple imputation framework. Finally, the authors apply the same linear regression to the multiply imputed data and pool the parameter estimates and variance. The authors then compare the results from each process to each other and to the results from linear regression on the original complete dataset. The authors perform the entire process using the `Autoimpute` package, which demonstrates its capabilities as an end-to-end framework for handling missing data.
+In this research, the authors explore the performance of imputation methods and their effect on analysis models under two separate circumstances. The authors begin by simulating a dataset with no missingness. A simple linear regression is performed on this simulated dataset and its coefficients are stored as benchmarks. Next, the researchers impose two different types of missingness mechanisms and missing data patterns on the complete dataset. This procedure produces two disctinct, incomplete datasets, where the remaining observed values are the same as the original but now some observations are missing. The authors then impose the same deletion and impution methods on each of the incomplete datasets using the multiple imputation framework. Finally, the authors apply the same linear regression model to the multiply imputed data and pool the parameter estimates and variance. The authors then compare the results from each process to each other and to the results from linear regression on the original complete dataset. The authors perform the entire process using the `Autoimpute` package, which demonstrates its capabilities as an end-to-end framework for handling missing data.
 
 In each example, the researchers then explore missingness patterns within the dataset. Then, the authors use the following missing data methods:
 
-* List-wise deletion or complete case analysis
+* Listwise deletion or CCA
 * Mean imputation
-* Least Squares Imputation
+* Least Squares imputation
 * Predictive Mean Matching
 
-`Autoimpute` offers many more missing data methods, but these four are useful for examination because each carries a different set of assumptions and takes a significantly different. CCA is a deletion method, so it ignores missingness entirely. Mean imputation is a univariate method, so it disregards any structure between the target variable and other features. Least squares is a popular supervised multivariate method familiar to readers. And PMM is an advanced semi-supervised multivariate method that blends concepts from bayesian analysis, linear regression, and k-nearest neighbors. The sections below demonstrate when these methods work and when they do not. As always, their performance is directly linked to the nature of missingness within a dataset.
+`Autoimpute` offers many more missing data methods, but these four are useful for examination because each carries a different set of assumptions and takes a very different approach to imputing missing values. CCA is a deletion method, so it ignores missingness entirely by discarding records with any missing observations. Mean imputation is a univariate method, so it disregards any structure between the target variable and other features. Least squares is a popular supervised multivariate method familiar to readers. And PMM is an advanced semi-supervised multivariate method that blends concepts from bayesian analysis, linear regression, and k-nearest neighbors. The sections below demonstrate when these methods work and when they do not. As always, their performance is directly linked to the nature of missingness within a dataset. Therefore, some methods shine in circumstances where other methods underperform.
 
 ## The Full Dataset {.unnumbered}
 
-The authors begin with the full dataset, which they use as the source of truth. The full dataset contains 500 observations for feature $x$ and response $y$.
+The authors begin by simulating the full dataset, which they use as the source of truth. The full dataset contains 500 observations for feature $x$ and response $y$. At this point, no missingness exists in either $x$ or $y$
 
-The figure below describes each feature within the distribution: 
+The figure below visualizes the distribution of each variable:
 
 ```{r fullsidebyside, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Distribution of Full x and y"}
 include_graphics(path = "figure/full-side-by-side.jpg")
 ```
 
-The next figure demonstrates the joint relationship between each feature, with the marginals plotted as well:
+The next figure displays the joint relationship between $x$ and $y$. The figure plots the marginal distribution of each variable as well:
 
 ```{r full-joint, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Joint and Marginals of Full x and y"}
 include_graphics(path = "figure/full-joint.jpg")
 ```
 
-The full dataset does not contain any missing values. Therefore, we do not have to perform any imputation before we conduct analysis. Using `Autoimpute`, the researchers perform linear regression on the full dataset. The results appear below:
+The full dataset does not contain any missing values. Therefore, we do not have to perform any imputation before we conduct analysis. Using `Autoimpute`, the researchers fit a linear regression model on the full dataset. The summary of the model fit appears below:
 
 ```{r full-regression, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Linear Regression Results: Full"}
 include_graphics(path = "figure/full-regression.jpg")
 ```
 
-The results from linear regression on the full dataset serve as the golden source. 
+The results from linear regression on the full dataset serve as the golden source. The coefficient estimate for $x$ is 0.5. Using notation related to imputation analysis, this coefficient estimate of $x$ represents $\hat Q$ - the unbiased estimate of the population parameter of interest $Q$. Because there is only one predictor, the covariance matrix $U$ simply reduces to the variance of the estimate.
 
-The output above displays for each variable the following:
+The summary output above displays diagnostics for the linear regression model. The table uses aliases for concepts covered in the background section and introduces some new terminology. They are:
 
-* `coefs` - Linear regression coefficients for each variable
+* `coefs` - The parameter estimate $\hat Q$
 * `std` - The standard error of the coefficient estimate
-* `vw` - The variance of the coefficient within each complete-data sample
-* `vb` - The variance between each complete-data sample
-* `vt` - The total variance including vw, vb & extra simulation variance
+* `vw` - The variance-within $\bar U$
+* `vb` - The variance-between $B$
+* `vt` - The total variance $T$
 * `dfcom` - The degrees of freedom for the hypothetically complete dataset 
-* `dfadj` - Adapted degrees of freedom for smaller sample sizes
-* `lambda` - The proportion of variance due to nonresponse
-* `riv` - The relative increase in variance
+* `dfadj` - Adapted degrees of freedom for samples that have missing data
+* `lambda` - The proportion of variance due to nonresponse or missingness
+* `riv` - The relative increase in variance due to nonresponse or missingness
 
-Observe that `vb`, `lambda`, and `riv` are all equal to 0. This result occurs because no imputation is necessary and no multiple imputation takes place. Therefore, we focus mainly on the `coefs` and `std` results from above as benchmarks for comparison in the  analysis from each example below. These additional metrics become important when we observe examples that contain multiple imputations.
+Observe that `vb`, `lambda`, and `riv` are all equal to 0. This result occurs because no missingness exists and multiple imputation is not used. These diagnostics are of interest for methods that produce variability in imputed values when using mutliple imputation. Therefore, values for `coefs`, `std`, and `vw` are the values of interest. They are the benchmarks for comparison when the authors reproduce this analysis on variants of the full dataset that have artificial missingness introduced. The rest of the diagnostics will become clear in the next sections.
 
 ## Example 1: MCAR with Missingness in the Response {.unnumbered}
 

@@ -691,8 +691,8 @@ review of missing data methods.
 \addcontentsline{toc}{subsection}{Deletion}
 
 One of the most popular missing data methods that data practitioners use
-when dealing with missing data is list-wise deletion or complete-case
-analysis (CCA). List-wise deletion discards all rows in which at least
+when dealing with missing data is listwise deletion or complete-case
+analysis (CCA). Listwise deletion discards all rows in which at least
 one value in the columnspace of \(Y\) is missing for a given record (Van
 Buuren, 2018, ch.~1.3.1). Complete-case analysis (CCA) is relatively
 easy to implement and enables analysis models to run without the need
@@ -710,10 +710,10 @@ with CCA:
   complete cases, so that most of the data would be discarded for the
   sake of a simple analysis. (p.~531)
 \end{enumerate}
-The first hypothetical results from the strong assumptions list-wise
+The first hypothetical results from the strong assumptions listwise
 deletion makes regarding the missing data mechansim. CCA requies missing
 data to not only be ignorable but also MCAR in most cases. Therefore,
-list-wise deletion can result in biased estimates even if ignorability
+listwise deletion can result in biased estimates even if ignorability
 holds but MAR is not met (Introduction to SAS, 2017).
 
 The second hypothetical addresses the impact of removing observations
@@ -729,7 +729,7 @@ coefficients may become statistically insignificant in an analysis model
 \subsection*{Imputation}\label{background-imputation}
 \addcontentsline{toc}{subsection}{Imputation}
 
-Because of these problems, researchers are cautious with list-wise
+Because of these problems, researchers are cautious with listwise
 deletion and employ CCA as a benchmark or in specific cases where the
 effect from deletion is negligible. Instead, researchers turn to
 imputation in most cases to handle missing data. UNECE provides the
@@ -875,7 +875,7 @@ replaces missing values in dataset with imputed ones. As a result, the
 imputed dataset is complete, containing no missing values for any
 observation \(Y_{ij}\) within \(Y\). As Gelman \& Hill note, ``these
 methods keep the full sample size, which can be advantageous for bias
-and precision'' (2017, p.~532). In comparison to list-wise deletion,
+and precision'' (2017, p.~532). In comparison to listwise deletion,
 imputation methods do not discard any data; rather, they impute missing
 records so that no information is lost within the original dataset. As a
 result, statistical power is not reduced and standard errors are not
@@ -1062,11 +1062,11 @@ researcher must consider when dealing with missing data. These
 considerations influence the imputation model a researcher deploys to
 impute missing data. The results from the imputation model then effect
 the results produced from an analysis model run on imputed data. One
-must remember that list-wise deletion and imputation methods
+must remember that listwise deletion and imputation methods
 fundamentally alter a dataset. If the missing data method used is
 misspecified, the structure of the data after imputation is distorted,
 and this distortion affects inference derived from analysis models fit
-on the altered dataset. This section addresses the impact of list-wise
+on the altered dataset. This section addresses the impact of listwise
 deletion and imputation from the perspective of analysis. It also covers
 the additional work necessary to fit analysis models on multiply imputed
 data.
@@ -1078,32 +1078,32 @@ underlying dataset is complete, containing no missing records. As a
 result, analysis models do not have any information regarding what
 happened to the dataset before the model is fit. They cannot separate
 imputed values from true observations, and they do not know if records
-were removed through list-wise deletion prior to analysis. Therefore,
-the inference from the analysis model depends on the way in which
-missing data is handled.
+were removed through listwise deletion prior to analysis. Therefore, the
+inference from the analysis model depends on the way in which missing
+data is handled.
 
-\subsection*{Analysis after List-wise
+\subsection*{Analysis after Listwise
 Deletion}\label{background-analysis-listwise}
-\addcontentsline{toc}{subsection}{Analysis after List-wise Deletion}
+\addcontentsline{toc}{subsection}{Analysis after Listwise Deletion}
 
 In the \protect\hyperlink{background-deletion}{Deletion section}, the
-authors explain the potential pitfalls associated with list-wise
-deletion. Depending on the proportion of missing data, list-wise
-deletion may significantly deplete the sample size on which an analysis
-model is trained. In doing so, an analysis model generates larger
-standard errors for parameters' estimates than it would had the dataset
-retained every record in othe original sample. As a result, the
-significance of coefficients may be called into question. Additionally,
-if the missing data mechanism is not MCAR, list-wise deletion may
-discard records which contain important information. Doing so may lead
-to biased coefficient estimates in addition to increased standard errors
-of those estimates (Dong \& Peng, 2013).
+authors explain the potential pitfalls associated with listwise
+deletion. Depending on the proportion of missing data, listwise deletion
+may significantly deplete the sample size on which an analysis model is
+trained. In doing so, an analysis model generates larger standard errors
+for parameters' estimates than it would had the dataset retained every
+record in othe original sample. As a result, the significance of
+coefficients may be called into question. Additionally, if the missing
+data mechanism is not MCAR, listwise deletion may discard records which
+contain important information. Doing so may lead to biased coefficient
+estimates in addition to increased standard errors of those estimates
+(Dong \& Peng, 2013).
 
-While list-wise deletion can cause problems downstream in analysis,
-there are cases in which the method is appropriate for handling missing
-data. Allison (2014) defends list-wise deletion as a potentially optimal
+While listwise deletion can cause problems downstream in analysis, there
+are cases in which the method is appropriate for handling missing data.
+Allison (2014) defends listwise deletion as a potentially optimal
 solution under certain missing data patterns. Four cases in which
-list-wise deletion may outerperform more complex imputation methods
+listwise deletion may outerperform more complex imputation methods
 include the following:
 \begin{itemize}
 \tightlist
@@ -1116,20 +1116,21 @@ include the following:
 \item
   In linear regression, the missing data occurs in the \emph{predictor}
   variable only, regardless of the missing data mechanism, so long as
-  the missingness does not depend the \emph{response} variable used in
-  an analysis model.
+  the missingness does not depend on the \emph{response} variable used
+  in an analysis model.
 \item
   For logistic regression, the missing data occurs in the \emph{reponse}
   variable only, regardless of the missing data mechanism, so long as
   the missingness does not depend on the \emph{predictor} variables used
   in the analysis model.
 \end{itemize}
-Allison has proved that list-wise deletion actually outerperforms other
-methods, producing unbiased methods so long as the regression models are
-correctly specified and the criteria above are met (2014). That being
-said, the practicioner should still benchmark list-wise deletion against
-other imputation methods, as the outcome is intricately linked to the
-specific dataset at hand.
+Allison has proved that listwise deletion actually outerperforms other
+methods, producing unbiased estimates so long as the regression models
+are correctly specified and the criteria above are met (2014). That
+being said, the practicioner should still benchmark listwise deletion
+against other imputation methods, as the outcome from listwise deletion
+is intricately linked to the nature of the missingness in the specific
+dataset at hand.
 
 \subsection*{Analysis after Single
 Imputation}\label{background-analysis-single}
@@ -1165,20 +1166,20 @@ mechanism and applies a proper imputation model to handle missing data,
 he or she may not have done enough to properly account for the
 uncertainty introduced from imputation. That lack of consideration
 appears downstream, affecting the ability for the researcher to trust
-the significance of analysis model parameters.
+the significance of parameters from analysis models.
 
 \subsection*{Analysis after Multiple
 Imputation}\label{background-analysis-multiple}
 \addcontentsline{toc}{subsection}{Analysis after Multiple Imputation}
 
-To handle the problems incurred from single imputation, this research
+To handle the problems incurred from single imputation, the authors
 suggests researchers employ imputation methods using multiple
 imputation. Multiple imputation creates multiple instances of the same
 dataset, depending on the number of imputations specified. Each imputed
-dataset has the same values for the observed but different values for
-the imputations. These differences highlight the variability introduced
-by imputation methods since the true value of a missing observation is
-unknown (Van Buuren, 2018, ch.~2.1.2).
+dataset has the same values for the observed but different imputations
+for the missing values. These differences highlight the variability
+introduced by imputation methods since the true value of a missing
+observation is unknown (Van Buuren, 2018, ch.~2.1.2).
 
 While multiple imputation retains sample size and imputation
 variability, it complicates the process of analysis. Because multiple
@@ -1288,10 +1289,10 @@ discusses what a researcher must consider before selecting which missing
 data method to use. The section then introduces numerous imputation
 methods, each of which operates with its own set of assumptions but all
 of which assume that the missing data mechanism is at least ignorable.
-This text then briefly examines the impact of imputation on supervised
-analysis and demonstrates how concepts from missing data can leak into
-the inference of an analysis model if missingness is not handled with
-care.
+This text then briefly examines the impact of deletion and imputation on
+supervised analysis and demonstrates how concepts from missing data can
+leak into the inference of an analysis model if missingness is not
+handled with care.
 
 The \texttt{Autoimpute} package gives the end user the tools to step
 through the entire process of handling missing data to performing
@@ -1318,7 +1319,7 @@ of the missing data.
 
 The missing data methods introduced in the background section are a
 subset of those available in \texttt{Autoimpute}. Beyond
-\texttt{Autoimpute} numerous additioanl missing data methods exist to
+\texttt{Autoimpute} numerous additional missing data methods exist to
 handle missing data, and they are continuously being developed and
 improved (Schouten, et al, 2018). Therefore, it is vital to understand
 under which circumstances each imputation technique can be used, and it
@@ -1326,7 +1327,7 @@ is important to evaluate each technique in relation to other methods
 (Schouten, et al, 2018). To do so, researchers can simulate complete
 datasets and introduce different types of missing data mechanisms and
 missing data patterns. Such a procedure affords the researcher an
-opportunity to evaluate imputation methods and their affect on analaysis
+opportunity to evaluate imputation methods and their affect on analysis
 models under different circumstances (Schouten, et al, 2018).
 
 In this research, the authors explore the performance of imputation
@@ -1337,13 +1338,13 @@ dataset and its coefficients are stored as benchmarks. Next, the
 researchers impose two different types of missingness mechanisms and
 missing data patterns on the complete dataset. This procedure produces
 two disctinct, incomplete datasets, where the remaining observed values
-are the same as the original but now some observations are now missing.
-The authors then impose the same deletion and impution methods on each
-of the incomplete datasets using the multiple imputation framework.
-Finally, the authors apply the same linear regression to the multiply
-imputed data and pool the parameter estimates and variance. The authors
-then compare the results from each process to each other and to the
-results from linear regression on the original complete dataset. The
+are the same as the original but now some observations are missing. The
+authors then impose the same deletion and impution methods on each of
+the incomplete datasets using the multiple imputation framework.
+Finally, the authors apply the same linear regression model to the
+multiply imputed data and pool the parameter estimates and variance. The
+authors then compare the results from each process to each other and to
+the results from linear regression on the original complete dataset. The
 authors perform the entire process using the \texttt{Autoimpute}
 package, which demonstrates its capabilities as an end-to-end framework
 for handling missing data.
@@ -1354,23 +1355,38 @@ methods:
 \begin{itemize}
 \tightlist
 \item
-  List-wise deletion or complete case analysis
+  Listwise deletion or CCA
 \item
   Mean imputation
 \item
-  Least Squares Imputation
+  Least Squares imputation
 \item
   Predictive Mean Matching
 \end{itemize}
+\texttt{Autoimpute} offers many more missing data methods, but these
+four are useful for examination because each carries a different set of
+assumptions and takes a very different approach to imputing missing
+values. CCA is a deletion method, so it ignores missingness entirely by
+discarding records with any missing observations. Mean imputation is a
+univariate method, so it disregards any structure between the target
+variable and other features. Least squares is a popular supervised
+multivariate method familiar to readers. And PMM is an advanced
+semi-supervised multivariate method that blends concepts from bayesian
+analysis, linear regression, and k-nearest neighbors. The sections below
+demonstrate when these methods work and when they do not. As always,
+their performance is directly linked to the nature of missingness within
+a dataset. Therefore, some methods shine in circumstances where other
+methods underperform.
+
 \section*{The Full Dataset}\label{the-full-dataset}
 \addcontentsline{toc}{section}{The Full Dataset}
 
-The full dataset contains 500 observations for feature \(x\) and
-response \(y\). Both datasets come from a joint multivariate normal
-distribution, and the correlation between \(x\) and \(y\) is \(0.5\).
-The mean of each distribution is zero.
+The authors begin by simulating the full dataset, which they use as the
+source of truth. The full dataset contains 500 observations for feature
+\(x\) and response \(y\). At this point, no missingness exists in either
+\(x\) or \(y\)
 
-The figure below describes each feature within the distribution:
+The figure below visualizes the distribution of each variable:
 \begin{figure}
 
 {\centering \includegraphics[width=300px]{figure/full-side-by-side} 
@@ -1379,8 +1395,8 @@ The figure below describes each feature within the distribution:
 
 \caption{Distribution of Full x and y}\label{fig:fullsidebyside}
 \end{figure}
-The next figure demonstrates the joint relationship between each
-feature, with the marginals plotted as well:
+The next figure displays the joint relationship between \(x\) and \(y\).
+The figure plots the marginal distribution of each variable as well:
 \begin{figure}
 
 {\centering \includegraphics[width=300px]{figure/full-joint} 
@@ -1391,8 +1407,8 @@ feature, with the marginals plotted as well:
 \end{figure}
 The full dataset does not contain any missing values. Therefore, we do
 not have to perform any imputation before we conduct analysis. Using
-\texttt{Autoimpute}, the researchers perform linear regression on the
-full dataset. The results appear below:
+\texttt{Autoimpute}, the researchers fit a linear regression model on
+the full dataset. The summary of the model fit appears below:
 \begin{figure}
 
 {\centering \includegraphics[width=300px]{figure/full-regression} 
@@ -1402,40 +1418,49 @@ full dataset. The results appear below:
 \caption{Linear Regression Results: Full}\label{fig:full-regression}
 \end{figure}
 The results from linear regression on the full dataset serve as the
-golden source.
+golden source. The coefficient estimate for \(x\) is 0.5. Using notation
+related to imputation analysis, this coefficient estimate of \(x\)
+represents \(\hat Q\) - the unbiased estimate of the population
+parameter of interest \(Q\). Because there is only one predictor, the
+covariance matrix \(U\) simply reduces to the variance of the estimate.
 
-The output above displays for each variable the following:
+The summary output above displays diagnostics for the linear regression
+model. The table uses aliases for concepts covered in the background
+section and introduces some new terminology. They are:
 \begin{itemize}
 \tightlist
 \item
-  \texttt{coefs} - Linear regression coefficients for each variable
+  \texttt{coefs} - The parameter estimate \(\hat Q\)
 \item
   \texttt{std} - The standard error of the coefficient estimate
 \item
-  \texttt{vw} - The variance of the coefficient within each
-  complete-data sample
+  \texttt{vw} - The variance-within \(\bar U\)
 \item
-  \texttt{vb} - The variance between each complete-data sample
+  \texttt{vb} - The variance-between \(B\)
 \item
-  \texttt{vt} - The total variance including vw, vb \& extra simulation
-  variance
+  \texttt{vt} - The total variance \(T\)
 \item
   \texttt{dfcom} - The degrees of freedom for the hypothetically
   complete dataset
 \item
-  \texttt{dfadj} - Adapted degrees of freedom for smaller sample sizes
+  \texttt{dfadj} - Adapted degrees of freedom for samples that have
+  missing data
 \item
-  \texttt{lambda} - The proportion of variance due to nonresponse
+  \texttt{lambda} - The proportion of variance due to nonresponse or
+  missingness
 \item
-  \texttt{riv} - The relative increase in variance
+  \texttt{riv} - The relative increase in variance due to nonresponse or
+  missingness
 \end{itemize}
 Observe that \texttt{vb}, \texttt{lambda}, and \texttt{riv} are all
-equal to 0. This result occurs because no imputation is necessary and no
-multiple imputation takes place. Therefore, we focus mainly on the
-\texttt{coefs} and \texttt{std} results from above as benchmarks for
-comparison in the analysis from each example below. These additional
-metrics become important when we observe examples that contain multiple
-imputations.
+equal to 0. This result occurs because no missingness exists and
+multiple imputation is not used. These diagnostics are of interest for
+methods that produce variability in imputed values when using mutliple
+imputation. Therefore, values for \texttt{coefs}, \texttt{std}, and
+\texttt{vw} are the values of interest. They are the benchmarks for
+comparison when the authors reproduce this analysis on variants of the
+full dataset that have artificial missingness introduced. The rest of
+the diagnostics will become clear in the next sections.
 
 \section*{Example 1: MCAR with Missingness in the
 Response}\label{example-1-mcar-with-missingness-in-the-response}
@@ -1873,7 +1898,26 @@ total variance & The accurate representation of variance under multiple imputati
 \end{table}
 \chapter{Univariate Imputation
 Methods}\label{univariate-imputation-methods}
+\begin{table}[!h]
 
+\caption{\label{tab:appendixeunivar}Univariate Methods}
+\begin{tabu} to \linewidth {>{\raggedright\arraybackslash}p{10em}>{\raggedright}X}
+\toprule
+\begingroup\fontsize{13}{15}\selectfont \textbf{Method}\endgroup & \begingroup\fontsize{13}{15}\selectfont \textbf{Description}\endgroup\\
+\midrule
+mean & Mean imputation finds the mean of observed values in target variable $y$. It then imputes any missing values in $y$ with the observed mean.\\
+median & Median imputation finds the median of observed values in target variable $y$. It then imputes any missing values in $y$ with the observed median.\\
+mode & Mode imputation finds the mode of observed values in target variable $y$. It then imputes any missing values in $y$ with the observed mode. If multiple modes exist, Autoimpute gives users the option to take the first mode, the last mode, or randomly sample the modes when imputing missing values.\\
+random & Random imputation imputes each missing value in target $y$ by randomly sampling from the observed values in $y$.\\
+norm & Norm imputation constructs a normal distribution parameterized by the mean and variance of the observed values in target $y$. Missing values are then imputed with random draws from the constructed normal distribution.\\
+\addlinespace
+categorical & Categorical imputation constructs a discrete categorical distribution parameterized by the proportions of each distinct label in target $y$. Missing values are then imputed with draws from the constructed categorical distribution, where the probability of a given label being drawn depends on its proportion within the categorical distribution.\\
+interpolation & Interpolation imputation constructs new data points within the range of a discrete set of known data points. Autoimpute supports linear, quadratic, cubic, polynomial, and spline interpolation.\\
+last observation carried forward (LOCF) & LOCF imputes missing values by carrying forward the last observed value. Therefore, the method respects the order of the records in target $y$.\\
+next observation carried backward (NOCB) & NOCB imputes missing values by carrying backward the next observed value. Therefore, the method respects the order of the records in target $y$.\\
+\bottomrule
+\end{tabu}
+\end{table}
 \chapter{Multivariate Imputation
 Methods}\label{multivariate-imputation-methods}
 
@@ -1885,39 +1929,61 @@ Diagnostics}\label{analysis-models-and-diagnostics}
 \chapter*{References}\label{references}
 \addcontentsline{toc}{chapter}{References}
 
-Allison, P. D. (2012). Handling Missing Data by Maximum Likelihood. SAS
-Global Forum 2012. Retrieved April 23, 2019, from\\
-\url{https://statisticalhorizons.com/wp-content/uploads/MissingDataByML.pdf}.
+\markboth{References}{References}
 
-Economic Commission for Europe of the United Nations (UNECE) (2000),
-``Glossary of Terms on Statistical Data Editing'', Conference of
-European Statisticians Methodological material, Geneva.
+\noindent
 
-Gelman, A., \& Hill, J. (2017). Data analysis using regression and
-multilevel/hierarchical models. Cambridge: Cambridge University Press.
+\setlength{\parindent}{-0.20in} \setlength{\leftskip}{0.20in}
+\setlength{\parskip}{8pt}
 
-Introduction to SAS (2017). UCLA: Statistical Consulting Group. From
-\url{https://stats.idre.ucla.edu/sas/modules/sas-learning-moduleintroduction-to-the-features-of-sas/}
-(accessed April, 21, 2019).
+\hypertarget{refs}{}
+\hypertarget{ref-allison_handling_2012}{}
+Allison, P. (2012). Handling missing data by maximum likelihood.
+\emph{SAS Global Forum 2012}. Retrieved from
+\url{https://statisticalhorizons.com/wp-content/uploads/MissingDataByML.pdf}
 
+\hypertarget{ref-econ_commission}{}
+Europe of the United Nations (UNECE), E. C. for. (2000). Glossary of
+terms on statistical data editing. In. Geneva.
+
+\hypertarget{ref-gelman_data_2017}{}
+Gelman, A., \& Hill, J. (2017). \emph{Data analysis using regression and
+multilevel/hierarchical models}. Cambridge ; New York: Cambridge
+University Press.
+
+\hypertarget{ref-morris_tuning_2014}{}
 Morris, T. P., White, I. R., \& Royston, P. (2014). Tuning multiple
-imputation by predictive mean matching and local residual draws. BMC
-Medical Research Methodology, 14(1).
-\url{https://doi.org/10.1186/1471-2288-14-75}
+imputation by predictive mean matching and local residual draws.
+\emph{BMC Medical Research Methodology}, \emph{14}(1).
+\url{http://doi.org/10.1186/1471-2288-14-75}
 
-Nakagawa, S. (2015). CHAPTER 4 Missing data : mechanisms , methods , and
-messages.
+\hypertarget{ref-nakagawa_chapter_2015}{}
+Nakagawa, S. (2015). \emph{CHAPTER 4 Missing data : Mechanisms , methods
+, and messages}.
 
-Rubin, D. B. (1976)., Inference and missing data, Biometrika, Volume 63,
-Issue 3, Pages 581--592, \url{https://doi.org/10.1093/biomet/63.3.581}
+\hypertarget{ref-rubin_inference_1976}{}
+Rubin, D. B. (1976). Inference and missing data. \emph{Biometrika},
+\emph{63}(3), 581--592. \url{http://doi.org/10.1093/biomet/63.3.581}
 
-Van Buuren, S. (2018). Flexible imputation of missing data. Boca Raton:
-Chapman \& Hall/CRC.
+\hypertarget{ref-introduction_to_sas_notitle_2017}{}
+SAS, I. to. (2017). \emph{UCLA: Statistical Consulting Group}. Retrieved
+from
+\url{https://stats.idre.ucla.edu/sas/modules/sas-learning-moduleintroduction-to-the-features-of-sas/}
 
-Yu, A., Wagner, J. T., \& Murugesan, M. (2017). Comparative Evaluation
-of Recent ML Based Missing Data Imputation Methods with NORC's Survey of
-Consumer Finances. University of Chicago Graham School. Retrieved
-November 1, 2018.
+\hypertarget{ref-van_buuren_flexible_2018}{}
+Van Buuren, S. (2018). \emph{Flexible imputation of missing data} (2nd
+ed.). Chapman; Hall/CRC. \url{http://doi.org/10.1201/b11826}
+
+\hypertarget{ref-vink_towards_nodate}{}
+Vink, G. (n.d.). Towards a Standardized Evaluation of Multiple
+Imputation Routines. Retrieved from
+\url{https://www.gerkovink.com/docs/Standardized\%20evaluation.pdf}
+
+\hypertarget{ref-yu_comparative_2017}{}
+Yu, A., Wagner, J., \& Murugesan, M. (2017). \emph{Comparative
+Evaluation of Recent ML Based Missing Data Imputation Methods with
+NORC's Survey of Consumer Finances} (PhD thesis). University of Chicago
+Graham School.
 
 
 % Index?

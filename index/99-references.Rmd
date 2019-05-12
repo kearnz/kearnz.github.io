@@ -12,21 +12,29 @@ delete "References" and replace it.
 
 # References {-}
 
-Allison, P. D. (2012). Handling Missing Data by Maximum Likelihood. SAS Global Forum 2012. Retrieved April 23, 2019, from       
-https://statisticalhorizons.com/wp-content/uploads/MissingDataByML.pdf.
+<!--
+This manually sets the header for this unnumbered chapter.
+-->
+\markboth{References}{References}
+<!--
+To remove the indentation of the first entry.
+-->
+\noindent
 
-Economic Commission for Europe of the United Nations (UNECE) (2000), "Glossary of Terms on Statistical Data Editing", Conference of European Statisticians Methodological material, Geneva. 
+<!--
+To create a hanging indent and spacing between entries.  These three lines may need to be removed for styles that don't require the hanging indent.
+-->
 
-Gelman, A., & Hill, J. (2017). Data analysis using regression and multilevel/hierarchical models. Cambridge: Cambridge University Press.
+\setlength{\parindent}{-0.20in}
+\setlength{\leftskip}{0.20in}
+\setlength{\parskip}{8pt}
 
-Introduction to SAS (2017). UCLA: Statistical Consulting Group. From https://stats.idre.ucla.edu/sas/modules/sas-learning-moduleintroduction-to-the-features-of-sas/ (accessed April, 21, 2019).
 
-Morris, T. P., White, I. R., & Royston, P. (2014). Tuning multiple imputation by predictive mean matching and local residual draws. BMC Medical Research Methodology, 14(1). https://doi.org/10.1186/1471-2288-14-75
+<!--
+This is just for testing with more citations for the bibliography at the end.  Add other entries into the list here if you'd like them to appear in the bibliography even if they weren't explicitly cited in the document.
+-->
 
-Nakagawa, S. (2015). CHAPTER 4 Missing data : mechanisms , methods , and messages.
-
-Rubin, D. B. (1976)., Inference and missing data, Biometrika, Volume 63, Issue 3, Pages 581–592, https://doi.org/10.1093/biomet/63.3.581
-
-Van Buuren, S. (2018). Flexible imputation of missing data. Boca Raton: Chapman & Hall/CRC. 
-
-Yu, A., Wagner, J. T., & Murugesan, M. (2017). Comparative Evaluation of Recent ML Based Missing Data Imputation Methods with NORC’s Survey of Consumer Finances. University of Chicago Graham School. Retrieved November 1, 2018.
+---
+nocite: | 
+  @allison_handling_2012, @econ_commission, @gelman_data_2017, @introduction_to_sas_notitle_2017, @rubin_inference_1976, @van_buuren_flexible_2018,      @morris_tuning_2014, @nakagawa_chapter_2015, @yu_comparative_2017, @vink_towards_nodate
+...

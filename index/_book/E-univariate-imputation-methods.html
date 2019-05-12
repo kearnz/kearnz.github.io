@@ -132,6 +132,95 @@
             <section class="normal" id="section-">
 <div id="univariate-imputation-methods" class="section level1">
 <h1><span class="header-section-number">E</span> Univariate Imputation Methods</h1>
+<table class="table" style>
+<caption>
+<span id="tab:appendixeunivar">Table E.1: </span>Univariate Methods
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Method
+</th>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 10em; ">
+mean
+</td>
+<td style="text-align:left;">
+Mean imputation finds the mean of observed values in target variable <span class="math inline">\(y\)</span>. It then imputes any missing values in <span class="math inline">\(y\)</span> with the observed mean.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+median
+</td>
+<td style="text-align:left;">
+Median imputation finds the median of observed values in target variable <span class="math inline">\(y\)</span>. It then imputes any missing values in <span class="math inline">\(y\)</span> with the observed median.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+mode
+</td>
+<td style="text-align:left;">
+Mode imputation finds the mode of observed values in target variable <span class="math inline">\(y\)</span>. It then imputes any missing values in <span class="math inline">\(y\)</span> with the observed mode. If multiple modes exist, Autoimpute gives users the option to take the first mode, the last mode, or randomly sample the modes when imputing missing values.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+random
+</td>
+<td style="text-align:left;">
+Random imputation imputes each missing value in target <span class="math inline">\(y\)</span> by randomly sampling from the observed values in <span class="math inline">\(y\)</span>.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+norm
+</td>
+<td style="text-align:left;">
+Norm imputation constructs a normal distribution parameterized by the mean and variance of the observed values in target <span class="math inline">\(y\)</span>. Missing values are then imputed with random draws from the constructed normal distribution.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+categorical
+</td>
+<td style="text-align:left;">
+Categorical imputation constructs a discrete categorical distribution parameterized by the proportions of each distinct label in target <span class="math inline">\(y\)</span>. Missing values are then imputed with draws from the constructed categorical distribution, where the probability of a given label being drawn depends on its proportion within the categorical distribution.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+interpolation
+</td>
+<td style="text-align:left;">
+Interpolation imputation constructs new data points within the range of a discrete set of known data points. Autoimpute supports linear, quadratic, cubic, polynomial, and spline interpolation.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+last observation carried forward (LOCF)
+</td>
+<td style="text-align:left;">
+LOCF imputes missing values by carrying forward the last observed value. Therefore, the method respects the order of the records in target <span class="math inline">\(y\)</span>.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; ">
+next observation carried backward (NOCB)
+</td>
+<td style="text-align:left;">
+NOCB imputes missing values by carrying backward the next observed value. Therefore, the method respects the order of the records in target <span class="math inline">\(y\)</span>.
+</td>
+</tr>
+</tbody>
+</table>
 </div>
             </section>
 

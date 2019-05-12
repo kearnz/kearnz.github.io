@@ -227,6 +227,46 @@ The forumla for influx coefficient
 The formula for outflux coefficient
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(E(\hat Q|Y) = Q\)</span>
+</td>
+<td style="text-align:left;">
+The equality necessary for unbiasedness of an estimate <span class="math inline">\(\hat Q\)</span> conditional on <span class="math inline">\(Y\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\bar Q = \frac{1}{m}\sum_{\ell=1}^m \hat Q_\ell\)</span>
+</td>
+<td style="text-align:left;">
+The pooled estimate for <span class="math inline">\(Q\)</span> is the mean of <span class="math inline">\(m\)</span> <span class="math inline">\(\hat Q\)</span> estimates from <span class="math inline">\(m\)</span> imputations
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(\bar U = \frac{1}{m}\sum_{\ell=1}^m \bar U_\ell\)</span>
+</td>
+<td style="text-align:left;">
+The variance within is the mean of the <span class="math inline">\(m\)</span> <span class="math inline">\(\hat U\)</span> estimates from <span class="math inline">\(m\)</span> imputations
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(B = \frac{1}{m-1}\sum_{\ell=1}^m (\hat Q_\ell-\bar Q)(\hat Q_\ell-\bar Q)&#39;\)</span>
+</td>
+<td style="text-align:left;">
+The variance between is the additional variance in estimating <span class="math inline">\(\hat Q\)</span> during <span class="math inline">\(m\)</span> imputations
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(T = \bar U + B + \frac{B}{m}\)</span>
+</td>
+<td style="text-align:left;">
+The total variance is the sum of variance within, variance between, and added variance from finite number of imputations <span class="math inline">\(m\)</span>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
