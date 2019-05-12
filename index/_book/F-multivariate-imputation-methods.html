@@ -132,6 +132,87 @@
             <section class="normal" id="section-">
 <div id="multivariate-imputation-methods" class="section level1">
 <h1><span class="header-section-number">F</span> Multivariate Imputation Methods</h1>
+<table class="table" style>
+<caption>
+<span id="tab:appendixfmultivar">Table F.1: </span>Multivariate Methods
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Method
+</th>
+<th style="text-align:left;font-weight: bold;font-size: 13px;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 7em; ">
+linear regression
+</td>
+<td style="text-align:left;">
+Linear Regression imputation fits a linear model on observed data, where <span class="math inline">\(y\)</span> is the target variable to be imputed and <span class="math inline">\(X\)</span> is the design matrix. The model then finds the records in <span class="math inline">\(X\)</span> where <span class="math inline">\(y\)</span> is missing. These records in <span class="math inline">\(X\)</span> are used to generate predictions from the linear model. Those predictions become the imputations for missing values in <span class="math inline">\(y\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 7em; ">
+binomial logistic regression
+</td>
+<td style="text-align:left;">
+Binary Logistic Regression imputation fits a binary logistic model on observed data, where <span class="math inline">\(y\)</span> is the target variable to be imputed and <span class="math inline">\(X\)</span> is the design matrix. The model then finds the records in <span class="math inline">\(X\)</span> where <span class="math inline">\(y\)</span> is missing. These records in <span class="math inline">\(X\)</span> are used to generate predictions from the binary logistic model. Those predictions become the imputations for missing values in <span class="math inline">\(y\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 7em; ">
+multinomial logistic regression
+</td>
+<td style="text-align:left;">
+Multinomial Logistic Regression imputation fits a multinomial logistic model on observed data, where <span class="math inline">\(y\)</span> is the target variable to be imputed and <span class="math inline">\(X\)</span> is the design matrix. The model then finds the records in <span class="math inline">\(X\)</span> where <span class="math inline">\(y\)</span> is missing. These records in <span class="math inline">\(X\)</span> are used to generate predictions from the multinomial logistic model. Those predictions become the imputations for missing values in <span class="math inline">\(y\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 7em; ">
+stochastic regression
+</td>
+<td style="text-align:left;">
+Stochastic Regression imputation fits a linear model on observed data, where <span class="math inline">\(y\)</span> is the target variable to be imputed and <span class="math inline">\(X\)</span> is the design matrix. The algorithm then stores a normal distribution for the errors from the fit linear model. The model then finds the records in <span class="math inline">\(X\)</span> where <span class="math inline">\(y\)</span> is missing. These records in <span class="math inline">\(X\)</span> are used to generate predictions from the linear model. For each prediction, the algorithm adds a random draw from the distribution of errors. Those predictions + random draws become the imputations for missing values in <span class="math inline">\(y\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 7em; ">
+bayesian linear regression
+</td>
+<td style="text-align:left;">
+Bayesian linear regression imputation imputes missing values using random draws from the posterior predictive distribution of the missing data <span class="math inline">\(Y_{mis}\)</span>. These draws take into account the posterior distribution of the linear model parameters, which in this case are <span class="math inline">\(\hat{\beta}\)</span> coefficients.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 7em; ">
+bayesian binary logistic regression
+</td>
+<td style="text-align:left;">
+Bayesian binary logistic regression imputation imputes missing values using random draws from the posterior predictive distribution of the missing data <span class="math inline">\(Y_{mis}\)</span>. These draws take into account the posterior distribution of the binary logistic model parameters, which in this care are the probabilities of class membership.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 7em; ">
+predictive mean matching (PMM)
+</td>
+<td style="text-align:left;">
+PMM imputation is a multi-step procedure. First, a linear model is fit on the observed data for target <span class="math inline">\(y\)</span> and <span class="math inline">\(X\)</span> to obtain <span class="math inline">\(\hat{\beta}\)</span> coefficients. Then, a bayesian model is fit, and the algorithm produces a new set of <span class="math inline">\(\dot{\beta}\)</span> coefficients using random draws from the posterior predictive distribution of <span class="math inline">\(\hat{\beta}\)</span>. The coefficients <span class="math inline">\(\hat{\beta}\)</span> are used to make predictions for observed <span class="math inline">\(y\)</span>, while <span class="math inline">\(\dot{\beta}\)</span> are used to make predictions for missing <span class="math inline">\(y\)</span>. For each case where <span class="math inline">\(y\)</span> is missing, the algorithm finds the closest <span class="math inline">\(n\)</span> predicted values among cases where <span class="math inline">\(y\)</span> is observed. The algorithm then randomly samples the <span class="math inline">\(n\)</span> closest predictions, selecting one, and eventually imputes the missing data with the truly observed value of <span class="math inline">\(y\)</span>. The standard distance used to measure ‘closeness’ is manhattan distance. <span class="math inline">\(n\)</span> represents the number of neighbors to find, which generally defaults to 5.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 7em; ">
+local residual draws (LRD)
+</td>
+<td style="text-align:left;">
+LRD imputation begins by replicating the process for PMM. Once the truly observed value of <span class="math inline">\(y\)</span> is selected through the PMM process, LRD adds the distance to that value. The missing value is then imputed using the sum of the observed value of <span class="math inline">\(y\)</span> and the distance.
+</td>
+</tr>
+</tbody>
+</table>
 </div>
             </section>
 

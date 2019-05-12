@@ -22,7 +22,7 @@ text_tbl <- data.frame(
 )
 
 kable(text_tbl, caption="Autoimpute Sources", booktabs=TRUE, escape=FALSE) %>%
-  kable_styling(position="left", full_width=TRUE, latex_options="hold_position") %>%
+  kable_styling(position="left", full_width=TRUE, latex_options=c("hold_position")) %>%
   row_spec(0, bold=TRUE, font_size=13) %>%
   column_spec(1, width="5em")
 ```
@@ -75,8 +75,8 @@ text_tbl <- data.frame(
   )
 )
 
-kable(text_tbl, caption ="Notation", booktabs=TRUE, escape=FALSE) %>%
-  kable_styling(position="left", full_width=TRUE, latex_options="hold_position") %>%
+kable(text_tbl, caption ="Notation", booktabs=TRUE, longtable=TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, latex_options=c("hold_position")) %>%
   row_spec(0, bold=TRUE, font_size=13) %>%
   column_spec(1, width="5em")
 ```
@@ -122,8 +122,8 @@ text_tbl <- data.frame(
   )
 )
 
-kable(text_tbl, caption="Expressions", booktabs=TRUE, longtable = TRUE, escape=FALSE) %>%
-  kable_styling(position="left", full_width=TRUE, c("hold_position", "repeat_header")) %>%
+kable(text_tbl, caption="Expressions", booktabs=TRUE, longtable=TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, latex_options=c("hold_position")) %>%
   row_spec(0, bold=TRUE, font_size=13)
 ```
 
@@ -187,8 +187,8 @@ text_tbl <- data.frame(
   )
 )
 
-kable(text_tbl, caption="Concepts", booktabs=TRUE, longtable = TRUE, escape=FALSE) %>%
-  kable_styling(position="left", full_width=TRUE, c("hold_position", "repeat_header")) %>%
+kable(text_tbl, caption="Concepts", booktabs=TRUE, longtable=TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, latex_options=c("hold_position")) %>%
   row_spec(0, bold=TRUE, font_size=13)  %>%
   column_spec(1, width="7em")
 ```
@@ -222,8 +222,8 @@ text_tbl <- data.frame(
   )
 )
 
-kable(text_tbl, caption="Univariate Methods", booktabs=TRUE, longtable = TRUE, escape=FALSE) %>%
-  kable_styling(position="left", full_width=TRUE, c("hold_position", "repeat_header")) %>%
+kable(text_tbl, caption="Univariate Methods", booktabs=TRUE, longtable=TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, latex_options=c("hold_position")) %>%
   row_spec(0, bold=TRUE, font_size=13)  %>%
   column_spec(1, width="7em")
 ```
@@ -256,7 +256,7 @@ text_tbl <- data.frame(
 )
 
 kable(text_tbl, caption="Multivariate Methods", booktabs=TRUE, longtable=TRUE, escape=FALSE) %>%
-  kable_styling(position="left", full_width=TRUE, c("hold_position", "repeat_header")) %>%
+  kable_styling(position="left", full_width=TRUE, latex_options=c("hold_position")) %>%
   row_spec(0, bold=TRUE, font_size=13)  %>%
   column_spec(1, width="7em")
 ```
