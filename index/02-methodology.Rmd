@@ -1,14 +1,21 @@
 # Methodology {#methodology .unnumbered}
 
-In this section, the researchers use `Autoimpute` to demonstrate its capabilities as an end-to-end framework for analyzing datasets with missing values. The researchers showcase the package's features on two datasets with different types of missingness. 
+The missing data methods introduced in the background section are a subset of those available in `Autoimpute`. Beyond `Autoimpute` numerous additioanl missing data methods exist to handle missing data, and they are continuously being developed and improved (Schouten, et al, 2018). Therefore, it is vital to understand under which circumstances each imputation technique can be used, and it is important to evaluate each technique in relation to other methods (Schouten, et al, 2018). To do so, researchers can simulate complete datasets and introduce different types of missing data mechanisms and missing data patterns. Such a procedure affords the researcher an opportunity to evaluate imputation methods and their affect on analaysis models under different circumstances (Schouten, et al, 2018).
 
-The researchers begin by simulating a dataset with no missingness. A simple linear regression is performed on this simulated dataset and its coefficients are stored as benchmarks for comparison of all future analysis models. Then, in each example, the researchers introduce missingness within the given dataset using a predefined missingness mechanism. This dataset with missing values becomes the source of truth for deletion and imputation methods performed on the simulated missing data.
+In this research, the authors explore the performance of imputation methods and their effect on analysis models under two separate circumstances. The authors begin by simulating a dataset with no missingness. A simple linear regression is performed on this simulated dataset and its coefficients are stored as benchmarks. Next, the researchers impose two different types of missingness mechanisms and missing data patterns on the complete dataset. This procedure produces two disctinct, incomplete datasets, where the remaining observed values are the same as the original but now some observations are now missing. The authors then impose the same deletion and impution methods on each of the incomplete datasets using the multiple imputation framework. Finally, the authors apply the same linear regression to the multiply imputed data and pool the parameter estimates and variance. The authors then compare the results from each process to each other and to the results from linear regression on the original complete dataset. The authors perform the entire process using the `Autoimpute` package, which demonstrates its capabilities as an end-to-end framework for handling missing data.
 
-In each example, the researchers then explore missingness patterns within the dataset. After exploration, they employ complete-case analysis or listwise deletion. Following this procedure, they use the missing value dataset to create imputations based on a number of imputation methods. They use univariate imputation methods including mean imputation and multivariate methods including least squares and predictive mean matching. They then run the processed missing value datasets through a simple linear regression and gather the respective coefficients and feature variance for comparison. Lastly, they compare the results to see the impact of deletion and imputation on the analytical model under the circumstances described in each example.
+In each example, the researchers then explore missingness patterns within the dataset. Then, the authors use the following missing data methods:
+
+* List-wise deletion or complete case analysis
+* Mean imputation
+* Least Squares Imputation
+* Predictive Mean Matching
+
+`Autoimpute` offers many more missing data methods, but these four are useful for examination because each carries a different set of assumptions and takes a significantly different. CCA is a deletion method, so it ignores missingness entirely. Mean imputation is a univariate method, so it disregards any structure between the target variable and other features. Least squares is a popular supervised multivariate method familiar to readers. And PMM is an advanced semi-supervised multivariate method that blends concepts from bayesian analysis, linear regression, and k-nearest neighbors. The sections below demonstrate when these methods work and when they do not. As always, their performance is directly linked to the nature of missingness within a dataset.
 
 ## The Full Dataset {.unnumbered}
 
-The full dataset contains 500 observations for feature $x$ and response $y$. Both datasets come from a joint multivariate normal distribution, and the correlation between $x$ and $y$ is $0.5$. The mean of each distribution is zero.
+The authors begin with the full dataset, which they use as the source of truth. The full dataset contains 500 observations for feature $x$ and response $y$.
 
 The figure below describes each feature within the distribution: 
 
@@ -32,15 +39,15 @@ The results from linear regression on the full dataset serve as the golden sourc
 
 The output above displays for each variable the following:
 
-* `coefs` - Linear regression coefficients for each variable  
-* `std` - The standard error of the coefficient estimate  
-* `vw` - The variance of the coefficient within each complete-data sample  
-* `vb` - The variance between each complete-data sample  
-* `vt` - The total variance including vw, vb & extra simulation variance    
-* `dfcom` - The degrees of freedom for the hypothetically complete dataset     
-* `dfadj` - Adapted degrees of freedom for smaller sample sizes    
-* `lambda` - The proportion of variance due to nonresponse    
-* `riv` - The relative increase in variance  
+* `coefs` - Linear regression coefficients for each variable
+* `std` - The standard error of the coefficient estimate
+* `vw` - The variance of the coefficient within each complete-data sample
+* `vb` - The variance between each complete-data sample
+* `vt` - The total variance including vw, vb & extra simulation variance
+* `dfcom` - The degrees of freedom for the hypothetically complete dataset 
+* `dfadj` - Adapted degrees of freedom for smaller sample sizes
+* `lambda` - The proportion of variance due to nonresponse
+* `riv` - The relative increase in variance
 
 Observe that `vb`, `lambda`, and `riv` are all equal to 0. This result occurs because no imputation is necessary and no multiple imputation takes place. Therefore, we focus mainly on the `coefs` and `std` results from above as benchmarks for comparison in the  analysis from each example below. These additional metrics become important when we observe examples that contain multiple imputations.
 

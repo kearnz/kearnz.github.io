@@ -18,6 +18,7 @@ header-includes:
   \usepackage{makecell}
   \usepackage{xcolor}
   \usepackage{tabu}
+  \usepackage{amsmath}
 output: 
   phoenixdown::capstone_pdf: default
 #  phoenixdown::capstone_gitbook: default

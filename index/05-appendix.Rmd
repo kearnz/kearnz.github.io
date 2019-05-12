@@ -43,7 +43,15 @@ text_tbl <- data.frame(
     "$\\psi$",
     "$m$",
     "$I_j$",
-    "$O_j$"
+    "$O_j$",
+    "$Q$",
+    "$\\hat Q$",
+    "$U$",
+    "$\\hat U$",
+    "$\\bar Q$",
+    "$\\bar U$",
+    "$B$",
+    "$T$"
     ),
   Description = c(
     "The number of records or observations in a matrix",
@@ -57,7 +65,15 @@ text_tbl <- data.frame(
     "The parameters of the missing data model",
     "The number of complete datasets $Y$ to impute independently",
     "The influx coefficient",
-    "The outflux coefficient"
+    "The outflux coefficient",
+    "The population parameter of scientific interest",
+    "The estimate for $Q$ using hypothetically complete data",
+    "The variance-covariance matrix of $Q$",
+    "The variance-covariance matrix of estimate $\\hat Q$",
+    "The pooled parameter estimate of $Q$ under multiple imputation",
+    "The variance-within under multiple imputation",
+    "The variance-between under multiple imputation",
+    "The total variance under multiple imputation"
   )
 )
 
@@ -82,7 +98,12 @@ text_tbl <- data.frame(
     "$P(Y_{mis}\\mid Y_{obs}, R)$",
     "$P(Y\\mid Y_{obs}, R=1) = P(Y\\mid Y_{obs}, R=0)$",
     "$I_j = \\frac{\\sum_j^p\\sum_k^p\\sum_i^n (1-r_{ij})r_{ik}}{\\sum_k^p\\sum_i^n r_{ik}}$",
-    "$O_j = \\frac{\\sum_j^p\\sum_k^p\\sum_i^n r_{ij}(1-r_{ik})}{\\sum_k^p\\sum_i^n 1-r_{ij}}$"
+    "$O_j = \\frac{\\sum_j^p\\sum_k^p\\sum_i^n r_{ij}(1-r_{ik})}{\\sum_k^p\\sum_i^n 1-r_{ij}}$",
+    "$E(\\hat Q|Y) = Q$",
+    "$\\bar Q = \\frac{1}{m}\\sum_{\\ell=1}^m \\hat Q_\\ell$",
+    "$\\bar U = \\frac{1}{m}\\sum_{\\ell=1}^m \\bar U_\\ell$",
+    "$B = \\frac{1}{m-1}\\sum_{\\ell=1}^m (\\hat Q_\\ell-\\bar Q)(\\hat Q_\\ell-\\bar Q)'$",
+    "$T = \\bar U + B + \\frac{B}{m}$"
     ),
   Description = c(
     "The complete data matrix equals the conjoined $Y_{obs}$ and $Y_{mis}$",
@@ -94,7 +115,12 @@ text_tbl <- data.frame(
     "General expression for an imputation model",
     "Implication of ignorability in which imputation models can safely ignore $\\psi$",
     "The forumla for influx coefficient",
-    "The formula for outflux coefficient"
+    "The formula for outflux coefficient",
+    "The equality necessary for unbiasedness of an estimate $\\hat Q$ conditional on $Y$",
+    "The pooled estimate for $Q$ is the mean of $m$ $\\hat Q$ estimates from $m$ imputations",
+    "The variance within is the mean of the $m$ $\\hat U$ estimates from $m$ imputations",
+    "The variance between is the additional variance in estimating $\\hat Q$ during $m$ imputations",
+    "The total variance is the sum of variance within, variance between, and added variance from finite number of imputations $m$"
   )
 )
 
@@ -121,6 +147,7 @@ text_tbl <- data.frame(
     "missing data method",
     "deletion",
     "imputation model",
+    "analysis model",
     "target",
     "univariate",
     "multivariate",
@@ -128,7 +155,11 @@ text_tbl <- data.frame(
     "single imputation",
     "multiple imputation",
     "influx",
-    "outflux"
+    "outflux",
+    "pooled parameter estimate",
+    "variance within",
+    "variance between",
+    "total variance"
     ),
   Definition = c(
     "The complete matrix $Y$, which is comprised of $Y_{obs}$ and $Y_{mis}$",
@@ -142,6 +173,7 @@ text_tbl <- data.frame(
     "Method used to handle missing data. Use deletion or imputation",
     "Discard missing values from the dataset",
     "Replace missing values with imputations from imputation model",
+    "A supervised machine learning model applied to imputed data",
     "Column with missing values to be imputed",
     "Models using target to determine imputation for target",
     "Models using features to predict imputed values for target",
@@ -149,7 +181,11 @@ text_tbl <- data.frame(
     "Impute missing values once prior to analysis",
     "Impute missing values $m$ times prior to analysis",
     "Candidates to be imputed using the other predictors",
-    "Variables useful as predictors to impute a target variable"
+    "Variables useful as predictors to impute a target variable",
+    "The coefficients of an analysis model under multiple imputation",
+    "The average of the variance of the parameter estimate from each imputation",
+    "The variance introduced from different parameter estimates across imputations",
+    "The accurate representation of variance under multiple imputation"
   )
 )
 
