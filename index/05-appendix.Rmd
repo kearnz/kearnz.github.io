@@ -142,6 +142,7 @@ text_tbl <- data.frame(
     "MAR",
     "MNAR",
     "ignorability",
+    "missing data pattern",
     "missing data method",
     "deletion",
     "imputation model",
@@ -168,6 +169,7 @@ text_tbl <- data.frame(
     "Missing data mechanism depends on $Y_{obs}$ and $\\psi$ only",
     "Missing data mechanism depends on $Y_{obs}$, $Y_{mis}$, and $\\psi$",
     "Criteria required for imputation models to ignore $\\psi$",
+    "Various ways in which data can be missing throughout a dataset",
     "Method used to handle missing data. Use deletion or imputation",
     "Discard missing values from the dataset",
     "Replace missing values with imputations from imputation model",
@@ -260,5 +262,3 @@ kable(text_tbl, caption="Multivariate Methods", booktabs=TRUE, longtable=TRUE, e
   row_spec(0, bold=TRUE, font_size=13)  %>%
   column_spec(1, width="7em")
 ```
-
-# Analysis Models and Diagnostics

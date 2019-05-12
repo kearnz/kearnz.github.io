@@ -344,7 +344,7 @@ reasons. First, a scale might run out of batteries, in which case all
 measurements from that scale cease for a given period of time. Next, a
 scale may fail more frequently for heavier objects or items over a
 certain weight threshhold. And finally, a scale may stop reporting
-measurements when placed on a soft surface instead of a hard one (Van
+measurements when placed on a soft surface instead of a hard one (van
 Buuren, 2018, ch.~1.2).
 
 As a result of these scenarios, the random sample collected likely has
@@ -361,7 +361,7 @@ authors refer back to this example to make concepts more concrete.
 Before diving into concepts related to missingness, the authors
 establish notation used throughout this text. The authors use this
 notation to develop mathematical expressions that explain these concepts
-succinctly. This research follows the notation Van Buuren uses in the
+succinctly. This research follows the notation van Buuren uses in the
 second edition of his book, Flexible Imputation of Missing Data. For
 more information, refer to Appendix B, which collects and summarizes the
 notation seen throughout this research. Appendix C contains the
@@ -380,7 +380,7 @@ index corresponding to the observation's cell. To do so, we use the
 notation \(y_{ij}\), where \(i\) represents the row and \(j\) represents
 the column associated with a scalar \(y\) in matrix \(Y\).
 
-\(Y\) itself represents the hypothetically complete data (Van Buuren,
+\(Y\) itself represents the hypothetically complete data (van Buuren,
 2018, ch.~2.2.3), which is comprised of \(Y_{obs}\) and \(Y_{mis}\).
 \(Y_{obs}\) represents each row \(Y_i\) out of \(n\) records that have
 known values for each column \(Y_j\) in \(p\). \(Y_{mis}\), on the other
@@ -395,7 +395,7 @@ where all entries \(r_{ij} \in {0, 1}\). Any observation \(r_{ij}=1\)
 corresponds to a known value for \(y_{ij}\). On the contrary, any
 observation \(r_{ij}=0\) corresponds to a missing value for \(y_{ij}\).
 \(R\) is commonly referred to as the \textbf{missing indicator matrix},
-while \(Y\) is the \textbf{complete data matrix} (Van Buuren, 2018,
+while \(Y\) is the \textbf{complete data matrix} (van Buuren, 2018,
 ch.~2.2.3).
 
 \section*{Missing Data Mechanism}\label{background-missing-data-mech}
@@ -404,17 +404,17 @@ ch.~2.2.3).
 Each of the three scenarios discussed above causes a given weigh scale
 to produce missing data, but the underlying reason for missingness is
 quite different in each case. Donald Rubin describes the ways in which
-data can be missing (Rubin, 1976). According to Rubin (as cited in Van
+data can be missing (Rubin, 1976). According to Rubin (as cited in van
 Buuren, 2018, ch.~1.2), every observation in a dataset has some
 probability of being missing. The process that governs these
 probabilities is called the \textbf{missing data mechanism} (Rubin, as
-cited in Van Buuren, 2018, ch.~1.2). The missing data mechanism
+cited in van Buuren, 2018, ch.~1.2). The missing data mechanism
 generates a statistical relationship between observations and the
 probability of missing data (Nakagawa, 2015, p.~83). The \textbf{missing
 data model} is the function that formalizes that statistical
-relationship (Van Buuren, 2018, ch.~2.2.4). These statistical
+relationship (van Buuren, 2018, ch.~2.2.4). These statistical
 relationships fall into one of three categories, each of which
-represents a different missing data mechanism (Rubin, as cited in Van
+represents a different missing data mechanism (Rubin, as cited in van
 Buuren, 2018, ch.~1.2).
 
 The general expression for the missing data model is defined as:
@@ -424,7 +424,7 @@ The general expression for the missing data model is defined as:
 \(\psi\) contains the parameters of the missing data model. This
 expression notes that the probability of missingness \(P(R=0)\) within a
 dataset depends on the observed data, the missing data, and the missing
-data model's parameters (Van Buuren, 2018, ch.~2.2.4). From another
+data model's parameters (van Buuren, 2018, ch.~2.2.4). From another
 lense, this expession states that the missing data model is the
 distribution of the missingness indicator conditional on the observed
 data, the missing data, and the parameters of the missing data model.
@@ -468,19 +468,19 @@ as:
 Note that the general expression of the missing data model reduces to a
 much simpler form. Under MCAR, the probability of data being missing
 depends on the parameters of the missing data only and not on the values
-of missing data itself or the value of any of the observed data (Van
+of missing data itself or the value of any of the observed data (van
 Buuren, 2018, ch.~2.2.4).
 
 From the weigh scale example, MCAR governs the probability of values
 being missing from a scale that runs out of batteries at some point in
-time (Van Buuren, 2018, ch.~1.2). For simplicity, assume time is not a
+time (van Buuren, 2018, ch.~1.2). For simplicity, assume time is not a
 latent variable nor of interest in the data collection process. In this
 case then, the missing values produced from the scale do not depend on
 the weight of the object in question nor the surface used for the scale,
 so the probability a value is missing does not depend on any of the
 missing or observed data. Although MCAR is convenient, it is very
 restrictive and generally unrealistic, so datasets with missing values
-are often not MCAR in the real world (Van Buuren, 2018, ch.~2.2.4).
+are often not MCAR in the real world (van Buuren, 2018, ch.~2.2.4).
 
 \subsubsection*{Missing at Random (MAR)}\label{mar}
 \addcontentsline{toc}{subsubsection}{Missing at Random (MAR)}
@@ -503,7 +503,7 @@ In the case of the weigh scale, MAR describes missing data that arises
 from the scale's placement on hard or soft surfaces. If information
 about the surface (hard or soft) is fully observed for each attempted
 weight measurement, the probability of missing measurements then depends
-on available data - surface type - and thus falls under MAR (Van Buuren,
+on available data - surface type - and thus falls under MAR (van Buuren,
 2018, ch.~1.2). Since MAR is a more general assumption than MCAR, it is
 more realistic to encounter in real-world datasets.
 
@@ -512,7 +512,7 @@ more realistic to encounter in real-world datasets.
 
 Missing not at random (MNAR) is the final missing data mechanism. MNAR
 suggests data's ``probability of being missing varies for reasons that
-are unknown to us'' (Van Buuren, 2018, ch.~1.2). As a result, the
+are unknown to us'' (van Buuren, 2018, ch.~1.2). As a result, the
 missing data model for MNAR does not reduce:
 
 \[P(R=0|Y_{obs},Y_{mis},\psi)\]
@@ -524,7 +524,7 @@ missingness may depend on the actual missing values themselves (Gelman
 \& Hill, 2017, p.~530). When the weight of an object itself is to blame
 for a scale's failure to report measurements, the underlying process
 falls under this sub-category of MNAR because the probability of weight
-being missing is related to weight itself (Van Buuren, 2018, ch.~1.2).
+being missing is related to weight itself (van Buuren, 2018, ch.~1.2).
 The second type of MNAR covers missingness that depends on unobserved
 measurements or latent variables (Gelman \& Hill, 2017, p.~530). The
 weigh scale example proposes three reasons a scale may generate missing
@@ -547,7 +547,7 @@ Therefore, the missingness within a dataset is said to be ignorable if
 the underlying missing data mechanism is MCAR or MAR. MNAR, on the other
 hand, constitutes missingness that is non-ignorable.
 
-As Van Buuren notes, ``the concept of ignorability plays an important
+As van Buuren notes, ``the concept of ignorability plays an important
 role in the construction of imputation models'' (2018, ch.~2.2.6).
 Specifically, ignorability determines whether one can ignore the way in
 which data are missing prior to imputing missing data through an
@@ -564,17 +564,17 @@ an imputation model:
 An imputation model must find plausible values for \(Y_{mis}\) that
 respect its distribution. In the general case, the distribution of the
 missing data depends on the distribution of the observed data
-\(Y_{obs}\) and the process that generated the missing data, \(R\) (Van
+\(Y_{obs}\) and the process that generated the missing data, \(R\) (van
 Buuren, 2018, ch 2.2.6). In the context of imputation, this expression
 suggests that the imputed values are generated conditional on the
 observed data and missing data mechanism.
 
-If the missingness is ingorable, then:
+If the missingness is ignorable, then:
 
 \[P(Y|Y_{obs}, R=1) = P(Y|Y_{obs}, R=0)\]
 
 This equality states that the distribution of the data \(Y\) is the same
-for both the response (observed) and non-response (missing) groups (Van
+for both the response (observed) and non-response (missing) groups (van
 Buuren, 2018, ch 2.2.6). Essentially, this equation suggests that
 imputation models need not consider the missing data model when creating
 imputations for \(Y_{mis}\). As a result, the parameters of the missing
@@ -601,28 +601,28 @@ If the missing data mechanism is ignorable, then:
 Therefore, the researcher can draw imputations for weight conditional on
 observed data only; he or she does not need to consider the missing data
 model within each subgroup, because the distribution for the observed
-and the missing data is the same (Van Buuren, 2018, ch.~2.2.6). Thus,
+and the missing data is the same (van Buuren, 2018, ch.~2.2.6). Thus,
 the researcher can focus on the impact of the scale surface alone, as
 missing values for weight within a surface come from the same
 distribution as the observed.
 
 If within each surface group the distribution for missing weights
 depends further on the actual mass of the object weighed, then the
-researcher cannot ignore the missing data model, because imputed values
-drawn from the observed data would be systematically different than the
-distribution of imputed values drawn when taking the missing data model
-into consideration. In this example, if weight were missing for objects
-that had a higher weight, imputations drawn from the observed data would
-systematically understate the weight of the missing objects regardless
-of the surface of the scale if the missing data model is ignored. The
-resulting imputations would be (potentially severly) biased depending on
-how influential the missing data model actually is (Van Buuren, 2018,
-ch.~2.2.6).
+researcher cannot ignore the missing data model. In this case, imputed
+values drawn from the observed data would be systematically different
+than the distribution of imputed values drawn when taking the missing
+data model into consideration. In this example, if weight were missing
+for objects that had a higher weight, imputations drawn from the
+observed data would systematically understate the weight of the missing
+objects regardless of the surface of the scale if the missing data model
+is ignored. The resulting imputations would be (potentially severly)
+biased depending on how influential the missing data model actually is
+(van Buuren, 2018, ch.~2.2.6).
 
 Therefore, the implications of ignorability are of utmost importance
 when building an imputation model. Most imputation models in literature
 assume that the missing data mechanism is ignorable. Imputation models
-relying on this assumption produced unbiased imputations if the
+relying on this assumption produce unbiased imputations if the
 assumption of ignorability holds. In the event that it does not hold,
 imputations may be systematically biased in most cases.
 
@@ -647,6 +647,33 @@ readers, many studies cover non-ignorable missingness and its impact on
 the models presented in this research. To explore non-ignorable
 missingness in more detail, see (Xie, et. al, 2018; Lu \& Zhang, 2013;
 Yin \& Shi, 2015).
+
+\section*{Missing Data Patterns}\label{background-missing-data-patterns}
+\addcontentsline{toc}{section}{Missing Data Patterns}
+
+The missing data mechanism describes the process that governs the
+relationship between observed values and probability of missingness,
+while the missing data model formalizes the statistical relationship
+behind this process. These concepts cover the nature of missingness, but
+they do not describe the patterns of missingness that exist within a
+dataset. \textbf{Missing data patterns} describe the characteristics of
+missingness within a dataset. There are many characteristics that detail
+how data is missing. For example, a multivariate dataset could have data
+missing in one or multiple variables. In addition, the proportion of
+missingness could vary for each variable with missing data. One feature
+may have 10\% of its observations missing while another is unobserved
+90\% of the time.
+
+While missing data patterns are distinct from missing data mechanisms,
+the missing data pattern may augment or undermine the importance of the
+missing data mechanism and how it is handled using missing data methods.
+The authors introduce the concept because missing data patterns reappear
+throughout the text, specifically in the
+\protect\hyperlink{methodology}{Methodology section}. That being said,
+missing data patterns are not the primary focus of this research, so the
+authors keep this section brief. For more information on missing data
+patterns, refer to van Buuren's book, \emph{Flexible Imputation of
+Missing Data}.
 
 \section*{Missing Data Methods}\label{background-missing-data-methods}
 \addcontentsline{toc}{section}{Missing Data Methods}
@@ -694,7 +721,7 @@ review of missing data methods.
 One of the most popular missing data methods that data practitioners use
 when dealing with missing data is listwise deletion or complete-case
 analysis (CCA). Listwise deletion discards all rows in which at least
-one value in the columnspace of \(Y\) is missing for a given record (Van
+one value in the columnspace of \(Y\) is missing for a given record (van
 Buuren, 2018, ch.~1.3.1). Complete-case analysis (CCA) is relatively
 easy to implement and enables analysis models to run without the need
 for imputation because missing data has been removed. However, CCA also
@@ -761,7 +788,7 @@ In general, there are two branches of imputation methods -
 \addcontentsline{toc}{subsubsection}{Univariate}
 
 Univariate imputation techniques focus on a single incomplete variable
-known as the target variable (Van Buuren, 2018, ch.~3). Univariate
+known as the target variable (van Buuren, 2018, ch.~3). Univariate
 methods utilize observed values in the target variable to determine how
 to fill in missing values in the same target. Mean imputation is a
 popular example of a univariate method. When applied, mean imputation
@@ -797,10 +824,10 @@ imputation. Multivariate imputation methods rely on one or more
 available features to predict plausible imputations for the target
 variable. When an imputation model has access to multiple features
 within a dataset, the method can preserve the relationships between the
-features and the target variable (Van Buuren, 2018, ch.~4.1). While this
+features and the target variable (van Buuren, 2018, ch.~4.1). While this
 preservation is beneficial, it is not always clear which features one
 should use in a multivariate imputation model. In this case, the
-\textbf{missing data pattern} becomes useful to know. Van Buuren (2018)
+\textbf{missing data pattern} becomes useful to know. van Buuren (2018)
 states:
 \begin{quote}
 The missing data pattern influences the amount of information that can
@@ -812,7 +839,7 @@ they have are non-missing in rows that are vastly incomplete.
 \end{quote}
 Since the missing data pattern shows how information can be transferred
 between variables, we can now calculate quantitative statistics to
-determine further how each variable connects to one another. Van Buuren
+determine further how each variable connects to one another. van Buuren
 (2018) names the first of these statistics \textbf{Influx}. The influx
 coefficient \(I_j\) is defined as:
 
@@ -822,15 +849,15 @@ Influx represents the number of variable pairs (\(Y_j\),\(Y_k\)) with
 \(Y_j\) missing and \(Y_k\) observed, divided by the total number of
 observed data points. Its value depends on the proportion of missing
 data of the variable, where \(I_j=0\) when a variable is completely
-observed and \(I_j=1\) when a variable is completely missing (Van
-Buuren, 2018, ch.~4.1.3). As Van Buuren notes, ``for two variables with
+observed and \(I_j=1\) when a variable is completely missing (van
+Buuren, 2018, ch.~4.1.3). As van Buuren notes, ``for two variables with
 the same proportion of missing data, the variable with higher influx is
 better connected to the observed data, and might thus be easier to
 impute'' (2018, ch.~4.1.3). Thus, influx is an important statistic that
 suggests which variables in the dataset are good candidates to be
 imputed using the other variables as predictors.
 
-Van Buuren (2018) coins a similar coefficient of interest, named
+van Buuren (2018) coins a similar coefficient of interest, named
 \textbf{Outflux}. The outflux coefficient \(O_j\) is defined as:
 
 \[O_j = \frac{\sum_j^p\sum_k^p\sum_i^n r_{ij}(1-r_{ik})}{\sum_k^p\sum_i^n 1-r_{ij}}\]
@@ -840,8 +867,8 @@ the total number of incomplete data points. Its value indicates the
 potential usefulness of \(Y_j\) for imputing other variables. As with
 influx, outflux depends on the proportion of missing data of the
 variable. Unlike influx, \(O_j=1\) when a variable is completely
-observed, and \(O_j=0\) when a variable is completely missing (Van
-Buuren, 2018, ch.~4.1.3). Van Buuren describes outflux in a similar
+observed, and \(O_j=0\) when a variable is completely missing (van
+Buuren, 2018, ch.~4.1.3). van Buuren describes outflux in a similar
 manner to influx: ``For two variables having the same proportion of
 missing data, the variable with higher outflux is better connected to
 the missing data, and thus potentially more useful for imputing other
@@ -870,11 +897,11 @@ target variable. A few examples of multivariate imputation methods are:
 Appendix F provides more information regarding multivariate imputation
 methods available in \texttt{Autoimpute} and detail behind how each
 method works under the hood. \texttt{Autoimpute} implements regressions
-as seen in Van Buuren and implements PMM and LRD as seen in Morris et.
+as seen in van Buuren and implements PMM and LRD as seen in Morris et.
 al.
 
 The univariate and multivariate imputation methods presented above
-replaces missing values in dataset with imputed ones. As a result, the
+replace missing values in dataset with imputed ones. As a result, the
 imputed dataset is complete, containing no missing values for any
 observation \(Y_{ij}\) within \(Y\). As Gelman \& Hill note, ``these
 methods keep the full sample size, which can be advantageous for bias
@@ -916,7 +943,7 @@ the missing value actually is (Gelman \& Hill, 2017, p.~532). An
 analysis model will treat observed and imputed values the same - as true
 values with no inherent variability.
 
-Donald Rubin (as cited in Van Buuren, 2018, ch.~2) notes:
+Donald Rubin (as cited in van Buuren, 2018, ch.~2) notes:
 \begin{quote}
 Imputing one value for a missing datum cannot be correct in general,
 because we don't know what value to impute with certainty (if we did, it
@@ -961,7 +988,7 @@ developing a multiply imputed datasets (Allison, 2012):
   errors, and test statistics using parameter pooling techniques.
 \end{enumerate}
 Figure 1 below visualizes the workflow described in the three steps
-above (Van Buuren, 2018, ch.~1.4.1).
+above (van Buuren, 2018, ch.~1.4.1).
 \begin{figure}
 
 {\centering \includegraphics[width=400px]{figure/multiple-imputation-workflow} 
@@ -1126,10 +1153,10 @@ include the following:
   the missingness does not depend on the \emph{response} variable used
   in an analysis model.
 \item
-  For logistic regression, the missing data occurs in the \emph{reponse}
-  variable only, regardless of the missing data mechanism, so long as
-  the missingness does not depend on the \emph{predictor} variables used
-  in the analysis model.
+  For logistic regression, the missing data occurs in the
+  \emph{response} variable only, regardless of the missing data
+  mechanism, so long as the missingness does not depend on the
+  \emph{predictor} variables used in the analysis model.
 \end{itemize}
 Allison has proved that listwise deletion actually outerperforms other
 methods, producing unbiased estimates so long as the regression models
@@ -1149,7 +1176,7 @@ full dataset but ignores any uncertainty or variation introduced when
 imputing missing values. Therefore, an analysis model such as linear
 regression treats the single-imputed dataset as if each observation is a
 true value. The analysis model fits the dataset as it would any other
-dataset (Van Buuren, 2018, ch.~2.1.2).
+dataset (van Buuren, 2018, ch.~2.1.2).
 
 In the best case, if the imputation model used to impute data is not
 misspecified, then the the coefficients produced from the analysis model
@@ -1186,7 +1213,7 @@ dataset, depending on the number of imputations specified. Each imputed
 dataset has the same values for the observed but different imputations
 for the missing values. These differences highlight the variability
 introduced by imputation methods since the true value of a missing
-observation is unknown (Van Buuren, 2018, ch.~2.1.2).
+observation is unknown (van Buuren, 2018, ch.~2.1.2).
 
 While multiple imputation retains sample size and imputation
 variability, it complicates the process of analysis. Because multiple
@@ -1198,7 +1225,7 @@ and standard errors.
 
 The authors introduce new notation to explain the pooling process used
 in multiple imputation. Again, the authors follow the notation outlined
-in Van Buuren. The notation in this section also appears in Appendix B,
+in van Buuren. The notation in this section also appears in Appendix B,
 the expressions appear in Appendix C, and concepts appear in Appendix D.
 
 Assume \(Q\) is the population parameter of interest. In the context of
@@ -1208,7 +1235,7 @@ simple linear regression or a vector \(\vec{Q}\) containing the
 (Note the same notation applies to coefficients from other regression
 models, such as logistic regression). In either case, \(\hat{Q}\) is the
 estimate of \(Q\). \(U\) represents the variance of estimate \(\hat Q\)
-or the covariance matrix of \(\vec{\hat Q}\) (Van Buuren, 2018,
+or the covariance matrix of \(\vec{\hat Q}\) (van Buuren, 2018,
 ch.~2.3.).
 
 In the case of complete data or single imputation, the researcher fits
@@ -1217,7 +1244,7 @@ researcher uses multiple imputation, the researcher must apply the
 analysis model to each imputed datset independently. Therefore, the
 researcher ends up with \(m\) x \(\hat{Q}\) estimates and \(m\) x \(U\)
 covariance matrices, one set from each analysis model applied to \(m\)
-imputed datasets (Van Buuren, 2018, ch.~2.3). The researcher must pool
+imputed datasets (van Buuren, 2018, ch.~2.3). The researcher must pool
 these parameters together to build one analysis model that properly
 accounts for the estimates from each \(m\) imputed dataset.
 
@@ -1246,7 +1273,7 @@ variance within is the average of the variance within each of the
 analysis models fit on the \(m\) imputed datasets. It is the traditional
 variance metric one would expect from a linear regression, expect in the
 case of multiple imputation, it is the average across the \(m\) imputed
-datasets (Van Buuren, 2018, ch 2.3).
+datasets (van Buuren, 2018, ch 2.3).
 
 The next formula is the variance between:
 
@@ -1256,7 +1283,7 @@ This equation is called \textbf{variance between}. Because each of the
 \(\hat Q\), variance exists between the estimates of each imputed
 dataset. Therefore, the analysis must account for the variance that
 occurs between the different estimates each imputation procedure
-produces (Van Buuren, 2018, ch 2.3).
+produces (van Buuren, 2018, ch 2.3).
 
 The final formula represents the total variance:
 
@@ -1266,7 +1293,7 @@ within to the variance beween to the additional variance from a finite
 number of imputations, \(m\). Note that as \(m \rightarrow \infty\), the
 last part of this equation goes to \(0\). But because one cannot perform
 an infinite number of imputations, additional variance must be added to
-account for the number of imputations the researcher conducts (Van
+account for the number of imputations the researcher conducts (van
 Buuren, 2018, ch.~2.3).
 
 Therefore, the analysis model for multiply imputed data is parameterized
@@ -1282,11 +1309,7 @@ performance of the imputation process. For example, a large variance
 between metric indicates that the imputation model produces wildly
 different imputations for each dataset. As a result, the analysis model
 produces largely different coefficient estimates, so the variance
-between them is high. Additional metrics and diagnostics to assess the
-efficiency of the imputation process appear in Appendix G. The authors
-also cover these diagnostics in the
-\protect\hyperlink{methodology}{Methodology} and
-\protect\hyperlink{findings}{Findings} sections.
+between them is high.
 
 \section*{Missing Data and
 Autoimpute}\label{background-missing-data-autoimpute}
@@ -1330,36 +1353,71 @@ subset of those available in \texttt{Autoimpute}. Beyond
 \texttt{Autoimpute} numerous additional missing data methods exist to
 handle missing data, and they are continuously being developed and
 improved (Schouten, et al, 2018). Therefore, it is vital to understand
-under which circumstances each imputation technique can be used, and it
-is important to evaluate each technique in relation to other methods
+the circumstances under which each missing data method is effective, and
+it is important to evaluate each technique in relation to other methods
 (Schouten, et al, 2018). To do so, researchers can simulate complete
-datasets and introduce different types of missing data mechanisms and
-missing data patterns. Such a procedure affords the researcher an
-opportunity to evaluate imputation methods and their affect on analysis
-models under different circumstances (Schouten, et al, 2018).
+datasets then introduce artificial missingness under different types of
+missing data mechanisms with different missing data patterns. Such a
+procedure affords the researcher an opportunity to evaluate missing data
+methods and their effect on analysis models under different
+circumstances (Schouten, et al, 2018).
 
-In this research, the authors explore the performance of imputation
-methods and their effect on analysis models under two separate
-circumstances. The authors begin by simulating a dataset with no
-missingness. A simple linear regression is performed on this simulated
-dataset and its coefficients are stored as benchmarks. Next, the
-researchers impose two different types of missingness mechanisms and
-missing data patterns on the complete dataset. This procedure produces
-two disctinct, incomplete datasets, where the remaining observed values
-are the same as the original but now some observations are missing. The
-authors then impose the same deletion and impution methods on each of
-the incomplete datasets using the multiple imputation framework.
-Finally, the authors apply the same linear regression model to the
-multiply imputed data and pool the parameter estimates and variance. The
-authors then compare the results from each process to each other and to
-the results from linear regression on the original complete dataset. The
-authors perform the entire process using the \texttt{Autoimpute}
-package, which demonstrates its capabilities as an end-to-end framework
-for handling missing data.
+\hypertarget{methodology}{\section*{Assessing Missing Data Methods
+through Simulation}\label{methodology}}
+\addcontentsline{toc}{section}{Assessing Missing Data Methods through
+Simulation}
 
-In each example, the researchers then explore missingness patterns
-within the dataset. Then, the authors use the following missing data
-methods:
+Schouten, et al. (2018) formalizes a step-by-step process in which a
+missing data methodology is evaluated by means of simulations:
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Simulate a multivariate, complete dataset. The complete dataset
+  becomes the population of interest and the source of truth.
+\item
+  Introduce arificial missingness to the complete dataset using missing
+  data mechanisms and missing data patterns. This process results in an
+  incomplete dataset.
+\item
+  Use missing data methods to handle the missing data in the incomplete
+  dataset.
+\item
+  Apply an analysis model and obtain statistical inference for the
+  original, complete dataset as well as the incomplete dataset after
+  dealing with the missing values. A comparison of these inferences
+  gives an indication of the performance of the missing data method.
+\end{enumerate}
+In this methodology, the authors follow the steps outlined above. The
+authors simulate a complete dataset using the \texttt{MASS} package in R
+(Venables \& Ripley, 2002). The authors introduce missingness in a
+complete dataset using the \texttt{ampute} function from the
+\texttt{MICE} package in R (van Buuren \& Groothuis-Oudshoorn, 2011).
+The \texttt{ampute} function can generate multivariate missing data
+within a complete dataset by defining a missing data mechanism (MCAR,
+MAR, MNAR) as well as missing data patterns, such as proportions of
+missingness and the features that should contain missingness (van Buuren
+\& Groothuis-Oudshoorn, 2011). The authors use these R packages to
+produce complete and incomplete datasets, which cover steps 1 and 2
+above.
+
+Next, the authors use \texttt{Autoimpute} to cover steps 3 and 4. The
+authors explore the performance of imputation methods and their effect
+on analysis models under two separate circumstances. The authors begin
+by simulating a dataset with no missingness. A simple linear regression
+is performed on this simulated dataset and its parameters of interest
+are stored as benchmarks. Next, the researchers create artifical
+missingness in the complete dataset using two different types of missing
+data mechanisms with different missing data patterns. This procedure
+results in two disctinct, incomplete datasets. Each incomplete dataset
+will have different observations missing, but any observed values will
+be the same across the two incomplete datasets and the original complete
+dataset.
+
+The authors then impose the same deletion and impution methods on each
+of the incomplete datasets. In each example, the researchers first
+explore missingness patterns within the dataset. Then, the authors use
+the following missing data methods:
 \begin{itemize}
 \tightlist
 \item
@@ -1371,28 +1429,35 @@ methods:
 \item
   Predictive Mean Matching
 \end{itemize}
+Mean, least squares, and predictive mean matching are performed using
+the mutliple imputation framework. Listwise deletion is performed
+separately because it does not require single or multiple imputation.
+All methods are implemented using the \texttt{Autoimpute} package.
+
 \texttt{Autoimpute} offers many more missing data methods, but these
-four are useful for examination because each carries a different set of
-assumptions and takes a very different approach to imputing missing
-values. CCA is a deletion method, so it ignores missingness entirely by
-discarding records with any missing observations. Mean imputation is a
-univariate method, so it disregards any structure between the target
-variable and other features. Least squares is a popular supervised
-multivariate method familiar to readers. And PMM is an advanced
-semi-supervised multivariate method that blends concepts from bayesian
-analysis, linear regression, and k-nearest neighbors. The sections below
-demonstrate when these methods work and when they do not. As always,
-their performance is directly linked to the nature of missingness within
-a dataset. Therefore, some methods shine in circumstances where other
+four are useful for this study because each carries a different set of
+assumptions and takes a very different approach to handling missing
+values. Listwise deletion is a deletion method, so it ignores
+missingness entirely by discarding records with any missing
+observations. Mean imputation is a univariate method, so it disregards
+any structure between the target variable and other features. Least
+squares is a supervised multivariate method that considers the structure
+of the data but ignores the uncertainty surrounding imputation. Finally,
+PMM is an advanced semi-supervised multivariate method that blends
+concepts from bayesian analysis, linear regression, and k-nearest
+neighbors. The sections below demonstrate when these methods work and
+when they do not. As always, their performance is directly linked to the
+missing data mechanism at hand and the nature of missingness within a
+dataset. Therefore, some methods shine in circumstances where other
 methods underperform.
 
 \section*{The Full Dataset}\label{the-full-dataset}
 \addcontentsline{toc}{section}{The Full Dataset}
 
-The authors begin by simulating the full dataset, which they use as the
-source of truth. The full dataset contains 500 observations for feature
-\(x\) and response \(y\). At this point, no missingness exists in either
-\(x\) or \(y\)
+The authors use the MASS package (Venables \& Ripley, 2002) to simulate
+the full dataset, or the source of truth. The full dataset contains 500
+observations for feature \(x\) and response \(y\). At this point, no
+missingness exists in either \(x\) or \(y\)
 
 The figure below visualizes the distribution of each variable:
 \begin{figure}
@@ -1413,8 +1478,8 @@ The figure plots the marginal distribution of each variable as well:
 
 \caption{Joint and Marginals of Full x and y}\label{fig:full-joint}
 \end{figure}
-The full dataset does not contain any missing values. Therefore, we do
-not have to perform any imputation before we conduct analysis. Using
+The full dataset does not contain any missing values, so no deletion or
+imputation is necessary before conducting analysis. Using
 \texttt{Autoimpute}, the researchers fit a linear regression model on
 the full dataset. The summary of the model fit appears below:
 \begin{figure}
@@ -1433,8 +1498,8 @@ parameter of interest \(Q\). Because there is only one predictor, the
 covariance matrix \(U\) simply reduces to the variance of the estimate.
 
 The summary output above displays diagnostics for the linear regression
-model. The table uses aliases for concepts covered in the background
-section and introduces some new terminology. They are:
+model. The table uses aliases for concepts covered in the
+\protect\hyperlink{background}{Background section}
 \begin{itemize}
 \tightlist
 \item
@@ -1447,28 +1512,12 @@ section and introduces some new terminology. They are:
   \texttt{vb} - The variance-between \(B\)
 \item
   \texttt{vt} - The total variance \(T\)
-\item
-  \texttt{dfcom} - The degrees of freedom for the hypothetically
-  complete dataset
-\item
-  \texttt{dfadj} - Adapted degrees of freedom for samples that have
-  missing data
-\item
-  \texttt{lambda} - The proportion of variance due to nonresponse or
-  missingness
-\item
-  \texttt{riv} - The relative increase in variance due to nonresponse or
-  missingness
 \end{itemize}
-Observe that \texttt{vb}, \texttt{lambda}, and \texttt{riv} are all
-equal to 0. This result occurs because no missingness exists and
-multiple imputation is not used. These diagnostics are of interest for
-methods that produce variability in imputed values when using mutliple
-imputation. Therefore, values for \texttt{coefs}, \texttt{std}, and
-\texttt{vw} are the values of interest. They are the benchmarks for
-comparison when the authors reproduce this analysis on variants of the
-full dataset that have artificial missingness introduced. The rest of
-the diagnostics will become clear in the next sections.
+Observe that \texttt{vb}, or the variance-between, is equal to 0. This
+result occurs because no missingness exists and multiple imputation is
+not used. The variance-between becomes important in subsequent sections
+where missing data methods are used within the multiple imputation
+framework.
 
 \section*{Example 1: MCAR with Missingness in the
 Response}\label{example-1-mcar-with-missingness-in-the-response}
@@ -1617,7 +1666,7 @@ multiple imputation phase of \texttt{Autoimpute}. The next section,
 Findings, demonstrates how the nature of missingness affected the
 results of linear regression on our mulitply imputed data.
 
-\hypertarget{findings}{\chapter*{Findings}\label{findings}}
+\chapter*{Findings}\label{findings}
 \addcontentsline{toc}{chapter}{Findings}
 
 \section*{Full Model Recap}\label{full-model-recap}
@@ -1873,21 +1922,22 @@ MCAR & Missing data mechanism depends on $\psi$ only\\
 MAR & Missing data mechanism depends on $Y_{obs}$ and $\psi$ only\\
 MNAR & Missing data mechanism depends on $Y_{obs}$, $Y_{mis}$, and $\psi$\\
 ignorability & Criteria required for imputation models to ignore $\psi$\\
+missing data pattern & Various ways in which data can be missing throughout a dataset\\
 missing data method & Method used to handle missing data. Use deletion or imputation\\
-deletion & Discard missing values from the dataset\\
 \addlinespace
+deletion & Discard missing values from the dataset\\
 imputation model & Replace missing values with imputations from imputation model\\
 analysis model & A supervised machine learning model applied to imputed data\\
 target & Column with missing values to be imputed\\
 univariate & Models using target to determine imputation for target\\
-multivariate & Models using features to predict imputed values for target\\
 \addlinespace
+multivariate & Models using features to predict imputed values for target\\
 missing data pattern & Pattern suggesting information transferrable b/w variables\\
 single imputation & Impute missing values once prior to analysis\\
 multiple imputation & Impute missing values $m$ times prior to analysis\\
 influx & Candidates to be imputed using the other predictors\\
-outflux & Variables useful as predictors to impute a target variable\\
 \addlinespace
+outflux & Variables useful as predictors to impute a target variable\\
 pooled parameter estimate & The coefficients of an analysis model under multiple imputation\\
 variance within & The average of the variance of the parameter estimate from each imputation\\
 variance between & The variance introduced from different parameter estimates across imputations\\
@@ -1931,9 +1981,6 @@ predictive mean matching (PMM) & PMM imputation is a multi-step procedure. First
 local residual draws (LRD) & LRD imputation begins by replicating the process for PMM. Once the truly observed value of $y$ is selected through the PMM process, LRD adds the distance to that value. The missing value is then imputed using the sum of the observed value of $y$ and the distance.\\
 \bottomrule
 \end{longtabu}
-\chapter{Analysis Models and
-Diagnostics}\label{analysis-models-and-diagnostics}
-
 \backmatter
 
 \chapter*{References}\label{references}
@@ -2010,9 +2057,20 @@ values for simulation purposes: A multivariate amputation procedure.
 2909--2930. \url{http://doi.org/10.1080/00949655.2018.1491577}
 
 \hypertarget{ref-van_buuren_flexible_2018}{}
-Van Buuren, S. (2018). \emph{Flexible Imputation of Missing Data} (2nd
+van Buuren, S. (2018). \emph{Flexible Imputation of Missing Data} (2nd
 ed.). Chapman; Hall/CRC. Retrieved from
 \url{https://stefvanbuuren.name/publication/2018-01-01_vanbuuuren2018/}
+
+\hypertarget{ref-mice_package}{}
+van Buuren, S., \& Groothuis-Oudshoorn, K. (2011). mice: Multivariate
+imputation by chained equations in r. \emph{Journal of Statistical
+Software}, \emph{45}(3), 1--67. Retrieved from
+\url{https://www.jstatsoft.org/v45/i03/}
+
+\hypertarget{ref-mass_package}{}
+Venables, W. N., \& Ripley, B. D. (2002). \emph{Modern applied
+statistics with s} (Fourth). New York: Springer. Retrieved from
+\url{http://www.stats.ox.ac.uk/pub/MASS4}
 
 \hypertarget{ref-vink_towards_nodate}{}
 Vink, G. (n.d.). Towards a Standardized Evaluation of Multiple
