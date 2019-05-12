@@ -47,7 +47,6 @@ text_tbl <- data.frame(
     "$Q$",
     "$\\hat Q$",
     "$U$",
-    "$\\hat U$",
     "$\\bar Q$",
     "$\\bar U$",
     "$B$",
@@ -68,7 +67,6 @@ text_tbl <- data.frame(
     "The outflux coefficient",
     "The population parameter of scientific interest",
     "The estimate for $Q$ using hypothetically complete data",
-    "The variance-covariance matrix of $Q$",
     "The variance-covariance matrix of estimate $\\hat Q$",
     "The pooled parameter estimate of $Q$ under multiple imputation",
     "The variance-within under multiple imputation",
@@ -124,8 +122,8 @@ text_tbl <- data.frame(
   )
 )
 
-kable(text_tbl, caption="Expressions", booktabs=TRUE, escape=FALSE) %>%
-  kable_styling(position="left", full_width=TRUE, latex_options="hold_position") %>%
+kable(text_tbl, caption="Expressions", booktabs=TRUE, longtable = TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, c("hold_position", "repeat_header")) %>%
   row_spec(0, bold=TRUE, font_size=13)
 ```
 
@@ -189,10 +187,10 @@ text_tbl <- data.frame(
   )
 )
 
-kable(text_tbl, caption="Concepts", booktabs=TRUE, escape=FALSE) %>%
-  kable_styling(position="left", full_width=TRUE, latex_options="hold_position") %>%
+kable(text_tbl, caption="Concepts", booktabs=TRUE, longtable = TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, c("hold_position", "repeat_header")) %>%
   row_spec(0, bold=TRUE, font_size=13)  %>%
-  column_spec(1, width="10em")
+  column_spec(1, width="7em")
 ```
 
 # Univariate Imputation Methods
@@ -224,12 +222,43 @@ text_tbl <- data.frame(
   )
 )
 
-kable(text_tbl, caption="Univariate Methods", booktabs=TRUE, escape=FALSE) %>%
-  kable_styling(position="left", full_width=TRUE, latex_options="hold_position") %>%
+kable(text_tbl, caption="Univariate Methods", booktabs=TRUE, longtable = TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, c("hold_position", "repeat_header")) %>%
   row_spec(0, bold=TRUE, font_size=13)  %>%
-  column_spec(1, width="10em")
+  column_spec(1, width="7em")
 ```
 
 # Multivariate Imputation Methods
+
+```{r appendixfmultivar, echo=FALSE, warning=FALSE}
+
+text_tbl <- data.frame(
+  Method = c(
+    "linear regression",
+    "binomial logistic regression",
+    "multinomial logistic regression",
+    "stochastic regression",
+    "bayesian linear regression",
+    "bayesian binary logistic regression",
+    "predictive mean matching (PMM)",
+    "local residual draws (LRD)"
+    ),
+  Description = c(
+    "Linear Regression imputation fits a linear model on observed data, where $y$ is the target variable to be imputed and $X$ is the design matrix. The model then finds the records in $X$ where $y$ is missing. These records in $X$ are used to generate predictions from the linear model. Those predictions become the imputations for missing values in $y$",
+    "Binary Logistic Regression imputation fits a binary logistic model on observed data, where $y$ is the target variable to be imputed and $X$ is the design matrix. The model then finds the records in $X$ where $y$ is missing. These records in $X$ are used to generate predictions from the binary logistic model. Those predictions become the imputations for missing values in $y$",
+    "Multinomial Logistic Regression imputation fits a multinomial logistic model on observed data, where $y$ is the target variable to be imputed and $X$ is the design matrix. The model then finds the records in $X$ where $y$ is missing. These records in $X$ are used to generate predictions from the multinomial logistic model. Those predictions become the imputations for missing values in $y$",
+    "Stochastic Regression imputation fits a linear model on observed data, where $y$ is the target variable to be imputed and $X$ is the design matrix. The algorithm then stores a normal distribution for the errors from the fit linear model. The model then finds the records in $X$ where $y$ is missing. These records in $X$ are used to generate predictions from the linear model. For each prediction, the algorithm adds a random draw from the distribution of errors. Those predictions + random draws become the imputations for missing values in $y$",
+    "Bayesian linear regression imputation imputes missing values using random draws from the posterior predictive distribution of the missing data $Y_{mis}$. These draws take into account the posterior distribution of the linear model parameters, which in this case are $\\hat{\\beta}$ coefficients.",
+    "Bayesian binary logistic regression imputation imputes missing values using random draws from the posterior predictive distribution of the missing data $Y_{mis}$. These draws take into account the posterior distribution of the binary logistic model parameters, which in this care are the probabilities of class membership.",
+    "PMM imputation is a multi-step procedure. First, a linear model is fit on the observed data for target $y$ and $X$ to obtain $\\hat{\\beta}$ coefficients. Then, a bayesian model is fit, and the algorithm produces a new set of $\\dot{\\beta}$ coefficients using random draws from the posterior predictive distribution of $\\hat{\\beta}$. The coefficients $\\hat{\\beta}$ are used to make predictions for observed $y$, while $\\dot{\\beta}$ are used to make predictions for missing $y$. For each case where $y$ is missing, the algorithm finds the closest $n$ predicted values among cases where $y$ is observed. The algorithm then randomly samples the $n$ closest predictions, selecting one, and eventually imputes the missing data with the truly observed value of $y$. The standard distance used to measure 'closeness' is manhattan distance. $n$ represents the number of neighbors to find, which generally defaults to 5.",
+    "LRD imputation begins by replicating the process for PMM. Once the truly observed value of $y$ is selected through the PMM process, LRD adds the distance to that value. The missing value is then imputed using the sum of the observed value of $y$ and the distance."
+  )
+)
+
+kable(text_tbl, caption="Multivariate Methods", booktabs=TRUE, longtable=TRUE, escape=FALSE) %>%
+  kable_styling(position="left", full_width=TRUE, c("hold_position", "repeat_header")) %>%
+  row_spec(0, bold=TRUE, font_size=13)  %>%
+  column_spec(1, width="7em")
+```
 
 # Analysis Models and Diagnostics

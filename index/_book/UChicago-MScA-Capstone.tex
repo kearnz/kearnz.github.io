@@ -542,18 +542,19 @@ The missing data mechanism underpins the assumptions one can make when
 handling missing data. The most important assumption is that of
 \textbf{ignorability}. Missingness is ignorable ``if it is missing at
 random and the probability of a missingness does not depend on the
-missing information itself'' (Introduction to SAS, 2017). Therefore, the
-missingness within a dataset is said to be ignorable if the underlying
-missing data mechanism is MCAR or MAR. MNAR, on the other hand,
-constitutes missingness that is non-ignorable.
+missing information itself'' (Multiple Imputation in Stata, 2017).
+Therefore, the missingness within a dataset is said to be ignorable if
+the underlying missing data mechanism is MCAR or MAR. MNAR, on the other
+hand, constitutes missingness that is non-ignorable.
 
 As Van Buuren notes, ``the concept of ignorability plays an important
 role in the construction of imputation models'' (2018, ch.~2.2.6).
 Specifically, ignorability determines whether one can ignore the way in
 which data are missing prior to imputing missing data through an
-imputation model (Nakagawa, 2015, p.~85). As stated in Introduction to
-SAS, ``the assumption of ignorability is needed for optimal estimation
-of missing information and is a required assumption'' (2017).
+imputation model (Nakagawa, 2015, p.~85). As stated in Multiple
+Imputation in Stata, ``the assumption of ignorability is needed for
+optimal estimation of missing information and is a required assumption''
+(2017).
 
 To formalize the statements above, consider the general expression for
 an imputation model:
@@ -714,7 +715,7 @@ The first hypothetical results from the strong assumptions listwise
 deletion makes regarding the missing data mechansim. CCA requies missing
 data to not only be ignorable but also MCAR in most cases. Therefore,
 listwise deletion can result in biased estimates even if ignorability
-holds but MAR is not met (Introduction to SAS, 2017).
+holds but MAR is not met (Multiple Imputation in Stata, 2017).
 
 The second hypothetical addresses the impact of removing observations
 from a dataset. Removing records from a dataset can drastically reduce
@@ -724,7 +725,7 @@ learning model analysis. (Dong \& Peng, 2013). Smaller samples reduce
 statistical power and, as a result, inflate the standard error of
 analysis model coefficients. If standard error increases enough,
 coefficients may become statistically insignificant in an analysis model
-(Introduction to SAS, 2017).
+(Multiple Imputation in Stata, 2017).
 
 \subsection*{Imputation}\label{background-imputation}
 \addcontentsline{toc}{subsection}{Imputation}
@@ -732,12 +733,14 @@ coefficients may become statistically insignificant in an analysis model
 Because of these problems, researchers are cautious with listwise
 deletion and employ CCA as a benchmark or in specific cases where the
 effect from deletion is negligible. Instead, researchers turn to
-imputation in most cases to handle missing data. UNECE provides the
-following definition: ``Imputation is a procedure for entering a value
-for a specific data item where the response is missing or unusable''
-(2000). Instead of discarding data, imputation retains potentially
-important information in the data by substituting missing values with
-plausible ones produced from an imputation model.
+imputation in most cases to handle missing data. In their \emph{Glossary
+of Terms for Statistical Editing}, the United Nations Statistical
+Commission and the Economic Council for Europe provides the following
+definition: ``Imputation is a procedure for entering a value for a
+specific data item where the response is missing or unusable'' (2000).
+Instead of discarding data, imputation retains potentially important
+information in the data by substituting missing values with plausible
+ones produced from an imputation model.
 
 While this process seems straightforward, numerous imputation models
 exist and range from quite simple methods to very complex models.
@@ -928,7 +931,7 @@ data - \textbf{multiple imputation}
 \section*{Multiple Imputation}\label{background-multiple-imputation}
 \addcontentsline{toc}{section}{Multiple Imputation}
 
-As noted in the Introduction to SAS (2017):
+As noted in the Multiple Imputation in Stata (2017):
 \begin{quote}
 Multiple imputation is essentially an iterative form of stochastic
 imputation. However, instead of filling in a single value, the
@@ -974,13 +977,13 @@ datasets with different imputed values. When performing analysis on
 multiply imputed data, each imputed dataset is analyzed separately and
 then parameters from those analyses are pooled together to get combined
 diagnostics on the performance of the multiple imputation process and
-the specified imputation model. This method ``solves the standard error
-problem by calculating the variance of each parameter estimate across
-the several data sets'' (Allison, 2012). The pooled parameters replace
-those from the supervised machine learning model of interest. The pooled
-parameters not only produce the coefficient estimate but also the
-properly account for the increase in standard error due to uncertainty
-introduced from imputing missing data.
+the specified imputation model (Vink). This method ``solves the standard
+error problem by calculating the variance of each parameter estimate
+across the several data sets'' (Allison, 2012). The pooled parameters
+replace those from the supervised machine learning model of interest.
+The pooled parameters not only produce the coefficient estimate but also
+the properly account for the increase in standard error due to
+uncertainty introduced from imputing missing data.
 
 The authors cover the analysis on multiply imputed data at the end of
 this section. First, the authors focus on the differences between single
@@ -1060,15 +1063,19 @@ capable of making predictions or classifications (Dong \& Peng, 2013).
 The previous sections in the background address the main points a
 researcher must consider when dealing with missing data. These
 considerations influence the imputation model a researcher deploys to
-impute missing data. The results from the imputation model then effect
-the results produced from an analysis model run on imputed data. One
-must remember that listwise deletion and imputation methods
-fundamentally alter a dataset. If the missing data method used is
-misspecified, the structure of the data after imputation is distorted,
-and this distortion affects inference derived from analysis models fit
-on the altered dataset. This section addresses the impact of listwise
-deletion and imputation from the perspective of analysis. It also covers
-the additional work necessary to fit analysis models on multiply imputed
+impute missing data. The results from the imputation model then affect
+the results produced from an analysis model run on imputed data.
+
+One must remember that listwise deletion and imputation methods
+fundamentally alter a dataset. Therefore, the quality of the results
+produced from a missing data method depend on the degree to which the
+method is able to capture the nature of the missing data when modeling
+missing values (Vink). If the missing data method used is misspecified,
+the structure of the data after imputation is distorted, and this
+distortion affects inference derived from analysis models fit on the
+altered dataset. This section addresses the impact of listwise deletion
+and imputation from the perspective of analysis. It also covers the
+additional work necessary to fit analysis models on multiply imputed
 data.
 
 In this research, an analysis model is nothing more than a supervised
@@ -1200,8 +1207,9 @@ simple linear regression or a vector \(\vec{Q}\) containing the
 \(\beta_1,...,\beta_p\) coefficients from multiple linear regression.
 (Note the same notation applies to coefficients from other regression
 models, such as logistic regression). In either case, \(\hat{Q}\) is the
-estimate of \(Q\). \(U\) represents the variance of scalar \(Q\) or the
-covariance matrix of \(\vec{Q}\) (Van Buuren, 2018, ch.~2.3.).
+estimate of \(Q\). \(U\) represents the variance of estimate \(\hat Q\)
+or the covariance matrix of \(\vec{\hat Q}\) (Van Buuren, 2018,
+ch.~2.3.).
 
 In the case of complete data or single imputation, the researcher fits
 an analysis model and produces the estimate \(\hat{Q}\). But when the
@@ -1286,7 +1294,7 @@ Autoimpute}\label{background-missing-data-autoimpute}
 
 This background explores the main concepts related to missing data and
 discusses what a researcher must consider before selecting which missing
-data method to use. The section then introduces numerous imputation
+data method to use. The section then introduces numerous missing data
 methods, each of which operates with its own set of assumptions but all
 of which assume that the missing data mechanism is at least ignorable.
 This text then briefly examines the impact of deletion and imputation on
@@ -1817,9 +1825,8 @@ $I_j$ & The influx coefficient\\
 $O_j$ & The outflux coefficient\\
 $Q$ & The population parameter of scientific interest\\
 $\hat Q$ & The estimate for $Q$ using hypothetically complete data\\
-$U$ & The variance-covariance matrix of $Q$\\
+$U$ & The variance-covariance matrix of estimate $\hat Q$\\
 \addlinespace
-$\hat U$ & The variance-covariance matrix of estimate $\hat Q$\\
 $\bar Q$ & The pooled parameter estimate of $Q$ under multiple imputation\\
 $\bar U$ & The variance-within under multiple imputation\\
 $B$ & The variance-between under multiple imputation\\
@@ -1829,10 +1836,8 @@ $T$ & The total variance under multiple imputation\\
 \end{table}
 \chapter{Missingess Expression
 Cheatsheet}\label{missingess-expression-cheatsheet}
-\begin{table}[!h]
-
-\caption{\label{tab:appendixcexpressions}Expressions}
-\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X}
+\begin{longtabu} to \linewidth {>{\raggedright}X>{\raggedright}X}
+\caption{\label{tab:appendixcexpressions}Expressions}\\
 \toprule
 \begingroup\fontsize{13}{15}\selectfont \textbf{Expression}\endgroup & \begingroup\fontsize{13}{15}\selectfont \textbf{Description}\endgroup\\
 \midrule
@@ -1854,14 +1859,11 @@ $\bar U = \frac{1}{m}\sum_{\ell=1}^m \bar U_\ell$ & The variance within is the m
 $B = \frac{1}{m-1}\sum_{\ell=1}^m (\hat Q_\ell-\bar Q)(\hat Q_\ell-\bar Q)'$ & The variance between is the additional variance in estimating $\hat Q$ during $m$ imputations\\
 $T = \bar U + B + \frac{B}{m}$ & The total variance is the sum of variance within, variance between, and added variance from finite number of imputations $m$\\
 \bottomrule
-\end{tabu}
-\end{table}
+\end{longtabu}
 \chapter{Concepts Related to
 Missingness}\label{concepts-related-to-missingness}
-\begin{table}[!h]
-
-\caption{\label{tab:appendixdconcepts}Concepts}
-\begin{tabu} to \linewidth {>{\raggedright\arraybackslash}p{10em}>{\raggedright}X}
+\begin{longtabu} to \linewidth {>{\raggedright\arraybackslash}p{7em}>{\raggedright}X}
+\caption{\label{tab:appendixdconcepts}Concepts}\\
 \toprule
 \begingroup\fontsize{13}{15}\selectfont \textbf{Concept}\endgroup & \begingroup\fontsize{13}{15}\selectfont \textbf{Definition}\endgroup\\
 \midrule
@@ -1894,14 +1896,11 @@ variance within & The average of the variance of the parameter estimate from eac
 variance between & The variance introduced from different parameter estimates across imputations\\
 total variance & The accurate representation of variance under multiple imputation\\
 \bottomrule
-\end{tabu}
-\end{table}
+\end{longtabu}
 \chapter{Univariate Imputation
 Methods}\label{univariate-imputation-methods}
-\begin{table}[!h]
-
-\caption{\label{tab:appendixeunivar}Univariate Methods}
-\begin{tabu} to \linewidth {>{\raggedright\arraybackslash}p{10em}>{\raggedright}X}
+\begin{longtabu} to \linewidth {>{\raggedright\arraybackslash}p{7em}>{\raggedright}X}
+\caption{\label{tab:appendixeunivar}Univariate Methods}\\
 \toprule
 \begingroup\fontsize{13}{15}\selectfont \textbf{Method}\endgroup & \begingroup\fontsize{13}{15}\selectfont \textbf{Description}\endgroup\\
 \midrule
@@ -1916,11 +1915,25 @@ interpolation & Interpolation imputation constructs new data points within the r
 last observation carried forward (LOCF) & LOCF imputes missing values by carrying forward the last observed value. Therefore, the method respects the order of the records in target $y$.\\
 next observation carried backward (NOCB) & NOCB imputes missing values by carrying backward the next observed value. Therefore, the method respects the order of the records in target $y$.\\
 \bottomrule
-\end{tabu}
-\end{table}
+\end{longtabu}
 \chapter{Multivariate Imputation
 Methods}\label{multivariate-imputation-methods}
-
+\begin{longtabu} to \linewidth {>{\raggedright\arraybackslash}p{7em}>{\raggedright}X}
+\caption{\label{tab:appendixfmultivar}Multivariate Methods}\\
+\toprule
+\begingroup\fontsize{13}{15}\selectfont \textbf{Method}\endgroup & \begingroup\fontsize{13}{15}\selectfont \textbf{Description}\endgroup\\
+\midrule
+linear regression & Linear Regression imputation fits a linear model on observed data, where $y$ is the target variable to be imputed and $X$ is the design matrix. The model then finds the records in $X$ where $y$ is missing. These records in $X$ are used to generate predictions from the linear model. Those predictions become the imputations for missing values in $y$\\
+binomial logistic regression & Binary Logistic Regression imputation fits a binary logistic model on observed data, where $y$ is the target variable to be imputed and $X$ is the design matrix. The model then finds the records in $X$ where $y$ is missing. These records in $X$ are used to generate predictions from the binary logistic model. Those predictions become the imputations for missing values in $y$\\
+multinomial logistic regression & Multinomial Logistic Regression imputation fits a multinomial logistic model on observed data, where $y$ is the target variable to be imputed and $X$ is the design matrix. The model then finds the records in $X$ where $y$ is missing. These records in $X$ are used to generate predictions from the multinomial logistic model. Those predictions become the imputations for missing values in $y$\\
+stochastic regression & Stochastic Regression imputation fits a linear model on observed data, where $y$ is the target variable to be imputed and $X$ is the design matrix. The algorithm then stores a normal distribution for the errors from the fit linear model. The model then finds the records in $X$ where $y$ is missing. These records in $X$ are used to generate predictions from the linear model. For each prediction, the algorithm adds a random draw from the distribution of errors. Those predictions + random draws become the imputations for missing values in $y$\\
+bayesian linear regression & Bayesian linear regression imputation imputes missing values using random draws from the posterior predictive distribution of the missing data $Y_{mis}$. These draws take into account the posterior distribution of the linear model parameters, which in this case are $\hat{\beta}$ coefficients.\\
+\addlinespace
+bayesian binary logistic regression & Bayesian binary logistic regression imputation imputes missing values using random draws from the posterior predictive distribution of the missing data $Y_{mis}$. These draws take into account the posterior distribution of the binary logistic model parameters, which in this care are the probabilities of class membership.\\
+predictive mean matching (PMM) & PMM imputation is a multi-step procedure. First, a linear model is fit on the observed data for target $y$ and $X$ to obtain $\hat{\beta}$ coefficients. Then, a bayesian model is fit, and the algorithm produces a new set of $\dot{\beta}$ coefficients using random draws from the posterior predictive distribution of $\hat{\beta}$. The coefficients $\hat{\beta}$ are used to make predictions for observed $y$, while $\dot{\beta}$ are used to make predictions for missing $y$. For each case where $y$ is missing, the algorithm finds the closest $n$ predicted values among cases where $y$ is observed. The algorithm then randomly samples the $n$ closest predictions, selecting one, and eventually imputes the missing data with the truly observed value of $y$. The standard distance used to measure 'closeness' is manhattan distance. $n$ represents the number of neighbors to find, which generally defaults to 5.\\
+local residual draws (LRD) & LRD imputation begins by replicating the process for PMM. Once the truly observed value of $y$ is selected through the PMM process, LRD adds the distance to that value. The missing value is then imputed using the sum of the observed value of $y$ and the distance.\\
+\bottomrule
+\end{longtabu}
 \chapter{Analysis Models and
 Diagnostics}\label{analysis-models-and-diagnostics}
 
@@ -1939,23 +1952,51 @@ Diagnostics}\label{analysis-models-and-diagnostics}
 \hypertarget{refs}{}
 \hypertarget{ref-allison_handling_2012}{}
 Allison, P. (2012). Handling missing data by maximum likelihood.
-\emph{SAS Global Forum 2012}. Retrieved from
+\emph{SAS Global Forum 2012}. Haverford; PA; USA: Statistical Horizons.
+Retrieved from
 \url{https://statisticalhorizons.com/wp-content/uploads/MissingDataByML.pdf}
 
+\hypertarget{ref-allison_handling_2014}{}
+Allison, P. (2014, June 13). Listwise deletion: It's not evil. Retrieved
+from
+\url{https://statisticalhorizons.com/listwise-deletion-its-not-evil}
+
+\hypertarget{ref-bilogur_missingno_2018}{}
+Bilogur, A. (2018). Missingno: A missing data visualization suite.
+\emph{The Journal of Open Source Software}, \emph{3}(22), 547.
+\url{http://doi.org/10.21105/joss.00547}
+
 \hypertarget{ref-econ_commission}{}
-Europe of the United Nations (UNECE), E. C. for. (2000). Glossary of
-terms on statistical data editing. In. Geneva.
+COMMISSION, U. N. S., \& EUROPE, E. C. F. (2000). GLOSSARY OF TERMS ON
+STATISTICAL DATA EDITING. Geneva. Retrieved from
+\url{https://ec.europa.eu/eurostat/ramon/statmanuals/files/UN_editing_glossary_2000.pdf}
+
+\hypertarget{ref-peng_dong}{}
+Dong, Y., \& Peng, C.-Y. J. (2013). Principled missing data methods for
+researchers. \emph{SpringerPlus}, \emph{2}(1).
+\url{http://doi.org/10.1186/2193-1801-2-222}
 
 \hypertarget{ref-gelman_data_2017}{}
-Gelman, A., \& Hill, J. (2017). \emph{Data analysis using regression and
-multilevel/hierarchical models}. Cambridge ; New York: Cambridge
+Gelman, A., \& Hill, J. (2017). \emph{Data Analysis using Regression and
+Multilevel/Hierarchical Models}. Cambridge ; New York: Cambridge
 University Press.
+
+\hypertarget{ref-lu_robust_2014}{}
+Lu, Z. (., \& Zhang, Z. (2014). Robust growth mixture models with
+non-ignorable missingness: Models, estimation, selection, and
+application. \emph{Computational Statistics \& Data Analysis},
+\emph{71}, 220--240. \url{http://doi.org/10.1016/j.csda.2013.07.036}
 
 \hypertarget{ref-morris_tuning_2014}{}
 Morris, T. P., White, I. R., \& Royston, P. (2014). Tuning multiple
 imputation by predictive mean matching and local residual draws.
 \emph{BMC Medical Research Methodology}, \emph{14}(1).
 \url{http://doi.org/10.1186/1471-2288-14-75}
+
+\hypertarget{ref-introduction_to_sas_notitle_2017}{}
+MULTIPLE IMPUTATION IN STATA. (2017). \emph{UCLA: Institute for Digital
+Research \& Education}. Retrieved from
+\url{https://stats.idre.ucla.edu/stata/seminars/mi_in_stata_pt1_new/}
 
 \hypertarget{ref-nakagawa_chapter_2015}{}
 Nakagawa, S. (2015). \emph{CHAPTER 4 Missing data : Mechanisms , methods
@@ -1965,19 +2006,26 @@ Nakagawa, S. (2015). \emph{CHAPTER 4 Missing data : Mechanisms , methods
 Rubin, D. B. (1976). Inference and missing data. \emph{Biometrika},
 \emph{63}(3), 581--592. \url{http://doi.org/10.1093/biomet/63.3.581}
 
-\hypertarget{ref-introduction_to_sas_notitle_2017}{}
-SAS, I. to. (2017). \emph{UCLA: Statistical Consulting Group}. Retrieved
-from
-\url{https://stats.idre.ucla.edu/sas/modules/sas-learning-moduleintroduction-to-the-features-of-sas/}
-
 \hypertarget{ref-van_buuren_flexible_2018}{}
-Van Buuren, S. (2018). \emph{Flexible imputation of missing data} (2nd
-ed.). Chapman; Hall/CRC. \url{http://doi.org/10.1201/b11826}
+Van Buuren, S. (2018). \emph{Flexible Imputation of Missing Data} (2nd
+ed.). Chapman; Hall/CRC. Retrieved from
+\url{https://stefvanbuuren.name/publication/2018-01-01_vanbuuuren2018/}
 
 \hypertarget{ref-vink_towards_nodate}{}
 Vink, G. (n.d.). Towards a Standardized Evaluation of Multiple
 Imputation Routines. Retrieved from
 \url{https://www.gerkovink.com/docs/Standardized\%20evaluation.pdf}
+
+\hypertarget{ref-xie_measuring_2018}{}
+Xie, H., Gao, W., Xing, B., Heitjan, D. F., Hedeker, D., \& Yuan, C.
+(2018). Measuring the impact of nonignorable missingness using the r
+package isni. \emph{Computer Methods and Programs in Biomedicine},
+\emph{164}, 207--220. \url{http://doi.org/10.1016/j.cmpb.2018.06.014}
+
+\hypertarget{ref-yin_simulation_based_2015}{}
+Yin, P., \& Shi, J. Q. (2015). Simulation-based sensitivity analysis for
+non-ignorable missing data. \emph{arXiv:1501.05788 {[}Stat{]}}.
+Retrieved from \url{http://arxiv.org/abs/1501.05788}
 
 \hypertarget{ref-yu_comparative_2017}{}
 Yu, A., Wagner, J., \& Murugesan, M. (2017). \emph{Comparative
