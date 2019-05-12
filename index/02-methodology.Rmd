@@ -28,27 +28,27 @@ Mean, least squares, and predictive mean matching are performed using the mutlip
 
 ## The Full Dataset {.unnumbered}
 
-The authors use the MASS package (Venables & Ripley, 2002) to simulate the full dataset, or the source of truth. The full dataset contains 500 observations for feature $x$ and response $y$. At this point, no missingness exists in either $x$ or $y$
+The authors use the MASS package (Venables & Ripley, 2002) to simulate the full dataset, or the source of truth. The full dataset contains 500 observations for feature $x$ and response $y$. The dataset is generated from a joint normal distribution, where $\mu_x=10$ and $\mu_y=5$. The correlation between $x$ and $y$ equals 0.7. At this point, no missingness exists in either $x$ or $y$.
 
 The figure below visualizes the distribution of each variable:
 
-```{r fullsidebyside, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Distribution of Full x and y"}
+```{r fullsidebyside, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Distribution of Full x and y"}
 include_graphics(path = "figure/full-side-by-side.jpg")
 ```
 
 The next figure displays the joint relationship between $x$ and $y$. The figure plots the marginal distribution of each variable as well:
 
-```{r full-joint, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Joint and Marginals of Full x and y"}
+```{r full-joint, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Joint and Marginals of Full x and y"}
 include_graphics(path = "figure/full-joint.jpg")
 ```
 
 The full dataset does not contain any missing values, so no deletion or imputation is necessary before conducting analysis. Using `Autoimpute`, the researchers fit a linear regression model on the full dataset. The summary of the model fit appears below:
 
-```{r full-regression, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Linear Regression Results: Full"}
+```{r full-regression, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Linear Regression Results: Full"}
 include_graphics(path = "figure/full-regression.jpg")
 ```
 
-The results from linear regression on the full dataset serve as the golden source. The coefficient estimate for $x$ is 0.5. Using notation related to imputation analysis, this coefficient estimate of $x$ represents $\hat Q$ - the unbiased estimate of the population parameter of interest $Q$. Because there is only one predictor, the covariance matrix $U$ simply reduces to the variance of the estimate.
+The results from linear regression on the full dataset serve as the golden source. The coefficient estimate for $x$ is 0.7. Using notation related to imputation analysis, this coefficient estimate of $x$ represents $\hat Q$ - the unbiased estimate of the population parameter of interest $Q$. Because there is only one predictor, the covariance matrix $U$ simply reduces to the variance of the estimate.
 
 The summary output above displays diagnostics for the linear regression model. The table uses aliases for concepts covered in the [Background section](#background)
 
@@ -114,10 +114,22 @@ PMM Imputation respects not only the relationship between $y$ and $x$ but also t
 
 ## Example 2: MAR with Missingness in the Predictor {.unnumbered}
 
-In the second example, the researchers generate MAR missingness within the predictor, $x$. Predictor $x$ contains 40% missing values. Response $y$ remains fully observed. To keep this section concise, we will not generate the same plots that we did above, but we will apply the exact same methods. `Autoimpute` can impute both features and predictors, and it can examine missingness anywhere it exists within a dataset.
+In the second example, the researchers generate MAR missingness within the predictor, $x$. The missigness is right-tailed, which means that the probability that predictor $x$ is missing increases with the value of $y$. Predictor $x$ contains 40% missing values. Response $y$ remains fully observed.
 
-The researchers take the same approach to Example 2 as they do to Example 1. Multiple imputation is performed, with the number of imputations equal to 5. The same methods are applied as well (listwise delete, mean, least squares, and pmm).
+The researchers take the same approach to Example 2 as they do to Example 1. First, the authors plot the missing data patterns within $x$ and $y$. Then, listwise deletion is performed, followed by multiple imputation for mean, least squares, and predictive mean matching. Again, the multiple imputation iterates 5 times.
+
+The plots below demonstrate that missingness now occurs within the predictor $x$, while $y$ is fully observed.
+
+```{r x-mis-forty-loc-mar, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Missingness Locations"}
+include_graphics(path = "figure/x-mis-forty-loc-mar.jpg")
+```
+
+```{r x-mis-forty-bar-mar, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Missingness Percentage"}
+include_graphics(path = "figure/x-mis-forty-bar-mar.jpg")
+```
+
+
 
 ## Analysis Models on each Example {.unnumbered}
 
-The sections above take the user through the data exploration phase and multiple imputation phase of `Autoimpute`. The next section, Findings, demonstrates how the nature of missingness affected the results of linear regression on our mulitply imputed data.
+The sections above take the user through the data exploration phase and multiple imputation phase of `Autoimpute`. The next section, [Findings](#findings), demonstrates how the nature of missingness affected the results of linear regression on the mulitply imputed data.

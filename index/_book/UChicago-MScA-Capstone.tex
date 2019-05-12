@@ -1456,13 +1456,15 @@ methods underperform.
 
 The authors use the MASS package (Venables \& Ripley, 2002) to simulate
 the full dataset, or the source of truth. The full dataset contains 500
-observations for feature \(x\) and response \(y\). At this point, no
-missingness exists in either \(x\) or \(y\)
+observations for feature \(x\) and response \(y\). The dataset is
+generated from a joint normal distribution, where \(\mu_x=10\) and
+\(\mu_y=5\). The correlation between \(x\) and \(y\) equals 0.7. At this
+point, no missingness exists in either \(x\) or \(y\).
 
 The figure below visualizes the distribution of each variable:
 \begin{figure}
 
-{\centering \includegraphics[width=300px]{figure/full-side-by-side} 
+{\centering \includegraphics[width=400px]{figure/full-side-by-side} 
 
 }
 
@@ -1472,7 +1474,7 @@ The next figure displays the joint relationship between \(x\) and \(y\).
 The figure plots the marginal distribution of each variable as well:
 \begin{figure}
 
-{\centering \includegraphics[width=300px]{figure/full-joint} 
+{\centering \includegraphics[width=400px]{figure/full-joint} 
 
 }
 
@@ -1484,14 +1486,14 @@ imputation is necessary before conducting analysis. Using
 the full dataset. The summary of the model fit appears below:
 \begin{figure}
 
-{\centering \includegraphics[width=300px]{figure/full-regression} 
+{\centering \includegraphics[width=400px]{figure/full-regression} 
 
 }
 
 \caption{Linear Regression Results: Full}\label{fig:full-regression}
 \end{figure}
 The results from linear regression on the full dataset serve as the
-golden source. The coefficient estimate for \(x\) is 0.5. Using notation
+golden source. The coefficient estimate for \(x\) is 0.7. Using notation
 related to imputation analysis, this coefficient estimate of \(x\)
 represents \(\hat Q\) - the unbiased estimate of the population
 parameter of interest \(Q\). Because there is only one predictor, the
@@ -1645,28 +1647,46 @@ Predictor}\label{example-2-mar-with-missingness-in-the-predictor}
 Predictor}
 
 In the second example, the researchers generate MAR missingness within
-the predictor, \(x\). Predictor \(x\) contains 40\% missing values.
-Response \(y\) remains fully observed. To keep this section concise, we
-will not generate the same plots that we did above, but we will apply
-the exact same methods. \texttt{Autoimpute} can impute both features and
-predictors, and it can examine missingness anywhere it exists within a
-dataset.
+the predictor, \(x\). The missigness is right-tailed, which means that
+the probability that predictor \(x\) is missing increases with the value
+of \(y\). Predictor \(x\) contains 40\% missing values. Response \(y\)
+remains fully observed.
 
 The researchers take the same approach to Example 2 as they do to
-Example 1. Multiple imputation is performed, with the number of
-imputations equal to 5. The same methods are applied as well (listwise
-delete, mean, least squares, and pmm).
+Example 1. First, the authors plot the missing data patterns within
+\(x\) and \(y\). Then, listwise deletion is performed, followed by
+multiple imputation for mean, least squares, and predictive mean
+matching. Again, the multiple imputation iterates 5 times.
 
+The plots below demonstrate that missingness now occurs within the
+predictor \(x\), while \(y\) is fully observed.
+\begin{figure}
+
+{\centering \includegraphics[width=300px]{figure/x-mis-forty-loc-mar} 
+
+}
+
+\caption{Missingness Locations}\label{fig:x-mis-forty-loc-mar}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=300px]{figure/x-mis-forty-bar-mar} 
+
+}
+
+\caption{Missingness Percentage}\label{fig:x-mis-forty-bar-mar}
+\end{figure}
 \section*{Analysis Models on each
 Example}\label{analysis-models-on-each-example}
 \addcontentsline{toc}{section}{Analysis Models on each Example}
 
 The sections above take the user through the data exploration phase and
 multiple imputation phase of \texttt{Autoimpute}. The next section,
-Findings, demonstrates how the nature of missingness affected the
-results of linear regression on our mulitply imputed data.
+\protect\hyperlink{findings}{Findings}, demonstrates how the nature of
+missingness affected the results of linear regression on the mulitply
+imputed data.
 
-\chapter*{Findings}\label{findings}
+\hypertarget{findings}{\chapter*{Findings}\label{findings}}
 \addcontentsline{toc}{chapter}{Findings}
 
 \section*{Full Model Recap}\label{full-model-recap}
