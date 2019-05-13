@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.4)  12 MAY 2019 22:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.4)  13 MAY 2019 00:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -927,14 +927,14 @@ Underfull \hbox (badness 1742) in paragraph at lines 897--902
  []
 
 [12] [13]
-<figure/multiple-imputation-workflow.jpg, id=393, 633.36626pt x 368.37625pt>
+<figure/multiple-imputation-workflow.jpg, id=405, 633.36626pt x 368.37625pt>
 File: figure/multiple-imputation-workflow.jpg Graphic file (type jpg)
 <use figure/multiple-imputation-workflow.jpg>
 Package pdftex.def Info: figure/multiple-imputation-workflow.jpg  used on input
  line 994.
 (pdftex.def)             Requested size: 401.50146pt x 233.52284pt.
 [14 <./figure/multiple-imputation-workflow.jpg>]
-<figure/scale-distribution.jpg, id=403, 699.61375pt x 431.6125pt>
+<figure/scale-distribution.jpg, id=415, 699.61375pt x 431.6125pt>
 File: figure/scale-distribution.jpg Graphic file (type jpg)
 <use figure/scale-distribution.jpg>
 Package pdftex.def Info: figure/scale-distribution.jpg  used on input line 1040
@@ -949,184 +949,217 @@ l.1366 through Simulation}\label{methodology}}
                                                [22
 
 ]
-<figure/full-side-by-side.jpg, id=446, 723.70375pt x 475.7775pt>
+<figure/full-side-by-side.jpg, id=458, 723.70375pt x 475.7775pt>
 File: figure/full-side-by-side.jpg Graphic file (type jpg)
 <use figure/full-side-by-side.jpg>
 Package pdftex.def Info: figure/full-side-by-side.jpg  used on input line 1467.
 
 (pdftex.def)             Requested size: 401.50146pt x 263.958pt.
 [23]
-<figure/full-joint.jpg, id=452, 470.75874pt x 481.8pt>
+<figure/full-joint.jpg, id=464, 470.75874pt x 481.8pt>
 File: figure/full-joint.jpg Graphic file (type jpg)
 <use figure/full-joint.jpg>
 Package pdftex.def Info: figure/full-joint.jpg  used on input line 1477.
 (pdftex.def)             Requested size: 401.50146pt x 410.92139pt.
 [24 <./figure/full-side-by-side.jpg>]
-<figure/full-regression.jpg, id=458, 314.17375pt x 77.28876pt>
+<figure/full-regression.jpg, id=470, 314.17375pt x 77.28876pt>
 File: figure/full-regression.jpg Graphic file (type jpg)
 <use figure/full-regression.jpg>
 Package pdftex.def Info: figure/full-regression.jpg  used on input line 1492.
 (pdftex.def)             Requested size: 401.50146pt x 98.77711pt.
 [25 <./figure/full-joint.jpg>]
-<figure/y-mis-forty-loc.jpg, id=465, 735.74875pt x 488.82625pt>
+<figure/y-mis-forty-loc.jpg, id=477, 735.74875pt x 488.82625pt>
 File: figure/y-mis-forty-loc.jpg Graphic file (type jpg)
 <use figure/y-mis-forty-loc.jpg>
 Package pdftex.def Info: figure/y-mis-forty-loc.jpg  used on input line 1543.
 (pdftex.def)             Requested size: 401.50146pt x 266.75931pt.
-<figure/y-mis-forty-bar.jpg, id=466, 765.86125pt x 502.87875pt>
+<figure/y-mis-forty-bar.jpg, id=478, 765.86125pt x 502.87875pt>
 File: figure/y-mis-forty-bar.jpg Graphic file (type jpg)
 <use figure/y-mis-forty-bar.jpg>
 Package pdftex.def Info: figure/y-mis-forty-bar.jpg  used on input line 1551.
 (pdftex.def)             Requested size: 401.50146pt x 263.63162pt.
 [26 <./figure/full-regression.jpg>] [27 <./figure/y-mis-forty-loc.jpg> <./figur
 e/y-mis-forty-bar.jpg>]
-<figure/multi-mean.jpg, id=478, 490.83376pt x 503.8825pt>
+<figure/multi-mean.jpg, id=490, 490.83376pt x 503.8825pt>
 File: figure/multi-mean.jpg Graphic file (type jpg)
 <use figure/multi-mean.jpg>
-Package pdftex.def Info: figure/multi-mean.jpg  used on input line 1580.
+Package pdftex.def Info: figure/multi-mean.jpg  used on input line 1581.
 (pdftex.def)             Requested size: 401.50146pt x 412.1868pt.
-<figure/swarm-mean.jpg, id=479, 714.67pt x 471.7625pt>
+<figure/swarm-mean.jpg, id=491, 714.67pt x 471.7625pt>
 File: figure/swarm-mean.jpg Graphic file (type jpg)
 <use figure/swarm-mean.jpg>
-Package pdftex.def Info: figure/swarm-mean.jpg  used on input line 1588.
+Package pdftex.def Info: figure/swarm-mean.jpg  used on input line 1589.
 (pdftex.def)             Requested size: 401.50146pt x 265.0346pt.
-[28 <./figure/multi-mean.jpg>]
-<figure/multi-lm.jpg, id=485, 492.84125pt x 505.89pt>
+[28] [29 <./figure/multi-mean.jpg>]
+<figure/multi-lm.jpg, id=502, 492.84125pt x 505.89pt>
 File: figure/multi-lm.jpg Graphic file (type jpg)
 <use figure/multi-lm.jpg>
-Package pdftex.def Info: figure/multi-lm.jpg  used on input line 1607.
+Package pdftex.def Info: figure/multi-lm.jpg  used on input line 1608.
 (pdftex.def)             Requested size: 401.50146pt x 412.15388pt.
-<figure/swarm-lm.jpg, id=486, 700.6175pt x 481.8pt>
+<figure/swarm-lm.jpg, id=503, 700.6175pt x 481.8pt>
 File: figure/swarm-lm.jpg Graphic file (type jpg)
 <use figure/swarm-lm.jpg>
-Package pdftex.def Info: figure/swarm-lm.jpg  used on input line 1615.
+Package pdftex.def Info: figure/swarm-lm.jpg  used on input line 1616.
 (pdftex.def)             Requested size: 401.50146pt x 276.10654pt.
-[29 <./figure/swarm-mean.jpg>] [30 <./figure/multi-lm.jpg>]
-<figure/multi-pmm.jpg, id=498, 494.84875pt x 499.8675pt>
+[30 <./figure/swarm-mean.jpg>] [31 <./figure/multi-lm.jpg>]
+<figure/multi-pmm.jpg, id=514, 494.84875pt x 499.8675pt>
 File: figure/multi-pmm.jpg Graphic file (type jpg)
 <use figure/multi-pmm.jpg>
-Package pdftex.def Info: figure/multi-pmm.jpg  used on input line 1632.
+Package pdftex.def Info: figure/multi-pmm.jpg  used on input line 1634.
 (pdftex.def)             Requested size: 401.50146pt x 405.56929pt.
-<figure/swarm-pmm.jpg, id=499, 708.6475pt x 481.8pt>
+<figure/swarm-pmm.jpg, id=515, 708.6475pt x 481.8pt>
 File: figure/swarm-pmm.jpg Graphic file (type jpg)
 <use figure/swarm-pmm.jpg>
-Package pdftex.def Info: figure/swarm-pmm.jpg  used on input line 1640.
+Package pdftex.def Info: figure/swarm-pmm.jpg  used on input line 1642.
 (pdftex.def)             Requested size: 401.50146pt x 272.98207pt.
-[31 <./figure/swarm-lm.jpg>] [32 <./figure/multi-pmm.jpg>]
-<figure/x-mis-forty-loc-mar.jpg, id=510, 728.7225pt x 480.79625pt>
+[32 <./figure/swarm-lm.jpg>] [33 <./figure/multi-pmm.jpg>]
+<figure/x-mis-forty-loc-mar.jpg, id=526, 728.7225pt x 480.79625pt>
 File: figure/x-mis-forty-loc-mar.jpg Graphic file (type jpg)
 <use figure/x-mis-forty-loc-mar.jpg>
 Package pdftex.def Info: figure/x-mis-forty-loc-mar.jpg  used on input line 167
-4.
+8.
 (pdftex.def)             Requested size: 401.50146pt x 264.90092pt.
-<figure/x-mis-forty-bar-mar.jpg, id=511, 754.82pt x 508.90125pt>
+<figure/x-mis-forty-bar-mar.jpg, id=527, 754.82pt x 508.90125pt>
 File: figure/x-mis-forty-bar-mar.jpg Graphic file (type jpg)
 <use figure/x-mis-forty-bar-mar.jpg>
 Package pdftex.def Info: figure/x-mis-forty-bar-mar.jpg  used on input line 168
-2.
+6.
 (pdftex.def)             Requested size: 401.50146pt x 270.6948pt.
-[33 <./figure/swarm-pmm.jpg>] [34 <./figure/x-mis-forty-loc-mar.jpg> <./figure/
-x-mis-forty-bar-mar.jpg>] [35]
+[34 <./figure/swarm-pmm.jpg>] [35 <./figure/x-mis-forty-loc-mar.jpg> <./figure/
+x-mis-forty-bar-mar.jpg>]
+<figure/multi-mean-mar.jpg, id=540, 482.80376pt x 496.85625pt>
+File: figure/multi-mean-mar.jpg Graphic file (type jpg)
+<use figure/multi-mean-mar.jpg>
+Package pdftex.def Info: figure/multi-mean-mar.jpg  used on input line 1698.
+(pdftex.def)             Requested size: 401.50146pt x 413.20178pt.
+<figure/swarm-mean-mar.jpg, id=541, 723.70375pt x 478.78876pt>
+File: figure/swarm-mean-mar.jpg Graphic file (type jpg)
+<use figure/swarm-mean-mar.jpg>
+Package pdftex.def Info: figure/swarm-mean-mar.jpg  used on input line 1706.
+(pdftex.def)             Requested size: 401.50146pt x 265.62862pt.
+[36 <./figure/multi-mean-mar.jpg>]
+<figure/multi-lm-mar.jpg, id=547, 488.82625pt x 498.86375pt>
+File: figure/multi-lm-mar.jpg Graphic file (type jpg)
+<use figure/multi-lm-mar.jpg>
+Package pdftex.def Info: figure/multi-lm-mar.jpg  used on input line 1727.
+(pdftex.def)             Requested size: 401.50146pt x 409.75601pt.
+<figure/swarm-lm-mar.jpg, id=548, 712.6625pt x 473.77pt>
+File: figure/swarm-lm-mar.jpg Graphic file (type jpg)
+<use figure/swarm-lm-mar.jpg>
+Package pdftex.def Info: figure/swarm-lm-mar.jpg  used on input line 1735.
+(pdftex.def)             Requested size: 401.50146pt x 266.91426pt.
+[37 <./figure/swarm-mean-mar.jpg>] [38 <./figure/multi-lm-mar.jpg>]
+<figure/multi-pmm-mar.jpg, id=559, 487.8225pt x 500.87125pt>
+File: figure/multi-pmm-mar.jpg Graphic file (type jpg)
+<use figure/multi-pmm-mar.jpg>
+Package pdftex.def Info: figure/multi-pmm-mar.jpg  used on input line 1754.
+(pdftex.def)             Requested size: 401.50146pt x 412.2456pt.
+<figure/swarm-pmm-mar.jpg, id=560, 723.70375pt x 479.7925pt>
+File: figure/swarm-pmm-mar.jpg Graphic file (type jpg)
+<use figure/swarm-pmm-mar.jpg>
+Package pdftex.def Info: figure/swarm-pmm-mar.jpg  used on input line 1762.
+(pdftex.def)             Requested size: 401.50146pt x 266.18549pt.
+[39 <./figure/swarm-lm-mar.jpg>] [40 <./figure/multi-pmm-mar.jpg>] [41 <./figur
+e/swarm-pmm-mar.jpg>]
 File: figure/full-regression.jpg Graphic file (type jpg)
 <use figure/full-regression.jpg>
-Package pdftex.def Info: figure/full-regression.jpg  used on input line 1717.
+Package pdftex.def Info: figure/full-regression.jpg  used on input line 1804.
 (pdftex.def)             Requested size: 401.50146pt x 98.77711pt.
-<figure/mcar-listwise-delete.jpg, id=530, 342.27875pt x 73.27374pt>
+<figure/mcar-listwise-delete.jpg, id=579, 342.27875pt x 73.27374pt>
 File: figure/mcar-listwise-delete.jpg Graphic file (type jpg)
 <use figure/mcar-listwise-delete.jpg>
-Package pdftex.def Info: figure/mcar-listwise-delete.jpg  used on input line 17
-45.
+Package pdftex.def Info: figure/mcar-listwise-delete.jpg  used on input line 18
+33.
 (pdftex.def)             Requested size: 401.50146pt x 85.958pt.
-[36
+[42
 
 ]
-<figure/mcar-mean.jpg, id=535, 337.26pt x 74.2775pt>
+<figure/mcar-mean.jpg, id=584, 337.26pt x 74.2775pt>
 File: figure/mcar-mean.jpg Graphic file (type jpg)
 <use figure/mcar-mean.jpg>
-Package pdftex.def Info: figure/mcar-mean.jpg  used on input line 1754.
+Package pdftex.def Info: figure/mcar-mean.jpg  used on input line 1842.
 (pdftex.def)             Requested size: 401.50146pt x 88.42758pt.
-<figure/mcar-ls.jpg, id=536, 339.2675pt x 74.2775pt>
+<figure/mcar-ls.jpg, id=585, 339.2675pt x 74.2775pt>
 File: figure/mcar-ls.jpg Graphic file (type jpg)
 <use figure/mcar-ls.jpg>
-Package pdftex.def Info: figure/mcar-ls.jpg  used on input line 1763.
+Package pdftex.def Info: figure/mcar-ls.jpg  used on input line 1851.
 (pdftex.def)             Requested size: 401.50146pt x 87.90622pt.
-<figure/mcar-pmm.jpg, id=537, 369.38pt x 75.28125pt>
+<figure/mcar-pmm.jpg, id=586, 369.38pt x 75.28125pt>
 File: figure/mcar-pmm.jpg Graphic file (type jpg)
 <use figure/mcar-pmm.jpg>
-Package pdftex.def Info: figure/mcar-pmm.jpg  used on input line 1772.
+Package pdftex.def Info: figure/mcar-pmm.jpg  used on input line 1860.
 (pdftex.def)             Requested size: 401.50146pt x 81.82861pt.
-[37 <./figure/mcar-listwise-delete.jpg> <./figure/mcar-mean.jpg> <./figure/mcar
--ls.jpg> <./figure/mcar-pmm.jpg>]
-<figure/mar-listwise-delete.jpg, id=546, 341.275pt x 73.27374pt>
+[43 <./figure/mcar-listwise-delete.jpg> <./figure/mcar-mean.jpg> <./figure/mcar
+-ls.jpg> <./figure/mcar-pmm.jpg>] [44]
+<figure/mar-listwise-delete.jpg, id=600, 341.275pt x 73.27374pt>
 File: figure/mar-listwise-delete.jpg Graphic file (type jpg)
 <use figure/mar-listwise-delete.jpg>
-Package pdftex.def Info: figure/mar-listwise-delete.jpg  used on input line 183
-0.
+Package pdftex.def Info: figure/mar-listwise-delete.jpg  used on input line 193
+6.
 (pdftex.def)             Requested size: 401.50146pt x 86.21068pt.
-[38]
-<figure/mar-mean.jpg, id=551, 340.27126pt x 74.2775pt>
+<figure/mar-mean.jpg, id=601, 340.27126pt x 74.2775pt>
 File: figure/mar-mean.jpg Graphic file (type jpg)
 <use figure/mar-mean.jpg>
-Package pdftex.def Info: figure/mar-mean.jpg  used on input line 1839.
+Package pdftex.def Info: figure/mar-mean.jpg  used on input line 1945.
 (pdftex.def)             Requested size: 401.50146pt x 87.64781pt.
-<figure/mar-ls.jpg, id=552, 339.2675pt x 76.285pt>
+<figure/mar-ls.jpg, id=602, 339.2675pt x 76.285pt>
 File: figure/mar-ls.jpg Graphic file (type jpg)
 <use figure/mar-ls.jpg>
-Package pdftex.def Info: figure/mar-ls.jpg  used on input line 1848.
+Package pdftex.def Info: figure/mar-ls.jpg  used on input line 1954.
 (pdftex.def)             Requested size: 401.50146pt x 90.28206pt.
-<figure/mar-pmm.jpg, id=553, 368.37625pt x 73.27374pt>
+<figure/mar-pmm.jpg, id=603, 368.37625pt x 73.27374pt>
 File: figure/mar-pmm.jpg Graphic file (type jpg)
 <use figure/mar-pmm.jpg>
-Package pdftex.def Info: figure/mar-pmm.jpg  used on input line 1857.
+Package pdftex.def Info: figure/mar-pmm.jpg  used on input line 1963.
 (pdftex.def)             Requested size: 401.50146pt x 79.86229pt.
-[39 <./figure/mar-listwise-delete.jpg> <./figure/mar-mean.jpg> <./figure/mar-ls
-.jpg> <./figure/mar-pmm.jpg>] [40] [41
+[45 <./figure/mar-listwise-delete.jpg> <./figure/mar-mean.jpg> <./figure/mar-ls
+.jpg>] [46 <./figure/mar-pmm.jpg>] [47] [48
 
-] [42
+] [49
 
 ]
 Appendix A.
-[43
+[50
 
 ]
 Appendix B.
-[44
+[51
 
 ]
 Appendix C.
-[45
+[52
 
-] [46]
+] [53]
 Appendix D.
-[47
+[54
 
-] [48]
+] [55]
 Appendix E.
-[49
+[56
 
-] [50]
+] [57]
 Appendix F.
-[51
+[58
 
-] [52] [53
+] [59] [60
 
 
 ]
-Underfull \hbox (badness 3364) in paragraph at lines 2197--2200
+Underfull \hbox (badness 3364) in paragraph at lines 2328--2331
  \T1/ptm/m/n/12 Hall/CRC. Re-trieved from []$\T1/lmtt/m/n/12 https : / / stefva
 nbuuren . name / publication / 2018 -[]
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2237.
-[54]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2237.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2368.
+[61]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2368.
 (./UChicago-MScA-Capstone.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2237.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2237.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2368.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2368.
 
 Package rerunfilecheck Info: File `UChicago-MScA-Capstone.out' has not changed.
 
-(rerunfilecheck)             Checksum: 4351217168B13C2FB4559369C0D15E79;2932.
+(rerunfilecheck)             Checksum: E0F51008D4C7756903F781180ACD76A1;2932.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.40009pt have occurred.
@@ -1134,13 +1167,13 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2237.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2368.
  ) 
 Here is how much of TeX's memory you used:
- 10941 strings out of 494555
- 162740 string characters out of 6174256
- 268804 words of memory out of 5000000
- 14163 multiletter control sequences out of 15000+600000
+ 10990 strings out of 494555
+ 163797 string characters out of 6174256
+ 269313 words of memory out of 5000000
+ 14193 multiletter control sequences out of 15000+600000
  69989 words of font info for 120 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  37i,16n,52p,972b,606s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1158,10 +1191,10 @@ ary/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/josephkearney/L
 ibrary/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/josephkearne
 y/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/josephkea
 rney/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on UChicago-MScA-Capstone.pdf (62 pages, 3073393 bytes).
+Output written on UChicago-MScA-Capstone.pdf (69 pages, 5133215 bytes).
 PDF statistics:
- 755 PDF objects out of 1000 (max. 8388607)
- 627 compressed objects within 7 object streams
- 181 named destinations out of 1000 (max. 500000)
- 452 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 810 PDF objects out of 1000 (max. 8388607)
+ 663 compressed objects within 7 object streams
+ 194 named destinations out of 1000 (max. 500000)
+ 482 words of extra memory for PDF output out of 10000 (max. 10000000)
 

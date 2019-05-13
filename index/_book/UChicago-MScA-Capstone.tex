@@ -1534,7 +1534,7 @@ the response, \(y\). Response \(y\) contains 40\% missing values.
 Feature \(x\) remains fully observed. The two plots below showcase how
 to use \texttt{Autoimpute} to explore missingness within a given
 dataset. \texttt{Autoimpute} leverages the excellent \texttt{missingno}
-python package to explore missingness within datasets (Bilogur, 2018)
+Python package to explore missingness within datasets (Bilogur, 2018)
 prior to applying any missing data methods. The plots are quite simple
 in this case, but they can help detect patterns in missing data when
 multiple features are present with different levels of missingness.
@@ -1544,7 +1544,7 @@ multiple features are present with different levels of missingness.
 
 }
 
-\caption{Missingness Locations}\label{fig:y-mis-forty-loc}
+\caption{Missingness Locations, MCAR}\label{fig:y-mis-forty-loc}
 \end{figure}
 \begin{figure}
 
@@ -1552,7 +1552,7 @@ multiple features are present with different levels of missingness.
 
 }
 
-\caption{Missingness Percentage}\label{fig:y-mis-forty-bar}
+\caption{Missingness Percentage, MCAR}\label{fig:y-mis-forty-bar}
 \end{figure}
 Next, the researchers employ missing data methods to handle missing data
 in \(y\). In this case, missing data methods must find plausible
@@ -1564,15 +1564,16 @@ are performed. For imputation methods, the researchers deploy each
 strategy within the multiple imputation framework. The number of
 imputations performed for each method is 5.
 
-\texttt{Autoimpute} supports a number of visualization metrics to assess
-the impact of imputation on an incomplete dataset.
+\texttt{Autoimpute} natively supports a number of visualization methods
+to assess the impact of imputation on incomplete datasets.
 
 The visualizations below show the impact of mean, linear regression, and
 pmm imputation. For each strategy, there are two respective plots. The
-first plot is the new multivariate distribution between \(x\) and \(y\)
-after imputation. The second plot shows the imputations for \(y\)
-against other, observed values for \(y\) for each of the \(5\)
-imputations performed.
+first plot is the new scatterplot between \(x\) and \(y\) after
+imputation. It also includes the new marginal distributions for \(x\)
+and \(y\) after imputation. The second plot shows the imputations for
+\(y\) comingled with observed values for \(y\) for each of the 5
+imputations performed in the multiple imputation framework.
 
 Let's start with mean imputation:
 \begin{figure}
@@ -1581,7 +1582,7 @@ Let's start with mean imputation:
 
 }
 
-\caption{Joint and Marginals with Mean Imputation}\label{fig:multi-mean}
+\caption{Joint and Marginals with Mean Imputation, MCAR}\label{fig:multi-mean}
 \end{figure}
 \begin{figure}
 
@@ -1589,7 +1590,7 @@ Let's start with mean imputation:
 
 }
 
-\caption{Swarm Plot: Mean Imputation}\label{fig:swarm-mean}
+\caption{Swarm Plot: Mean Imputation, MCAR}\label{fig:swarm-mean}
 \end{figure}
 Note that for mean imputation, the imputations do not depend on the
 value of \(x\), and the relationship between \(y\) and \(x\) is ignored.
@@ -1598,7 +1599,7 @@ note that the imputation values in the swarm plot are the same for each
 imputation. This occurs because the mean of the observed values of \(y\)
 do not change from imputation to imputation within the multiple
 imputation framework. Therefore, the imputation values within each
-imputed dataset are the same, and the imputation values accross each
+imputed dataset are the same, and the imputation values across each
 imputed dataset are the same.
 
 Next, observe imputation via least squares:
@@ -1608,7 +1609,7 @@ Next, observe imputation via least squares:
 
 }
 
-\caption{Joint and Marginals with Least Squares Imputation}\label{fig:multi-lm}
+\caption{Joint and Marginals with Least Squares Imputation, MCAR}\label{fig:multi-lm}
 \end{figure}
 \begin{figure}
 
@@ -1616,24 +1617,25 @@ Next, observe imputation via least squares:
 
 }
 
-\caption{Swarm Plot: Least Squares Imputation}\label{fig:swarm-lm}
+\caption{Swarm Plot: Least Squares Imputation, MCAR}\label{fig:swarm-lm}
 \end{figure}
 The plots for linear regression now take into account the relationship
 between \(y\) and \(x\). As a result, the imputed values are different
-within imputations but the same across imputations. Within an incomplete
-dataset, the linear model produces different imputed values, which
-depend on the value of \(x\). But across incomplete datasets, the linear
-model's imputed values are the same because the model is fit on the same
-observed data and no random error is added to imputations.
+within an imputed dataset but the same across imputed datasets. Within
+an incomplete dataset, the linear model produces different imputed
+values, which depend on the value of \(x\). But across incomplete
+datasets, the linear model's imputed values are the same because the
+model is fit on the same observed data and no random error is added to
+imputations.
 
-Finally, observe pmm imputation:
+Finally, observe PMM imputation:
 \begin{figure}
 
 {\centering \includegraphics[width=400px]{figure/multi-pmm} 
 
 }
 
-\caption{Joint and Marginals with PMM Imputation}\label{fig:multi-pmm}
+\caption{Joint and Marginals with PMM Imputation, MCAR}\label{fig:multi-pmm}
 \end{figure}
 \begin{figure}
 
@@ -1641,14 +1643,16 @@ Finally, observe pmm imputation:
 
 }
 
-\caption{Swarm Plot: PMM Imputation}\label{fig:swarm-pmm}
+\caption{Swarm Plot: PMM Imputation, MCAR}\label{fig:swarm-pmm}
 \end{figure}
 PMM Imputation respects not only the relationship between \(y\) and
 \(x\) but also the variance between the features. Imputations are no
-longer from the ``line of best fit'' as they are with linear regression.
-Additionally, imputations are different within and across incomplete
+longer from the ``line of best fit'' as they are with least squares.
+Additionally, imputations are different within and across imputed
 datasets. Therefore, PMM does the best job at respecting the structure
-of the data and adding variance between / across imputed datasets.
+of the data and producing variability between and across imputed
+datasets to account for the uncertainty of the true value of a missing
+data point.
 
 \section*{Example 2: MAR with Missingness in the
 Predictor}\label{example-2-mar-with-missingness-in-the-predictor}
@@ -1675,7 +1679,7 @@ predictor \(x\), while \(y\) is fully observed.
 
 }
 
-\caption{Missingness Locations}\label{fig:x-mis-forty-loc-mar}
+\caption{Missingness Locations, MAR}\label{fig:x-mis-forty-loc-mar}
 \end{figure}
 \begin{figure}
 
@@ -1683,9 +1687,91 @@ predictor \(x\), while \(y\) is fully observed.
 
 }
 
-\caption{Missingness Percentage}\label{fig:x-mis-forty-bar-mar}
+\caption{Missingness Percentage, MAR}\label{fig:x-mis-forty-bar-mar}
 \end{figure}
----------- SWARM PLOTS HERE TOO ? --------------
+Next, the authors plot the scatterplot \& marginals for each imputation
+method as well as the resulting swarm plot.
+
+Starting with mean:
+\begin{figure}
+
+{\centering \includegraphics[width=400px]{figure/multi-mean-mar} 
+
+}
+
+\caption{Joint and Marginals with Mean Imputation, MAR}\label{fig:multi-mean-mar}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=400px]{figure/swarm-mean-mar} 
+
+}
+
+\caption{Swarm Plot: Mean Imputation, MAR}\label{fig:swarm-mean-mar}
+\end{figure}
+Now, mean imputations do not depend on the value of \(y\). The
+relationship between \(y\) and \(x\) is still ignored. This result makes
+sense, as mean imputation is a univariate method. Also note that the
+imputation values in the swarm plot are the same for each imputation.
+This occurs because the mean of the observed values of \(x\) do not
+change from imputation to imputation within the multiple imputation
+framework. Therefore, the imputation values within each imputed dataset
+are the same, and the imputation values across each imputed dataset are
+the same. Lastly, observe that mean imputation does not care which
+missing data mechanism is present because it considers only the target
+variable it imputes.
+
+Then least squares:
+\begin{figure}
+
+{\centering \includegraphics[width=400px]{figure/multi-lm-mar} 
+
+}
+
+\caption{Joint and Marginals with Least Squares Imputation, MAR}\label{fig:multi-lm-mar}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=400px]{figure/swarm-lm-mar} 
+
+}
+
+\caption{Swarm Plot: Least Squares Imputation, MAR}\label{fig:swarm-lm-mar}
+\end{figure}
+The plots for linear regression still follow the logic explained from
+the plots in Example 1. That being said, the missing data mechanism now
+clearly affects the resulting imputations. Remember, the imputed values
+from linear regression come from the line of best fit of the imputation
+model. When the missing data mechanism changes and the missingness
+appears in predictor \(x\), the slope of the line formed by the
+imputations is drastically different than it is in Example 1. This
+observation becomes important later on when the authors examine the
+effect of least squares imputation on analysis models from each example.
+
+And finally PMM:
+\begin{figure}
+
+{\centering \includegraphics[width=400px]{figure/multi-pmm-mar} 
+
+}
+
+\caption{Joint and Marginals with PMM Imputation, MAR}\label{fig:multi-pmm-mar}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=400px]{figure/swarm-pmm-mar} 
+
+}
+
+\caption{Swarm Plot: PMM Imputation, MAR}\label{fig:swarm-pmm-mar}
+\end{figure}
+PMM also follows the logic explained from the plots in Example 1. But
+now, PMM takes into account the missing data mechanism at hand.
+Imputations for \(x\) are more often larger values than smaller ones.
+This is because there are more missing values in \(x\) for higher values
+of \(y\), and \(x\) and \(y\) are positively correlated. Again, this
+observation becomes important later on when the authors examine the
+effect of PMM imputation on analysis models from each example.
 
 \section*{Analysis Models on each
 Example}\label{analysis-models-on-each-example}
@@ -1697,9 +1783,10 @@ authors use visualization methods from the \texttt{Autoimpute} package
 to demonstrate what each imputation method does under the hood when used
 in the multiple imputation framework. The next section,
 \protect\hyperlink{findings}{Findings}, demonstrates how each imputation
-algorithm affects the inference derived from linear regression. Results
-from analysis on imputed datasets are compared to the results from
-analysis on the complete dataset.
+algorithm affects the inference derived from pooled coefficients of
+linear regression applied to multiply imputed data. Results from
+analysis on imputed datasets are compared to the results from analysis
+on the complete dataset.
 
 \hypertarget{findings}{\chapter*{Findings}\label{findings}}
 \addcontentsline{toc}{chapter}{Findings}
@@ -1707,9 +1794,9 @@ analysis on the complete dataset.
 \section*{Full Model Recap}\label{full-model-recap}
 \addcontentsline{toc}{section}{Full Model Recap}
 
-We begin this section with a recap of linear regression on the full
-dataset. The results below serve as the benchmark for comparison. They
-are considered the golden standard.
+This section begins with a recap of linear regression on the full
+dataset. The results below serve as the benchmark for comparison and are
+considered the golden standard.
 
 The results for the full model are displayed again:
 \begin{figure}
@@ -1720,14 +1807,14 @@ The results for the full model are displayed again:
 
 \caption{Linear Regression Recap: Full}\label{fig:full-regression-again}
 \end{figure}
-Next, the authors examine how each missing data method performs and if
-the imputations it generates distort the results from linear regression.
-If coefficients are biased, then the imputation model used does not
-produce plausible imputations that respect the original structure of the
-complete data. Further, if variance measures are too narrow, then the
-imputation model did not create sufficient variability to account for
-uncertainty introduced by missingness, and the statistical significance
-of the coefficients may be called into question.
+Next, the authors examine whether the results from the missing data
+methods distort the results from linear regression on imputed data. If
+coefficients are biased, then the missing data method used does not
+properly respect the original structure of the complete data. Further,
+if variance measures are too narrow, then the missing data method does
+not create sufficient variability to account for uncertainty introduced
+by missingness, and the statistical significance of the coefficients may
+be called into question.
 
 The authors display the results of linear regression for each example in
 the methodology section.
@@ -1735,9 +1822,10 @@ the methodology section.
 \section*{Results from Example 1}\label{results-from-example-1}
 \addcontentsline{toc}{section}{Results from Example 1}
 
-The authors review the results from a linear regression on the imputed
-dataset from Example 1. Recall that Example 1 contains 40\% missingness
-in the response \(y\), and the missingness mechanism is MCAR.
+The authors review the results from linear regression fit to the
+multiply imputed data from Example 1. Recall that Example 1 contains
+40\% missingness in the response \(y\), and the missingness mechanism is
+MCAR.
 
 First, listwise delete:
 \begin{figure}
@@ -1779,50 +1867,68 @@ Finally, pmm imputation:
 \addcontentsline{toc}{section}{Findings from Example 1}
 
 The authors explore the impact each missing data method has on the
-coefficient estimate for \(x\) and the resulting standard error and
-variance of \(x\).
+linear regression's coefficient estimate for \(x\) and the resulting
+standard error and variance of \(x\).
 
 First, the authors discuss coefficient estimates. Mean imputation
 produces a grossly biased parameter estimate for \(x\). This result
 occurs because mean imputation thins the distribution of the variable it
 imputes. As a result, mean imputation shrinks the correlation between
-any feature and the imputed variable (van Buuren, ch.~1.3.1). Therefore,
-the mean imputation is suboptimal. Next, note that listwise deletion,
-least squares, and pmm all produce parameter estimates close to the true
-value of the parameter estimate from the regression model on the
-complete dataset. PMM's estimate is the least biased of the three. These
-results are also expected. Under MCAR with missingness in the response
-only, listwise deletion, least squares, and pmm all produce unbiased
-estimates for the parameter of interest (Van Buuren, ch.~1.3.8; ch 3.4).
+any feature and the imputed variable (van Buuren, ch.~1.3.1). When the
+imputed variable is the response in a linear regression, the resulting
+coefficient trends toward zero. Therefore, mean imputation is suboptimal
+in this case.
+
+Listwise deletion, least squares, and PMM all produce parameter
+estimates close to the true value of the parameter estimate from the
+regression model on the complete dataset. PMM's estimate is the least
+biased of the three. These results are also expected. Under MCAR with
+missingness in the response only, listwise deletion, least squares, and
+PMM all produce unbiased estimates for the parameter of interest (Van
+Buuren, ch.~1.3.8; ch 3.4).
+
+The small bias in this example stems from the fact that the researchers
+apply this process to only one randomly generated dataset. While out of
+scope for this study, a researcher could conduct a monte carlo
+simulation, repeating the process in Example 1 for thousands datasets
+generated using the same multivariate normal distribution and averaging
+the bias from each simulation. Such a study would produce a distribution
+for bias itself, and that distribution should be centered around 0,
+indicating that each imputation method leads to unbiased parameter
+estimates on average in analysis models.
 
 Next, the authors examine the impact of imputation methods on the
-variance of parameter estimates. Listwise deletion produces larger
-variance and standard error because the sample size used for the
-regression model is reduced. Mean imputation produces similar standard
-error and variance as the full regression model, because mean imputation
-does not produce any variability between imputations. Results from least
-squares are even worse. The standard error and variance of coefficient
-estimates shrink significantly. This phenomenon stems from the fact that
-least squares imputation increases the correlation between features and
-the imputed variable. As a result, the variability of the imputed data
-is understated, and the resulting standard error of the coefficient
-estimate is far too low. This underestimation makes the coefficient seem
-more statistically significant than it may be. PMM imputation, on the
-other hand, increases the variance and standard error of the coefficient
-estimates. It does so for a different reason than listwise deletion,
-however. Notice that PMM is the only method with a non-zero value for
-the variance-between. This stems from the fact that PMM produces
-different parameter estimates in each analysis model applied to the
-multiply imputed datasets. Therefore, when the coefficients are pooled,
-additional variance results. This additional variance accurately
-captures the uncertainty introduced from imputing missing values.
+variance of parameter estimates. Mean imputation produces similar
+standard error and variance as the full regression model, because mean
+imputation does not produce any variability between imputations. Results
+from least squares are even worse. The standard error and variance of
+coefficient estimates shrink significantly. This phenomenon stems from
+the fact that least squares imputation increases the correlation between
+features and the imputed variable. As a result, the variability of the
+imputed data is understated, and the resulting standard error of the
+coefficient estimate is far too low. This underestimation makes the
+coefficient seem more statistically significant than it may be.
+
+Listwise deletion produces larger variance and standard error because
+the sample size used for the regression model is reduced. PMM
+imputation, on the other hand, increases the variance and standard error
+of the coefficient estimates for a different reason than listwise
+deletion. Notice that PMM is the only method that produces a non-zero
+value for the variance-between. PMM produces different parameter
+estimates in each analysis model applied to each of the multiply imputed
+datasets. Therefore, when the coefficients are pooled, additional
+variance results between each model's coefficient estimates. This
+additional variance captures the uncertainty introduced from imputing
+missing values, given that the true value is not known and actually
+comes from a distribution itself.
 
 \section*{Results from Example 2}\label{results-from-example-2}
 \addcontentsline{toc}{section}{Results from Example 2}
 
-Next, we examine the results from a linear regression on the imputed
-dataset from Example 2. Recall that Example 2 contains 40\% missingness
-in the predictor \(x\), and the missingness mechanism is MAR.
+Next, the authors review the results from a linear regression on the
+imputed datasets from Example 2. Recall that Example 2 contains 40\%
+missingness in the predictor \(x\), and the missingness mechanism is now
+MAR.
 
 First, listwise delete:
 \begin{figure}
@@ -1865,21 +1971,43 @@ Finally, pmm imputation:
 
 In example 2, the missing data mechanism is MAR and right-tailed.
 Therefore, the probability of missingness in \(x\) increases with larger
-values of \(y\). As a result, the analysis models from listwise deletion
-and mean imputation are negatively biased. Least squares regression, on
-the other hand, produces a coefficient that is grossly overbiased. PMM
-is the only method that produces an unbiased estimate for the
-coefficient.
+values of \(y\). The bias in mean imputation improves because \(x\) is a
+predictor. That being said, the authors have already addressed why the
+method is suboptimal because of its disregard for the relationships
+between variables. Therefore, the authors focus on the results from the
+other missing data methods instead.
+
+First, note that the coefficient estimates from listwise deletion are
+now negatively biased. When more predictors are missing for higher
+values of \(y\), then the underlying dataset's correlation subsides,
+distorting the true relationship between \(x\) and \(y\). For
+right-tailed MAR, listwise deletion ends up producing negatively biased
+estimates as a result.
+
+Least squares regression, on the other hand, produces a coefficient that
+is grossly overbiased. This result occurs because the error distribution
+of the least squares imputation model is not a normal distribution with
+\(\mu=0\), as the imputation model's predictions are postively biased.
+Under right-tailed MAR with missingness in the predictor, least squares
+imputation will always lead to postively biased coefficient estimates.
+This phenomenom is best explained by comparing the scatterplot for least
+squares imputations found in Example 1 and Example 2.
+
+PMM is the only method that produces an unbiased estimate for the
+coefficient. PMM produces imputations that follow the missing data
+mechanism at hand, and thus it preserves the relationship between \(x\)
+and \(y\). The analysis model then performs well, and the coefficients
+are unbiased.
 
 The analysis of variance is similar to example 1. In general, listwise
-deletion always enlarges the coefficient variance and standard error
-because the sample size is reduced. Mean imputation ignores any
-variability between imputations, and least squares inflates correlation
-between features, thus deflating the standard error and variance of a
-parameter estimate. PMM is the only method that retains the variability
-introduced from multiple imputation, and thus it increases standard
-error to account for the underlying uncertainty in the true value of
-missing data points.
+deletion prior to analysis always enlarges the coefficient variance and
+standard error because the sample size is reduced. Mean imputation
+ignores any variability between imputations, and least squares inflates
+correlation between features, thus deflating the standard error and
+variance of a parameter estimate. PMM is the only method that retains
+the variability introduced from multiple imputation, and thus it
+increases standard error to account for the underlying uncertainty in
+the true value of missing data points.
 
 \section*{Inference from Examples}\label{inference-from-examples}
 \addcontentsline{toc}{section}{Inference from Examples}
@@ -1917,7 +2045,7 @@ with careful consideration.
 \chapter*{Conclusion}\label{conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-In summary, this project demonstrates how complex it is to hanlde
+In summary, this project demonstrates how complex it is to handle
 missing data. The authors provide an end-to-end methodology to explore
 missing data, handling it using missing data methods, and analyze the
 impact of missing data methods on supervised analysis models. At the
@@ -1952,16 +2080,19 @@ flexibility, simplicity, and granularity of the Autoimpute package to
 conduct their own missing data analyses. To start, data practitioners
 should review the Autoimpute tutorials website to get a better
 understanding of how the package works and how and end user can get the
-most out of its functionality. source code, either locally after a
-\texttt{pip\ install} or directly on Autoimpute's github page. Once
-familiar with the package, data practitioners should
-\texttt{pip\ install} the publicly available package from GitHub, review
-the source code, and start using the package in their own analysis. If
-challenges arise when using the package, researchers should contact the
-authors, preferably by submitting a bug report, feature request, or pull
-request depending on the nature of the issue. Lastly, the researchers
-hope end users share feedback about the Autoimpute package with the
-authors and share any interesting results found in personal analyses.
+most out of its functionality. Once familiar with the package, data
+practitioners should \texttt{pip\ install} the package, which is
+registered with the Python Packaging Index. Once installed, users should
+review the source code and start using the package in their own
+analysis. Links to the Autoimpute webiste, PyPI package distribution,
+and Github repository appear in Appendix A.
+
+If challenges arise when using the package, researchers should contact
+the authors, preferably by submitting a bug report, feature request, or
+pull request depending on the nature of the issue. Lastly, the
+researchers hope end users give feedback about the Autoimpute package to
+the authors and share any interesting results found in personal
+analyses.
 
 \appendix
 
