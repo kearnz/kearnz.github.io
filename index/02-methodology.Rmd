@@ -28,7 +28,7 @@ Mean, least squares, and predictive mean matching are performed using the mutlip
 
 ## The Full Dataset {.unnumbered}
 
-The authors use the MASS package (Venables & Ripley, 2002) to simulate the full dataset, or the source of truth. The full dataset contains 500 observations for feature $x$ and response $y$. The dataset is generated from a joint normal distribution, where $\mu_x=10$ and $\mu_y=5$. The correlation between $x$ and $y$ equals 0.7. At this point, no missingness exists in either $x$ or $y$.
+The authors use the MASS package (Venables & Ripley, 2002) to simulate the full dataset, or the source of truth. The full dataset contains 500 observations for feature $x$ and response $y$. The dataset is generated from a joint normal distribution, where $\mu_x=10$ and $\mu_y=5$. The correlation between $x$ and $y$ equals 0.7. At this point, no missingness exists in $x$ or $y$.
 
 The figure below visualizes the distribution of each variable:
 
@@ -42,6 +42,8 @@ The next figure displays the joint relationship between $x$ and $y$. The figure 
 include_graphics(path = "figure/full-joint.jpg")
 ```
 
+Both plots come from native visualization methods in the `Autoimpute` package.
+
 The full dataset does not contain any missing values, so no deletion or imputation is necessary before conducting analysis. Using `Autoimpute`, the researchers fit a linear regression model on the full dataset. The summary of the model fit appears below:
 
 ```{r full-regression, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Linear Regression Results: Full"}
@@ -50,7 +52,7 @@ include_graphics(path = "figure/full-regression.jpg")
 
 The results from linear regression on the full dataset serve as the golden source. The coefficient estimate for $x$ is 0.7. Using notation related to imputation analysis, this coefficient estimate of $x$ represents $\hat Q$ - the unbiased estimate of the population parameter of interest $Q$. Because there is only one predictor, the covariance matrix $U$ simply reduces to the variance of the estimate.
 
-The summary output above displays diagnostics for the linear regression model. The table uses aliases for concepts covered in the [Background section](#background)
+The summary output above displays diagnostics for the linear regression model. The output uses aliases for concepts covered in the [Background section](#background)
 
 * `coefs` - The parameter estimate $\hat Q$
 * `std` - The standard error of the coefficient estimate
@@ -62,27 +64,29 @@ Observe that `vb`, or the variance-between, is equal to 0. This result occurs be
 
 ## Example 1: MCAR with Missingness in the Response {.unnumbered}
 
-In the first example, the researchers generate MCAR missingness within the response, $y$. Response $y$ contains 40% missing values. Feature $x$ remains fully observed. The two plots below showcase how to use `Autoimpute` to explore missingness within a given dataset. The plots are quite simple in this case, but they can help detect patterns in missing data when multiple features are present with different levels of missingness.
+In the first example, the researchers generate MCAR missingness within the response, $y$. Response $y$ contains 40% missing values. Feature $x$ remains fully observed. The two plots below showcase how to use `Autoimpute` to explore missingness within a given dataset. `Autoimpute` leverages the excellent `missingno` python package to explore missingness within datasets (Bilogur, 2018) prior to applying any missing data methods. The plots are quite simple in this case, but they can help detect patterns in missing data when multiple features are present with different levels of missingness.
 
-```{r y-mis-forty-loc, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Missingness Locations"}
+```{r y-mis-forty-loc, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Missingness Locations"}
 include_graphics(path = "figure/y-mis-forty-loc.jpg")
 ```
 
-```{r y-mis-forty-bar, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Missingness Percentage"}
+```{r y-mis-forty-bar, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Missingness Percentage"}
 include_graphics(path = "figure/y-mis-forty-bar.jpg")
 ```
 
-Next, the researchers employ missing data methods to handle missing data. In this case, missing data methods must find plausible imputations for the 40% of $y$ that is missing. The imputation methods used include mean, linear regression, and pmm. The researchers also use listwise deletion, although there is no visualization within `Autoimpute` for complete-case analysis because no imputations are performed. For imputation methods, the researchers deploy each strategy within the multiple imputation framework. The number of imputations performed for each method is 5.
+Next, the researchers employ missing data methods to handle missing data in $y$. In this case, missing data methods must find plausible imputations for the 40% of $y$ that is missing. The imputation methods used include mean, linear regression, and pmm. The researchers also use listwise deletion, although there is no visualization within `Autoimpute` for complete-case analysis because no imputations are performed. For imputation methods, the researchers deploy each strategy within the multiple imputation framework. The number of imputations performed for each method is 5.
 
-The visualizations below show the impact of mean, linear regression, and pmm. For each strategy, there are two respective plots. The first plot is the new multivariate distribution between $x$ and $y$ after imputation. The second plot is a swarm plot that shows the imputations for $y$ against other, observed values for $y$ for each of the $5$ imputations performed. 
+`Autoimpute` supports a number of visualization metrics to assess the impact of imputation on an incomplete dataset. 
+
+The visualizations below show the impact of mean, linear regression, and pmm imputation. For each strategy, there are two respective plots. The first plot is the new multivariate distribution between $x$ and $y$ after imputation. The second plot shows the imputations for $y$ against other, observed values for $y$ for each of the $5$ imputations performed. 
 
 Let's start with mean imputation:
 
-```{r multi-mean, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Joint and Marginals with Mean Imputation"}
+```{r multi-mean, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Joint and Marginals with Mean Imputation"}
 include_graphics(path = "figure/multi-mean.jpg")
 ```
 
-```{r swarm-mean, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Swarm Plot: Mean Imputation"}
+```{r swarm-mean, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Swarm Plot: Mean Imputation"}
 include_graphics(path = "figure/swarm-mean.jpg")
 ```
 
@@ -90,27 +94,27 @@ Note that for mean imputation, the imputations do not depend on the value of $x$
 
 Next, observe imputation via least squares:
 
-```{r multi-lm, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Joint and Marginals with Least Squares Imputation"}
+```{r multi-lm, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Joint and Marginals with Least Squares Imputation"}
 include_graphics(path = "figure/multi-lm.jpg")
 ```
 
-```{r swarm-lm, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Swarm Plot: Least Squares Imputation"}
+```{r swarm-lm, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Swarm Plot: Least Squares Imputation"}
 include_graphics(path = "figure/swarm-lm.jpg")
 ```
 
-The plots for linear regression now take into account the relationship between $y$ and $x$. As a result, the imputed values are different within imputations but the same across imputations. Within imputations, the linear model produces different results, which depend on the value of $x$. But across imputations, the linear model is the same because it is fit to the same data and no random error is added to imputations.
+The plots for linear regression now take into account the relationship between $y$ and $x$. As a result, the imputed values are different within imputations but the same across imputations. Within an incomplete dataset, the linear model produces different imputed values, which depend on the value of $x$. But across incomplete datasets, the linear model's imputed values are the same because the model is fit on the same observed data and no random error is added to imputations.
 
 Finally, observe pmm imputation:
 
-```{r multi-pmm, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Joint and Marginals with PMM Imputation"}
+```{r multi-pmm, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Joint and Marginals with PMM Imputation"}
 include_graphics(path = "figure/multi-pmm.jpg")
 ```
 
-```{r swarm-pmm, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Swarm Plot: PMM Imputation"}
+```{r swarm-pmm, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Swarm Plot: PMM Imputation"}
 include_graphics(path = "figure/swarm-pmm.jpg")
 ```
 
-PMM Imputation respects not only the relationship between $y$ and $x$ but also the variance between the features. Imputations are no longer from the "line of best fit" as they are with linear regression. Additionally, imputations are different within and across imputations. Therefore, PMM does the best job at respecting the structure of the data and adding variance between / across imputed datasets.
+PMM Imputation respects not only the relationship between $y$ and $x$ but also the variance between the features. Imputations are no longer from the "line of best fit" as they are with linear regression. Additionally, imputations are different within and across incomplete datasets. Therefore, PMM does the best job at respecting the structure of the data and adding variance between / across imputed datasets.
 
 ## Example 2: MAR with Missingness in the Predictor {.unnumbered}
 
@@ -120,16 +124,16 @@ The researchers take the same approach to Example 2 as they do to Example 1. Fir
 
 The plots below demonstrate that missingness now occurs within the predictor $x$, while $y$ is fully observed.
 
-```{r x-mis-forty-loc-mar, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Missingness Locations"}
+```{r x-mis-forty-loc-mar, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Missingness Locations"}
 include_graphics(path = "figure/x-mis-forty-loc-mar.jpg")
 ```
 
-```{r x-mis-forty-bar-mar, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Missingness Percentage"}
+```{r x-mis-forty-bar-mar, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Missingness Percentage"}
 include_graphics(path = "figure/x-mis-forty-bar-mar.jpg")
 ```
 
-
+---------- SWARM PLOTS HERE TOO ? --------------
 
 ## Analysis Models on each Example {.unnumbered}
 
-The sections above take the user through the data exploration phase and multiple imputation phase of `Autoimpute`. The next section, [Findings](#findings), demonstrates how the nature of missingness affected the results of linear regression on the mulitply imputed data.
+The sections above take the user through the data exploration phase and multiple imputation phase of `Autoimpute`. At each step, the authors use visualization methods from the `Autoimpute` package to demonstrate what each imputation method does under the hood when used in the multiple imputation framework. The next section, [Findings](#findings), demonstrates how each imputation algorithm affects the inference derived from linear regression. Results from analysis on imputed datasets are compared to the results from analysis on the complete dataset.

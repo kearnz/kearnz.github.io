@@ -2,41 +2,53 @@
 
 ## Full Model Recap {.unnumbered}
 
-We begin this section with a recap of linear regression on the full dataset. The results below serve as the benchmark for comparison. They are considered the golden standard. Therefore, we seek to examine how our imputation methods perform and if they produce a dataset that significantly affects the results from linear regression. If the results are skewed, we know that the imputation model used is significantly affected by the nature of missingness within the data, and we may have to do more to account for the missingness.
+We begin this section with a recap of linear regression on the full dataset. The results below serve as the benchmark for comparison. They are considered the golden standard.
 
-The results for the full model are displayed below:
+The results for the full model are displayed again:
 
-```{r full-regression-again, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Linear Regression Results: Full"}
+```{r full-regression-again, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Linear Regression Recap: Full"}
 include_graphics(path = "figure/full-regression.jpg")
 ```
 
+Next, the authors examine how each missing data method performs and if the imputations it generates distort the results from linear regression. If coefficients are biased, then the imputation model used does not produce plausible imputations that respect the original structure of the complete data. Further, if variance measures are too narrow, then the imputation model did not create sufficient variability to account for uncertainty introduced by missingness, and the statistical significance of the coefficients may be called into question.
+
+The authors display the results of linear regression for each example in the methodology section.
+
 ## Results from Example 1  {.unnumbered}
  
-Next, we examine the results from a linear regression on the imputed dataset from Example 1. Recall that Example 1 contains 40% missingness in the response $y$, and the missingness mechanism is MCAR.
+The authors review the results from a linear regression on the imputed dataset from Example 1. Recall that Example 1 contains 40% missingness in the response $y$, and the missingness mechanism is MCAR.
 
 First, listwise delete:
 
-```{r mcar-listwise-delete, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Linear Regression Results: Listwise Delete"}
+```{r mcar-listwise-delete, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Linear Regression Results under MCAR: Listwise Delete"}
 include_graphics(path = "figure/mcar-listwise-delete.jpg")
 ```
 
 Next, mean imputation:
 
-```{r mcar-mean, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Linear Regression Results: Mean Imputation"}
+```{r mcar-mean, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Linear Regression Results under MCAR: Mean Imputation"}
 include_graphics(path = "figure/mcar-mean.jpg")
 ```
 
 Next, least squares imputation:
 
-```{r mcar-ls, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Linear Regression Results: Least Squares Imputation"}
+```{r mcar-ls, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Linear Regression Results under MCAR: Least Squares Imputation"}
 include_graphics(path = "figure/mcar-ls.jpg")
 ```
 
 Finally, pmm imputation:
 
-```{r mcar-pmm, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Linear Regression Results: PMM Imputation"}
+```{r mcar-pmm, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Linear Regression Results under MCAR: PMM Imputation"}
 include_graphics(path = "figure/mcar-pmm.jpg")
 ```
+
+## Findings from Example 1 {.unnumbered}
+
+The authors explore the impact each missing data method has on the coefficient estimate for $x$ and the resulting standard error and variance of $x$. 
+
+First, the authors discuss coefficient estimates. Mean imputation produces a grossly biased parameter estimate for $x$. This result occurs because mean imputation thins the distribution of the variable it imputes. As a result, mean imputation shrinks the correlation between any feature and the imputed variable (van Buuren, ch. 1.3.1). Therefore, the mean imputation is suboptimal. Next, note that listwise deletion, least squares, and pmm all produce parameter estimates close to the true value of the parameter estimate from the regression model on the complete dataset. PMM's estimate is the least biased of the three. These results are also expected. Under MCAR with missingness in the response only, listwise deletion, least squares, and pmm all produce unbiased estimates for the parameter of interest (Van Buuren, ch. 1.3.8; ch 3.4).
+
+Next, the authors examine the impact of imputation methods on the variance of parameter estimates. Listwise deletion produces larger variance and standard error because the sample size used for the regression model is reduced. Mean imputation produces similar standard error and variance as the full regression model, because mean imputation does not produce any variability between imputations. Results from least squares are even worse. The standard error and variance of coefficient estimates shrink significantly. This phenomenon stems from the fact that least squares imputation increases the correlation between features and the imputed variable. As a result, the variability of the imputed data is understated, and the resulting standard error of the coefficient estimate is far too low. This underestimation makes the coefficient seem more statistically significant than it may be. PMM imputation, on the other hand, increases the variance and standard error of the coefficient estimates. It does so for a different reason than listwise deletion, however. Notice that PMM is the only method with a non-zero value for the variance-between. This stems from the fact that PMM produces different parameter estimates in each analysis model applied to the multiply imputed datasets. Therefore, when the coefficients are pooled, additional variance results. This additional variance accurately captures the uncertainty introduced from imputing missing values. 
 
 ## Results from Example 2  {.unnumbered}
 
@@ -44,28 +56,38 @@ Next, we examine the results from a linear regression on the imputed dataset fro
 
 First, listwise delete:
 
-```{r mar-listwise-delete, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Linear Regression Results: Listwise Delete"}
+```{r mar-listwise-delete, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Linear Regression Results under MAR: Listwise Delete"}
 include_graphics(path = "figure/mar-listwise-delete.jpg")
 ```
 
 Next, mean imputation:
 
-```{r mar-mean, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Linear Regression Results: Mean Imputation"}
+```{r mar-mean, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Linear Regression Results under MAR: Mean Imputation"}
 include_graphics(path = "figure/mar-mean.jpg")
 ```
 
 Next, least squares imputation:
 
-```{r mar-ls, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Linear Regression Results: Least Squares Imputation"}
+```{r mar-ls, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Linear Regression Results under MAR: Least Squares Imputation"}
 include_graphics(path = "figure/mar-ls.jpg")
 ```
 
 Finally, pmm imputation:
 
-```{r mar-pmm, echo=FALSE, out.width="300px", fig.align="center", fig.cap="Linear Regression Results: PMM Imputation"}
+```{r mar-pmm, echo=FALSE, out.width="400px", fig.align="center", fig.cap="Linear Regression Results under MAR: PMM Imputation"}
 include_graphics(path = "figure/mar-pmm.jpg")
 ```
 
-## Analysis of Results {.unnumbered}
+## Findings from Example 2 {.unnumbered}
 
-We see that regardless of the missing data mechanism, mean and least squares imputation significantly reduce the variance in the coefficient estimates. Therefore, these methods should be avoided regardless because they significantly overstate the confidence we have in an estimate's coefficient. When missingness is in the predictor, least squares is quite biased. When missingness is in the response, mean is biased downward as well. When data is MCAR, listwise deletion is the most efficient and therefore preferred. When data is MAR, listwise deletion becomes slightly biased, and PMM is the most robust.
+In example 2, the missing data mechanism is MAR and right-tailed. Therefore, the probability of missingness in $x$ increases with larger values of $y$. As a result, the analysis models from listwise deletion and mean imputation are negatively biased. Least squares regression, on the other hand, produces a coefficient that is grossly overbiased. PMM is the only method that produces an unbiased estimate for the coefficient.
+
+The analysis of variance is similar to example 1. In general, listwise deletion always enlarges the coefficient variance and standard error because the sample size is reduced. Mean imputation ignores any variability between imputations, and least squares inflates correlation between features, thus deflating the standard error and variance of a parameter estimate. PMM is the only method that retains the variability introduced from multiple imputation, and thus it increases standard error to account for the underlying uncertainty in the true value of missing data points.
+
+## Inference from Examples {.unnumbered}
+
+Whenever a researcher fits a supervised machine learning model of imputed data, he or she should be concerned with potential bias of the coefficient estimates and possible understatement or coefficient standard error. The examples above show that bias and standard error are the direct result of how imputation methods respond to the nature of missing data and if they handle the missing data mechanism correctly. 
+
+The researcher should always select the method that produces the best results from the analysis model. The best results stem from an imputation method that preserves the covariance structure of the underlying data. Therefore, in Example 2, the researcher should feel comfortable selecting PMM as the best missing data method to use. In the case where numerous imputation methods lead to unbiased parameter estimates and sufficient standard error for coefficients, the researcher must then consider other factors related to the underlying missing data method. In the MCAR example, both PMM and listwise deletion do a good job. But PMM is computationally expensive, and the results from PMM vary each time the researcher imputes the data (assuming no seed is set). In this case, listwise deletion may actually be prefered. 
+
+These examples demonstrate that there is no free lunch when it comes to analysis of imputed data. The researcher must consider multiple imputation models and assess how they affect bias and variance of coefficients. Additionally, the researcher must consider the computational cost of the underlying imputation algorithm and its flexibility to extend to other scenarios with missing data. Some imputation methods can always be rejected, such as mean and least squares imputation. Other methods, however, must be vetted and selected with careful consideration.
